@@ -1,0 +1,103 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String    @id @default(cuid())
+  name      String
+  email     String    @unique
+  role      String    @default("STUDENT")
+  attempts Attempt[]
+  createdAt DateTime  @default(now())
+}
+
+model Question {
+  id                 String       @id @default(cuid())
+  subject            String
+  topic              String
+  subtopic           String
+  roundType          String
+  difficulty         String
+  timeLimitSeconds   Int          @default(30)
+  questionText       String
+  answer             String
+  acceptedAnswers    String       @default("[]")
+  numericTolerance   Float?
+  shortcutSolution   String
+  fullSolution       String
+  commonTrap         String
+  encouragement      String
+  repeatedPattern    String
+  patternFamily      String
+  sourceType         String       @default("ORIGINAL")
+  sourceName         String?
+  sourceUrl          String?
+  sourceYear         Int?
+  contestStage       String?
+  videoTimestamp     String?
+  permissionStatus   String       @default("ORIGINAL")
+  ghanaContext       Boolean      @default(false)
+  tags               String       @default("[]")
+  examinerFocus      String?
+  markingScheme      String?
+  riddleClues        RiddleClue[]
+  attempts           Attempt[]
+  createdAt          DateTime     @default(now())
+  updatedAt          DateTime     @updatedAt
+
+  @@index([subject, topic, roundType, difficulty])
+  @@index([sourceType, repeatedPattern])
+  @@index([ghanaContext, subject])
+}
+
+model RiddleClue {
+  id         String   @id @default(cuid())
+  questionId String
+  question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  clueNumber Int
+  clueText   String
+  points     Int
+
+  @@unique([questionId, clueNumber])
+}
+
+model Attempt {
+  id               String   @id @default(cuid())
+  userId           String
+  questionId       String
+  userAnswer       String
+  isCorrect        Boolean
+  timeTakenSeconds Float
+  pointsAwarded    Int
+  mode             String
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  question         Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  createdAt        DateTime @default(now())
+
+  @@index([userId, createdAt])
+}
+
+model ContestSession {
+  id           String   @id @default(cuid())
+  title        String
+  mode         String
+  teamAScore   Int      @default(0)
+  teamBScore   Int      @default(0)
+  teamCScore   Int      @default(0)
+  currentRound Int      @default(1)
+  createdAt    DateTime @default(now())
+}
+
+model Topic {
+  id          String @id @default(cuid())
+  subject     String
+  name        String
+  description String
+
+  @@unique([subject, name])
+}
