@@ -2,81 +2,87 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
 export async function GET(request: NextRequest) {
-  const params = request.nextUrl.searchParams;
-  const take = Math.min(Number(params.get("limit") || 20), 250);
-  const search = params.get("search")?.trim();
+  const { searchParams } = new URL(request.url);
 
-  const questions = await prisma.question.findMany({
-    where: {
-      ...(params.get("subject") && { subject: params.get("subject")! }),
-      ...(params.get("topic") && { topic: params.get("topic")! }),
-      ...(params.get("subtopic") && { subtopic: params.get("subtopic")! }),
-      ...(params.get("roundType") && { roundType: params.get("roundType")! }),
-      ...(params.get("difficulty") && { difficulty: params.get("difficulty")! }),
-      ...(params.get("sourceType") && { sourceType: params.get("sourceType")! }),
-      ...(params.get("ghanaContext") === "true" && { ghanaContext: true }),
-      ...(params.get("patternFamily") && {
-        patternFamily: { contains: params.get("patternFamily")! },
-      }),
-      ...(params.get("timeLimit") && {
-        timeLimitSeconds: { lte: Number(params.get("timeLimit")) },
-      }),
-      ...(params.get("repeatedPattern") && {
-        repeatedPattern: { contains: params.get("repeatedPattern")! },
-      }),
-      ...(search && {
-        OR: [
-          { questionText: { contains: search } },
-          { topic: { contains: search } },
-          { subtopic: { contains: search } },
-          { tags: { contains: search } },
-        ],
-      }),
-    },
-    include: { riddleClues: { orderBy: { clueNumber: "asc" } } },
-    take,
-    orderBy: { createdAt: "desc" },
-  });
+  const page = Math.max(1, Number(searchParams.get("page") ?? "1"));
+  const limit = Math.min(5000, Math.max(1, Number(searchParams.get("limit") ?? "5000")));
 
-  return NextResponse.json(questions);
-}
+  const search = searchParams.get("search")?.trim() || "";
+  const subject = searchParams.get("subject") || "";
+  const topic = searchParams.get("topic") || "";
+  const subtopic = searchParams.get("subtopic") || "";
+  const roundType = searchParams.get("roundType") || "";
+  const difficulty = searchParams.get("difficulty") || "";
+  const sourceType = searchParams.get("sourceType") || "";
+  const patternFamily = searchParams.get("patternFamily") || "";
+  const repeatedPattern = searchParams.get("repeatedPattern") || "";
+  const ghanaContext = searchParams.get("ghanaContext") === "true";
 
-export async function POST(request: NextRequest) {
-  const body = await request.json();
-  const required = ["subject", "topic", "subtopic", "roundType", "difficulty", "questionText", "answer", "shortcutSolution", "fullSolution", "commonTrap", "encouragement", "repeatedPattern", "patternFamily", "sourceType", "permissionStatus"];
-  const missing = required.filter((field) => !String(body[field] ?? "").trim());
-  if (missing.length) {
-    return NextResponse.json({ error: `Missing required fields: ${missing.join(", ")}` }, { status: 400 });
+  const where: any = {};
+
+  if (subject) where.subject = subject;
+  if (topic) where.topic = topic;
+  if (subtopic) where.subtopic = subtopic;
+  if (roundType) where.roundType = roundType;
+  if (difficulty) where.difficulty = difficulty;
+  if (sourceType) where.sourceType = sourceType;
+  if (patternFamily) where.patternFamily = patternFamily;
+  if (repeatedPattern) where.repeatedPattern = { contains: repeatedPattern };
+  if (ghanaContext) where.isGhanaContext = true;
+
+  if (search) {
+    where.OR = [
+      { questionText: { contains: search } },
+      { answer: { contains: search } },
+      { topic: { contains: search } },
+      { subtopic: { contains: search } },
+      { repeatedPattern: { contains: search } },
+      { patternFamily: { contains: search } },
+      { tags: { contains: search } },
+    ];
   }
-  const riddleClues = Array.isArray(body.riddleClues) ? body.riddleClues : [];
-  if (body.roundType === "RIDDLE" && (riddleClues.length !== 4 || riddleClues.some((clue: { clueText?: string }) => !clue.clueText?.trim()))) {
-    return NextResponse.json({ error: "Riddles require exactly four completed clues." }, { status: 400 });
-  }
-  delete body.id;
-  delete body.createdAt;
-  delete body.updatedAt;
-  delete body.riddleClues;
 
-  const question = await prisma.question.create({
-    data: {
-      ...body,
-      timeLimitSeconds: Number(body.timeLimitSeconds || 30),
-      sourceYear: body.sourceYear ? Number(body.sourceYear) : null,
-      numericTolerance: body.numericTolerance ? Number(body.numericTolerance) : null,
-      ghanaContext: body.ghanaContext === true || body.ghanaContext === "true",
-      acceptedAnswers: typeof body.acceptedAnswers === "string" ? body.acceptedAnswers : JSON.stringify(body.acceptedAnswers || []),
-      tags: typeof body.tags === "string" ? body.tags : JSON.stringify(body.tags || []),
-      riddleClues: riddleClues.length
-        ? {
-            create: riddleClues.map((clue: { clueNumber: number; clueText: string; points: number }) => ({
-              clueNumber: Number(clue.clueNumber),
-              clueText: clue.clueText,
-              points: Number(clue.points),
-            })),
-          }
-        : undefined,
+  const [total, questions, allForFacets] = await Promise.all([
+    prisma.question.count({ where }),
+    prisma.question.findMany({
+      where,
+      include: { riddleClues: { orderBy: { clueNumber: "asc" } } },
+      orderBy: { createdAt: "desc" },
+      skip: (page - 1) * limit,
+      take: limit,
+    }),
+    prisma.question.findMany({
+      select: {
+        subject: true,
+        topic: true,
+        subtopic: true,
+        patternFamily: true,
+        sourceType: true,
+        roundType: true,
+        difficulty: true,
+        timeLimitSeconds: true,
+      },
+    }),
+  ]);
+
+  const unique = (values: any[]) =>
+    [...new Set(values.filter(Boolean))].sort();
+
+  return NextResponse.json({
+    questions,
+    total,
+    totalPages: Math.max(1, Math.ceil(total / limit)),
+    page,
+    limit,
+    facets: {
+      subjects: unique(allForFacets.map((q) => q.subject)),
+      topics: unique(allForFacets.map((q) => q.topic)),
+      subtopics: unique(allForFacets.map((q) => q.subtopic)),
+      patternFamilies: unique(allForFacets.map((q) => q.patternFamily)),
+      sourceTypes: unique(allForFacets.map((q) => q.sourceType)),
+      roundTypes: unique(allForFacets.map((q) => q.roundType)),
+      difficulties: unique(allForFacets.map((q) => q.difficulty)),
+      timeLimits: unique(allForFacets.map((q) => q.timeLimitSeconds)),
     },
-    include: { riddleClues: true },
   });
-  return NextResponse.json(question, { status: 201 });
 }
