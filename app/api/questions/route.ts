@@ -4,8 +4,10 @@ import { prisma } from "@/lib/prisma";
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
 
+  const wantsMeta = searchParams.get("meta") === "true";
+
   const page = Math.max(1, Number(searchParams.get("page") ?? "1"));
-  const limit = Math.min(5000, Math.max(1, Number(searchParams.get("limit") ?? "5000")));
+  const limit = Math.min(5000, Math.max(1, Number(searchParams.get("limit") ?? "20")));
 
   const search = searchParams.get("search")?.trim() || "";
   const subject = searchParams.get("subject") || "";
@@ -16,7 +18,9 @@ export async function GET(request: NextRequest) {
   const sourceType = searchParams.get("sourceType") || "";
   const patternFamily = searchParams.get("patternFamily") || "";
   const repeatedPattern = searchParams.get("repeatedPattern") || "";
-  const ghanaContext = searchParams.get("ghanaContext") === "true";
+  const ghanaContext =
+    searchParams.get("ghanaContext") === "true" ||
+    searchParams.get("isGhanaContext") === "true";
 
   const where: any = {};
 
@@ -42,15 +46,21 @@ export async function GET(request: NextRequest) {
     ];
   }
 
-  const [total, questions, allForFacets] = await Promise.all([
+  const questions = await prisma.question.findMany({
+    where,
+    include: { riddleClues: { orderBy: { clueNumber: "asc" } } },
+    orderBy: { createdAt: "desc" },
+    skip: (page - 1) * limit,
+    take: limit,
+  });
+
+  // Backward compatible mode for Practice, Speed Race, POTD, T/F, Full Contest.
+  if (!wantsMeta) {
+    return NextResponse.json(questions);
+  }
+
+  const [total, allForFacets] = await Promise.all([
     prisma.question.count({ where }),
-    prisma.question.findMany({
-      where,
-      include: { riddleClues: { orderBy: { clueNumber: "asc" } } },
-      orderBy: { createdAt: "desc" },
-      skip: (page - 1) * limit,
-      take: limit,
-    }),
     prisma.question.findMany({
       select: {
         subject: true,

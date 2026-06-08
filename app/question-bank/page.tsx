@@ -28,9 +28,9 @@ export default function QuestionBankPage() {
   const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
-    const params = new URLSearchParams({ page: String(page), limit: "5000", ...(search && { search }), ...(subject && { subject }), ...(topic && { topic }), ...(subtopic && { subtopic }), ...(roundType && { roundType }), ...(difficulty && { difficulty }), ...(sourceType && { sourceType }), ...(pattern && { repeatedPattern: pattern }), ...(patternFamily && { patternFamily }), ...(timeLimit && { timeLimit }), ...(isGhanaContext && { ghanaContext: "true" }) });
+    const params = new URLSearchParams({ page: String(page), limit: "5000", meta: "true", ...(search && { search }), ...(subject && { subject }), ...(topic && { topic }), ...(subtopic && { subtopic }), ...(roundType && { roundType }), ...(difficulty && { difficulty }), ...(sourceType && { sourceType }), ...(pattern && { repeatedPattern: pattern }), ...(patternFamily && { patternFamily }), ...(timeLimit && { timeLimit }), ...(isGhanaContext && { ghanaContext: "true" }) });
     setLoading(true);
-    const timeout = window.setTimeout(() => fetch(`/api/questions?${params}`)
+    const timeout = window.setTimeout(() => fetch(`/api/questions?limit=5000&${params}`)
       .then((response) => response.json())
       .then((data) => {
         const normalizedQuestions = Array.isArray(data)
@@ -69,7 +69,7 @@ export default function QuestionBankPage() {
   }, [page, search, subject, topic, subtopic, roundType, difficulty, sourceType, pattern, patternFamily, timeLimit, isGhanaContext]);
 
   useEffect(() => {
-    fetch("/api/questions?metadata=true").then((response) => response.json()).then(setFacets);
+    fetch("/api/questions?limit=5000&metadata=true").then((response) => response.json()).then(setFacets);
   }, []);
 
   const updateFilter = (setter: (value: string) => void, value: string) => {
