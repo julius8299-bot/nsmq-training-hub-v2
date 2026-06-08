@@ -27,6 +27,22 @@ export default function HomePage() {
         <div>
           <p className="eyebrow mb-5">For Ghanata SHS science students</p>
           <h1 className="max-w-4xl font-display text-5xl font-semibold leading-[1.02] sm:text-6xl lg:text-7xl">
+
+          <div className="mb-8 flex w-fit items-center gap-4 rounded-3xl border border-ink/10 bg-white/85 px-5 py-4 shadow-soft">
+            <Image
+              src="/brand/ghanata-shs-logo.jpg"
+              alt="Ghanata Senior High School crest"
+              width={96}
+              height={96}
+              className="h-20 w-20 rounded-2xl bg-white object-contain p-2"
+              priority
+            />
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.24em] text-teal-700">Ghanata SHS</p>
+              <p className="mt-1 text-sm font-semibold text-ink/70">Carpe Diem • NSMQ preparation hub</p>
+            </div>
+          </div>
+
             Train like an <span className="text-chemistry">NSMQ finalist.</span>
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-ink/65">
