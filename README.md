@@ -1,6 +1,6 @@
 # NSMQ Training Hub
 
-An independent, full-stack training platform for Ghanaian SHS students preparing for National Science and Maths Quiz-style competition. It focuses on speed, accuracy, shortcut methods, repeated patterns, and confidence-building feedback without copying official branding or protected question sets.
+An independent, full-stack training platform for Ghanata SHS students preparing for National Science and Maths Quiz-style competition. It focuses on speed, accuracy, shortcut methods, repeated patterns, and confidence-building feedback without copying official branding or protected question sets.
 
 ## Features
 

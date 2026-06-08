@@ -25,7 +25,7 @@ export default function HomePage() {
     <>
       <section className="page-shell grid min-h-[72vh] items-center gap-12 py-16 lg:grid-cols-[1.1fr_.9fr]">
         <div>
-          <p className="eyebrow mb-5">For Ghanaian SHS science students</p>
+          <p className="eyebrow mb-5">For Ghanata SHS science students</p>
           <h1 className="max-w-4xl font-display text-5xl font-semibold leading-[1.02] sm:text-6xl lg:text-7xl">
             Train like an <span className="text-chemistry">NSMQ finalist.</span>
           </h1>
@@ -43,7 +43,7 @@ export default function HomePage() {
         </div>
         <div className="panel relative overflow-hidden">
           <div className="relative aspect-[4/3]">
-            <Image src="/gallery/ghanata-team.jpg" alt="Ghanata SHS Riddle Bonanza winning team" fill sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover" priority />
+            <Image src="/gallery/ghanata-regional-competition-winners.jpg" alt="Ghanata SHS Riddle Bonanza winning team" fill sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover" priority />
             <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent" />
             <div className="absolute inset-x-0 bottom-0 p-6 text-white sm:p-8">
               <p className="eyebrow text-gold">Proof of preparation</p>
