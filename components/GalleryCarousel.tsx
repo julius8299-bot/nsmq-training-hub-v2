@@ -19,7 +19,7 @@ export function GalleryCarousel({ items, compact = false }: { items: GalleryItem
     <div className="panel overflow-hidden">
       <div className={`relative ${compact ? "aspect-[16/8]" : "aspect-[16/9] sm:aspect-[16/7]"}`}>
         <Image
-          key={`${item.src}-${item.title}`}
+          key={item.src}
           src={item.src}
           alt={item.alt}
           fill
@@ -39,7 +39,7 @@ export function GalleryCarousel({ items, compact = false }: { items: GalleryItem
       </div>
       <div className="flex justify-center gap-2 p-3">
         {items.map((entry, itemIndex) => (
-          <button key={`${entry.src}-${itemIndex}`} type="button" aria-label={`Show ${entry.title}`} onClick={() => setIndex(itemIndex)} className={`h-2 rounded-full transition-all ${itemIndex === index ? "w-8 bg-chemistry" : "w-2 bg-ink/20"}`} />
+          <button key={entry.src} type="button" aria-label={`Show ${entry.title}`} onClick={() => setIndex(itemIndex)} className={`h-2 rounded-full transition-all ${itemIndex === index ? "w-8 bg-chemistry" : "w-2 bg-ink/20"}`} />
         ))}
       </div>
     </div>

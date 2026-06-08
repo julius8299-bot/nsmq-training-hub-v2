@@ -10,11 +10,12 @@ An independent, full-stack training platform for Ghanaian SHS students preparing
 - Tolerant answer checking: case-insensitive, whitespace-trimmed, accepted alternatives, numeric tolerance, and T/F aliases
 - Immediate shortcut, full solution, common-trap, and encouragement feedback
 - Progress dashboard backed by saved attempts
-- Searchable question bank with pattern and source filters
+- Paginated, searchable question bank with subject, topic, subtopic, round, difficulty, timing, pattern, source, and Ghana-context filters
 - Coach/admin question creation, editing, deletion, and CSV/JSON import
 - Source and permission tracking for every question
-- 120 original seed questions: 30 each for Mathematics, Physics, Chemistry, and Biology
-- Ghana-context questions and riddles covering examples such as kenkey fermentation, Akosombo hydroelectric power, trotro motion, gari drying, Harmattan, and malaria ecology
+- More than 4,000 original questions: over 1,000 each in Mathematics, Physics, Chemistry, and Biology
+- More than 1,000 Ghana-context questions across all five contest rounds
+- Local NSMQ/Ghanata motivational gallery, trophy spotlight, journey section, and dashboard motivation corner
 
 ## Stack
 
@@ -40,6 +41,11 @@ npm run dev
 
 Open `http://localhost:3000`.
 
+`npm run dev` now checks the local database automatically. If the Question Bank
+is empty, it creates the schema and loads all 4,000+ questions before starting
+the app. Running `npm run db:seed` manually is still available when you want to
+replace the current local data.
+
 On Windows PowerShell, use `Copy-Item .env.example .env` instead of `cp`.
 
 ## Database commands
@@ -47,7 +53,7 @@ On Windows PowerShell, use `Copy-Item .env.example .env` instead of `cp`.
 ```bash
 npm run db:generate   # generate Prisma Client
 npm run db:push       # create/update local SQLite schema
-npm run db:seed       # replace local question data with the 120 original samples
+npm run db:seed       # replace local data with the complete original 4,000+ question bank
 npm run db:studio     # inspect and edit records visually
 ```
 
@@ -69,7 +75,11 @@ For `acceptedAnswers` and `tags`, use valid JSON arrays encoded as strings in CS
 "[""4"",""four""]","[""algebra"",""fundamentals""]"
 ```
 
-All copied or sourced material must include `sourceType`, `sourceName`, `sourceUrl` where available, `sourceYear`, `contestStage`, `videoTimestamp` where relevant, and `permissionStatus`. Keep unapproved material at `PRIVATE_REVIEW` or `NEEDS_PERMISSION`; do not publish it to students.
+All copied or sourced material must include `sourceType`, `sourceName`, `sourceUrl` where available, `sourceYear`, `contestStage`, `videoTimestamp` where relevant, and `permissionStatus`. Mark authorized historical material with `isPastQuestion`; keep material under review marked `isPrivateOnly` so it does not appear in student APIs.
+
+## Seed architecture
+
+Subject factories live under `prisma/seed-data/`, with shared quotas, validation, Ghana scenarios, timing, difficulty distribution, and riddle-clue generation in `question-factory.ts`. Each subject produces at least 280 Round 1, 240 Speed Race, 120 Problem of the Day, 200 True/False, and 160 Riddle questions. Curated pattern supplements make specialist syllabus patterns explicit.
 
 ## Scoring
 
@@ -87,7 +97,7 @@ All copied or sourced material must include `sourceType`, `sourceName`, `sourceU
 4. Run `npx prisma migrate dev --name postgres-baseline` during development.
 5. Replace the demo-user convention with Supabase Auth or another authentication provider.
 
-For production, also add role-based route protection, transaction-backed bulk imports, pagination, richer coach marking, accessibility testing, and automated test coverage.
+For production, also add role-based route protection, transaction-backed bulk imports, richer coach marking, accessibility testing, and broader automated test coverage.
 
 ## Copyright note
 

@@ -10,7 +10,7 @@ import type { Question } from "@/lib/types";
 export default function AdminPage() {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [editing, setEditing] = useState<Question | null>(null);
-  const load = useCallback(() => { fetch("/api/questions?limit=100").then((response) => response.json()).then(setQuestions); }, []);
+  const load = useCallback(() => { fetch("/api/questions?limit=100&includePrivate=true").then((response) => response.json()).then(setQuestions); }, []);
   useEffect(load, [load]);
   const remove = async (id: string) => {
     if (!window.confirm("Delete this question?")) return;

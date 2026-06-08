@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ArrowRight, Flame, Target, Zap } from "lucide-react";
 import { PageHeading } from "@/components/page-heading";
+import { MotivationCorner } from "@/components/MotivationCorner";
 import { SUBJECT_STYLES } from "@/lib/constants";
 import type { Question } from "@/lib/types";
 
@@ -80,6 +81,7 @@ export default function DashboardPage() {
           <Link href="/problem-of-the-day" className="mt-6 inline-flex items-center gap-2 font-bold text-gold">Solve today’s problem <ArrowRight size={17} /></Link>
         </div>
       )}
+      <MotivationCorner />
     </div>
   );
 }

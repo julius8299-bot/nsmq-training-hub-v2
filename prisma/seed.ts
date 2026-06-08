@@ -1,135 +1,121 @@
 import { PrismaClient } from "@prisma/client";
-import { expandedQuestions } from "./expanded-questions";
+import { pathToFileURL } from "node:url";
+import { mathematicsQuestions } from "./seed-data/mathematics";
+import { physicsQuestions } from "./seed-data/physics";
+import { chemistryQuestions } from "./seed-data/chemistry";
+import { biologyQuestions } from "./seed-data/biology";
+import { supplementalPatternQuestions } from "./seed-data/supplemental-patterns";
+import { validateQuestions, type SeedQuestion } from "./seed-data/question-factory";
 
 const prisma = new PrismaClient();
-
-type SeedQuestion = {
-  subject: string;
-  topic: string;
-  subtopic: string;
-  roundType: string;
-  difficulty: string;
-  timeLimitSeconds: number;
-  questionText: string;
-  answer: string;
-  acceptedAnswers?: string[];
-  shortcutSolution: string;
-  fullSolution: string;
-  commonTrap: string;
-  encouragement?: string;
-  repeatedPattern: string;
-  patternFamily: string;
-  tags?: string[];
-  ghanaContext?: boolean;
-  numericTolerance?: number;
-  examinerFocus?: string;
-  markingScheme?: string;
-  riddleClues?: { clueNumber: number; clueText: string; points: number }[];
-};
-
-const encouragement = "You missed the pattern, not the whole topic. Try 3 more from this pattern.";
-
-const baseQuestions: SeedQuestion[] = [
-  // Mathematics (10)
-  { subject: "MATHEMATICS", topic: "Algebra", subtopic: "Quadratic equations", roundType: "ROUND_ONE", difficulty: "EASY", timeLimitSeconds: 30, questionText: "The roots of x² - 7x + 10 = 0 are p and q. Find p + q.", answer: "7", acceptedAnswers: ["7.0"], shortcutSolution: "For x² - 7x + 10, the sum of roots is -(-7)/1 = 7.", fullSolution: "By Vieta's formula, p + q = -b/a. Here a = 1 and b = -7, so p + q = 7.", commonTrap: "Adding the factors 2 and 5 incorrectly or using b/a without the negative sign.", repeatedPattern: "sum of roots from coefficients", patternFamily: "Vieta formulas", tags: ["algebra", "roots"] },
-  { subject: "MATHEMATICS", topic: "Sequences", subtopic: "Arithmetic progression", roundType: "ROUND_ONE", difficulty: "MEDIUM", timeLimitSeconds: 40, questionText: "An arithmetic progression has first term 5 and common difference 3. Find its 12th term.", answer: "38", shortcutSolution: "a₁₂ = 5 + 11(3) = 38.", fullSolution: "Use aₙ = a + (n - 1)d. Therefore a₁₂ = 5 + (12 - 1)3 = 38.", commonTrap: "Multiplying the difference by 12 instead of 11.", repeatedPattern: "nth term of arithmetic progression", patternFamily: "sequences", tags: ["AP"] },
-  { subject: "MATHEMATICS", topic: "Geometry", subtopic: "Circles", roundType: "ROUND_ONE", difficulty: "MEDIUM", timeLimitSeconds: 45, questionText: "A circle has radius 7 cm. Using π = 22/7, find its circumference.", answer: "44 cm", acceptedAnswers: ["44", "44cm"], shortcutSolution: "C = 2πr = 2 × 22/7 × 7 = 44 cm.", fullSolution: "The circumference of a circle is 2πr. Substitute r = 7 cm and π = 22/7 to obtain 44 cm.", commonTrap: "Using πr², which calculates area rather than circumference.", repeatedPattern: "circle measure from radius", patternFamily: "mensuration", tags: ["circle", "circumference"] },
-  { subject: "MATHEMATICS", topic: "Logarithms", subtopic: "Laws of logarithms", roundType: "SPEED_RACE", difficulty: "EASY", timeLimitSeconds: 15, questionText: "Evaluate log₁₀ 1000.", answer: "3", shortcutSolution: "10³ = 1000, so the logarithm is 3.", fullSolution: "log₁₀ 1000 asks for the power to which 10 must be raised to give 1000. That power is 3.", commonTrap: "Giving 100 because of dividing 1000 by 10.", repeatedPattern: "convert logarithm to index form", patternFamily: "logarithms", tags: ["indices"] },
-  { subject: "MATHEMATICS", topic: "Trigonometry", subtopic: "Exact values", roundType: "SPEED_RACE", difficulty: "EASY", timeLimitSeconds: 15, questionText: "Find sin 30°.", answer: "1/2", acceptedAnswers: ["0.5", "½"], shortcutSolution: "Recall the 30°-60°-90° triangle: sin 30° = 1/2.", fullSolution: "In a 30°-60°-90° triangle, the side opposite 30° is half the hypotenuse, hence sin 30° = 1/2.", commonTrap: "Confusing sin 30° with cos 30° = √3/2.", repeatedPattern: "exact trig value recall", patternFamily: "special angles", tags: ["trigonometry"] },
-  { subject: "MATHEMATICS", topic: "Calculus", subtopic: "Differentiation", roundType: "TRUE_FALSE", difficulty: "MEDIUM", timeLimitSeconds: 20, questionText: "True or False: The derivative of x³ is 3x².", answer: "True", acceptedAnswers: ["T", "true"], shortcutSolution: "Power rule: bring down 3 and reduce the power by 1.", fullSolution: "Using d(xⁿ)/dx = nxⁿ⁻¹, d(x³)/dx = 3x², so the statement is true.", commonTrap: "Reducing the coefficient as well as the exponent.", repeatedPattern: "differentiate a power", patternFamily: "power rule", tags: ["calculus"] },
-  { subject: "MATHEMATICS", topic: "Probability", subtopic: "Independent events", roundType: "TRUE_FALSE", difficulty: "HARD", timeLimitSeconds: 25, questionText: "True or False: If two events are mutually exclusive and both have non-zero probability, they are independent.", answer: "False", acceptedAnswers: ["F", "false"], shortcutSolution: "Mutually exclusive non-zero events cannot occur together, but independence would require P(A∩B) = P(A)P(B) > 0.", fullSolution: "Mutual exclusivity gives P(A∩B) = 0. With both probabilities non-zero, P(A)P(B) is non-zero, so the independence condition fails.", commonTrap: "Treating 'unrelated' in ordinary language as mathematical independence.", repeatedPattern: "distinguish exclusivity from independence", patternFamily: "event relationships", tags: ["probability"] },
-  { subject: "MATHEMATICS", topic: "Number theory", subtopic: "Prime numbers", roundType: "RIDDLE", difficulty: "MEDIUM", timeLimitSeconds: 60, questionText: "Identify the mathematical object from the clues.", answer: "prime number", acceptedAnswers: ["prime", "a prime number"], shortcutSolution: "The decisive property is having exactly two positive factors.", fullSolution: "A prime number is an integer greater than 1 whose only positive divisors are 1 and itself.", commonTrap: "Calling 1 prime; it has only one positive divisor.", repeatedPattern: "identify object from defining property", patternFamily: "mathematical definitions", tags: ["number theory"], riddleClues: [{ clueNumber: 1, clueText: "I belong to the positive integers.", points: 5 }, { clueNumber: 2, clueText: "I am greater than one.", points: 4 }, { clueNumber: 3, clueText: "Exactly two positive integers divide me.", points: 3 }, { clueNumber: 4, clueText: "Two, three, five, and seven are early members of my family.", points: 2 }] },
-  { subject: "MATHEMATICS", topic: "Optimization", subtopic: "Quadratic functions", roundType: "PROBLEM_OF_THE_DAY", difficulty: "HARD", timeLimitSeconds: 300, questionText: "A farmer has 40 m of fencing for three sides of a rectangular plot beside a straight river. What dimensions give the maximum area, and what is that area?", answer: "10 m by 20 m; 200 m²", acceptedAnswers: ["10 by 20, 200", "10m x 20m, 200m2", "200 m2"], shortcutSolution: "Let each short side be x. Then length = 40 - 2x and A = 40x - 2x², whose vertex occurs at x = 10.", fullSolution: "Let the two equal sides perpendicular to the river be x metres and the fenced parallel side be y. Then 2x + y = 40, so y = 40 - 2x. Area A = xy = 40x - 2x². The vertex is at x = -b/(2a) = 10, giving y = 20 and A = 200 m².", commonTrap: "Using 2x + 2y = 40 even though the river side is not fenced.", repeatedPattern: "maximize rectangle with constrained perimeter", patternFamily: "quadratic optimization", tags: ["optimization", "quadratic"], examinerFocus: "Model a physical constraint, form a quadratic, and locate its maximum.", markingScheme: "2 marks model; 3 marks area function; 3 marks maximum dimensions; 2 marks maximum area." },
-  { subject: "MATHEMATICS", topic: "Matrices", subtopic: "Determinants", roundType: "ROUND_ONE", difficulty: "MEDIUM", timeLimitSeconds: 35, questionText: "Find the determinant of the matrix with rows (3, 2) and (1, 4).", answer: "10", shortcutSolution: "For a 2×2 matrix, determinant = ad - bc = 3(4) - 2(1) = 10.", fullSolution: "The determinant of [[a,b],[c,d]] is ad - bc. Substitution gives 12 - 2 = 10.", commonTrap: "Adding the cross products instead of subtracting.", repeatedPattern: "2 by 2 determinant", patternFamily: "matrix operations", tags: ["matrices"] },
-
-  // Physics (10)
-  { subject: "PHYSICS", topic: "Mechanics", subtopic: "Uniform acceleration", roundType: "ROUND_ONE", difficulty: "EASY", timeLimitSeconds: 30, questionText: "A body starts from rest and accelerates uniformly at 4 m/s² for 6 s. Find its final speed.", answer: "24 m/s", acceptedAnswers: ["24", "24m/s"], shortcutSolution: "From rest, v = at = 4 × 6 = 24 m/s.", fullSolution: "Use v = u + at. Since u = 0, a = 4 m/s² and t = 6 s, v = 24 m/s.", commonTrap: "Using s = at instead of the velocity relation.", repeatedPattern: "final speed from rest", patternFamily: "SUVAT", tags: ["kinematics"] },
-  { subject: "PHYSICS", topic: "Electricity", subtopic: "Ohm's law", roundType: "ROUND_ONE", difficulty: "EASY", timeLimitSeconds: 30, questionText: "A 12 V potential difference is applied across a 4 Ω resistor. Find the current.", answer: "3 A", acceptedAnswers: ["3", "3A"], shortcutSolution: "I = V/R = 12/4 = 3 A.", fullSolution: "Ohm's law states V = IR. Rearranging gives I = V/R = 3 A.", commonTrap: "Multiplying voltage by resistance.", repeatedPattern: "Ohm law substitution", patternFamily: "DC circuits", tags: ["electricity"] },
-  { subject: "PHYSICS", topic: "Waves", subtopic: "Wave equation", roundType: "ROUND_ONE", difficulty: "MEDIUM", timeLimitSeconds: 35, questionText: "A wave has frequency 50 Hz and wavelength 0.4 m. Find its speed.", answer: "20 m/s", acceptedAnswers: ["20", "20m/s"], shortcutSolution: "v = fλ = 50 × 0.4 = 20 m/s.", fullSolution: "Wave speed equals frequency multiplied by wavelength. Thus v = 50 Hz × 0.4 m = 20 m/s.", commonTrap: "Dividing frequency by wavelength.", repeatedPattern: "wave speed product", patternFamily: "wave equation", tags: ["waves"] },
-  { subject: "PHYSICS", topic: "Energy", subtopic: "Kinetic energy", roundType: "SPEED_RACE", difficulty: "EASY", timeLimitSeconds: 15, questionText: "Find the kinetic energy of a 2 kg object moving at 3 m/s.", answer: "9 J", acceptedAnswers: ["9", "9J"], shortcutSolution: "½mv² = ½ × 2 × 9 = 9 J.", fullSolution: "Kinetic energy is ½mv². Substituting m = 2 kg and v = 3 m/s gives 9 J.", commonTrap: "Forgetting to square the speed.", repeatedPattern: "kinetic energy calculation", patternFamily: "mechanical energy", tags: ["energy"] },
-  { subject: "PHYSICS", topic: "Pressure", subtopic: "Force and area", roundType: "SPEED_RACE", difficulty: "EASY", timeLimitSeconds: 15, questionText: "A force of 200 N acts normally on an area of 0.5 m². Find the pressure.", answer: "400 Pa", acceptedAnswers: ["400", "400Pa"], shortcutSolution: "P = F/A = 200/0.5 = 400 Pa.", fullSolution: "Pressure is normal force per unit area. Dividing 200 N by 0.5 m² gives 400 Pa.", commonTrap: "Multiplying force and area.", repeatedPattern: "pressure from force and area", patternFamily: "fluid and solid pressure", tags: ["pressure"] },
-  { subject: "PHYSICS", topic: "Optics", subtopic: "Plane mirrors", roundType: "TRUE_FALSE", difficulty: "EASY", timeLimitSeconds: 20, questionText: "True or False: A plane mirror forms a virtual image of the same size as the object.", answer: "True", acceptedAnswers: ["T", "true"], shortcutSolution: "Plane-mirror images are virtual, upright, and unit magnification.", fullSolution: "For a plane mirror, image distance equals object distance and magnification is +1, so the virtual image has the same size.", commonTrap: "Assuming every mirror image is magnified or diminished.", repeatedPattern: "properties of plane mirror image", patternFamily: "geometrical optics", tags: ["optics"] },
-  { subject: "PHYSICS", topic: "Heat", subtopic: "Temperature", roundType: "TRUE_FALSE", difficulty: "MEDIUM", timeLimitSeconds: 20, questionText: "True or False: During melting at constant pressure, the temperature of a pure substance rises steadily.", answer: "False", acceptedAnswers: ["F", "false"], shortcutSolution: "At the melting point, supplied heat changes phase, not temperature.", fullSolution: "For a pure substance at constant pressure, temperature remains constant during melting while latent heat breaks intermolecular bonds.", commonTrap: "Believing added heat must always increase temperature.", repeatedPattern: "phase-change temperature plateau", patternFamily: "thermal physics", tags: ["latent heat"] },
-  { subject: "PHYSICS", topic: "Electromagnetism", subtopic: "Charge carriers", roundType: "RIDDLE", difficulty: "MEDIUM", timeLimitSeconds: 60, questionText: "Identify the particle from the clues.", answer: "electron", acceptedAnswers: ["an electron", "e-", "e⁻"], shortcutSolution: "Negative elementary charge and atomic current carrier identify the electron.", fullSolution: "The electron is a subatomic particle with charge -1.602 × 10⁻¹⁹ C and very small mass.", commonTrap: "Answering proton, which has equal charge magnitude but positive sign.", repeatedPattern: "identify particle from charge and role", patternFamily: "subatomic particles", tags: ["electricity"], riddleClues: [{ clueNumber: 1, clueText: "I am found in ordinary matter.", points: 5 }, { clueNumber: 2, clueText: "I am much lighter than a proton.", points: 4 }, { clueNumber: 3, clueText: "My charge has magnitude 1.602 × 10⁻¹⁹ C.", points: 3 }, { clueNumber: 4, clueText: "I carry the negative charge in an atom.", points: 2 }] },
-  { subject: "PHYSICS", topic: "Mechanics", subtopic: "Momentum and energy", roundType: "PROBLEM_OF_THE_DAY", difficulty: "HARD", timeLimitSeconds: 300, questionText: "A 0.20 kg ball moving at 15 m/s is brought to rest uniformly in 0.05 s. Find the impulse on the ball, the average stopping force, and the initial kinetic energy.", answer: "impulse -3 N·s; force -60 N; energy 22.5 J", acceptedAnswers: ["3 Ns, 60 N, 22.5 J", "-3, -60, 22.5"], shortcutSolution: "Δp = m(0 - 15) = -3 N·s; F = Δp/Δt = -60 N; KE = ½(0.2)(15²) = 22.5 J.", fullSolution: "Initial momentum is 0.2 × 15 = 3 kg m/s and final momentum is zero, so impulse is -3 N·s. Average force is -3/0.05 = -60 N. Initial kinetic energy is ½ × 0.2 × 225 = 22.5 J.", commonTrap: "Dropping the negative sign that indicates force and impulse oppose the motion.", repeatedPattern: "combine impulse force and kinetic energy", patternFamily: "mechanics synthesis", tags: ["momentum", "energy"], examinerFocus: "Connect momentum change, impulse, average force, and kinetic energy with consistent signs and units.", markingScheme: "3 marks impulse; 3 marks average force; 3 marks kinetic energy; 1 mark units/direction." },
-  { subject: "PHYSICS", topic: "Gravity", subtopic: "Weight", roundType: "ROUND_ONE", difficulty: "EASY", timeLimitSeconds: 25, questionText: "Find the weight of a 5 kg mass where g = 9.8 m/s².", answer: "49 N", acceptedAnswers: ["49", "49N"], shortcutSolution: "W = mg = 5 × 9.8 = 49 N.", fullSolution: "Weight is the gravitational force W = mg. Substitution gives 49 N.", commonTrap: "Reporting 5 kg as weight; kilograms measure mass.", repeatedPattern: "weight from mass", patternFamily: "gravity", tags: ["force"] },
-
-  // Chemistry (10)
-  { subject: "CHEMISTRY", topic: "Atomic structure", subtopic: "Subatomic particles", roundType: "ROUND_ONE", difficulty: "EASY", timeLimitSeconds: 25, questionText: "How many protons are in an atom of carbon with atomic number 6?", answer: "6", shortcutSolution: "Atomic number equals proton number.", fullSolution: "By definition, an element's atomic number is the number of protons in each atom. Carbon therefore has 6 protons.", commonTrap: "Using the mass number instead.", repeatedPattern: "atomic number to proton count", patternFamily: "atomic structure", tags: ["atoms"] },
-  { subject: "CHEMISTRY", topic: "Mole concept", subtopic: "Molar mass", roundType: "ROUND_ONE", difficulty: "MEDIUM", timeLimitSeconds: 40, questionText: "Find the number of moles in 18 g of water, H₂O. Use H = 1 and O = 16.", answer: "1 mol", acceptedAnswers: ["1", "1 mole"], shortcutSolution: "M(H₂O) = 18 g/mol, so n = 18/18 = 1 mol.", fullSolution: "The molar mass is 2(1) + 16 = 18 g/mol. Number of moles equals mass divided by molar mass, giving 1 mol.", commonTrap: "Using 17 g/mol by counting only one hydrogen.", repeatedPattern: "mass to moles", patternFamily: "stoichiometry", tags: ["moles"] },
-  { subject: "CHEMISTRY", topic: "Acids and bases", subtopic: "pH", roundType: "ROUND_ONE", difficulty: "MEDIUM", timeLimitSeconds: 35, questionText: "Find the pH of a solution with hydrogen ion concentration 1.0 × 10⁻³ mol dm⁻³.", answer: "3", shortcutSolution: "For [H⁺] = 10⁻³, pH = 3.", fullSolution: "pH = -log₁₀[H⁺] = -log₁₀(10⁻³) = 3.", commonTrap: "Giving -3 by forgetting the negative sign in the pH definition.", repeatedPattern: "pH from power-of-ten concentration", patternFamily: "acid-base calculations", tags: ["pH"] },
-  { subject: "CHEMISTRY", topic: "Periodic table", subtopic: "Group properties", roundType: "SPEED_RACE", difficulty: "EASY", timeLimitSeconds: 15, questionText: "Which group contains the noble gases?", answer: "Group 18", acceptedAnswers: ["18", "group VIII", "group 0", "0"], shortcutSolution: "Noble gases occupy the far-right column: modern Group 18.", fullSolution: "Helium, neon, argon, and the other noble gases form Group 18, historically called Group 0.", commonTrap: "Answering Group 17, which contains the halogens.", repeatedPattern: "identify periodic group", patternFamily: "periodic classification", tags: ["periodic table"] },
-  { subject: "CHEMISTRY", topic: "Gas laws", subtopic: "Boyle's law", roundType: "SPEED_RACE", difficulty: "MEDIUM", timeLimitSeconds: 20, questionText: "A gas occupies 600 cm³ at 100 kPa. At constant temperature, what volume will it occupy at 150 kPa?", answer: "400 cm³", acceptedAnswers: ["400", "400cm3"], shortcutSolution: "P₁V₁ = P₂V₂, so V₂ = 100 × 600 / 150 = 400 cm³.", fullSolution: "At constant temperature, Boyle's law gives P₁V₁ = P₂V₂. Substitution and rearrangement give 400 cm³.", commonTrap: "Assuming pressure and volume increase together.", repeatedPattern: "inverse pressure-volume calculation", patternFamily: "gas laws", tags: ["Boyle law"] },
-  { subject: "CHEMISTRY", topic: "Bonding", subtopic: "Ionic bonding", roundType: "TRUE_FALSE", difficulty: "EASY", timeLimitSeconds: 20, questionText: "True or False: Sodium chloride is formed by sharing a pair of electrons between sodium and chlorine.", answer: "False", acceptedAnswers: ["F", "false"], shortcutSolution: "The key word 'sharing' describes covalent bonding; NaCl forms by electron transfer.", fullSolution: "Sodium transfers one electron to chlorine, producing Na⁺ and Cl⁻ ions held by electrostatic attraction. The statement is false.", commonTrap: "Remembering that electrons are involved but not distinguishing transfer from sharing.", repeatedPattern: "distinguish ionic and covalent formation", patternFamily: "chemical bonding", tags: ["ionic"] },
-  { subject: "CHEMISTRY", topic: "Equilibrium", subtopic: "Dynamic equilibrium", roundType: "TRUE_FALSE", difficulty: "MEDIUM", timeLimitSeconds: 25, questionText: "True or False: At dynamic equilibrium, the forward and reverse reactions have stopped.", answer: "False", acceptedAnswers: ["F", "false"], shortcutSolution: "Dynamic means both reactions continue at equal rates.", fullSolution: "At equilibrium, forward and reverse reaction rates are equal, so concentrations remain constant even though molecular reactions continue.", commonTrap: "Confusing constant macroscopic concentrations with stopped microscopic reactions.", repeatedPattern: "interpret dynamic equilibrium", patternFamily: "equilibrium concepts", tags: ["equilibrium"] },
-  { subject: "CHEMISTRY", topic: "Organic chemistry", subtopic: "Hydrocarbons", roundType: "RIDDLE", difficulty: "MEDIUM", timeLimitSeconds: 60, questionText: "Identify the compound family from the clues.", answer: "alkene", acceptedAnswers: ["alkenes", "an alkene"], shortcutSolution: "A carbon-carbon double bond and formula CₙH₂ₙ identify an alkene.", fullSolution: "Alkenes are unsaturated hydrocarbons containing at least one C=C bond; open-chain monoalkenes have general formula CₙH₂ₙ.", commonTrap: "Answering alkane, whose general formula is CₙH₂ₙ₊₂.", repeatedPattern: "identify homologous series", patternFamily: "organic families", tags: ["organic"], riddleClues: [{ clueNumber: 1, clueText: "I am a family of hydrocarbons.", points: 5 }, { clueNumber: 2, clueText: "My members are unsaturated.", points: 4 }, { clueNumber: 3, clueText: "For one open-chain double bond, my general formula is CₙH₂ₙ.", points: 3 }, { clueNumber: 4, clueText: "Ethene and propene belong to me.", points: 2 }] },
-  { subject: "CHEMISTRY", topic: "Stoichiometry", subtopic: "Limiting reagents", roundType: "PROBLEM_OF_THE_DAY", difficulty: "HARD", timeLimitSeconds: 300, questionText: "Hydrogen burns in oxygen: 2H₂ + O₂ → 2H₂O. If 6 mol H₂ react with 2 mol O₂, identify the limiting reagent and find the moles of water formed and hydrogen left.", answer: "oxygen limiting; 4 mol water; 2 mol hydrogen left", acceptedAnswers: ["O2 limiting, 4 mol H2O, 2 mol H2"], shortcutSolution: "2 mol O₂ need 4 mol H₂ and form 4 mol H₂O. Starting H₂ is 6 mol, so 2 mol remains.", fullSolution: "The ratio H₂:O₂ is 2:1. Two moles of O₂ consume 4 moles of H₂, so oxygen is limiting. The equation gives 4 moles of water. Hydrogen left = 6 - 4 = 2 moles.", commonTrap: "Choosing hydrogen as limiting merely because its coefficient is larger.", repeatedPattern: "limiting reagent from mole ratio", patternFamily: "reaction stoichiometry", tags: ["stoichiometry"], examinerFocus: "Use balanced-equation ratios to identify the limiting reagent and calculate product and excess.", markingScheme: "3 marks limiting reagent; 3 marks water; 3 marks excess hydrogen; 1 mark units." },
-  { subject: "CHEMISTRY", topic: "Redox", subtopic: "Oxidation numbers", roundType: "ROUND_ONE", difficulty: "MEDIUM", timeLimitSeconds: 30, questionText: "Find the oxidation number of sulfur in SO₂.", answer: "+4", acceptedAnswers: ["4", "+4 oxidation state"], shortcutSolution: "O contributes -4 total; neutral SO₂ requires sulfur to be +4.", fullSolution: "Each oxygen is -2, giving -4. The molecule is neutral, so sulfur's oxidation number x satisfies x - 4 = 0; x = +4.", commonTrap: "Giving +2 because there are two oxygen atoms.", repeatedPattern: "oxidation number in neutral compound", patternFamily: "redox bookkeeping", tags: ["redox"] },
-
-  // Biology (10)
-  { subject: "BIOLOGY", topic: "Cell biology", subtopic: "Organelles", roundType: "ROUND_ONE", difficulty: "EASY", timeLimitSeconds: 25, questionText: "Which organelle is the main site of aerobic respiration in a eukaryotic cell?", answer: "mitochondrion", acceptedAnswers: ["mitochondria", "the mitochondrion"], shortcutSolution: "Aerobic respiration points directly to mitochondria.", fullSolution: "The Krebs cycle and oxidative phosphorylation occur in mitochondria, making them the main site of aerobic ATP production.", commonTrap: "Answering ribosome, which synthesizes proteins.", repeatedPattern: "organelle from function", patternFamily: "cell structures", tags: ["cells"] },
-  { subject: "BIOLOGY", topic: "Genetics", subtopic: "Monohybrid inheritance", roundType: "ROUND_ONE", difficulty: "MEDIUM", timeLimitSeconds: 40, questionText: "Two heterozygous tall pea plants, Tt and Tt, are crossed. What fraction of their offspring is expected to be short if T is dominant?", answer: "1/4", acceptedAnswers: ["25%", "0.25", "one quarter"], shortcutSolution: "Tt × Tt gives TT:Tt:tt = 1:2:1; only tt is short.", fullSolution: "A Punnett square produces TT, Tt, Tt, and tt. Since shortness is recessive, 1 of 4 expected offspring is short.", commonTrap: "Using the 3:1 phenotype ratio and reporting 3/4 short.", repeatedPattern: "heterozygous monohybrid cross", patternFamily: "Mendelian genetics", tags: ["genetics"] },
-  { subject: "BIOLOGY", topic: "Ecology", subtopic: "Food chains", roundType: "ROUND_ONE", difficulty: "EASY", timeLimitSeconds: 30, questionText: "In the chain grass → grasshopper → frog → snake, identify the primary consumer.", answer: "grasshopper", acceptedAnswers: ["the grasshopper"], shortcutSolution: "The organism that eats the producer is the primary consumer.", fullSolution: "Grass is the producer. The grasshopper feeds directly on it and therefore occupies the primary-consumer trophic level.", commonTrap: "Calling grass the primary consumer instead of the producer.", repeatedPattern: "trophic level from food chain", patternFamily: "feeding relationships", tags: ["ecology"] },
-  { subject: "BIOLOGY", topic: "Human physiology", subtopic: "Circulation", roundType: "SPEED_RACE", difficulty: "EASY", timeLimitSeconds: 15, questionText: "Which chamber of the human heart pumps oxygenated blood into the aorta?", answer: "left ventricle", acceptedAnswers: ["the left ventricle", "LV"], shortcutSolution: "Aorta leaves the thick-walled left ventricle.", fullSolution: "Oxygenated blood passes from the left atrium to the left ventricle, which contracts to pump it through the aorta.", commonTrap: "Answering right ventricle, which pumps to the lungs.", repeatedPattern: "heart chamber from vessel", patternFamily: "circulation", tags: ["heart"] },
-  { subject: "BIOLOGY", topic: "Plant physiology", subtopic: "Photosynthesis", roundType: "SPEED_RACE", difficulty: "EASY", timeLimitSeconds: 15, questionText: "Name the green pigment that absorbs light for photosynthesis.", answer: "chlorophyll", acceptedAnswers: ["chlorophyll a", "chlorophyll pigment"], shortcutSolution: "Green light-absorbing pigment in leaves: chlorophyll.", fullSolution: "Chlorophyll pigments in chloroplast thylakoid membranes absorb light energy that drives photosynthesis.", commonTrap: "Answering chloroplast, which is the organelle rather than the pigment.", repeatedPattern: "structure or substance from function", patternFamily: "photosynthesis", tags: ["plants"] },
-  { subject: "BIOLOGY", topic: "Microbiology", subtopic: "Viruses", roundType: "TRUE_FALSE", difficulty: "MEDIUM", timeLimitSeconds: 20, questionText: "True or False: Viruses can reproduce independently on nutrient agar without living cells.", answer: "False", acceptedAnswers: ["F", "false"], shortcutSolution: "The word 'independently' makes it false; viruses require host-cell machinery.", fullSolution: "Viruses are obligate intracellular parasites. They replicate only inside suitable living host cells, not by themselves on nutrient agar.", commonTrap: "Applying bacterial culture methods to viruses.", repeatedPattern: "distinguish viruses from cellular microbes", patternFamily: "microorganisms", tags: ["viruses"] },
-  { subject: "BIOLOGY", topic: "Respiration", subtopic: "Gas exchange", roundType: "TRUE_FALSE", difficulty: "MEDIUM", timeLimitSeconds: 20, questionText: "True or False: Gas exchange across an alveolus occurs mainly by active transport.", answer: "False", acceptedAnswers: ["F", "false"], shortcutSolution: "Respiratory gases move down partial-pressure gradients by diffusion.", fullSolution: "Oxygen and carbon dioxide cross the thin alveolar-capillary membrane by diffusion, not energy-requiring active transport.", commonTrap: "Assuming every movement across a membrane needs ATP.", repeatedPattern: "transport mechanism from concentration gradient", patternFamily: "membrane transport", tags: ["lungs"] },
-  { subject: "BIOLOGY", topic: "Biochemistry", subtopic: "Enzymes", roundType: "RIDDLE", difficulty: "MEDIUM", timeLimitSeconds: 60, questionText: "Identify the biological molecule from the clues.", answer: "enzyme", acceptedAnswers: ["an enzyme", "enzymes"], shortcutSolution: "A reusable, specific biological catalyst is an enzyme.", fullSolution: "Enzymes are biological catalysts, usually proteins, that lower activation energy and show substrate specificity.", commonTrap: "Answering hormone; hormones signal but do not generally catalyse reactions.", repeatedPattern: "identify molecule from function and properties", patternFamily: "biomolecules", tags: ["enzymes"], riddleClues: [{ clueNumber: 1, clueText: "I help life’s chemical reactions proceed efficiently.", points: 5 }, { clueNumber: 2, clueText: "I am not used up by the reaction I assist.", points: 4 }, { clueNumber: 3, clueText: "I lower activation energy and often have an active site.", points: 3 }, { clueNumber: 4, clueText: "Amylase and catalase are examples of me.", points: 2 }] },
-  { subject: "BIOLOGY", topic: "Population genetics", subtopic: "Hardy-Weinberg", roundType: "PROBLEM_OF_THE_DAY", difficulty: "NSMQ_FINAL_LEVEL", timeLimitSeconds: 300, questionText: "In a population at Hardy-Weinberg equilibrium, 16% of individuals show a recessive phenotype. Find q, p, and the expected percentage of heterozygous carriers.", answer: "q = 0.4; p = 0.6; carriers = 48%", acceptedAnswers: ["0.4, 0.6, 48%", "q=.4 p=.6 48 percent"], shortcutSolution: "q² = 0.16, so q = 0.4; p = 0.6; 2pq = 2(0.6)(0.4) = 0.48.", fullSolution: "The recessive phenotype frequency is q² = 0.16. Taking the positive square root gives q = 0.4. Since p + q = 1, p = 0.6. Heterozygotes have frequency 2pq = 0.48, or 48%.", commonTrap: "Treating 16% as q instead of q².", repeatedPattern: "derive allele and carrier frequencies", patternFamily: "Hardy-Weinberg equilibrium", tags: ["genetics", "population"], examinerFocus: "Translate phenotype frequency into allele frequencies and then calculate heterozygosity.", markingScheme: "3 marks q; 2 marks p; 4 marks 2pq; 1 mark percentage." },
-  { subject: "BIOLOGY", topic: "Excretion", subtopic: "Kidney function", roundType: "ROUND_ONE", difficulty: "MEDIUM", timeLimitSeconds: 35, questionText: "Name the functional unit of the mammalian kidney.", answer: "nephron", acceptedAnswers: ["a nephron", "the nephron"], shortcutSolution: "Kidney function unit: nephron.", fullSolution: "Each kidney contains many nephrons, which perform filtration, selective reabsorption, and secretion to form urine.", commonTrap: "Answering neuron, a nerve cell with a similar spelling.", repeatedPattern: "organ from functional unit", patternFamily: "human physiology", tags: ["kidney"] },
+const questions = [
+  ...mathematicsQuestions,
+  ...physicsQuestions,
+  ...chemistryQuestions,
+  ...biologyQuestions,
+  ...supplementalPatternQuestions,
 ];
 
-const questions: SeedQuestion[] = [...baseQuestions, ...expandedQuestions];
+function databaseRow(question: SeedQuestion) {
+  const { riddleClues: _riddleClues, acceptedAnswers, tags, ...data } = question;
+  return {
+    ...data,
+    acceptedAnswers: JSON.stringify(acceptedAnswers),
+    tags: JSON.stringify(tags),
+    sourceName: "NSMQ Training Hub original question factory",
+  };
+}
 
-async function main() {
-  await prisma.attempt.deleteMany();
-  await prisma.riddleClue.deleteMany();
-  await prisma.question.deleteMany();
-  await prisma.topic.deleteMany();
-  await prisma.user.deleteMany();
+async function createInChunks<T>(rows: T[], create: (chunk: T[]) => Promise<unknown>, size = 400) {
+  for (let index = 0; index < rows.length; index += size) {
+    await create(rows.slice(index, index + size));
+  }
+}
 
-  await prisma.user.createMany({
+export async function seedDatabase(client: PrismaClient = prisma) {
+  validateQuestions(questions);
+
+  await client.attempt.deleteMany();
+  await client.riddleClue.deleteMany();
+  await client.question.deleteMany();
+  await client.topic.deleteMany();
+  await client.user.deleteMany();
+
+  await client.user.createMany({
     data: [
       { name: "Demo Student", email: "student@nsmqhub.local", role: "STUDENT" },
       { name: "Demo Coach", email: "coach@nsmqhub.local", role: "COACH" },
     ],
   });
 
-  for (const item of questions) {
-    const {
-      riddleClues,
-      acceptedAnswers = [],
-      tags = [],
-      ghanaContext = false,
-      encouragement: questionEncouragement = encouragement,
-      ...question
-    } = item;
-    await prisma.question.create({
+  const standardQuestions = questions.filter((question) => question.roundType !== "RIDDLE");
+  await createInChunks(
+    standardQuestions.map(databaseRow),
+    (data) => client.question.createMany({ data }),
+  );
+
+  for (const question of questions.filter((item) => item.roundType === "RIDDLE")) {
+    await client.question.create({
       data: {
-        ...question,
-        acceptedAnswers: JSON.stringify(acceptedAnswers),
-        tags: JSON.stringify(tags),
-        encouragement: questionEncouragement,
-        sourceType: "ORIGINAL",
-        sourceName: "NSMQ Training Hub original seed",
-        permissionStatus: "ORIGINAL",
-        ghanaContext,
-        riddleClues: riddleClues ? { create: riddleClues } : undefined,
+        ...databaseRow(question),
+        riddleClues: { create: question.riddleClues! },
       },
     });
   }
 
-  const uniqueTopics = [...new Map(questions.map((item) => [`${item.subject}:${item.topic}`, { subject: item.subject, name: item.topic, description: `Practice ${item.topic.toLowerCase()} patterns for ${item.subject.toLowerCase()}.` }])).values()];
-  await prisma.topic.createMany({ data: uniqueTopics });
+  const uniqueTopics = [
+    ...new Map(
+      questions.map((item) => [
+        `${item.subject}:${item.topic}`,
+        {
+          subject: item.subject,
+          name: item.topic,
+          description: `Practice ${item.topic.toLowerCase()} patterns for ${item.subject.toLowerCase()}.`,
+        },
+      ]),
+    ).values(),
+  ];
+  await client.topic.createMany({ data: uniqueTopics });
 
-  console.log(`Seeded ${questions.length} original questions and ${uniqueTopics.length} topics.`);
+  const count = (field: keyof SeedQuestion, value: string | boolean) =>
+    questions.filter((question) => question[field] === value).length;
+  const [databaseQuestionCount, databaseGhanaContextCount, databaseGhanaRiddleCount] =
+    await Promise.all([
+      client.question.count(),
+      client.question.count({ where: { isGhanaContext: true } }),
+      client.question.count({ where: { isGhanaContext: true, roundType: "RIDDLE" } }),
+    ]);
+
+  console.log("NSMQ Training Hub seed complete");
+  console.log(`Total questions: ${databaseQuestionCount}`);
+  console.log(`Mathematics: ${count("subject", "MATHEMATICS")}`);
+  console.log(`Physics: ${count("subject", "PHYSICS")}`);
+  console.log(`Chemistry: ${count("subject", "CHEMISTRY")}`);
+  console.log(`Biology: ${count("subject", "BIOLOGY")}`);
+  console.log(`Ghana-context (database isGhanaContext=true): ${databaseGhanaContextCount}`);
+  console.log(`Ghana-context riddles: ${databaseGhanaRiddleCount}`);
+  console.log(`Round 1: ${count("roundType", "ROUND_ONE")}`);
+  console.log(`Speed Race: ${count("roundType", "SPEED_RACE")}`);
+  console.log(`Problem of the Day: ${count("roundType", "PROBLEM_OF_THE_DAY")}`);
+  console.log(`True/False: ${count("roundType", "TRUE_FALSE")}`);
+  console.log(`Riddles: ${count("roundType", "RIDDLE")}`);
+  console.log(`Easy: ${count("difficulty", "EASY")}`);
+  console.log(`Medium: ${count("difficulty", "MEDIUM")}`);
+  console.log(`Hard: ${count("difficulty", "HARD")}`);
+  console.log(`NSMQ Final Level: ${count("difficulty", "NSMQ_FINAL_LEVEL")}`);
 }
 
-main()
-  .catch((error) => {
-    console.error(error);
-    process.exit(1);
-  })
-  .finally(async () => {
-    await prisma.$disconnect();
-  });
+const isDirectRun =
+  Boolean(process.argv[1]) &&
+  import.meta.url === pathToFileURL(process.argv[1]).href;
+
+if (isDirectRun) {
+  seedDatabase()
+    .catch((error) => {
+      console.error(error);
+      process.exitCode = 1;
+    })
+    .finally(async () => {
+      await prisma.$disconnect();
+    });
+}

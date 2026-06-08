@@ -42,6 +42,9 @@ model Question {
   videoTimestamp     String?
   permissionStatus   String       @default("ORIGINAL")
   ghanaContext       Boolean      @default(false)
+  isGhanaContext     Boolean      @default(false)
+  isPastQuestion     Boolean      @default(false)
+  isPrivateOnly      Boolean      @default(false)
   tags               String       @default("[]")
   examinerFocus      String?
   markingScheme      String?
@@ -53,6 +56,8 @@ model Question {
   @@index([subject, topic, roundType, difficulty])
   @@index([sourceType, repeatedPattern])
   @@index([ghanaContext, subject])
+  @@index([isGhanaContext, subject])
+  @@index([isPastQuestion, isPrivateOnly])
 }
 
 model RiddleClue {

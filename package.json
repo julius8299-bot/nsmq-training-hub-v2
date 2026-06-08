@@ -3,15 +3,16 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "tsx scripts/prepare-sqlite.ts && prisma db push && tsx scripts/ensure-database.ts && next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "tsx scripts/prepare-sqlite.ts && prisma db push && tsx scripts/ensure-database.ts && next start",
     "lint": "next lint",
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "db:seed": "tsx prisma/seed.ts",
-    "db:studio": "prisma studio"
-    ,"test:answers": "tsx scripts/check-answer-regression.ts"
+    "db:ensure": "tsx scripts/prepare-sqlite.ts && prisma db push && tsx scripts/ensure-database.ts",
+    "db:studio": "prisma studio",
+    "test:answers": "tsx scripts/check-answer-regression.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

@@ -65,7 +65,10 @@ export function QuestionImportUploader({ onImported }: { onImported?: () => void
           ...row,
           acceptedAnswers: arrayField(row.acceptedAnswers),
           tags: arrayField(row.tags),
-          ghanaContext: row.ghanaContext === true || String(row.ghanaContext).toLowerCase() === "true",
+          ghanaContext: row.ghanaContext === true || row.isGhanaContext === true || String(row.ghanaContext).toLowerCase() === "true" || String(row.isGhanaContext).toLowerCase() === "true",
+          isGhanaContext: row.isGhanaContext === true || row.ghanaContext === true || String(row.isGhanaContext).toLowerCase() === "true" || String(row.ghanaContext).toLowerCase() === "true",
+          isPastQuestion: row.isPastQuestion === true || String(row.isPastQuestion).toLowerCase() === "true",
+          isPrivateOnly: row.isPrivateOnly === true || String(row.isPrivateOnly).toLowerCase() === "true",
         }),
       });
       if (response.ok) saved += 1;

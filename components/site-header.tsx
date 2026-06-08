@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { Menu, Trophy, X } from "lucide-react";
+import Image from "next/image";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
 
 const nav = [
@@ -13,6 +14,7 @@ const nav = [
   ["T/F", "/true-false"],
   ["Riddles", "/riddles"],
   ["Question Bank", "/question-bank"],
+  ["Gallery", "/gallery"],
   ["Admin", "/admin"],
 ];
 
@@ -22,10 +24,17 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-ink/10 bg-cream/90 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2 font-display text-lg font-bold">
-          <span className="grid size-9 place-items-center rounded-xl bg-ink text-gold">
-            <Trophy size={18} />
+          <span className="relative size-11 shrink-0 overflow-hidden rounded-xl bg-white">
+            <Image
+              src="/brand/nsmq-logo.png"
+              alt="National Science and Maths Quiz logo"
+              fill
+              sizes="44px"
+              className="object-contain"
+              priority
+            />
           </span>
-          NSMQ Training Hub
+          <span>NSMQ Training Hub</span>
         </Link>
         <nav className="hidden items-center gap-5 text-sm font-semibold lg:flex">
           {nav.map(([label, href]) => (

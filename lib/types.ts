@@ -31,6 +31,9 @@ export type Question = {
   videoTimestamp?: string | null;
   permissionStatus: string;
   ghanaContext: boolean;
+  isGhanaContext: boolean;
+  isPastQuestion: boolean;
+  isPrivateOnly: boolean;
   tags: string;
   examinerFocus?: string | null;
   markingScheme?: string | null;

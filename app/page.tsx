@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRight,
   BookOpenCheck,
@@ -8,6 +9,9 @@ import {
   Medal,
   TimerReset,
 } from "lucide-react";
+import { GalleryCarousel } from "@/components/GalleryCarousel";
+import { TrophySpotlight } from "@/components/TrophySpotlight";
+import { galleryItems } from "@/lib/gallery-data";
 
 const modes = [
   { icon: Medal, title: "Full contest practice", text: "Five rounds, live scoring, solo or team." },
@@ -37,9 +41,16 @@ export default function HomePage() {
             <Link href="/admin" className="button-secondary">Admin Upload</Link>
           </div>
         </div>
-        <div className="panel relative overflow-hidden p-6 sm:p-8">
-          <div className="absolute right-0 top-0 h-36 w-36 rounded-bl-full bg-gold/20" />
-          <div className="relative">
+        <div className="panel relative overflow-hidden">
+          <div className="relative aspect-[4/3]">
+            <Image src="/gallery/ghanata-team.jpg" alt="Ghanata SHS Riddle Bonanza winning team" fill sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover" priority />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 p-6 text-white sm:p-8">
+              <p className="eyebrow text-gold">Proof of preparation</p>
+              <p className="mt-2 font-display text-3xl font-semibold">Discipline becomes performance.</p>
+            </div>
+          </div>
+          <div className="relative p-6 sm:p-8">
             <div className="flex items-center justify-between">
               <span className="rounded-full bg-chemistry/10 px-3 py-1 text-xs font-bold text-chemistry">
                 LIVE TRAINING
@@ -77,6 +88,28 @@ export default function HomePage() {
                 <p className="mt-2 text-sm leading-6 text-white/60">{text}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+      <TrophySpotlight />
+      <section className="page-shell py-14">
+        <div className="mb-7 flex flex-wrap items-end justify-between gap-4">
+          <div><p className="eyebrow">NSMQ Moments</p><h2 className="mt-2 font-display text-4xl font-semibold">The work, the team, the stage.</h2></div>
+          <Link href="/gallery" className="button-secondary">View NSMQ Gallery <ArrowRight size={17} /></Link>
+        </div>
+        <GalleryCarousel items={galleryItems} />
+      </section>
+      <section className="bg-white/60 py-16">
+        <div className="page-shell grid items-center gap-8 py-0 lg:grid-cols-2">
+          <div className="relative aspect-square overflow-hidden rounded-3xl shadow-soft">
+            <Image src="/gallery/ghanata-journey.png" alt="Ghanata SHS NSMQ journey collage" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
+          </div>
+          <div>
+            <p className="eyebrow">Our NSMQ Journey</p>
+            <h2 className="mt-3 font-display text-4xl font-semibold sm:text-5xl">Every team adds a chapter.</h2>
+            <p className="mt-5 text-lg leading-8 text-ink/60">The names change, but the standard remains: disciplined preparation, scientific clarity, mathematical speed, and the courage to think aloud under pressure.</p>
+            <p className="mt-4 font-display text-2xl font-semibold text-chemistry">Future champions are built daily.</p>
+            <Link href="/practice" className="button-primary mt-7">Start Training <ArrowRight size={17} /></Link>
           </div>
         </div>
       </section>

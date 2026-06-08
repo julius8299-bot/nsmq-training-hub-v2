@@ -9,7 +9,8 @@ const initial = {
   timeLimitSeconds: 30, questionText: "", answer: "", acceptedAnswers: "", shortcutSolution: "",
   fullSolution: "", commonTrap: "", encouragement: "You missed the pattern, not the whole topic. Try 3 more from this pattern.",
   repeatedPattern: "", patternFamily: "", sourceType: "ORIGINAL", sourceName: "", sourceUrl: "",
-  sourceYear: "", contestStage: "", videoTimestamp: "", permissionStatus: "ORIGINAL", tags: "", ghanaContext: false,
+  sourceYear: "", contestStage: "", videoTimestamp: "", permissionStatus: "ORIGINAL", tags: "", ghanaContext: false, isGhanaContext: false,
+  isPastQuestion: false, isPrivateOnly: false,
 };
 
 export function AdminQuestionForm({ onSaved, question, onCancel }: { onSaved?: () => void; question?: Question | null; onCancel?: () => void }) {
@@ -68,7 +69,9 @@ export function AdminQuestionForm({ onSaved, question, onCancel }: { onSaved?: (
         <label className="text-sm font-bold">Contest stage<input className="field" {...field("contestStage")} /></label>
         <label className="text-sm font-bold">Video timestamp<input className="field" {...field("videoTimestamp")} /></label>
         <label className="text-sm font-bold">Permission status<select className="field" {...field("permissionStatus")}>{PERMISSION_STATUSES.map((value) => <option key={value}>{value}</option>)}</select></label>
-        <label className="flex items-center gap-2 self-end rounded-xl border border-ink/15 bg-white px-3 py-2.5 text-sm font-bold"><input type="checkbox" checked={Boolean(form.ghanaContext)} onChange={(event) => setForm({ ...form, ghanaContext: event.target.checked })} /> Ghana-context question</label>
+        <label className="flex items-center gap-2 self-end rounded-xl border border-ink/15 bg-white px-3 py-2.5 text-sm font-bold"><input type="checkbox" checked={Boolean(form.isGhanaContext ?? form.ghanaContext)} onChange={(event) => setForm({ ...form, ghanaContext: event.target.checked, isGhanaContext: event.target.checked })} /> Ghana-context question</label>
+        <label className="flex items-center gap-2 self-end rounded-xl border border-ink/15 bg-white px-3 py-2.5 text-sm font-bold"><input type="checkbox" checked={Boolean(form.isPastQuestion)} onChange={(event) => setForm({ ...form, isPastQuestion: event.target.checked })} /> Authorized past question</label>
+        <label className="flex items-center gap-2 self-end rounded-xl border border-ink/15 bg-white px-3 py-2.5 text-sm font-bold"><input type="checkbox" checked={Boolean(form.isPrivateOnly)} onChange={(event) => setForm({ ...form, isPrivateOnly: event.target.checked })} /> Private review only</label>
         {form.roundType === "RIDDLE" && clues.map((clue, index) => (
           <label key={index} className="text-sm font-bold sm:col-span-2 lg:col-span-3">Clue {index + 1} ({5 - index} points)<textarea required className="field min-h-16" value={clue} onChange={(event) => setClues((current) => current.map((value, clueIndex) => clueIndex === index ? event.target.value : value))} /></label>
         ))}
