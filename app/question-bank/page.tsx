@@ -28,7 +28,7 @@ export default function QuestionBankPage() {
   const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
-    const params = new URLSearchParams({ page: String(page), pageSize: "24", ...(search && { search }), ...(subject && { subject }), ...(topic && { topic }), ...(subtopic && { subtopic }), ...(roundType && { roundType }), ...(difficulty && { difficulty }), ...(sourceType && { sourceType }), ...(pattern && { repeatedPattern: pattern }), ...(patternFamily && { patternFamily }), ...(timeLimit && { timeLimit }), ...(isGhanaContext && { isGhanaContext: "true" }) });
+    const params = new URLSearchParams({ page: String(page), limit: "5000", ...(search && { search }), ...(subject && { subject }), ...(topic && { topic }), ...(subtopic && { subtopic }), ...(roundType && { roundType }), ...(difficulty && { difficulty }), ...(sourceType && { sourceType }), ...(pattern && { repeatedPattern: pattern }), ...(patternFamily && { patternFamily }), ...(timeLimit && { timeLimit }), ...(isGhanaContext && { ghanaContext: "true" }) });
     setLoading(true);
     const timeout = window.setTimeout(() => fetch(`/api/questions?${params}`)
       .then((response) => response.json())
