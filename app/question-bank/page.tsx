@@ -7,6 +7,66 @@ import { PageHeading } from "@/components/page-heading";
 import { ROUND_LABELS, SOURCE_TYPES, SUBJECT_STYLES } from "@/lib/constants";
 import type { Question } from "@/lib/types";
 
+type DisplayRiddleClue = {
+  clueNumber: number;
+  clueText: string;
+  points: number;
+};
+
+const DEFAULT_RIDDLE_POINTS = [5, 4, 3, 3, 3];
+
+function parseJson(value: string) {
+  try {
+    return JSON.parse(value) as unknown;
+  } catch {
+    return value;
+  }
+}
+
+function normalizeRiddleClues(value: unknown): DisplayRiddleClue[] {
+  const parsed = typeof value === "string" ? parseJson(value) : value;
+  const clueValues = Array.isArray(parsed)
+    ? parsed
+    : parsed && typeof parsed === "object"
+      ? (parsed as Record<string, unknown>).riddleClues ?? (parsed as Record<string, unknown>).clues
+      : [];
+
+  if (!Array.isArray(clueValues)) return [];
+
+  return clueValues.flatMap((clue, index) => {
+    if (typeof clue === "string") {
+      return clue.trim()
+        ? [{
+            clueNumber: index + 1,
+            clueText: clue.trim(),
+            points: DEFAULT_RIDDLE_POINTS[index] ?? 3,
+          }]
+        : [];
+    }
+    if (!clue || typeof clue !== "object") return [];
+
+    const record = clue as Record<string, unknown>;
+    const clueText = [record.clueText, record.clue, record.text, record.body]
+      .find((candidate) => typeof candidate === "string" && candidate.trim()) as string | undefined;
+    if (!clueText) return [];
+
+    const clueNumber = Number(record.clueNumber ?? record.number ?? index + 1);
+    const points = Number(record.points ?? DEFAULT_RIDDLE_POINTS[index] ?? 3);
+    return [{
+      clueNumber: Number.isFinite(clueNumber) ? clueNumber : index + 1,
+      clueText: clueText.trim(),
+      points: Number.isFinite(points) ? points : DEFAULT_RIDDLE_POINTS[index] ?? 3,
+    }];
+  });
+}
+
+function isRiddleQuestion(question: Question, clues: DisplayRiddleClue[]) {
+  const rawQuestion = question as unknown as Record<string, unknown>;
+  const questionType = String(rawQuestion.questionType ?? rawQuestion.type ?? "").toUpperCase();
+  const tags = String(question.tags ?? "").toUpperCase();
+  return question.roundType === "RIDDLE" || questionType === "RIDDLE" || tags.includes("RIDDLE") || clues.length > 0;
+}
+
 export default function QuestionBankPage() {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [search, setSearch] = useState("");
@@ -129,6 +189,9 @@ export default function QuestionBankPage() {
       <div className="grid gap-4">
         {questions.map((question) => {
           const style = SUBJECT_STYLES[question.subject];
+          const rawQuestion = question as unknown as Record<string, unknown>;
+          const riddleClues = normalizeRiddleClues(rawQuestion.riddleClues);
+          const isRiddle = isRiddleQuestion(question, riddleClues);
           return (
             <article key={question.id} className="panel overflow-hidden">
               <button type="button" className="w-full p-5 text-left" onClick={() => setOpenId(openId === question.id ? null : question.id)}>
@@ -138,9 +201,24 @@ export default function QuestionBankPage() {
                   <span className={`rounded-full px-2.5 py-1 ${question.difficulty === "HARD" || question.difficulty === "NSMQ_FINAL_LEVEL" ? "bg-amber-100 text-amber-900" : "bg-ink/5"}`}>{question.difficulty.replaceAll("_", " ")}</span>
                   {(question.isGhanaContext || question.ghanaContext) && <span className="rounded-full bg-emerald-100 px-2.5 py-1 text-emerald-800">Ghana Context</span>}
                   {question.roundType === "SPEED_RACE" && <span className="rounded-full bg-blue-100 px-2.5 py-1 text-blue-800">Speed Race</span>}
-                  {question.roundType === "RIDDLE" && <span className="rounded-full bg-purple-100 px-2.5 py-1 text-purple-800">Riddle</span>}
+                  {isRiddle && <span className="rounded-full bg-purple-100 px-2.5 py-1 text-purple-800">Riddle</span>}
                 </div>
                 <h2 className="mt-3 font-display text-xl font-semibold">{question.questionText}</h2>
+                {isRiddle && riddleClues.length > 0 && (
+                  <div className="mt-4 space-y-3">
+                    {riddleClues.map((clue, index) => (
+                      <div key={`${question.id}-clue-${clue.clueNumber}-${index}`} className="flex gap-3 rounded-2xl bg-purple-50 p-4">
+                        <span className="grid size-8 shrink-0 place-items-center rounded-full bg-ink font-bold text-gold">{clue.clueNumber}</span>
+                        <div>
+                          <p className="text-xs font-bold uppercase tracking-wide text-purple-800">
+                            Clue {clue.clueNumber} — {clue.points} point{clue.points === 1 ? "" : "s"}
+                          </p>
+                          <p className="mt-1 leading-6 text-ink/80">{clue.clueText}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
                 <p className="mt-2 text-sm text-ink/45">{question.topic} · {question.subtopic} · Pattern: {question.repeatedPattern}</p>
               </button>
               {openId === question.id && <div className="grid gap-3 border-t border-ink/10 bg-ink/[0.02] p-5 md:grid-cols-3"><div><p className="eyebrow">Answer</p><p className="mt-2 font-bold">{question.answer}</p></div><div><p className="eyebrow">Shortcut</p><p className="mt-2 text-sm leading-6">{question.shortcutSolution}</p></div><div><p className="eyebrow">Full solution</p><p className="mt-2 text-sm leading-6">{question.fullSolution}</p></div></div>}

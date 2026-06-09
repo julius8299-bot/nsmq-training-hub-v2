@@ -26,23 +26,28 @@ export default function HomePage() {
       <section className="page-shell grid min-h-[72vh] items-center gap-12 py-16 lg:grid-cols-[1.1fr_.9fr]">
         <div>
           <p className="eyebrow mb-5">For Ghanata SHS science students</p>
-          <h1 className="max-w-4xl font-display text-5xl font-semibold leading-[1.02] sm:text-6xl lg:text-7xl">
+          
+              <div className="mt-8 mb-12 flex max-w-xl items-center gap-6 rounded-[2rem] bg-white/85 p-8 shadow-soft ring-1 ring-ink/5">
+                <div className="flex h-28 w-28 items-center justify-center rounded-3xl bg-white shadow-sm">
+                  <Image
+                    src="/brand/ghanata-shs-logo.jpg"
+                    alt="Ghanata SHS crest"
+                    width={96}
+                    height={96}
+                    className="object-contain"
+                  />
+                </div>
+                <div>
+                  <p className="text-lg font-bold uppercase tracking-[0.35em] text-emerald-700">
+                    Ghanata SHS
+                  </p>
+                  <p className="mt-3 text-xl font-semibold text-ink/80">
+                    Carpe Diem • NSMQ preparation hub
+                  </p>
+                </div>
+              </div>
 
-          <div className="mb-8 flex w-fit items-center gap-4 rounded-3xl border border-ink/10 bg-white/85 px-5 py-4 shadow-soft">
-            <Image
-              src="/brand/ghanata-shs-logo.jpg"
-              alt="Ghanata Senior High School crest"
-              width={96}
-              height={96}
-              className="h-20 w-20 rounded-2xl bg-white object-contain p-2"
-              priority
-            />
-            <div>
-              <p className="text-xs font-bold uppercase tracking-[0.24em] text-teal-700">Ghanata SHS</p>
-              <p className="mt-1 text-sm font-semibold text-ink/70">Carpe Diem • NSMQ preparation hub</p>
-            </div>
-          </div>
-
+<h1 className="max-w-4xl font-display text-5xl font-semibold leading-[1.02] sm:text-6xl lg:text-7xl">
             Train like an <span className="text-chemistry">NSMQ finalist.</span>
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-ink/65">
