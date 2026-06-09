@@ -1,3 +1,5 @@
+import { enhanceGeneratedQuestion } from "./quality-upgrades";
+
 export type RoundType = "ROUND_ONE" | "SPEED_RACE" | "PROBLEM_OF_THE_DAY" | "TRUE_FALSE" | "RIDDLE";
 export type Difficulty = "EASY" | "MEDIUM" | "HARD" | "NSMQ_FINAL_LEVEL";
 
@@ -50,9 +52,9 @@ const encouragement = "Sharp training. Name the pattern, correct the trap, and s
 
 export function difficultyFor(index: number): Difficulty {
   const slot = index % 20;
-  if (slot < 5) return "EASY";
-  if (slot < 12) return "MEDIUM";
-  if (slot < 18) return "HARD";
+  if (slot < 3) return "EASY";
+  if (slot < 8) return "MEDIUM";
+  if (slot < 15) return "HARD";
   return "NSMQ_FINAL_LEVEL";
 }
 
@@ -60,13 +62,14 @@ export function timeFor(roundType: RoundType, difficulty: Difficulty) {
   if (roundType === "SPEED_RACE") return difficulty === "EASY" ? 15 : 20;
   if (roundType === "TRUE_FALSE") return 25;
   if (roundType === "RIDDLE") return 60;
-  if (roundType === "PROBLEM_OF_THE_DAY") return difficulty === "NSMQ_FINAL_LEVEL" ? 360 : 300;
+  if (roundType === "PROBLEM_OF_THE_DAY") return difficulty === "NSMQ_FINAL_LEVEL" ? 300 : 240;
   return difficulty === "EASY" ? 30 : difficulty === "MEDIUM" ? 40 : 55;
 }
 
 export function riddleClues(values: string[]) {
-  if (values.length !== 4) throw new Error("Every riddle requires exactly four clues.");
-  return values.map((clueText, index) => ({ clueNumber: index + 1, clueText, points: 5 - index }));
+  if (values.length < 4 || values.length > 5) throw new Error("Every riddle requires four or five clues.");
+  const points = [5, 4, 3, 3, 3];
+  return values.map((clueText, index) => ({ clueNumber: index + 1, clueText, points: points[index] }));
 }
 
 export function baseQuestion(
@@ -99,7 +102,7 @@ export function buildSubjectBank(builders: Record<RoundType, RoundBuilder>) {
   const questions: SeedQuestion[] = [];
   for (const roundType of Object.keys(ROUND_QUOTAS) as RoundType[]) {
     for (let index = 0; index < ROUND_QUOTAS[roundType]; index += 1) {
-      questions.push(builders[roundType](index, index < GHANA_QUOTAS[roundType]));
+      questions.push(enhanceGeneratedQuestion(builders[roundType](index, index < GHANA_QUOTAS[roundType]), index));
     }
   }
   return questions;
@@ -125,8 +128,17 @@ export function validateQuestions(questions: SeedQuestion[]) {
     if (question.ghanaContext !== question.isGhanaContext) {
       throw new Error(`Question ${index + 1} has mismatched Ghana-context flags.`);
     }
-    if (question.roundType === "RIDDLE" && question.riddleClues?.length !== 4) {
-      throw new Error(`Riddle ${index + 1} does not have four clues.`);
+    if (question.roundType === "RIDDLE" && (!question.riddleClues || question.riddleClues.length < 4 || question.riddleClues.length > 5)) {
+      throw new Error(`Riddle ${index + 1} does not have four or five clues.`);
+    }
+    if (
+      question.roundType === "RIDDLE" &&
+      question.riddleClues?.some((clue, clueIndex) => clue.points !== [5, 4, 3, 3, 3][clueIndex])
+    ) {
+      throw new Error(`Riddle ${index + 1} does not use 5, 4, 3, 3, 3 scoring.`);
+    }
+    if (question.roundType === "RIDDLE" && !/who am i\?/i.test(question.questionText)) {
+      throw new Error(`Riddle ${index + 1} is not in Who am I? format.`);
     }
     if (question.roundType === "PROBLEM_OF_THE_DAY" && (!question.markingScheme || !question.examinerFocus)) {
       throw new Error(`Problem of the Day ${index + 1} lacks marking metadata.`);

@@ -18,14 +18,20 @@ export function RiddleRunner({ questions, mode = "RIDDLE", onScore }: { question
 
   if (!question) return <div className="panel p-8">Loading riddles…</div>;
   const clues = question.riddleClues ?? [];
-  const currentPoints = clues[Math.max(0, cluesShown - 1)]?.points ?? Math.max(2, 6 - cluesShown);
+  const currentPoints = clues[Math.max(0, cluesShown - 1)]?.points ?? Math.max(3, 6 - cluesShown);
 
   const submit = async (answerOverride?: string) => {
     const submittedAnswer = answerOverride ?? answer;
     const response = await fetch("/api/attempts", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ questionId: question.id, userAnswer: submittedAnswer, timeTakenSeconds: (Date.now() - started.current) / 1000, mode, riddlePoints: currentPoints }),
+      body: JSON.stringify({
+        questionId: question.id,
+        userAnswer: submittedAnswer,
+        timeTakenSeconds: (Date.now() - started.current) / 1000,
+        mode,
+        riddleClueNumber: cluesShown,
+      }),
     });
     const data = await response.json();
     setResult(data);
@@ -49,7 +55,7 @@ export function RiddleRunner({ questions, mode = "RIDDLE", onScore }: { question
           </div>
         ))}
       </div>
-      {!result && cluesShown < 4 && (
+      {!result && cluesShown < clues.length && (
         <button type="button" className="button-secondary mt-4" onClick={() => setCluesShown((value) => value + 1)}><Eye size={17} /> Reveal next clue</button>
       )}
       <div className="mt-5"><AnswerInput value={answer} onChange={setAnswer} onSubmit={submit} disabled={Boolean(result)} /></div>

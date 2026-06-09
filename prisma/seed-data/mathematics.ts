@@ -84,10 +84,10 @@ export const mathematicsQuestions = buildSubjectBank({
       repeatedPattern: "identify mathematical object", patternFamily: concept[0].toLowerCase(),
       tags: ["riddle", concept[0].toLowerCase(), ghana ? "ghana-context" : "definition"],
       riddleClues: riddleClues([
-        `I belong to ${concept[0].toLowerCase()}.`,
-        `Students meet me in ${concept[1].toLowerCase()}.`,
-        `To use me well, ${concept[3]}.`,
-        `My name is ${concept[2]}.`,
+        `I describe a precise relationship used in ${concept[1].toLowerCase()}.`,
+        "Recognising my structure is usually faster than carrying out a long calculation.",
+        `A reliable route is to ${concept[3]}.`,
+        "A related formula may look tempting, but only one named idea matches all the clues.",
       ]),
     });
   },

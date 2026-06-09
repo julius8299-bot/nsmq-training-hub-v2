@@ -29,11 +29,23 @@ export function RoundSelector({ value, onChange, includeAll = false }: { value: 
   );
 }
 
-export function DifficultyFilter({ value, onChange, includeAll = false }: { value: string; onChange: (value: string) => void; includeAll?: boolean }) {
+export function DifficultyFilter({
+  value,
+  onChange,
+  includeAll = false,
+  allLabel = "All difficulties",
+  difficulties = DIFFICULTIES,
+}: {
+  value: string;
+  onChange: (value: string) => void;
+  includeAll?: boolean;
+  allLabel?: string;
+  difficulties?: readonly string[];
+}) {
   return (
     <select className="field" value={value} onChange={(event) => onChange(event.target.value)}>
-      {includeAll && <option value="">All difficulties</option>}
-      {DIFFICULTIES.map((difficulty) => <option key={difficulty}>{difficulty.replaceAll("_", " ")}</option>)}
+      {includeAll && <option value="">{allLabel}</option>}
+      {difficulties.map((difficulty) => <option key={difficulty} value={difficulty}>{difficulty.replaceAll("_", " ")}</option>)}
     </select>
   );
 }

@@ -13,6 +13,9 @@ export default function PracticePage() {
   const [subtopic, setSubtopic] = useState("");
   const [roundType, setRoundType] = useState("ROUND_ONE");
   const [difficulty, setDifficulty] = useState("");
+  const [patternFamily, setPatternFamily] = useState("");
+  const [patternFamilies, setPatternFamilies] = useState<string[]>([]);
+  const [isGhanaContext, setIsGhanaContext] = useState(false);
   const [count, setCount] = useState("5");
   const [timeMode, setTimeMode] = useState("30");
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
@@ -33,6 +36,12 @@ export default function PracticePage() {
       .then(setAllQuestions);
   }, [subject]);
 
+  useEffect(() => {
+    fetch("/api/questions?metadata=true")
+      .then((response) => response.json())
+      .then((data) => setPatternFamilies(data.patternFamilies ?? []));
+  }, []);
+
   const topics = useMemo(() => [...new Set(allQuestions.map((item) => item.topic))].sort(), [allQuestions]);
   const subtopics = useMemo(
     () => [...new Set(allQuestions.filter((item) => !topic || item.topic === topic).map((item) => item.subtopic))].sort(),
@@ -47,6 +56,8 @@ export default function PracticePage() {
       ...(topic && { topic }),
       ...(subtopic && { subtopic }),
       ...(difficulty && { difficulty }),
+      ...(patternFamily && { patternFamily }),
+      ...(isGhanaContext && { isGhanaContext: "true" }),
     });
     const data: Question[] = await fetch(`/api/questions?${params}`).then((response) => response.json());
     setQuestions(
@@ -80,7 +91,13 @@ export default function PracticePage() {
               </select>
             </label>
             <label className="text-sm font-bold">Round type<RoundSelector value={roundType} onChange={setRoundType} /></label>
-            <label className="text-sm font-bold">Difficulty<DifficultyFilter value={difficulty} onChange={setDifficulty} includeAll /></label>
+            <label className="text-sm font-bold">Difficulty<DifficultyFilter value={difficulty} onChange={setDifficulty} includeAll allLabel="Mixed" /></label>
+            <label className="text-sm font-bold">Pattern family
+              <select className="field" value={patternFamily} onChange={(event) => setPatternFamily(event.target.value)}>
+                <option value="">All pattern families</option>
+                {patternFamilies.map((value) => <option key={value}>{value}</option>)}
+              </select>
+            </label>
             <label className="text-sm font-bold">Number of questions
               <select className="field" value={count} onChange={(event) => setCount(event.target.value)}>{[3, 5, 10, 20].map((value) => <option key={value}>{value}</option>)}</select>
             </label>
@@ -88,6 +105,10 @@ export default function PracticePage() {
               <select className="field" value={timeMode} onChange={(event) => setTimeMode(event.target.value)}>
                 <option value="untimed">Untimed</option><option value="10">10 seconds</option><option value="30">30 seconds</option><option value="60">60 seconds</option>
               </select>
+            </label>
+            <label className="flex min-h-11 items-center gap-2 self-end rounded-xl border border-ink/15 bg-white px-3 text-sm font-bold">
+              <input type="checkbox" checked={isGhanaContext} onChange={(event) => setIsGhanaContext(event.target.checked)} />
+              Ghana-context only
             </label>
           </div>
           <button type="button" className="button-primary mt-7" onClick={start}>Start focused session</button>

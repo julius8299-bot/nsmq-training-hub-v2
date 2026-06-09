@@ -81,10 +81,10 @@ export const physicsQuestions = buildSubjectBank({
       repeatedPattern: "identify physics concept", patternFamily: concept[0].toLowerCase(),
       tags: ["riddle", concept[0].toLowerCase(), ghana ? "ghana-context" : "definition"],
       riddleClues: riddleClues([
-        `I belong to ${concept[0].toLowerCase()}.`,
-        `I appear in lessons on ${concept[1].toLowerCase()}.`,
-        `My defining idea is ${concept[3]}.`,
-        `I am ${concept[2]}.`,
+        `I am recognised by a measurable relationship in ${concept[1].toLowerCase()}.`,
+        "My value or effect is often inferred from a formula, graph, or conservation argument.",
+        `My defining physical idea is ${concept[3]}.`,
+        "Do not confuse me with a related unit, instrument, or neighbouring quantity.",
       ]),
     });
   },

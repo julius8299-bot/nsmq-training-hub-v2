@@ -37,7 +37,7 @@ export function AdminQuestionForm({ onSaved, question, onCancel }: { onSaved?: (
       acceptedAnswers: JSON.stringify(String(form.acceptedAnswers || "").split(",").map((value) => value.trim()).filter(Boolean)),
       tags: JSON.stringify(String(form.tags || "").split(",").map((value) => value.trim()).filter(Boolean)),
       riddleClues: form.roundType === "RIDDLE"
-        ? clues.map((clueText, index) => ({ clueNumber: index + 1, clueText, points: 5 - index }))
+        ? clues.map((clueText, index) => ({ clueNumber: index + 1, clueText, points: [5, 4, 3, 3, 3][index] }))
         : [],
     };
     const response = await fetch(question ? `/api/questions/${question.id}` : "/api/questions", { method: question ? "PUT" : "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
@@ -73,7 +73,7 @@ export function AdminQuestionForm({ onSaved, question, onCancel }: { onSaved?: (
         <label className="flex items-center gap-2 self-end rounded-xl border border-ink/15 bg-white px-3 py-2.5 text-sm font-bold"><input type="checkbox" checked={Boolean(form.isPastQuestion)} onChange={(event) => setForm({ ...form, isPastQuestion: event.target.checked })} /> Authorized past question</label>
         <label className="flex items-center gap-2 self-end rounded-xl border border-ink/15 bg-white px-3 py-2.5 text-sm font-bold"><input type="checkbox" checked={Boolean(form.isPrivateOnly)} onChange={(event) => setForm({ ...form, isPrivateOnly: event.target.checked })} /> Private review only</label>
         {form.roundType === "RIDDLE" && clues.map((clue, index) => (
-          <label key={index} className="text-sm font-bold sm:col-span-2 lg:col-span-3">Clue {index + 1} ({5 - index} points)<textarea required className="field min-h-16" value={clue} onChange={(event) => setClues((current) => current.map((value, clueIndex) => clueIndex === index ? event.target.value : value))} /></label>
+          <label key={index} className="text-sm font-bold sm:col-span-2 lg:col-span-3">Clue {index + 1} ({[5, 4, 3, 3, 3][index]} points)<textarea required className="field min-h-16" value={clue} onChange={(event) => setClues((current) => current.map((value, clueIndex) => clueIndex === index ? event.target.value : value))} /></label>
         ))}
       </div>
       <div className="mt-6 flex flex-wrap items-center gap-4"><button className="button-primary" type="submit">{question ? "Update question" : "Save question"}</button>{question && <button className="button-secondary" type="button" onClick={onCancel}>Cancel edit</button>}{message && <p className="text-sm font-bold text-chemistry">{message}</p>}</div>

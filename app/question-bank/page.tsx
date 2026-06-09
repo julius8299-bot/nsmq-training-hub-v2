@@ -22,54 +22,51 @@ export default function QuestionBankPage() {
   const [isGhanaContext, setIsGhanaContext] = useState(false);
   const [facets, setFacets] = useState<{ topics: string[]; subtopics: string[]; patternFamilies: string[] }>({ topics: [], subtopics: [], patternFamilies: [] });
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
   const [openId, setOpenId] = useState<string | null>(null);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
   const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
-    const params = new URLSearchParams({ page: String(page), limit: "5000", meta: "true", ...(search && { search }), ...(subject && { subject }), ...(topic && { topic }), ...(subtopic && { subtopic }), ...(roundType && { roundType }), ...(difficulty && { difficulty }), ...(sourceType && { sourceType }), ...(pattern && { repeatedPattern: pattern }), ...(patternFamily && { patternFamily }), ...(timeLimit && { timeLimit }), ...(isGhanaContext && { ghanaContext: "true" }) });
+    const params = new URLSearchParams({ page: String(page), pageSize: "24", ...(search && { search }), ...(subject && { subject }), ...(topic && { topic }), ...(subtopic && { subtopic }), ...(roundType && { roundType }), ...(difficulty && { difficulty }), ...(sourceType && { sourceType }), ...(pattern && { repeatedPattern: pattern }), ...(patternFamily && { patternFamily }), ...(timeLimit && { timeLimit }), ...(isGhanaContext && { isGhanaContext: "true" }) });
     setLoading(true);
-    const timeout = window.setTimeout(() => fetch(`/api/questions?limit=5000&${params}`)
-      .then((response) => response.json())
+    setError("");
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => fetch(`/api/questions?${params}`, {
+      cache: "no-store",
+      signal: controller.signal,
+    })
+      .then(async (response) => {
+        if (!response.ok) {
+          throw new Error(`Question Bank request failed with status ${response.status}.`);
+        }
+        return response.json();
+      })
       .then((data) => {
-        const normalizedQuestions = Array.isArray(data)
-          ? data
-          : Array.isArray(data.questions)
-            ? data.questions
-            : [];
-
-        const normalizedTotal = Array.isArray(data)
-          ? data.length
-          : typeof data.total === "number"
-            ? data.total
-            : normalizedQuestions.length;
-
-        const normalizedTotalPages = Array.isArray(data)
-          ? 1
-          : typeof data.totalPages === "number"
-            ? data.totalPages
-            : Math.max(1, Math.ceil(normalizedTotal / 24));
-
-        const normalizedFacets = Array.isArray(data)
-          ? {
-              subjects: [...new Set(normalizedQuestions.map((q: any) => q.subject).filter(Boolean))],
-              topics: [...new Set(normalizedQuestions.map((q: any) => q.topic).filter(Boolean))],
-              subtopics: [...new Set(normalizedQuestions.map((q: any) => q.subtopic).filter(Boolean))],
-              patternFamilies: [...new Set(normalizedQuestions.map((q: any) => q.patternFamily).filter(Boolean))],
-            }
-          : data.facets ?? {};
-
-        setQuestions(normalizedQuestions);
-        setTotal(normalizedTotal);
-        setTotalPages(normalizedTotalPages);
+        if (!Array.isArray(data.questions) || typeof data.total !== "number") {
+          throw new Error("Question Bank returned an invalid response.");
+        }
+        setQuestions(data.questions);
+        setTotal(data.total);
+        setTotalPages(data.totalPages);
+      })
+      .catch((requestError: Error) => {
+        if (requestError.name === "AbortError") return;
+        setQuestions([]);
+        setTotal(0);
+        setTotalPages(1);
+        setError("The Question Bank could not load. Please refresh the page and try again.");
       })
       .finally(() => setLoading(false)), 150);
-    return () => window.clearTimeout(timeout);
+    return () => {
+      window.clearTimeout(timeout);
+      controller.abort();
+    };
   }, [page, search, subject, topic, subtopic, roundType, difficulty, sourceType, pattern, patternFamily, timeLimit, isGhanaContext]);
 
   useEffect(() => {
-    fetch("/api/questions?limit=5000&metadata=true").then((response) => response.json()).then(setFacets);
+    fetch("/api/questions?metadata=true").then((response) => response.json()).then(setFacets);
   }, []);
 
   const updateFilter = (setter: (value: string) => void, value: string) => {
@@ -98,21 +95,27 @@ export default function QuestionBankPage() {
       <div className="panel mb-6 grid gap-3 p-4 sm:grid-cols-2 lg:grid-cols-5">
         <label className="relative sm:col-span-2"><Search className="absolute left-3 top-3 text-ink/35" size={18} /><input className="field pl-10" placeholder="Search questions or tags" value={search} onChange={(event) => { setPage(1); setSearch(event.target.value); }} /></label>
         <SubjectFilter value={subject} onChange={(value) => { setPage(1); setSubject(value); setTopic(""); setSubtopic(""); }} includeAll />
-        <TopicFilter value={topic} onChange={(value) => { setPage(1); setTopic(value); setSubtopic(""); }} topics={facets?.topics ?? []} />
-        <select className="field" value={subtopic} onChange={(event) => updateFilter(setSubtopic, event.target.value)}><option value="">All subtopics</option>{(facets?.subtopics ?? []).map((value) => <option key={value}>{value}</option>)}</select>
+        <TopicFilter value={topic} onChange={(value) => { setPage(1); setTopic(value); setSubtopic(""); }} topics={facets.topics} />
+        <select className="field" value={subtopic} onChange={(event) => updateFilter(setSubtopic, event.target.value)}><option value="">All subtopics</option>{facets.subtopics.map((value) => <option key={value}>{value}</option>)}</select>
         <RoundSelector value={roundType} onChange={(value) => updateFilter(setRoundType, value)} includeAll />
         <DifficultyFilter value={difficulty} onChange={(value) => updateFilter(setDifficulty, value)} includeAll />
         <select className="field" value={sourceType} onChange={(event) => updateFilter(setSourceType, event.target.value)}><option value="">All sources</option>{SOURCE_TYPES.map((value) => <option key={value}>{value}</option>)}</select>
-        <select className="field" value={patternFamily} onChange={(event) => updateFilter(setPatternFamily, event.target.value)}><option value="">All pattern families</option>{(facets?.patternFamilies ?? []).map((value) => <option key={value}>{value}</option>)}</select>
+        <select className="field" value={patternFamily} onChange={(event) => updateFilter(setPatternFamily, event.target.value)}><option value="">All pattern families</option>{facets.patternFamilies.map((value) => <option key={value}>{value}</option>)}</select>
         <select className="field" value={timeLimit} onChange={(event) => updateFilter(setTimeLimit, event.target.value)}><option value="">Any time limit</option><option value="15">15 seconds or less</option><option value="30">30 seconds or less</option><option value="60">60 seconds or less</option><option value="300">Up to 5 minutes</option></select>
         <input className="field" placeholder="Repeated pattern" value={pattern} onChange={(event) => { setPage(1); setPattern(event.target.value); }} />
         <label className="flex min-h-11 items-center gap-2 rounded-xl border border-ink/15 bg-white px-3 text-sm font-bold"><input type="checkbox" checked={isGhanaContext} onChange={(event) => { setPage(1); setIsGhanaContext(event.target.checked); }} /> Ghana-context only</label>
       </div>
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3 text-sm font-bold text-ink/50">
-        <p>{loading ? "Loading questions..." : `${(total ?? 0).toLocaleString()} question${(total ?? 0) === 1 ? "" : "s"} found`}</p>
-        {!loading && (total ?? 0) > 0 && <p>Page {page} of {totalPages}</p>}
+        <p>{loading ? "Loading questions..." : error || `${total.toLocaleString()} question${total === 1 ? "" : "s"} found`}</p>
+        {!loading && total > 0 && <p>Page {page} of {totalPages}</p>}
       </div>
-      {!loading && (questions ?? []).length === 0 && (
+      {!loading && error && (
+        <div className="panel mb-6 p-8 text-center">
+          <h2 className="font-display text-2xl font-semibold">Question Bank unavailable</h2>
+          <p className="mx-auto mt-2 max-w-xl text-sm leading-6 text-ink/55">{error}</p>
+        </div>
+      )}
+      {!loading && !error && questions.length === 0 && (
         <div className="panel mb-6 p-8 text-center">
           <h2 className="font-display text-2xl font-semibold">No questions match these filters yet.</h2>
           <p className="mx-auto mt-2 max-w-xl text-sm leading-6 text-ink/55">
@@ -124,7 +127,7 @@ export default function QuestionBankPage() {
         </div>
       )}
       <div className="grid gap-4">
-        {(questions ?? []).map((question) => {
+        {questions.map((question) => {
           const style = SUBJECT_STYLES[question.subject];
           return (
             <article key={question.id} className="panel overflow-hidden">

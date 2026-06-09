@@ -31,11 +31,11 @@ export const SUBJECT_STYLES: Record<string, { bg: string; text: string; accent: 
 };
 
 export const ROUND_LABELS: Record<string, string> = {
-  ROUND_ONE: "Round 1 · Fundamentals",
-  SPEED_RACE: "Round 2 · Speed Race",
-  PROBLEM_OF_THE_DAY: "Round 3 · Problem of the Day",
-  TRUE_FALSE: "Round 4 · True or False",
-  RIDDLE: "Round 5 · Riddles",
+  ROUND_ONE: "Round 1 - Fundamental Questions",
+  SPEED_RACE: "Round 2 - Speed Race",
+  PROBLEM_OF_THE_DAY: "Round 3 - Problem of the Day",
+  TRUE_FALSE: "Round 4 - True or False",
+  RIDDLE: "Round 5 - Riddles",
 };
 
 export const MODE_POINTS: Record<string, { correct: number; wrong: number }> = {

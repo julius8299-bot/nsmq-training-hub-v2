@@ -80,10 +80,10 @@ export const chemistryQuestions = buildSubjectBank({
       repeatedPattern: "identify chemistry concept", patternFamily: concept[0].toLowerCase(),
       tags: ["riddle", concept[0].toLowerCase(), ghana ? "ghana-context" : "definition"],
       riddleClues: riddleClues([
-        `I belong to ${concept[0].toLowerCase()}.`,
-        `I appear in ${concept[1].toLowerCase()}.`,
-        `My defining description is ${concept[3]}.`,
-        `I am ${concept[2]}.`,
+        `I am identified through evidence used in ${concept[1].toLowerCase()}.`,
+        "My behaviour depends on particle structure, bonding, energy, or reaction conditions.",
+        `My defining chemical description is ${concept[3]}.`,
+        "A neighbouring group, particle, or reaction type will fail at least one clue.",
       ]),
     });
   },

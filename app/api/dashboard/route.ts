@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { SUBJECTS, SUBJECT_TOPICS } from "@/lib/constants";
+import { DIFFICULTIES, SUBJECTS, SUBJECT_TOPICS } from "@/lib/constants";
 import { prisma } from "@/lib/prisma";
 
 export async function GET() {
@@ -57,6 +57,24 @@ export async function GET() {
     streak += 1;
   }
 
+  const difficultyStats = DIFFICULTIES.map((difficulty) => {
+    const items = attempts.filter((attempt) => attempt.question.difficulty === difficulty);
+    const correct = items.filter((attempt) => attempt.isCorrect).length;
+    return {
+      difficulty,
+      attempted: items.length,
+      accuracy: items.length ? Math.round((correct / items.length) * 100) : 0,
+    };
+  });
+  const weakAttemptedLevel = difficultyStats.find((item) => item.attempted > 0 && item.accuracy < 60);
+  const masteredIndex = difficultyStats.reduce(
+    (highest, item, index) => item.attempted >= 3 && item.accuracy >= 75 ? index : highest,
+    -1,
+  );
+  const recommendedDifficulty =
+    weakAttemptedLevel?.difficulty ??
+    DIFFICULTIES[Math.min(masteredIndex + 1, DIFFICULTIES.length - 1)];
+
   const problem = await prisma.question.findFirst({
     where: { roundType: "PROBLEM_OF_THE_DAY" },
     orderBy: { createdAt: "asc" },
@@ -69,6 +87,8 @@ export async function GET() {
       : 0,
     streak,
     subjects,
+    difficultyStats,
+    recommendedDifficulty,
     problem,
   });
 }

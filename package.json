@@ -12,7 +12,10 @@
     "db:seed": "tsx prisma/seed.ts",
     "db:ensure": "tsx scripts/prepare-sqlite.ts && prisma db push && tsx scripts/ensure-database.ts",
     "db:studio": "prisma studio",
-    "test:answers": "tsx scripts/check-answer-regression.ts"
+    "test:answers": "tsx scripts/check-answer-regression.ts",
+    "test:question-bank": "tsx scripts/check-question-bank-regression.ts",
+    "test:routes": "tsx scripts/check-app-routes.ts",
+    "test:upgrade": "tsx scripts/check-training-upgrade.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

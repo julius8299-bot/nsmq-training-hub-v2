@@ -7,7 +7,10 @@ const DEMO_EMAIL = "student@nsmqhub.local";
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
-  const question = await prisma.question.findUnique({ where: { id: body.questionId } });
+  const question = await prisma.question.findUnique({
+    where: { id: body.questionId },
+    include: { riddleClues: { orderBy: { clueNumber: "asc" } } },
+  });
   if (!question) return NextResponse.json({ error: "Question not found" }, { status: 404 });
 
   const user = await prisma.user.upsert({
@@ -20,8 +23,12 @@ export async function POST(request: NextRequest) {
     ? false
     : checkAnswer(String(body.userAnswer || ""), question);
   const scoring = MODE_POINTS[question.roundType] ?? { correct: 1, wrong: 0 };
-  const riddlePoints = body.riddlePoints ? Number(body.riddlePoints) : scoring.correct;
-  const pointsAwarded = isCorrect ? riddlePoints : scoring.wrong;
+  const requestedClueNumber = Math.min(Math.max(Number(body.riddleClueNumber || 1), 1), 5);
+  const storedRiddlePoints =
+    question.riddleClues.find((clue) => clue.clueNumber === requestedClueNumber)?.points ??
+    [5, 4, 3, 3, 3][requestedClueNumber - 1];
+  const correctPoints = question.roundType === "RIDDLE" ? storedRiddlePoints : scoring.correct;
+  const pointsAwarded = isCorrect ? correctPoints : scoring.wrong;
 
   await prisma.attempt.create({
     data: {

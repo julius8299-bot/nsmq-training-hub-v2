@@ -21,6 +21,12 @@ type Stats = {
     recommendedTopic: string;
     topics: { topic: string; attempted: number; accuracy: number }[];
   }[];
+  difficultyStats: {
+    difficulty: string;
+    attempted: number;
+    accuracy: number;
+  }[];
+  recommendedDifficulty: string;
   problem: Question | null;
 };
 
@@ -42,6 +48,27 @@ export default function DashboardPage() {
           return <div key={String(label)} className="panel p-5"><Comp className="text-gold" /><p className="mt-5 text-sm font-bold text-ink/50">{label as string}</p><p className="font-display text-4xl font-semibold">{String(value)}</p></div>;
         })}
       </div>
+      <section className="panel mt-8 p-5 sm:p-6">
+        <div className="flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <p className="eyebrow">Difficulty performance</p>
+            <h2 className="mt-2 font-display text-2xl font-semibold">Accuracy by challenge level</h2>
+          </div>
+          <div className="rounded-2xl bg-gold/15 px-4 py-3">
+            <p className="text-xs font-bold uppercase tracking-[0.14em] text-ink/45">Recommended next difficulty</p>
+            <p className="font-bold">{stats.recommendedDifficulty.replaceAll("_", " ")}</p>
+          </div>
+        </div>
+        <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+          {stats.difficultyStats.map((item) => (
+            <div key={item.difficulty} className="rounded-2xl border border-ink/10 bg-white p-4">
+              <p className="text-xs font-bold uppercase tracking-[0.12em] text-ink/45">{item.difficulty.replaceAll("_", " ")}</p>
+              <p className="mt-2 font-display text-3xl font-semibold">{item.attempted ? `${item.accuracy}%` : "No data"}</p>
+              <p className="mt-1 text-sm text-ink/45">{item.attempted} attempted</p>
+            </div>
+          ))}
+        </div>
+      </section>
       <div className="mt-8 grid gap-5 xl:grid-cols-2">
         {stats.subjects.map((item) => {
           const style = SUBJECT_STYLES[item.subject];

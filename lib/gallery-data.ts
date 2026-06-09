@@ -3,6 +3,7 @@ export type GalleryItem = {
   caption: string;
   src: string;
   alt: string;
+  objectPosition?: string;
   category: "logo" | "trophy" | "team" | "journey" | "audience";
 };
 
@@ -45,7 +46,7 @@ export const galleryItems: GalleryItem[] = [
   {
     title: "Ghanata Supporters",
     caption: "The energy behind the team — classmates, teachers, and supporters lifting the school spirit.",
-    src: "/gallery/ghanata-qualifiers.jpg",
+    src: "/gallery/ghanata-supporters.jpg",
     alt: "Ghanata SHS supporters cheering during an NSMQ event",
     category: "audience",
   },

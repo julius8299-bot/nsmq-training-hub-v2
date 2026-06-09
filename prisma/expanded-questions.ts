@@ -22,7 +22,10 @@ export type ExpandedQuestion = {
 };
 
 const encouragement = "You missed the pattern, not the whole topic. Try 3 more from this pattern.";
-const clues = (values: string[]) => values.map((clueText, index) => ({ clueNumber: index + 1, clueText, points: 5 - index }));
+const clues = (values: string[]) => {
+  const points = [5, 4, 3, 3, 3];
+  return values.map((clueText, index) => ({ clueNumber: index + 1, clueText, points: points[index] }));
+};
 const q = (question: Omit<ExpandedQuestion, "encouragement" | "acceptedAnswers" | "tags" | "ghanaContext"> & Partial<Pick<ExpandedQuestion, "acceptedAnswers" | "tags" | "ghanaContext">>): ExpandedQuestion => ({
   acceptedAnswers: [],
   tags: [question.topic.toLowerCase()],

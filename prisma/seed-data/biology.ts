@@ -81,10 +81,10 @@ export const biologyQuestions = buildSubjectBank({
       repeatedPattern: "identify biology concept", patternFamily: concept[0].toLowerCase(),
       tags: ["riddle", concept[0].toLowerCase(), ghana ? "ghana-context" : "definition"],
       riddleClues: riddleClues([
-        `I belong to ${concept[0].toLowerCase()}.`,
-        `I am studied under ${concept[1].toLowerCase()}.`,
-        `My defining function is ${concept[3]}.`,
-        `I am ${concept[2]}.`,
+        `I am recognised by structure or function in ${concept[1].toLowerCase()}.`,
+        "My role can be distinguished from nearby biological structures in the same system.",
+        `My defining biological function is ${concept[3]}.`,
+        "Only the correct named structure or process satisfies every clue without exception.",
       ]),
     });
   },

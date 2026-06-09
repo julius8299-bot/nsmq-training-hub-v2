@@ -1,8 +1,10 @@
 import type { ExpandedQuestion } from "./expanded-questions";
 
 const encouragement = "Good training. Connect the science to the Ghanaian example, then practise the underlying pattern again.";
-const clues = (values: string[]) =>
-  values.map((clueText, index) => ({ clueNumber: index + 1, clueText, points: 5 - index }));
+const clues = (values: string[]) => {
+  const points = [5, 4, 3, 3, 3];
+  return values.map((clueText, index) => ({ clueNumber: index + 1, clueText, points: points[index] }));
+};
 
 const q = (
   question: Omit<ExpandedQuestion, "encouragement" | "acceptedAnswers" | "tags" | "ghanaContext"> &

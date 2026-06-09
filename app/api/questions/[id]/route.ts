@@ -8,8 +8,8 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
   const missing = required.filter((field) => !String(body[field] ?? "").trim());
   if (missing.length) return NextResponse.json({ error: `Missing required fields: ${missing.join(", ")}` }, { status: 400 });
   const riddleClues = Array.isArray(body.riddleClues) ? body.riddleClues : [];
-  if (body.roundType === "RIDDLE" && (riddleClues.length !== 4 || riddleClues.some((clue: { clueText?: string }) => !clue.clueText?.trim()))) {
-    return NextResponse.json({ error: "Riddles require exactly four completed clues." }, { status: 400 });
+  if (body.roundType === "RIDDLE" && ((riddleClues.length < 4 || riddleClues.length > 5) || riddleClues.some((clue: { clueText?: string }) => !clue.clueText?.trim()))) {
+    return NextResponse.json({ error: "Riddles require four or five completed clues." }, { status: 400 });
   }
   delete body.id;
   delete body.createdAt;
@@ -24,9 +24,12 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
         timeLimitSeconds: Number(body.timeLimitSeconds),
         sourceYear: body.sourceYear ? Number(body.sourceYear) : null,
         numericTolerance: body.numericTolerance ? Number(body.numericTolerance) : null,
-        ghanaContext: body.ghanaContext === true || body.ghanaContext === "true",
+        ghanaContext: body.ghanaContext === true || body.ghanaContext === "true" || body.isGhanaContext === true || body.isGhanaContext === "true",
+        isGhanaContext: body.isGhanaContext === true || body.isGhanaContext === "true" || body.ghanaContext === true || body.ghanaContext === "true",
+        isPastQuestion: body.isPastQuestion === true || body.isPastQuestion === "true",
+        isPrivateOnly: body.isPrivateOnly === true || body.isPrivateOnly === "true",
         riddleClues: riddleClues.length
-          ? { create: riddleClues.map((clue: { clueNumber: number; clueText: string; points: number }) => ({ clueNumber: Number(clue.clueNumber), clueText: clue.clueText, points: Number(clue.points) })) }
+          ? { create: riddleClues.map((clue: { clueNumber: number; clueText: string }, index: number) => ({ clueNumber: Number(clue.clueNumber), clueText: clue.clueText, points: [5, 4, 3, 3, 3][index] })) }
           : undefined,
       },
       include: { riddleClues: { orderBy: { clueNumber: "asc" } } },

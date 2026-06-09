@@ -1,6 +1,6 @@
 # NSMQ Training Hub
 
-An independent, full-stack training platform for Ghanata SHS students preparing for National Science and Maths Quiz-style competition. It focuses on speed, accuracy, shortcut methods, repeated patterns, and confidence-building feedback without copying official branding or protected question sets.
+An independent, full-stack training platform for Ghanaian SHS students preparing for National Science and Maths Quiz-style competition. It focuses on speed, accuracy, shortcut methods, repeated patterns, and confidence-building feedback without copying official branding or protected question sets.
 
 ## Features
 
@@ -87,7 +87,7 @@ Subject factories live under `prisma/seed-data/`, with shared quotas, validation
 - Speed Race: +3 correct, -1 wrong
 - Problem of the Day: 10 total; MVP supports final-answer checking plus coach marking
 - True or False: +2 correct, -1 wrong
-- Riddles: 5, 4, 3, or 2 points based on the clue used
+- Riddles: 5, 4, 3, 3, or 3 points based on the clue used
 
 ## PostgreSQL or Supabase migration
 
