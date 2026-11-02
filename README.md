@@ -1,104 +1,112 @@
-# NSMQ Training Hub
+# NSMQ Training Hub V3 Foundation
 
-An independent, full-stack training platform for Ghanaian SHS students preparing for National Science and Maths Quiz-style competition. It focuses on speed, accuracy, shortcut methods, repeated patterns, and confidence-building feedback without copying official branding or protected question sets.
+An incremental foundation for the Ghanata SHS Science and Maths Quiz team.
+This checkout retains the V2 training pages, branding and gallery. The local
+v2-baseline branch records the supplied source; V3 changes are on
+codex/v3-foundation. The branch also includes the upstream main branding updates,
+including the Ghanata crest and browser icon. No cloud cutover has been performed.
 
-## Features
+## Phase 1 deliverables
 
-- Five-round full contest simulation with solo and three-team modes
-- Self-practice filters for subject, topic, subtopic, round, difficulty, count, and timing
-- Speed Race, Problem of the Day, True/False, and four-clue Riddle modes
-- Tolerant answer checking: case-insensitive, whitespace-trimmed, accepted alternatives, numeric tolerance, and T/F aliases
-- Immediate shortcut, full solution, common-trap, and encouragement feedback
-- Progress dashboard backed by saved attempts
-- Paginated, searchable question bank with subject, topic, subtopic, round, difficulty, timing, pattern, source, and Ghana-context filters
-- Coach/admin question creation, editing, deletion, and CSV/JSON import
-- Source and permission tracking for every question
-- More than 4,000 original questions: over 1,000 each in Mathematics, Physics, Chemistry, and Biology
-- More than 1,000 Ghana-context questions across all five contest rounds
-- Local NSMQ/Ghanata motivational gallery, trophy spotlight, journey section, and dashboard motivation corner
-
-## Stack
-
-- Next.js App Router and TypeScript
-- Tailwind CSS
-- Prisma ORM
-- SQLite for local development
-
-Question arrays are stored as JSON strings for broad SQLite compatibility. The data model otherwise uses portable Prisma types so migration to PostgreSQL or Supabase is straightforward.
+- [Repository audit](docs/v3/01-repository-audit.md)
+- [Schema and migration strategy](docs/v3/02-schema-and-migration.md)
+- [Small testable implementation plan](docs/v3/03-implementation-plan.md)
+- [Authentication and content review contracts](docs/v3/04-auth-and-review-contracts.md)
+- [Exact changed-file map](docs/v3/05-file-map.md)
+- [Verification and limitations](docs/v3/06-verification.md)
+- [Pull request testing and production prerequisites](docs/v3/07-pull-request-testing.md)
+- [Pre-merge security review and CI](docs/v3/08-pre-merge-review.md)
 
 ## Local setup
 
-Requirements: Node.js 20+ and npm.
+Use Node.js 22+ and npm. Copy .env.example to .env and set APP_URL to the
+actual origin (scheme, host and port). On PowerShell:
 
-```bash
+```powershell
 npm install
-cp .env.example .env
+Copy-Item .env.example .env
 npm run db:generate
-npm run db:push
+npm run db:ensure
 npm run db:seed
+$env:BOOTSTRAP_ADMIN_EMAIL = "your-private-email@example.com"
+npm run auth:bootstrap
 npm run dev
 ```
 
-Open `http://localhost:3000`.
+Open the one-use activation link printed by auth:bootstrap, set a passphrase,
+and sign in. The first Admin can then invite team members from /admin.
+No password or activated account is provided by default. The bootstrap command
+refuses to issue a new admin invite once an active Admin exists.
 
-`npm run dev` now checks the local database automatically. If the Question Bank
-is empty, it creates the schema and loads all 4,000+ questions before starting
-the app. Running `npm run db:seed` manually is still available when you want to
-replace the current local data.
+db:ensure is an explicit SQLite development setup command, not a production
+migration command. npm run dev and npm start never migrate or seed the database.
+The source ZIP contains no database; use an encrypted copy of the existing V2
+database to retain its question bank. A new empty database intentionally starts
+with zero questions until reviewed content is imported. db:seed initializes role
+metadata only and never deletes student records.
 
-On Windows PowerShell, use `Copy-Item .env.example .env` instead of `cp`.
+## Identity and permissions
 
-## Database commands
+The homepage and gallery remain public. Training pages/APIs require an activated
+invited account. Coach and Admin can author/import/review; Quizmaster has a separate
+hosting permission for the future synchronized contest. Student attempts and
+dashboard results are owned by the current session, not a shared demo identity.
 
-```bash
-npm run db:generate   # generate Prisma Client
-npm run db:push       # create/update local SQLite schema
-npm run db:seed       # replace local data with the complete original 4,000+ question bank
-npm run db:studio     # inspect and edit records visually
+Session/invitation tokens are stored only as hashes. Browser mutations require the
+configured origin. In production, set an HTTPS APP_URL; session cookies are Secure.
+Deliver invitation links privately to the invited email owner. Email provider
+integration, account recovery and staff MFA are planned deployment work.
+
+## Questions and review
+
+Existing legacy questions are retained as LEGACY_UNREVIEWED during transition.
+This label does not certify scientific quality. New/edited questions are private
+PENDING_REVIEW. The review endpoint records a Coach/Admin decision and requires
+permission evidence before imported material can be published. Deleting in Admin
+archives the question and retains every attempt.
+
+The existing CSV/JSON preview and question APIs retain their public response shapes
+for authenticated clients. PDF/DOCX extraction, a full review queue UI, the
+Shortcuts Academy, AI workers and synchronized live contests are designed but not
+implemented in this foundation. The existing Full Contest is still local practice.
+
+## Checks
+
+```powershell
+npx prisma validate
+npx tsx scripts/prepare-postgres-schema.ts
+npx prisma validate --schema prisma/postgresql/schema.prisma
+npm run test:foundation
+npm run test:preservation
+npm run test:v3-routes
+npm run test:answers
+npm run build
 ```
 
-The local database is `prisma/dev.db` and is intentionally ignored by Git.
+The foundation tests use disposable SQLite databases. The V3 HTTP test copies the
+existing development database into an ignored test directory, creates fixture
+accounts there, starts npm run dev on loopback, checks access boundaries/routes,
+and shuts down the process tree.
 
-## Adding questions
+test:preservation reconstructs only the existing unchanged catalog in a disposable
+legacy-schema database, applies the additive V3 schema, seeds twice and verifies
+all original IDs/fields including attempt fixtures. It never populates the app's
+database. Use work/ci-bank-path.txt as NSMQ_TEST_DATABASE_PATH to run route checks
+against this test fixture instead of a private development database.
 
-Open `/admin` to:
+GitHub Actions runs TypeScript, authentication/security, bank preservation and
+production build/start checks on pull requests to main. Jobs use read-only
+repository permissions and no production database or secrets. No job deploys or
+merges. npm audit checks the complete locked dependency tree, including tooling.
 
-1. Add one question with the manual form.
-2. Upload a CSV or JSON array.
-3. Review, quick-edit, or delete existing questions.
+Legacy V2 tests that call training APIs anonymously now need authenticated fixture
+sessions; use the V3 suite for authorization-aware checks. test:answers remains
+provider-independent. Never run legacy destructive setup against permanent data.
 
-The example import file is at `examples/questions-import.csv`. JSON imports use the same property names as the `Question` model.
+## PostgreSQL and cloud
 
-For `acceptedAnswers` and `tags`, use valid JSON arrays encoded as strings in CSV:
-
-```csv
-"[""4"",""four""]","[""algebra"",""fundamentals""]"
-```
-
-All copied or sourced material must include `sourceType`, `sourceName`, `sourceUrl` where available, `sourceYear`, `contestStage`, `videoTimestamp` where relevant, and `permissionStatus`. Mark authorized historical material with `isPastQuestion`; keep material under review marked `isPrivateOnly` so it does not appear in student APIs.
-
-## Seed architecture
-
-Subject factories live under `prisma/seed-data/`, with shared quotas, validation, Ghana scenarios, timing, difficulty distribution, and riddle-clue generation in `question-factory.ts`. Each subject produces at least 280 Round 1, 240 Speed Race, 120 Problem of the Day, 200 True/False, and 160 Riddle questions. Curated pattern supplements make specialist syllabus patterns explicit.
-
-## Scoring
-
-- Round 1: +3 correct; coach can add a +1 bonus manually
-- Speed Race: +3 correct, -1 wrong
-- Problem of the Day: 10 total; MVP supports final-answer checking plus coach marking
-- True or False: +2 correct, -1 wrong
-- Riddles: 5, 4, 3, 3, or 3 points based on the clue used
-
-## PostgreSQL or Supabase migration
-
-1. Provision a PostgreSQL database.
-2. Change the Prisma datasource provider from `sqlite` to `postgresql`.
-3. Set `DATABASE_URL` to the PostgreSQL connection string.
-4. Run `npx prisma migrate dev --name postgres-baseline` during development.
-5. Replace the demo-user convention with Supabase Auth or another authentication provider.
-
-For production, also add role-based route protection, transaction-backed bulk imports, richer coach marking, accessibility testing, and broader automated test coverage.
-
-## Copyright note
-
-The seed contains original practice questions only. The application supports past-question-style records, but storing content does not grant permission to publish it. Treat source and permission fields as required editorial controls.
+prisma/postgresql/schema.prisma is a validated proposal, not an applied migration.
+Follow the staged migration/parity/rollback plan before changing connection secrets.
+Keep archives and diagrams in private versioned object storage, with provenance
+and permission evidence. Do not put student exports, source archives, database
+backups, password links or environment secrets in Git or public/.

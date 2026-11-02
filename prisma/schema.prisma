@@ -8,56 +8,88 @@ datasource db {
 }
 
 model User {
-  id        String    @id @default(cuid())
-  name      String
-  email     String    @unique
-  role      String    @default("STUDENT")
-  attempts Attempt[]
-  createdAt DateTime  @default(now())
+  id                  String                @id @default(cuid())
+  name                String
+  email               String                @unique
+  role                String                @default("STUDENT")
+  attempts            Attempt[]
+  createdAt           DateTime              @default(now())
+  passwordHash        String?
+  status              String                @default("LEGACY")
+  roleId              String?
+  roleDefinition      Role?                 @relation(fields: [roleId], references: [code], onDelete: Restrict)
+  emailVerifiedAt     DateTime?
+  lastLoginAt         DateTime?
+  sessions            AuthSession[]
+  sentInvitations     Invitation[]          @relation("Inviter")
+  acceptedInvitations Invitation[]          @relation("Invitee")
+  auditEvents         AuditEvent[]
+  recommendations     StudyRecommendation[]
+  teamMemberships     TeamMember[]
+  hostedContests      ContestSession[]
+  reviews             QuestionReview[]
+  reviewedVariants    QuestionVariant[]     @relation("VariantReviewer")
+  uploadedDocuments   SourceDocument[]
 }
 
 model Question {
-  id                 String       @id @default(cuid())
-  subject            String
-  topic              String
-  subtopic           String
-  roundType          String
-  difficulty         String
-  timeLimitSeconds   Int          @default(30)
-  questionText       String
-  answer             String
-  acceptedAnswers    String       @default("[]")
-  numericTolerance   Float?
-  shortcutSolution   String
-  fullSolution       String
-  commonTrap         String
-  encouragement      String
-  repeatedPattern    String
-  patternFamily      String
-  sourceType         String       @default("ORIGINAL")
-  sourceName         String?
-  sourceUrl          String?
-  sourceYear         Int?
-  contestStage       String?
-  videoTimestamp     String?
-  permissionStatus   String       @default("ORIGINAL")
-  ghanaContext       Boolean      @default(false)
-  isGhanaContext     Boolean      @default(false)
-  isPastQuestion     Boolean      @default(false)
-  isPrivateOnly      Boolean      @default(false)
-  tags               String       @default("[]")
-  examinerFocus      String?
-  markingScheme      String?
-  riddleClues        RiddleClue[]
-  attempts           Attempt[]
-  createdAt          DateTime     @default(now())
-  updatedAt          DateTime     @updatedAt
+  id               String            @id @default(cuid())
+  subject          String
+  topic            String
+  subtopic         String
+  roundType        String
+  difficulty       String
+  timeLimitSeconds Int               @default(30)
+  questionText     String
+  answer           String
+  acceptedAnswers  String            @default("[]")
+  numericTolerance Float?
+  shortcutSolution String
+  fullSolution     String
+  commonTrap       String
+  encouragement    String
+  repeatedPattern  String
+  patternFamily    String
+  sourceType       String            @default("ORIGINAL")
+  sourceName       String?
+  sourceUrl        String?
+  sourceYear       Int?
+  contestStage     String?
+  videoTimestamp   String?
+  permissionStatus String            @default("ORIGINAL")
+  ghanaContext     Boolean           @default(false)
+  isGhanaContext   Boolean           @default(false)
+  isPastQuestion   Boolean           @default(false)
+  isPrivateOnly    Boolean           @default(false)
+  tags             String            @default("[]")
+  examinerFocus    String?
+  markingScheme    String?
+  riddleClues      RiddleClue[]
+  attempts         Attempt[]
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  seedKey          String?           @unique
+  reviewStatus     String            @default("LEGACY_UNREVIEWED")
+  revision         Int               @default(1)
+  archivedAt       DateTime?
+  preamble         String?
+  conceptId        String?
+  concept          Concept?          @relation(fields: [conceptId], references: [id], onDelete: Restrict)
+  sourceDocumentId String?
+  sourceDocument   SourceDocument?   @relation(fields: [sourceDocumentId], references: [id], onDelete: Restrict)
+  sourcePage       Int?
+  assets           QuestionAsset[]
+  reviews          QuestionReview[]
+  baseVariants     QuestionVariant[] @relation("BaseQuestion")
+  variantOf        QuestionVariant?  @relation("PublishedVariant")
+  contestResponses ContestResponse[]
 
   @@index([subject, topic, roundType, difficulty])
   @@index([sourceType, repeatedPattern])
   @@index([ghanaContext, subject])
   @@index([isGhanaContext, subject])
   @@index([isPastQuestion, isPrivateOnly])
+  @@index([reviewStatus, archivedAt])
 }
 
 model RiddleClue {
@@ -80,22 +112,270 @@ model Attempt {
   timeTakenSeconds Float
   pointsAwarded    Int
   mode             String
-  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  question         Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  user             User     @relation(fields: [userId], references: [id], onDelete: Restrict)
+  question         Question @relation(fields: [questionId], references: [id], onDelete: Restrict)
   createdAt        DateTime @default(now())
 
   @@index([userId, createdAt])
 }
 
 model ContestSession {
-  id           String   @id @default(cuid())
+  id           String            @id @default(cuid())
   title        String
   mode         String
-  teamAScore   Int      @default(0)
-  teamBScore   Int      @default(0)
-  teamCScore   Int      @default(0)
-  currentRound Int      @default(1)
-  createdAt    DateTime @default(now())
+  teamAScore   Int               @default(0)
+  teamBScore   Int               @default(0)
+  teamCScore   Int               @default(0)
+  currentRound Int               @default(1)
+  createdAt    DateTime          @default(now())
+  status       String            @default("DRAFT")
+  quizmasterId String?
+  quizmaster   User?             @relation(fields: [quizmasterId], references: [id], onDelete: Restrict)
+  joinCodeHash String?           @unique
+  version      Int               @default(0)
+  stateJson    String            @default("{}")
+  startsAt     DateTime?
+  endsAt       DateTime?
+  teams        ContestTeam[]
+  responses    ContestResponse[]
+  events       ContestEvent[]
+}
+
+model Role {
+  code        String       @id
+  name        String
+  users       User[]
+  invitations Invitation[]
+}
+
+model AuthSession {
+  id        String    @id @default(cuid())
+  tokenHash String    @unique
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  revokedAt DateTime?
+  createdAt DateTime  @default(now())
+
+  @@index([userId, expiresAt])
+}
+
+model Invitation {
+  id           String    @id @default(cuid())
+  email        String
+  roleCode     String
+  role         Role      @relation(fields: [roleCode], references: [code], onDelete: Restrict)
+  tokenHash    String    @unique
+  createdById  String?
+  createdBy    User?     @relation("Inviter", fields: [createdById], references: [id], onDelete: Restrict)
+  acceptedById String?
+  acceptedBy   User?     @relation("Invitee", fields: [acceptedById], references: [id], onDelete: Restrict)
+  expiresAt    DateTime
+  acceptedAt   DateTime?
+  revokedAt    DateTime?
+  createdAt    DateTime  @default(now())
+
+  @@index([email, expiresAt])
+}
+
+model AuthThrottle {
+  key          String   @id
+  count        Int      @default(0)
+  windowEndsAt DateTime
+}
+
+model AuditEvent {
+  id         String   @id @default(cuid())
+  actorId    String?
+  actor      User?    @relation(fields: [actorId], references: [id], onDelete: Restrict)
+  action     String
+  entityType String
+  entityId   String?
+  metadata   String   @default("{}")
+  createdAt  DateTime @default(now())
+
+  @@index([actorId, createdAt])
+}
+
+model Concept {
+  id                String                @id @default(cuid())
+  subject           String
+  slug              String
+  name              String
+  explanation       String
+  prerequisitesJson String                @default("[]")
+  questions         Question[]
+  variants          QuestionVariant[]
+  shortcuts         Shortcut[]
+  recommendations   StudyRecommendation[]
+
+  @@unique([subject, slug])
+}
+
+model QuestionVariant {
+  id                  String    @id @default(cuid())
+  conceptId           String
+  concept             Concept   @relation(fields: [conceptId], references: [id], onDelete: Restrict)
+  baseQuestionId      String?
+  baseQuestion        Question? @relation("BaseQuestion", fields: [baseQuestionId], references: [id], onDelete: Restrict)
+  publishedQuestionId String?   @unique
+  publishedQuestion   Question? @relation("PublishedVariant", fields: [publishedQuestionId], references: [id], onDelete: Restrict)
+  candidateJson       String
+  parametersJson      String    @default("{}")
+  verificationJson    String    @default("{}")
+  status              String    @default("DRAFT")
+  generatorVersion    String
+  modelName           String?
+  promptVersion       String?
+  reviewedById        String?
+  reviewedBy          User?     @relation("VariantReviewer", fields: [reviewedById], references: [id], onDelete: Restrict)
+  reviewedAt          DateTime?
+  reviewNotes         String?
+  createdAt           DateTime  @default(now())
+
+  @@index([status, conceptId])
+}
+
+model SourceDocument {
+  id                    String     @id @default(cuid())
+  title                 String
+  mimeType              String
+  storageKey            String     @unique
+  sha256                String
+  uploadedById          String
+  uploadedBy            User       @relation(fields: [uploadedById], references: [id], onDelete: Restrict)
+  permissionStatus      String     @default("NEEDS_PERMISSION")
+  permissionEvidenceKey String?
+  sourceName            String
+  sourceYear            Int?
+  status                String     @default("QUARANTINED")
+  provenanceJson        String     @default("{}")
+  questions             Question[]
+  createdAt             DateTime   @default(now())
+
+  @@index([sha256])
+}
+
+model QuestionAsset {
+  id         String   @id @default(cuid())
+  questionId String
+  question   Question @relation(fields: [questionId], references: [id], onDelete: Restrict)
+  storageKey String   @unique
+  mimeType   String
+  sha256     String
+  altText    String
+  caption    String?
+  sourcePage Int?
+}
+
+model QuestionReview {
+  id               String   @id @default(cuid())
+  questionId       String
+  question         Question @relation(fields: [questionId], references: [id], onDelete: Restrict)
+  reviewerId       String
+  reviewer         User     @relation(fields: [reviewerId], references: [id], onDelete: Restrict)
+  decision         String
+  questionRevision Int      @default(1)
+  notes            String
+  verificationJson String   @default("{}")
+  createdAt        DateTime @default(now())
+
+  @@index([questionId, createdAt])
+}
+
+model Shortcut {
+  id                   String   @id @default(cuid())
+  conceptId            String
+  concept              Concept  @relation(fields: [conceptId], references: [id], onDelete: Restrict)
+  title                String
+  method               String
+  memoryTechnique      String?
+  explanation          String
+  commonTrap           String
+  applicability        String
+  workedExamplesJson   String   @default("[]")
+  drillQuestionIdsJson String   @default("[]")
+  reviewStatus         String   @default("DRAFT")
+  createdAt            DateTime @default(now())
+}
+
+model Team {
+  id         String            @id @default(cuid())
+  name       String
+  members    TeamMember[]
+  contests   ContestTeam[]
+  responses  ContestResponse[]
+  archivedAt DateTime?
+}
+
+model TeamMember {
+  teamId String
+  userId String
+  seat   Int
+  team   Team   @relation(fields: [teamId], references: [id], onDelete: Restrict)
+  user   User   @relation(fields: [userId], references: [id], onDelete: Restrict)
+
+  @@id([teamId, userId])
+  @@unique([teamId, seat])
+}
+
+model ContestTeam {
+  contestId         String
+  teamId            String
+  lane              Int
+  contest           ContestSession @relation(fields: [contestId], references: [id], onDelete: Restrict)
+  team              Team           @relation(fields: [teamId], references: [id], onDelete: Restrict)
+  deviceSessionHash String?        @unique
+
+  @@id([contestId, teamId])
+  @@unique([contestId, lane])
+}
+
+model ContestResponse {
+  id             String         @id @default(cuid())
+  contestId      String
+  contest        ContestSession @relation(fields: [contestId], references: [id], onDelete: Restrict)
+  teamId         String
+  team           Team           @relation(fields: [teamId], references: [id], onDelete: Restrict)
+  questionId     String
+  question       Question       @relation(fields: [questionId], references: [id], onDelete: Restrict)
+  roundInstance  Int
+  idempotencyKey String         @unique
+  answer         String
+  isCorrect      Boolean?
+  pointsAwarded  Int?
+  receivedAt     DateTime       @default(now())
+  scoredAt       DateTime?
+
+  @@unique([contestId, teamId, questionId, roundInstance])
+}
+
+model ContestEvent {
+  id          String         @id @default(cuid())
+  contestId   String
+  contest     ContestSession @relation(fields: [contestId], references: [id], onDelete: Restrict)
+  version     Int
+  eventType   String
+  payloadJson String
+  createdAt   DateTime       @default(now())
+
+  @@unique([contestId, version])
+}
+
+model StudyRecommendation {
+  id               String    @id @default(cuid())
+  userId           String
+  user             User      @relation(fields: [userId], references: [id], onDelete: Restrict)
+  conceptId        String?
+  concept          Concept?  @relation(fields: [conceptId], references: [id], onDelete: Restrict)
+  difficulty       String
+  reason           String
+  evidenceJson     String    @default("{}")
+  algorithmVersion String
+  completedAt      DateTime?
+  createdAt        DateTime  @default(now())
+
+  @@index([userId, completedAt])
 }
 
 model Topic {

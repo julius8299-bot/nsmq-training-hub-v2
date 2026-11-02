@@ -1,20 +1,25 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { ensureQuestionBank } from "@/lib/ensure-question-bank";
+import { errorResponse, requireApiUser, readJsonRequest } from "@/lib/auth/http";
+import { questionInput } from "@/lib/questions/input";
 
 export const dynamic = "force-dynamic";
 
 export async function GET(request: NextRequest) {
-  await ensureQuestionBank();
+  try {
+  await requireApiUser(request);
   const params = request.nextUrl.searchParams;
   const take = Math.min(Number(params.get("limit") || 20), 250);
   const search = params.get("search")?.trim();
   const includePrivate = params.get("includePrivate") === "true";
+  if (includePrivate) await requireApiUser(request, "questions:write");
   const wantsGhanaContext = params.get("isGhanaContext") === "true" || params.get("ghanaContext") === "true";
   const difficulty = params.get("difficulty");
   const difficulties = params.get("difficulties")?.split(",").filter(Boolean);
 
   const where = {
+      archivedAt: null,
+      ...(!includePrivate && { reviewStatus: { in: ["APPROVED", "LEGACY_UNREVIEWED"] } }),
       ...(!includePrivate && { isPrivateOnly: false }),
       ...(params.get("subject") && { subject: params.get("subject")! }),
       ...(params.get("topic") && { topic: params.get("topic")! }),
@@ -48,9 +53,9 @@ export async function GET(request: NextRequest) {
 
   if (params.get("metadata") === "true") {
     const [topics, subtopics, patternFamilies] = await Promise.all([
-      prisma.question.findMany({ where: { isPrivateOnly: false }, distinct: ["topic"], select: { topic: true }, orderBy: { topic: "asc" } }),
-      prisma.question.findMany({ where: { isPrivateOnly: false }, distinct: ["subtopic"], select: { subtopic: true }, orderBy: { subtopic: "asc" } }),
-      prisma.question.findMany({ where: { isPrivateOnly: false }, distinct: ["patternFamily"], select: { patternFamily: true }, orderBy: { patternFamily: "asc" } }),
+      prisma.question.findMany({ where, distinct: ["topic"], select: { topic: true }, orderBy: { topic: "asc" } }),
+      prisma.question.findMany({ where, distinct: ["subtopic"], select: { subtopic: true }, orderBy: { subtopic: "asc" } }),
+      prisma.question.findMany({ where, distinct: ["patternFamily"], select: { patternFamily: true }, orderBy: { patternFamily: "asc" } }),
     ]);
     return NextResponse.json({
       topics: topics.map((item) => item.topic),
@@ -89,12 +94,15 @@ export async function GET(request: NextRequest) {
   });
 
   return NextResponse.json(questions);
+  } catch (error) { return errorResponse(error); }
 }
 
 export async function POST(request: NextRequest) {
-  const body = await request.json();
+  try {
+  const actor = await requireApiUser(request, "questions:write");
+  const body = questionInput.parse(await readJsonRequest(request));
   const required = ["subject", "topic", "subtopic", "roundType", "difficulty", "questionText", "answer", "shortcutSolution", "fullSolution", "commonTrap", "encouragement", "repeatedPattern", "patternFamily", "sourceType", "permissionStatus"];
-  const missing = required.filter((field) => !String(body[field] ?? "").trim());
+  const missing = required.filter((field) => !String(body[field as keyof typeof body] ?? "").trim());
   if (missing.length) {
     return NextResponse.json({ error: `Missing required fields: ${missing.join(", ")}` }, { status: 400 });
   }
@@ -102,9 +110,6 @@ export async function POST(request: NextRequest) {
   if (body.roundType === "RIDDLE" && ((riddleClues.length < 4 || riddleClues.length > 5) || riddleClues.some((clue: { clueText?: string }) => !clue.clueText?.trim()))) {
     return NextResponse.json({ error: "Riddles require four or five completed clues." }, { status: 400 });
   }
-  delete body.id;
-  delete body.createdAt;
-  delete body.updatedAt;
   delete body.riddleClues;
   const isGhanaContext =
     body.isGhanaContext === true ||
@@ -120,8 +125,9 @@ export async function POST(request: NextRequest) {
       numericTolerance: body.numericTolerance ? Number(body.numericTolerance) : null,
       ghanaContext: isGhanaContext,
       isGhanaContext,
+      reviewStatus: "PENDING_REVIEW",
+      isPrivateOnly: true,
       isPastQuestion: body.isPastQuestion === true || body.isPastQuestion === "true",
-      isPrivateOnly: body.isPrivateOnly === true || body.isPrivateOnly === "true",
       acceptedAnswers: typeof body.acceptedAnswers === "string" ? body.acceptedAnswers : JSON.stringify(body.acceptedAnswers || []),
       tags: typeof body.tags === "string" ? body.tags : JSON.stringify(body.tags || []),
       riddleClues: riddleClues.length
@@ -136,5 +142,7 @@ export async function POST(request: NextRequest) {
     },
     include: { riddleClues: true },
   });
+  await prisma.auditEvent.create({ data: { actorId: actor.id, action: "QUESTION_CREATED", entityType: "Question", entityId: question.id } });
   return NextResponse.json(question, { status: 201 });
+  } catch (error) { return errorResponse(error); }
 }
