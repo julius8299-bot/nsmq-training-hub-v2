@@ -10,7 +10,8 @@ Paths below are relative to this isolated V3 checkout.
 | .gitignore | Secrets, archives, private storage, databases and test/build outputs excluded |
 | package.json | Safe startup and foundation/HTTP/bootstrap commands; security dependency patches |
 | package-lock.json | Locked dependency changes |
-| next.config.ts | Isolated tracing root and separate test output |
+| next.config.mjs | Retain upstream config with isolated tracing root and separate test output |
+| next.config.ts | Remove duplicate so the MJS config is the single source of truth |
 | prisma/schema.prisma | Additive foundation models and restrictive history FKs |
 | prisma/seed.ts | Idempotent role setup; no destructive seed or auto-generation |
 | scripts/ensure-database.ts | Explicit metadata initialization, no bank replacement |
@@ -56,6 +57,7 @@ Paths below are relative to this isolated V3 checkout.
 - docs/v3/04-auth-and-review-contracts.md
 - docs/v3/05-file-map.md
 - docs/v3/06-verification.md
+- docs/v3/07-pull-request-testing.md
 
 ## Deliberately retained
 

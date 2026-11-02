@@ -10,6 +10,13 @@ checkout at work/nsmq-training-hub-v3, with a local v2-baseline snapshot and bra
 codex/v3-foundation. No remote was created or pushed. The original source and
 prisma/dev.db are retained in place.
 
+Publication preparation on 2026-11-02 fetched the existing GitHub repository
+julius8299-bot/nsmq-training-hub-v2. Its main at b8df959 contains newer branding
+than the supplied snapshot, including the Ghanata crest, browser icon and gallery
+updates. These are retained in the integration commit alongside 194e118. The
+snapshot-only observations below describe the original audit, not a removal of
+the crest or icon from the GitHub project.
+
 ## Capabilities and gaps
 
 | Area | Existing V2 capability | Foundation / remaining work |

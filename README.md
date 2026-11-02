@@ -3,7 +3,8 @@
 An incremental foundation for the Ghanata SHS Science and Maths Quiz team.
 This checkout retains the V2 training pages, branding and gallery. The local
 v2-baseline branch records the supplied source; V3 changes are on
-codex/v3-foundation. No remote publication or cloud cutover has been performed.
+codex/v3-foundation. The branch also includes the upstream main branding updates,
+including the Ghanata crest and browser icon. No cloud cutover has been performed.
 
 ## Phase 1 deliverables
 
@@ -13,6 +14,7 @@ codex/v3-foundation. No remote publication or cloud cutover has been performed.
 - [Authentication and content review contracts](docs/v3/04-auth-and-review-contracts.md)
 - [Exact changed-file map](docs/v3/05-file-map.md)
 - [Verification and limitations](docs/v3/06-verification.md)
+- [Pull request testing and production prerequisites](docs/v3/07-pull-request-testing.md)
 
 ## Local setup
 

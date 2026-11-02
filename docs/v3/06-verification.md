@@ -83,10 +83,34 @@ https://github.com/advisories/GHSA-mrhx-c7xc-m3w5
 
 ## Scope limits
 
-The source folder lacks a standalone Ghanata crest and custom browser icon.
-Existing imagery/logo/mappings are preserved, with no invented replacement.
+The initial audit snapshot lacked a standalone Ghanata crest and browser icon.
+The subsequent upstream integration retains both from GitHub main, along with
+its existing homepage and gallery. No replacement branding was invented.
 Legacy questions remain explicitly unreviewed. PDF/DOCX extraction, full review
 queue UI, Academy, AI verification workers, realtime contests, managed email/MFA,
 PostgreSQL cutover, private cloud object storage and backup/restore operations
 remain planned work. This deliverable is the initial foundation, not the complete
 V3 platform or a production deployment.
+
+## Upstream integration checks (2026-11-02)
+
+The branch integrates main at b8df959 and retains 194e118 in its history.
+Homepage, icon, gallery mappings/assets, Question Bank page and all existing
+practice/contest page sources match upstream main. A duplicate Next.js config
+was consolidated into next.config.mjs so test-output isolation takes effect.
+The public /icon endpoint was exempted from the login redirect and regression
+tested; the icon source itself is unchanged.
+
+The expanded HTTP suite passed for the public crest, logo, icon, every configured
+gallery image, all training routes and all five round filters. Bank results:
+4,226 total; 1,001 Ghana-context; 161 Ghana-context riddles. Round totals:
+1,186 Round 1; 1,000 Speed Race; 520 POTD; 840 True/False; 680 Riddles.
+The nine foundation scenarios, ten answer cases, TypeScript and legacy parity
+checks also passed. The production build still fails with Windows EPERM under
+.next/types/app/accept-invite; the dependency audit remains four high and one
+moderate entry. These are not resolved by preparing a pull request.
+
+Publishing from the isolated desktop session cannot use the account's Windows
+GitHub credentials. No login was reset, production secret changed or automatic
+merge attempted. The prepared branch can instead be pushed from an authenticated
+normal PowerShell terminal; private databases remain outside Git.

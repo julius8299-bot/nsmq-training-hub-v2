@@ -5,6 +5,8 @@ import { resolve } from "node:path";
 import { PrismaClient } from "@prisma/client";
 import { ensureRoles, login } from "../lib/auth/service";
 import { hashPassword } from "../lib/auth/crypto";
+import { galleryItems } from "../lib/gallery-data";
+import { ROUND_TYPES } from "../lib/constants";
 
 const port = 3143;
 const base = "http://127.0.0.1:" + port;
@@ -41,9 +43,19 @@ async function main() {
   const get = (path: string, token?: string) => fetch(base + path, {
     redirect: "manual", headers: token ? { cookie: "nsmq_session=" + token } : {},
   });
-  for (const path of ["/", "/gallery", "/login", "/accept-invite", "/brand/nsmq-logo.png", "/gallery/ghanata-team.jpg"]) {
+  for (const path of ["/", "/gallery", "/login", "/accept-invite"]) {
     assert.equal((await get(path)).status, 200, path);
     console.log("PASS public " + path);
+  }
+  const home = await (await get("/")).text();
+  assert.match(home, /Ghanata SHS/);
+  assert.match(home, /ghanata-shs-logo\.jpg/);
+  for (const path of ["/brand/nsmq-logo.png", "/brand/ghanata-shs-logo.jpg", "/icon", ...galleryItems.map((item) => item.src)]) {
+    assert.ok(path.startsWith("/"));
+    const response = await get(path);
+    assert.equal(response.status, 200, path);
+    assert.match(response.headers.get("content-type") ?? "", /^image\//, path);
+    console.log("PASS branding/gallery image " + path);
   }
   for (const path of ["/dashboard", "/practice", "/full-contest", "/contest", "/speed-race", "/potd", "/problem-of-the-day", "/tf", "/true-false", "/riddles", "/question-bank", "/admin"]) {
     assert.equal((await get(path)).status, 307, "Missing login redirect: " + path);
@@ -60,6 +72,14 @@ async function main() {
     assert.ok(data.total > 0); assert.ok(data.questions.length > 0);
     if (query.includes("roundType=RIDDLE")) assert.ok(data.questions[0].riddleClues.length >= 4);
     console.log("PASS bank " + query + ": " + data.total);
+  }
+  for (const roundType of ROUND_TYPES) {
+    const response = await get("/api/questions?page=1&roundType=" + roundType, studentToken);
+    assert.equal(response.status, 200);
+    const data = await response.json();
+    assert.ok(data.total > 0, roundType);
+    assert.ok(data.questions.every((question: { roundType: string }) => question.roundType === roundType));
+    console.log("PASS round filter " + roundType + ": " + data.total);
   }
   const response = await fetch(base + "/api/auth/login", {
     method: "POST", headers: { origin: base, "Content-Type": "application/json" },

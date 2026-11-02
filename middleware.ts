@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export function middleware(request: NextRequest) {
-  const publicPaths = ["/", "/gallery", "/login", "/accept-invite"];
+  const publicPaths = ["/", "/gallery", "/login", "/accept-invite", "/icon"];
   if (!publicPaths.includes(request.nextUrl.pathname) && !request.cookies.has("nsmq_session")) {
     const login = new URL("/login", request.url);
     login.searchParams.set("next", request.nextUrl.pathname);
