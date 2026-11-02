@@ -1,5 +1,10 @@
 # Phase 1 Verification Record
 
+Historical initial record. The subsequent PR 1 review fixed the dependency
+findings and obtained a passing production build after output-folder permission
+was granted. See 08-pre-merge-review.md and current GitHub checks for current
+status; the original failures below are retained as evidence of the investigation.
+
 Date: 2026-11-01 (America/New_York).
 Branch: codex/v3-foundation in the isolated work/nsmq-training-hub-v3 checkout.
 No external service was provisioned, no email was sent, and no source was pushed.

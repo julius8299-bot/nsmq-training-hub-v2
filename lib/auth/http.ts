@@ -4,6 +4,7 @@ import { ZodError } from "zod";
 import { prisma } from "@/lib/prisma";
 import { AccessError, resolveSession, SESSION_SECONDS } from "./service";
 import type { Permission } from "./policy";
+import { PasswordCapacityError } from "./crypto";
 
 export const SESSION_COOKIE = "nsmq_session";
 
@@ -59,6 +60,9 @@ export function setSessionCookie(response: NextResponse, token: string, maxAge =
 }
 
 export function errorResponse(error: unknown) {
+  if (error instanceof PasswordCapacityError) {
+    return NextResponse.json({ error: "Sign-in is busy. Please try again shortly." }, { status: 503, headers: { "Retry-After": "2" } });
+  }
   if (error instanceof AccessError) return NextResponse.json({ error: error.message }, { status: error.status });
   if (error instanceof ZodError || error instanceof SyntaxError) {
     return NextResponse.json({ error: "Invalid request data." }, { status: 400 });

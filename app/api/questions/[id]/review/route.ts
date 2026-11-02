@@ -10,9 +10,11 @@ export async function POST(request: NextRequest, context: { params: Promise<{ id
     const { id } = await context.params;
     const input = z.object({
       decision: z.enum(["APPROVED", "REJECTED"]), notes: z.string().trim().min(10).max(5000),
+      revision: z.number().int().positive(),
     }).strict().parse(await readJsonRequest(request, 16_384));
     const question = await prisma.question.findUnique({ where: { id }, include: { sourceDocument: true } });
     if (!question || question.archivedAt) throw new AccessError(404, "Question not found.");
+    if (question.revision !== input.revision) throw new AccessError(409, "Question changed. Review the latest revision.");
     if (input.decision === "APPROVED") {
       if (!["ORIGINAL", "PUBLIC", "LICENSED"].includes(question.permissionStatus)) {
         throw new AccessError(400, "Permission must be confirmed before approval.");
@@ -24,11 +26,18 @@ export async function POST(request: NextRequest, context: { params: Promise<{ id
         }
       }
     }
-    await prisma.$transaction([
-      prisma.question.update({ where: { id }, data: { reviewStatus: input.decision, isPrivateOnly: input.decision !== "APPROVED" } }),
-      prisma.questionReview.create({ data: { questionId: id, reviewerId: actor.id, ...input } }),
-      prisma.auditEvent.create({ data: { actorId: actor.id, action: "QUESTION_REVIEWED", entityType: "Question", entityId: id } }),
-    ]);
+    await prisma.$transaction(async (tx) => {
+      const updated = await tx.question.updateMany({
+        where: { id, revision: input.revision, reviewStatus: question.reviewStatus, archivedAt: null },
+        data: { reviewStatus: input.decision, isPrivateOnly: input.decision !== "APPROVED" },
+      });
+      if (updated.count !== 1) throw new AccessError(409, "Question changed. Review the latest revision.");
+      await tx.questionReview.create({ data: {
+        questionId: id, reviewerId: actor.id, decision: input.decision,
+        notes: input.notes, questionRevision: input.revision,
+      } });
+      await tx.auditEvent.create({ data: { actorId: actor.id, action: "QUESTION_REVIEWED", entityType: "Question", entityId: id } });
+    });
     return NextResponse.json({ ok: true });
   } catch (error) { return errorResponse(error); }
 }

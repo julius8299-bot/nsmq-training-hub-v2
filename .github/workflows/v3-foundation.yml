@@ -1,0 +1,98 @@
+name: V3 Foundation
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [codex/v3-foundation]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: v3-foundation-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  DATABASE_URL: file:./ci.db
+  POSTGRES_DATABASE_URL: postgresql://fixture:fixture@localhost:5432/unused
+  APP_URL: http://127.0.0.1:3143
+  NEXT_TELEMETRY_DISABLED: '1'
+
+jobs:
+  typescript:
+    name: TypeScript
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npx prisma generate
+      - run: npm run typecheck
+
+  authentication-security:
+    name: Authentication and Security
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm audit --audit-level=low
+      - run: npx prisma generate
+      - run: npx prisma validate --config scripts/fixtures/prisma.config.ts
+      - run: npx tsx scripts/prepare-postgres-schema.ts
+      - run: git diff --exit-code -- prisma/postgresql/schema.prisma
+      - run: npx prisma validate --schema prisma/postgresql/schema.prisma
+      - run: npm run test:foundation
+      - run: npm run test:answers
+
+  question-bank-preservation:
+    name: Question Bank Preservation
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npx prisma generate
+      - run: npm run test:preservation
+      - run: npm run test:v3-routes
+
+  production-build:
+    name: Production Build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npx prisma generate
+      - run: npm run test:preservation
+      - run: npm run build
+      - run: npm run test:v3-routes
+        env:
+          NSMQ_TEST_SERVER: production

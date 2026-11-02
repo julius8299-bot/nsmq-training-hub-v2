@@ -10,10 +10,11 @@ import { ROUND_TYPES } from "../lib/constants";
 
 const port = 3143;
 const base = "http://127.0.0.1:" + port;
+const production = process.env.NSMQ_TEST_SERVER === "production";
 const savedNextFiles = ["next-env.d.ts", "tsconfig.json"].map((file) => ({ file, content: readFileSync(file, "utf8") }));
 mkdirSync("work", { recursive: true });
 const folder = mkdtempSync(resolve("work", "routes-test-"));
-copyFileSync(resolve("prisma/dev.db"), resolve(folder, "test.db"));
+copyFileSync(resolve(process.env.NSMQ_TEST_DATABASE_PATH ?? "prisma/dev.db"), resolve(folder, "test.db"));
 const databaseUrl = "file:" + resolve(folder, "test.db").replaceAll("\\", "/");
 const db = new PrismaClient({ datasourceUrl: databaseUrl });
 let server: ReturnType<typeof spawn> | undefined;
@@ -26,9 +27,9 @@ async function main() {
   const student = await db.user.create({ data: { email: "http-student@example.test", name: "HTTP Student", status: "ACTIVE", role: "STUDENT", roleId: "STUDENT", passwordHash: await hashPassword(password) } });
   const staffToken = (await login(db, staff.email, password)).token;
   const studentToken = (await login(db, student.email, password)).token;
-  const env = { ...process.env, DATABASE_URL: databaseUrl, APP_URL: base, NSMQ_TEST_DIST: "work/next-http-test" };
-  server = spawn(process.execPath, [process.env.npm_execpath!, "run", "dev", "--", "-p", String(port), "--hostname", "127.0.0.1"], {
-    cwd: process.cwd(), env, windowsHide: true, stdio: ["ignore", "pipe", "pipe"],
+  const env: NodeJS.ProcessEnv = { ...process.env, DATABASE_URL: databaseUrl, APP_URL: base, NODE_ENV: production ? "production" : "development", NSMQ_TEST_DIST: production ? (process.env.NSMQ_TEST_DIST ?? ".next") : "work/next-http-test" };
+  server = spawn(process.execPath, [process.env.npm_execpath!, "run", production ? "start" : "dev", "--", "-p", String(port), "--hostname", "127.0.0.1"], {
+    cwd: process.cwd(), env, windowsHide: true, detached: process.platform !== "win32", stdio: ["ignore", "pipe", "pipe"],
   });
   server.stdout?.on("data", (chunk) => { logs += chunk.toString(); });
   server.stderr?.on("data", (chunk) => { logs += chunk.toString(); });
@@ -50,7 +51,7 @@ async function main() {
   const home = await (await get("/")).text();
   assert.match(home, /Ghanata SHS/);
   assert.match(home, /ghanata-shs-logo\.jpg/);
-  for (const path of ["/brand/nsmq-logo.png", "/brand/ghanata-shs-logo.jpg", "/icon", ...galleryItems.map((item) => item.src)]) {
+  for (const path of ["/brand/nsmq-logo.png", "/brand/ghanata-shs-logo.jpg", "/icon", "/gallery/NSMQ-trophy.jpg", ...galleryItems.map((item) => item.src)]) {
     assert.ok(path.startsWith("/"));
     const response = await get(path);
     assert.equal(response.status, 200, path);
@@ -88,13 +89,22 @@ async function main() {
   assert.equal(response.status, 200);
   const cookie = response.headers.get("set-cookie") ?? "";
   assert.match(cookie, /HttpOnly/i); assert.match(cookie, /SameSite=lax/i);
+  if (production) assert.match(cookie, /; Secure/i);
   console.log("PASS HTTP sign-in and cookie contract");
 }
 main().catch((error) => { console.error(error); process.exitCode = 1; }).finally(async () => {
   await db.$disconnect();
   if (server?.pid) {
     if (process.platform === "win32") spawnSync("taskkill", ["/PID", String(server.pid), "/T", "/F"], { stdio: "ignore", windowsHide: true });
-    else server.kill();
+    else {
+      const stopped = new Promise<void>((done) => {
+        if (server?.exitCode !== null || server?.signalCode !== null) done();
+        else server?.once("exit", () => done());
+      });
+      try { process.kill(-server.pid, "SIGTERM"); } catch { /* The owned process group already exited. */ }
+      await Promise.race([stopped, delay(2000)]);
+      try { process.kill(-server.pid, "SIGKILL"); } catch { /* No children remain. */ }
+    }
   }
   for (const file of savedNextFiles) writeFileSync(file.file, file.content);
   process.exit(process.exitCode ?? 0);

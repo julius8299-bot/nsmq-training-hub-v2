@@ -70,6 +70,7 @@ model Question {
   updatedAt        DateTime          @updatedAt
   seedKey          String?           @unique
   reviewStatus     String            @default("LEGACY_UNREVIEWED")
+  revision         Int               @default(1)
   archivedAt       DateTime?
   preamble         String?
   conceptId        String?
@@ -274,6 +275,7 @@ model QuestionReview {
   reviewerId       String
   reviewer         User     @relation(fields: [reviewerId], references: [id], onDelete: Restrict)
   decision         String
+  questionRevision Int      @default(1)
   notes            String
   verificationJson String   @default("{}")
   createdAt        DateTime @default(now())

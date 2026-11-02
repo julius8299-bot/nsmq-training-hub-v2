@@ -93,6 +93,8 @@ npm run dev
 Run npm run build in clean CI and test npm start behind HTTPS before approval.
 The earlier Windows build failed with EPERM; do not treat successful dev tests
 as evidence of a production build. Dependency audit findings also need resolution.
+Those historical blockers were subsequently repaired/verified during PR review;
+see 08-pre-merge-review.md and the current Actions results for the latest status.
 
 ## Environment variables
 
@@ -105,6 +107,8 @@ as evidence of a production build. Dependency audit findings also need resolutio
 | POSTGRES_DATABASE_URL | Migration-design tooling only, used by prisma/postgresql/schema.prisma. The application still imports the SQLite-generated client until the planned, tested cutover. |
 | ORIGINAL_SQLITE_PATH | Read-only parity-test input pointing to the unchanged private V2 backup. Not needed at runtime. |
 | NSMQ_TEST_DIST | Set internally by the HTTP test to isolate test build output. Not a production setting. |
+| NSMQ_TEST_DATABASE_PATH | Optional source for the HTTP test's disposable DB copy. CI sets it to the migrated catalog fixture, never to a production connection. |
+| NSMQ_TEST_SERVER | Set to production only to test next start after npm run build. Omit for the development HTTP check. |
 | IMPORT_LEGACY_QUESTION_FACTORY | Leave unset/false. Deliberately refused in production; do not use it to inflate question counts. |
 
 There is no NEXTAUTH_SECRET, SESSION_SECRET, GitHub OAuth setting or AI API key
@@ -136,3 +140,12 @@ NEXT_PUBLIC_*.
 The full V3 objectives are not implemented by merging this foundation. Keep the
 current website running until production blockers, data migration, restore tests
 and coach acceptance are complete.
+
+## Pre-merge checks
+
+See 08-pre-merge-review.md for the subsequent dependency/security fixes and the
+read-only GitHub Actions workflow. The approval API now requires the question's
+displayed revision number; outdated reviews return 409 instead of approving an
+edited draft. Apply the additive revision fields on the disposable test copy
+before running the updated application. Do not bypass tests or use production
+db push to silence missing-column errors.

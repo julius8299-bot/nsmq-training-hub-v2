@@ -15,6 +15,7 @@ including the Ghanata crest and browser icon. No cloud cutover has been performe
 - [Exact changed-file map](docs/v3/05-file-map.md)
 - [Verification and limitations](docs/v3/06-verification.md)
 - [Pull request testing and production prerequisites](docs/v3/07-pull-request-testing.md)
+- [Pre-merge security review and CI](docs/v3/08-pre-merge-review.md)
 
 ## Local setup
 
@@ -76,6 +77,7 @@ npx prisma validate
 npx tsx scripts/prepare-postgres-schema.ts
 npx prisma validate --schema prisma/postgresql/schema.prisma
 npm run test:foundation
+npm run test:preservation
 npm run test:v3-routes
 npm run test:answers
 npm run build
@@ -85,6 +87,17 @@ The foundation tests use disposable SQLite databases. The V3 HTTP test copies th
 existing development database into an ignored test directory, creates fixture
 accounts there, starts npm run dev on loopback, checks access boundaries/routes,
 and shuts down the process tree.
+
+test:preservation reconstructs only the existing unchanged catalog in a disposable
+legacy-schema database, applies the additive V3 schema, seeds twice and verifies
+all original IDs/fields including attempt fixtures. It never populates the app's
+database. Use work/ci-bank-path.txt as NSMQ_TEST_DATABASE_PATH to run route checks
+against this test fixture instead of a private development database.
+
+GitHub Actions runs TypeScript, authentication/security, bank preservation and
+production build/start checks on pull requests to main. Jobs use read-only
+repository permissions and no production database or secrets. No job deploys or
+merges. npm audit checks the complete locked dependency tree, including tooling.
 
 Legacy V2 tests that call training APIs anonymously now need authenticated fixture
 sessions; use the V3 suite for authorization-aware checks. test:answers remains

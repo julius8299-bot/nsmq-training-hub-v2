@@ -84,6 +84,14 @@ export async function acceptInvitation(
   }
   const passwordHash = await hashPassword(input.password);
   return db.$transaction(async (tx) => {
+    if (invitation.createdById) {
+      const issuer = await tx.user.findUnique({ where: { id: invitation.createdById }, include: { roleDefinition: true } });
+      if (!issuer || issuer.status !== "ACTIVE" || !canInvite(issuer.roleDefinition?.code ?? "", invitation.roleCode as RoleCode)) {
+        throw new AccessError(400, "The invitation is invalid or expired.");
+      }
+    } else if (invitation.roleCode !== "ADMIN" || await tx.user.count({ where: { status: "ACTIVE", roleId: "ADMIN" } })) {
+      throw new AccessError(400, "The invitation is invalid or expired.");
+    }
     const claimed = await tx.invitation.updateMany({
       where: { id: invitation.id, acceptedAt: null, revokedAt: null, expiresAt: { gt: new Date() } },
       data: { acceptedAt: new Date() },
@@ -106,7 +114,6 @@ export async function acceptInvitation(
 
 export async function login(db: PrismaClient, emailInput: string, password: string) {
   const email = emailSchema.parse(emailInput);
-  await throttle(db, "login:global", 200);
   await throttle(db, "login:" + email, 10);
   const user = await db.user.findUnique({ where: { email }, include: { roleDefinition: true } });
   const validPassword = await verifyPassword(password, user?.passwordHash ?? null);

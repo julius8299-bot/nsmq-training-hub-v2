@@ -5,7 +5,7 @@ import { spawnSync } from "node:child_process";
 import { PrismaClient } from "@prisma/client";
 import { NextRequest } from "next/server";
 import { acceptInvitation, createInvitation, ensureRoles, login, resolveSession } from "../lib/auth/service";
-import { hashPassword, hashToken, verifyPassword } from "../lib/auth/crypto";
+import { hashPassword, hashToken, verifyPassword, PasswordCapacityError } from "../lib/auth/crypto";
 import { can, canInvite } from "../lib/auth/policy";
 import { importSeedQuestions } from "../lib/questions/seed-import";
 import { seedDatabase } from "../prisma/seed";
@@ -58,6 +58,18 @@ async function main() {
     assert.notEqual(session.tokenHash, signedIn.token);
     assert.equal((await resolveSession(db, signedIn.token)).id, student.id);
   });
+  await test("password hashing has bounded memory/concurrency and overload fails closed", async () => {
+    const results = await Promise.allSettled(Array.from({ length: 8 }, () => hashPassword(password)));
+    assert.equal(results.filter((result) => result.status === "fulfilled").length, 5);
+    const rejected = results.filter((result) => result.status === "rejected");
+    assert.equal(rejected.length, 3);
+    assert.ok(rejected.every((result) => result.reason instanceof PasswordCapacityError));
+    const { errorResponse } = await import("../lib/auth/http");
+    const response = errorResponse(new PasswordCapacityError());
+    assert.equal(response.status, 503);
+    assert.equal(response.headers.get("retry-after"), "2");
+    assert.equal(await verifyPassword(password, student.passwordHash), true);
+  });
   await test("four-role permission boundaries and staff invitation limits", async () => {
     assert.equal(can("STUDENT", "questions:write"), false);
     assert.equal(can("QUIZMASTER", "contest:host"), true);
@@ -66,6 +78,17 @@ async function main() {
     await assert.rejects(() => createInvitation(db, { email: "escape@example.test", role: "ADMIN", actorId: student.id }));
     const coach = await db.user.create({ data: { name: "Coach", email: "coach@example.test", role: "COACH", roleId: "COACH", status: "ACTIVE" } });
     await assert.rejects(() => createInvitation(db, { email: "escape@example.test", role: "QUIZMASTER", actorId: coach.id }));
+  });
+  await test("invitations cannot outlive the issuer's permission to grant that role", async () => {
+    const issuer = await db.user.create({ data: { name: "Former coach", email: "former-coach@example.test", role: "COACH", roleId: "COACH", status: "ACTIVE" } });
+    const disabled = await createInvitation(db, { email: "disabled-issuer@example.test", role: "STUDENT", actorId: issuer.id });
+    await db.user.update({ where: { id: issuer.id }, data: { status: "DISABLED" } });
+    await assert.rejects(() => acceptInvitation(db, { email: disabled.invitation.email, token: disabled.token, name: "Blocked", password }));
+    await db.user.update({ where: { id: issuer.id }, data: { status: "ACTIVE" } });
+    const downgraded = await createInvitation(db, { email: "downgraded-issuer@example.test", role: "STUDENT", actorId: issuer.id });
+    await db.user.update({ where: { id: issuer.id }, data: { role: "STUDENT", roleId: "STUDENT" } });
+    await assert.rejects(() => acceptInvitation(db, { email: downgraded.invitation.email, token: downgraded.token, name: "Blocked", password }));
+    assert.equal(await db.user.count({ where: { email: { in: [disabled.invitation.email, downgraded.invitation.email] } } }), 0);
   });
   const adminSession = await login(db, admin.email, password);
   const request = (url: string, token?: string, method = "GET", body?: unknown, origin = process.env.APP_URL) =>
@@ -96,19 +119,20 @@ async function main() {
     assert.equal((await questionsApi.GET(request("/api/questions?includePrivate=true", signedIn.token))).status, 403);
     assert.equal((await questionsApi.POST(request("/api/questions", signedIn.token, "POST", input))).status, 403);
     assert.equal((await questionsApi.POST(request("/api/questions", adminSession.token, "POST", input, "https://evil.test"))).status, 403);
-    const created = await questionsApi.POST(request("/api/questions", adminSession.token, "POST", { ...input, reviewStatus: "APPROVED", isPrivateOnly: false, id: "spoofed" }));
+    const created = await questionsApi.POST(request("/api/questions", adminSession.token, "POST", { ...input, reviewStatus: "APPROVED", isPrivateOnly: false, id: "spoofed", revision: 999 }));
     assert.equal(created.status, 201);
     const result = await created.json();
     questionId = result.id;
     assert.notEqual(questionId, "spoofed");
     assert.equal(result.reviewStatus, "PENDING_REVIEW");
     assert.equal(result.isPrivateOnly, true);
+    assert.equal(result.revision, 1);
     assert.deepEqual(result.riddleClues.map((c: { points: number }) => c.points), [5, 4, 3, 3]);
     assert.equal((await (await questionsApi.GET(request("/api/questions", signedIn.token))).json()).length, 0);
   });
   await test("human approval unlocks original questions; Ghana filters and clues retain API shape", async () => {
-    assert.equal((await reviewApi.POST(request("/review", signedIn.token, "POST", { decision: "APPROVED", notes: "Attempted student review" }), { params: Promise.resolve({ id: questionId }) })).status, 403);
-    assert.equal((await reviewApi.POST(request("/review", adminSession.token, "POST", { decision: "APPROVED", notes: "Answer and all clues checked." }), { params: Promise.resolve({ id: questionId }) })).status, 200);
+    assert.equal((await reviewApi.POST(request("/review", signedIn.token, "POST", { decision: "APPROVED", notes: "Attempted student review", revision: 1 }), { params: Promise.resolve({ id: questionId }) })).status, 403);
+    assert.equal((await reviewApi.POST(request("/review", adminSession.token, "POST", { decision: "APPROVED", notes: "Answer and all clues checked.", revision: 1 }), { params: Promise.resolve({ id: questionId }) })).status, 200);
     const response = await questionsApi.GET(request("/api/questions?page=1&roundType=RIDDLE&isGhanaContext=true", signedIn.token));
     const data = await response.json();
     assert.equal(data.total, 1);
@@ -119,8 +143,21 @@ async function main() {
     assert.equal(imported.status, 201);
     const importedId = (await imported.json()).id;
     assert.equal((await reviewApi.POST(request("/review", adminSession.token, "POST", {
-      decision: "APPROVED", notes: "Cannot skip source evidence.",
+      decision: "APPROVED", notes: "Cannot skip source evidence.", revision: 1,
     }), { params: Promise.resolve({ id: importedId }) })).status, 400);
+  });
+  await test("approval is bound to the reviewed question revision", async () => {
+    const created = await questionsApi.POST(request("/api/questions", adminSession.token, "POST", input));
+    const draft = await created.json();
+    const context = { params: Promise.resolve({ id: draft.id }) };
+    const edited = await itemApi.PUT(request("/edit", adminSession.token, "PUT", { ...input, questionText: "Who am I? Revised draft." }), context);
+    assert.equal(edited.status, 200);
+    assert.equal((await edited.json()).revision, 2);
+    const review = { decision: "APPROVED", notes: "Reviewed the displayed draft carefully.", revision: 1 };
+    assert.equal((await reviewApi.POST(request("/review", adminSession.token, "POST", review), context)).status, 409);
+    assert.equal((await db.question.findUniqueOrThrow({ where: { id: draft.id } })).isPrivateOnly, true);
+    assert.equal((await reviewApi.POST(request("/review", adminSession.token, "POST", { ...review, revision: 2 }), context)).status, 200);
+    assert.equal((await db.questionReview.findFirstOrThrow({ where: { questionId: draft.id } })).questionRevision, 2);
   });
   await test("attempts use the session owner; per-student dashboard and server scoring", async () => {
     const response = await attemptsApi.POST(request("/api/attempts", signedIn.token, "POST", {
@@ -162,6 +199,15 @@ async function main() {
     const key = hashToken("login:student@example.test");
     await db.authThrottle.upsert({ where: { key }, update: { count: 10 }, create: { key, count: 10, windowEndsAt: new Date(Date.now() + 60_000) } });
     await assert.rejects(() => login(db, student.email, password), (error: unknown) => (error as { status: number }).status === 429);
+  });
+  await test("another account cannot cause a persistent team-wide login lockout", async () => {
+    await db.authThrottle.upsert({
+      where: { key: hashToken("login:global") },
+      create: { key: hashToken("login:global"), count: 999, windowEndsAt: new Date(Date.now() + 60_000) },
+      update: { count: 999 },
+    });
+    const session = await login(db, admin.email, password);
+    assert.equal((await resolveSession(db, session.token)).id, admin.id);
   });
   console.log(passed + " foundation scenarios passed against a disposable database.");
   const { prisma } = await import("../lib/prisma");

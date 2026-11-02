@@ -58,6 +58,10 @@ Paths below are relative to this isolated V3 checkout.
 - docs/v3/05-file-map.md
 - docs/v3/06-verification.md
 - docs/v3/07-pull-request-testing.md
+- docs/v3/08-pre-merge-review.md
+- .github/workflows/v3-foundation.yml
+- scripts/check-bank-preservation.ts
+- scripts/fixtures/prisma.config.ts
 
 ## Deliberately retained
 

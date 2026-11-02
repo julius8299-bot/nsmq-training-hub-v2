@@ -22,6 +22,7 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
       where: { id },
       data: {
         ...body,
+        revision: { increment: 1 },
         reviewStatus: "PENDING_REVIEW",
         isPrivateOnly: true,
         timeLimitSeconds: Number(body.timeLimitSeconds),
@@ -47,7 +48,7 @@ export async function DELETE(request: NextRequest, { params }: { params: Promise
   const actor = await requireApiUser(request, "questions:write");
   const { id } = await params;
   await prisma.$transaction([
-    prisma.question.update({ where: { id }, data: { archivedAt: new Date() } }),
+    prisma.question.update({ where: { id }, data: { archivedAt: new Date(), revision: { increment: 1 } } }),
     prisma.auditEvent.create({ data: { actorId: actor.id, action: "QUESTION_ARCHIVED", entityType: "Question", entityId: id } }),
   ]);
   return NextResponse.json({ ok: true });

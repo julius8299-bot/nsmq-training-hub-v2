@@ -8,13 +8,29 @@ export function hashToken(token: string) {
   return createHash("sha256").update(token).digest("hex");
 }
 
-function derive(password: string, salt: string): Promise<Buffer> {
-  return new Promise((resolve, reject) => {
-    scrypt(password, salt, 64, { N: 131072, r: 8, p: 1, maxmem: 256 * 1024 * 1024 }, (error, key) => {
-      if (error) reject(error);
-      else resolve(key);
+export class PasswordCapacityError extends Error {}
+
+let deriving = false;
+const waiting: Array<() => void> = [];
+
+async function derive(password: string, salt: string): Promise<Buffer> {
+  // Keep unauthenticated concurrent requests from multiplying scrypt's memory cost.
+  if (deriving) {
+    if (waiting.length >= 4) throw new PasswordCapacityError("Password verification is busy.");
+    await new Promise<void>((resume) => waiting.push(resume));
+  } else deriving = true;
+  try {
+    return await new Promise<Buffer>((resolve, reject) => {
+      scrypt(password, salt, 64, { N: 131072, r: 8, p: 1, maxmem: 256 * 1024 * 1024 }, (error, key) => {
+        if (error) reject(error);
+        else resolve(key);
+      });
     });
-  });
+  } finally {
+    const resume = waiting.shift();
+    if (resume) resume();
+    else deriving = false;
+  }
 }
 
 export async function hashPassword(password: string) {
