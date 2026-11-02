@@ -3,14 +3,17 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "tsx scripts/prepare-sqlite.ts && prisma db push && tsx scripts/ensure-database.ts && next dev",
+    "dev": "next dev",
     "build": "next build",
-    "start": "tsx scripts/prepare-sqlite.ts && prisma db push && tsx scripts/ensure-database.ts && next start",
+    "start": "next start",
     "lint": "next lint",
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "db:seed": "tsx prisma/seed.ts",
     "db:ensure": "tsx scripts/prepare-sqlite.ts && prisma db push && tsx scripts/ensure-database.ts",
+    "auth:bootstrap": "tsx scripts/bootstrap-admin.ts",
+    "test:foundation": "tsx scripts/check-v3-foundation.ts",
+    "test:v3-routes": "tsx scripts/check-v3-routes.ts",
     "db:studio": "prisma studio",
     "test:answers": "tsx scripts/check-answer-regression.ts",
     "test:question-bank": "tsx scripts/check-question-bank-regression.ts",
@@ -23,11 +26,11 @@
   "dependencies": {
     "@prisma/client": "6.19.3",
     "lucide-react": "^0.468.0",
-    "next": "15.5.19",
+    "next": "15.5.28",
     "papaparse": "^5.4.1",
     "react": "19.1.1",
     "react-dom": "19.1.1",
-    "zod": "^3.24.1"
+    "zod": "4.6.7"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",
