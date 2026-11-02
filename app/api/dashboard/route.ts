@@ -1,16 +1,16 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
+import { errorResponse, requireApiUser } from "@/lib/auth/http";
 import { DIFFICULTIES, SUBJECTS, SUBJECT_TOPICS } from "@/lib/constants";
 import { prisma } from "@/lib/prisma";
 
-export async function GET() {
-  const user = await prisma.user.findUnique({ where: { email: "student@nsmqhub.local" } });
-  const attempts = user
-    ? await prisma.attempt.findMany({
+export async function GET(request: NextRequest) {
+  try {
+  const user = await requireApiUser(request);
+  const attempts = await prisma.attempt.findMany({
         where: { userId: user.id },
         include: { question: true },
         orderBy: { createdAt: "desc" },
-      })
-    : [];
+      });
 
   const subjects = SUBJECTS.map((subject) => {
     const items = attempts.filter((attempt) => attempt.question.subject === subject);
@@ -76,7 +76,7 @@ export async function GET() {
     DIFFICULTIES[Math.min(masteredIndex + 1, DIFFICULTIES.length - 1)];
 
   const problem = await prisma.question.findFirst({
-    where: { roundType: "PROBLEM_OF_THE_DAY" },
+    where: { roundType: "PROBLEM_OF_THE_DAY", archivedAt: null, isPrivateOnly: false, reviewStatus: { in: ["APPROVED", "LEGACY_UNREVIEWED"] } },
     orderBy: { createdAt: "asc" },
   });
 
@@ -91,4 +91,5 @@ export async function GET() {
     recommendedDifficulty,
     problem,
   });
+  } catch (error) { return errorResponse(error); }
 }

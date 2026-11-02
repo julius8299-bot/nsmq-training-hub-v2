@@ -2,22 +2,27 @@ import { NextRequest, NextResponse } from "next/server";
 import { checkAnswer } from "@/lib/answer-checker";
 import { MODE_POINTS } from "@/lib/constants";
 import { prisma } from "@/lib/prisma";
+import { errorResponse, requireApiUser, readJsonRequest } from "@/lib/auth/http";
+import { z } from "zod";
 
-const DEMO_EMAIL = "student@nsmqhub.local";
 
 export async function POST(request: NextRequest) {
-  const body = await request.json();
+  try {
+  const user = await requireApiUser(request);
+  const body = z.object({
+    questionId: z.string().min(1).max(100), userAnswer: z.string().max(30_000),
+    timeTakenSeconds: z.number().min(0).max(86400).optional(),
+    mode: z.string().max(80).optional(), selfCheck: z.boolean().optional(),
+    riddleClueNumber: z.number().int().min(1).max(5).optional(),
+  }).parse(await readJsonRequest(request, 65536));
   const question = await prisma.question.findUnique({
     where: { id: body.questionId },
     include: { riddleClues: { orderBy: { clueNumber: "asc" } } },
   });
   if (!question) return NextResponse.json({ error: "Question not found" }, { status: 404 });
-
-  const user = await prisma.user.upsert({
-    where: { email: DEMO_EMAIL },
-    update: {},
-    create: { name: "Demo Student", email: DEMO_EMAIL, role: "STUDENT" },
-  });
+  if (question.archivedAt || question.isPrivateOnly || !["APPROVED", "LEGACY_UNREVIEWED"].includes(question.reviewStatus)) {
+    return NextResponse.json({ error: "Question is unavailable." }, { status: 404 });
+  }
 
   const isCorrect = body.selfCheck
     ? false
@@ -43,4 +48,5 @@ export async function POST(request: NextRequest) {
   });
 
   return NextResponse.json({ isCorrect, correctAnswer: question.answer, pointsAwarded });
+  } catch (error) { return errorResponse(error); }
 }
