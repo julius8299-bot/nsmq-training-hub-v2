@@ -24,7 +24,8 @@
     "vercel-build": "prisma generate --schema prisma/postgresql/schema.prisma && prisma db push --schema prisma/postgresql/schema.prisma --skip-generate && tsx scripts/ensure-database.ts && tsx scripts/import-catalog.ts && tsx scripts/import-elements.ts && next build",
     "db:import-catalog": "tsx scripts/import-catalog.ts",
     "db:import-elements": "tsx scripts/import-elements.ts",
-    "db:copy-local": "tsx scripts/copy-local-records.ts"
+    "db:copy-local": "tsx scripts/copy-local-records.ts",
+    "test:elements": "tsx scripts/check-elements.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

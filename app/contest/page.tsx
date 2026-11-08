@@ -60,7 +60,7 @@ export default function ContestPage() {
         .then((data) => data.questions)))
       .then((groups) => {
         if (cancelled) return;
-        const distinct = [...new Map(groups.flat().map((question) => [question.questionText, question])).values()];
+        const distinct = [...new Map(groups.flat().map((question) => [question.id, question])).values()];
         setQuestions(shuffleQuestions(distinct).slice(0, CONTEST_TARGETS[round]));
       })
       .catch((caught) => { if (!cancelled) setError(caught as ApiError); })

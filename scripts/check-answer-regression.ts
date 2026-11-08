@@ -7,7 +7,7 @@ import { biologyQuestions } from "../prisma/seed-data/biology";
 import { supplementalPatternQuestions } from "../prisma/seed-data/supplemental-patterns";
 import { advancedFinalQuestions } from "../prisma/seed-data/advanced-final-questions";
 
-type Case = readonly [string, { answer: string; acceptedAnswers?: string; numericTolerance?: number }];
+type Case = readonly [string, { answer: string; acceptedAnswers?: string; numericTolerance?: number; roundType?: string }];
 const accept: Case[] = [
   ["electron", { answer: "electron", acceptedAnswers: '["an electron","e-","e⁻"]' }],
   ["Electron", { answer: "electron", acceptedAnswers: "[]" }],
@@ -16,8 +16,9 @@ const accept: Case[] = [
   ["e⁻", { answer: "electron", acceptedAnswers: '["e-","e⁻"]' }],
   ["magnetic flux density", { answer: "Magnetic flux density", acceptedAnswers: "[]" }],
   ["4 ohms", { answer: "4 Ω", acceptedAnswers: '["4 ohms","4 Ω"]' }],
-  ["True", { answer: "T", acceptedAnswers: "[]" }],
-  ["False", { answer: "F", acceptedAnswers: "[]" }],
+  ["True", { answer: "T", acceptedAnswers: "[]", roundType: "TRUE_FALSE" }],
+  ["False", { answer: "F", acceptedAnswers: "[]", roundType: "TRUE_FALSE" }],
+  ["f", { answer: "False" }],
   ["0.5", { answer: "1/2", acceptedAnswers: "[]" }],
   ["1,000", { answer: "1000" }],
   ["1000", { answer: "1,000" }],
@@ -39,6 +40,7 @@ const accept: Case[] = [
   ["24 metres per second", { answer: "24 m/s" }],
   ["-1/2", { answer: "−0.5" }],
   ["yes", { answer: "True" }],
+  ["F", { answer: "F" }],
   ["H2O", { answer: "H₂O" }],
 ];
 const reject: Case[] = [
@@ -53,6 +55,8 @@ const reject: Case[] = [
   ["photosyntesis", { answer: "photosynthesis" }],
   ["25", { answer: "24 m/s" }],
   ["False", { answer: "True" }],
+  ["no", { answer: "F" }], // fluorine's symbol is not "false"
+  ["false", { answer: "F" }],
   ["", { answer: "0" }],
 ];
 
@@ -74,7 +78,7 @@ const answers = [...new Set(unique.map((q) => q.answer))];
 const stripArticle = (value: string) => value.trim().toLowerCase().replace(/^(the|a|an) /, "");
 let crossMatches = 0;
 for (const question of unique) {
-  const key = { answer: question.answer, acceptedAnswers: JSON.stringify(question.acceptedAnswers), numericTolerance: question.numericTolerance };
+  const key = { answer: question.answer, acceptedAnswers: JSON.stringify(question.acceptedAnswers), numericTolerance: question.numericTolerance, roundType: question.roundType };
   assert.ok(checkAnswer(question.answer, key), "Answer does not match itself: " + question.answer);
   for (const other of answers) {
     if (other === question.answer || question.acceptedAnswers.includes(other)) continue;

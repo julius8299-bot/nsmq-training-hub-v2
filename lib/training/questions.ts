@@ -80,6 +80,9 @@ function shuffle<T>(items: T[]) {
   return copy;
 }
 
+/** Two rows are "the same question" when text and answer match (riddles all share the text "Who am I?"). */
+const distinctKey = (question: { questionText: string; answer: string }) => question.questionText + "\u0000" + question.answer.trim().toLowerCase();
+
 /**
  * Random selection of DISTINCT questions (the legacy bank repeats identical question texts many times).
  * Questions this student answered in the last 7 days are used only when nothing fresher is left.
@@ -87,15 +90,18 @@ function shuffle<T>(items: T[]) {
 export async function pickQuestions(db: PrismaClient, userId: string, filter: TrainingFilter, excludeIds: string[] = []) {
   const candidates = await db.question.findMany({
     where: { ...trainingWhere(filter), ...(excludeIds.length && { id: { notIn: excludeIds } }) },
-    select: { id: true, questionText: true },
+    select: { id: true, questionText: true, answer: true },
   });
   if (!candidates.length) return [];
   const recent = new Set((await db.attempt.findMany({
     where: { userId, createdAt: { gte: new Date(Date.now() - 7 * 24 * 60 * 60_000) } },
-    select: { question: { select: { questionText: true } } },
-  })).map((attempt) => attempt.question.questionText));
+    select: { question: { select: { questionText: true, answer: true } } },
+  })).map((attempt) => distinctKey(attempt.question)));
   const byText = new Map<string, string[]>();
-  for (const candidate of candidates) byText.set(candidate.questionText, [...(byText.get(candidate.questionText) ?? []), candidate.id]);
+  for (const candidate of candidates) {
+    const key = distinctKey(candidate);
+    byText.set(key, [...(byText.get(key) ?? []), candidate.id]);
+  }
   const groups = shuffle([...byText.entries()]);
   const fresh = groups.filter(([text]) => !recent.has(text));
   const seen = groups.filter(([text]) => recent.has(text));
@@ -108,8 +114,8 @@ export async function pickQuestions(db: PrismaClient, userId: string, filter: Tr
 /** One Problem of the Day for everyone, changing at midnight Ghana time (GMT). */
 export async function problemOfTheDay(db: PrismaClient, difficulty?: string, date = new Date()) {
   const where = { ...studentVisible, roundType: "PROBLEM_OF_THE_DAY", ...(difficulty && { difficulty }) };
-  const rows = await db.question.findMany({ where, select: { id: true, questionText: true }, orderBy: { id: "asc" } });
-  const distinct = [...new Map(rows.map((row) => [row.questionText, row.id])).values()];
+  const rows = await db.question.findMany({ where, select: { id: true, questionText: true, answer: true }, orderBy: { id: "asc" } });
+  const distinct = [...new Map(rows.map((row) => [distinctKey(row), row.id])).values()];
   if (!distinct.length) return null;
   const day = Math.floor(date.getTime() / 86_400_000);
   // Spread consecutive days across the bank instead of walking it in order.

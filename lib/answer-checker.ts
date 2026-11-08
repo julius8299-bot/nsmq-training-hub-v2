@@ -1,5 +1,7 @@
 type AnswerQuestion = {
   answer: string;
+  /** True/false shorthand (T, F, yes, no) is only understood in True/False questions — "F" is also fluorine. */
+  roundType?: string;
   acceptedAnswers?: string | string[] | null;
   numericTolerance?: number | null;
 };
@@ -25,7 +27,11 @@ export function parseAcceptedAnswers(value: AnswerQuestion["acceptedAnswers"]) {
   return value.split("|").map((item) => item.trim()).filter(Boolean);
 }
 
-function normalizeText(value: string) {
+function isBooleanQuestion(question: AnswerQuestion) {
+  return question.roundType === "TRUE_FALSE" || /^(true|false)$/i.test(question.answer.trim());
+}
+
+function normalizeText(value: string, booleans = false) {
   let text = value.replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺]+/g, (run) => "^" + [...run].map((char) => SUPERSCRIPTS[char]).join(""));
   text = text
     .normalize("NFKC")
@@ -50,7 +56,7 @@ function normalizeText(value: string) {
     .replace(/\.$/, "")
     .trim()
     .replace(/^(the|a|an) /, "");
-  return BOOLEAN_ALIASES[text] ?? text;
+  return booleans ? BOOLEAN_ALIASES[text] ?? text : text;
 }
 
 /** Compare ignoring spaces and letter-number hyphens: "carbon14" = "carbon 14" = "carbon-14". */
@@ -132,11 +138,12 @@ function isSymbolicUnit(unit: string) {
 
 export function checkAnswer(userAnswer: string, question: AnswerQuestion) {
   const expected = [question.answer, ...parseAcceptedAnswers(question.acceptedAnswers)];
-  const user = normalizeText(String(userAnswer ?? ""));
+  const booleans = isBooleanQuestion(question);
+  const user = normalizeText(String(userAnswer ?? ""), booleans);
   if (!user) return false;
 
   for (const item of expected) {
-    const target = normalizeText(String(item));
+    const target = normalizeText(String(item), booleans);
     if (!target) continue;
     if (target === user || compact(target) === compact(user)) return true;
     if (compact(stripAssignment(target)) === compact(stripAssignment(user))) return true;
