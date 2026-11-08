@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { Check, X } from "lucide-react";
 import { api, ApiError } from "@/lib/client/api";
-import { ROUND_LABELS } from "@/lib/constants";
+import { ROUND_LABELS, ROUND_TYPES, SUBJECT_LABELS, SUBJECTS } from "@/lib/constants";
 import type { StaffUser } from "@/components/admin-dashboard";
 
 type Clue = { clueNumber: number; clueText: string; points: number };
@@ -113,15 +113,33 @@ export function ReviewQueue({ user }: { user: StaffUser }) {
   const [data, setData] = useState<QuestionPage | null>(null);
   const [page, setPage] = useState(1);
   const [error, setError] = useState("");
+  const [subject, setSubject] = useState("");
+  const [roundType, setRoundType] = useState("");
+  const [shortcut, setShortcut] = useState("ready");
   const load = useCallback(() => {
     setError("");
-    api<QuestionPage>(`/api/admin/questions?status=queue&page=${page}&pageSize=10`).then(setData).catch((caught) => setError((caught as ApiError).message));
-  }, [page]);
+    const query = new URLSearchParams({ status: "queue", page: String(page), pageSize: "10", subject, roundType, shortcut });
+    api<QuestionPage>(`/api/admin/questions?${query}`).then(setData).catch((caught) => setError((caught as ApiError).message));
+  }, [page, subject, roundType, shortcut]);
+  const filter = (set: (value: string) => void) => (event: React.ChangeEvent<HTMLSelectElement>) => { set(event.target.value); setPage(1); };
   useEffect(load, [load]);
   if (error) return <p role="alert" className="panel p-5 text-sm text-red-700">{error}</p>;
   if (!data) return <p className="panel p-5 text-ink/50">Loading review queue…</p>;
   return (
     <section>
+      <div className="mb-4 flex flex-wrap gap-2">
+        <select aria-label="Subject" className="input w-auto" value={subject} onChange={filter(setSubject)}>
+          <option value="">All subjects</option>{SUBJECTS.map((value) => <option key={value} value={value}>{SUBJECT_LABELS[value]}</option>)}
+        </select>
+        <select aria-label="Round" className="input w-auto" value={roundType} onChange={filter(setRoundType)}>
+          <option value="">All rounds</option>{ROUND_TYPES.map((value) => <option key={value} value={value}>{ROUND_LABELS[value]}</option>)}
+        </select>
+        <select aria-label="Shortcut" className="input w-auto" value={shortcut} onChange={filter(setShortcut)}>
+          <option value="ready">Ready to review (has a shortcut)</option>
+          <option value="missing">Imported, shortcut still being written</option>
+          <option value="">Everything waiting</option>
+        </select>
+      </div>
       <p className="mb-4 text-sm text-ink/60">{data.total} waiting · {data.counts.pending ?? 0} new questions · {data.counts.edits ?? 0} proposed edits. Approving publishes the question to students; rejecting an edit keeps the live version unchanged.</p>
       {!data.questions.length && <div className="panel p-8 text-center text-ink/55">Nothing to review. New and edited questions will appear here.</div>}
       <div className="grid gap-4">{data.questions.map((question) => <ReviewCard key={question.id + ":" + question.revision} question={question} user={user} onDone={load} />)}</div>

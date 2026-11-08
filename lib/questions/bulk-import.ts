@@ -11,8 +11,10 @@ const importKeySchema = z.string().trim().min(1).max(200).regex(/^[\w.:#/-]+$/, 
 export type ImportResult = { row: number; status: "imported" | "updated" | "unchanged" | "duplicate" | "error"; message?: string; id?: string };
 
 const clueRows = (clues: string[]) => clues.map((clueText, index) => ({ clueNumber: index + 1, clueText, points: RIDDLE_POINTS[index] }));
-const contentKey = (item: { subject: string; roundType: string; questionText: string; answer: string }) =>
-  [item.subject, item.roundType, normalize(item.questionText), normalize(item.answer)].join("|");
+type Content = { subject: string; roundType: string; questionText: string; answer: string; preamble?: string | null };
+/** Same subject, round, stem, question, answer and clues: riddles sharing "Who am I?" but with different clues stay distinct. */
+const contentKey = (item: Content, clues: string[]) =>
+  [item.subject, item.roundType, normalize(item.preamble ?? ""), normalize(item.questionText), normalize(item.answer), normalize(clues.join(" "))].join("|");
 
 function sameContent(existing: Record<string, unknown> & { riddleClues: { clueText: string }[] }, prepared: PreparedQuestion) {
   const fieldsSame = Object.entries(prepared.fields).every(([key, value]) => String(existing[key] ?? "") === String(value ?? ""));
@@ -45,9 +47,9 @@ export async function importQuestions(db: PrismaClient, actorId: string, rows: R
   })).map((question) => [question.seedKey!, question]));
   const existing = await db.question.findMany({
     where: { archivedAt: null, questionText: { in: prepared.filter((item) => !item.key || !keyed.has(item.key)).map((item) => item.value.fields.questionText) } },
-    select: { subject: true, roundType: true, questionText: true, answer: true },
+    select: { subject: true, roundType: true, questionText: true, answer: true, preamble: true, riddleClues: { select: { clueText: true }, orderBy: { clueNumber: "asc" } } },
   });
-  const seen = new Set(existing.map(contentKey));
+  const seen = new Set(existing.map((item) => contentKey(item, item.riddleClues.map((clue) => clue.clueText))));
   const seenKeys = new Set<string>();
   let imported = 0, updated = 0;
   for (const { row, key, value } of prepared) {
@@ -77,8 +79,9 @@ export async function importQuestions(db: PrismaClient, actorId: string, rows: R
       updated += 1;
       continue;
     }
-    if (seen.has(contentKey(value.fields))) { results.push({ row, status: "duplicate", message: "Already in the bank." }); continue; }
-    seen.add(contentKey(value.fields));
+    const content = contentKey(value.fields as Content, value.clues);
+    if (seen.has(content)) { results.push({ row, status: "duplicate", message: "Already in the bank." }); continue; }
+    seen.add(content);
     const created = await db.question.create({
       data: {
         ...value.fields, seedKey: key, createdById: actorId, reviewStatus: "PENDING_REVIEW", isPrivateOnly: true,

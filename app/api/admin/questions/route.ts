@@ -4,6 +4,7 @@ import { z } from "zod";
 import { errorResponse, intParam, requireApiUser } from "@/lib/auth/http";
 import { DIFFICULTIES, ROUND_TYPES, SUBJECTS } from "@/lib/constants";
 import { containsText, prisma } from "@/lib/prisma";
+import { SHORTCUT_PENDING } from "@/lib/questions/editing";
 import { PUBLISHED_STATUSES } from "@/lib/questions/visibility";
 
 const STATUS_FILTERS = ["queue", "pending", "edits", "live", "rejected", "archived", "all"] as const;
@@ -18,6 +19,11 @@ export async function GET(request: NextRequest) {
     const roundType = z.enum(ROUND_TYPES).optional().parse(params.get("roundType") || undefined);
     const difficulty = z.enum(DIFFICULTIES).optional().parse(params.get("difficulty") || undefined);
     const search = params.get("search")?.trim().slice(0, 200);
+    // shortcut=ready hides imported questions still waiting for a shortcut; shortcut=missing shows only those.
+    const shortcut = z.enum(["ready", "missing"]).optional().parse(params.get("shortcut") || undefined);
+    const shortcutFilter: Prisma.QuestionWhereInput = shortcut === "ready"
+      ? { NOT: { shortcutSolution: { startsWith: SHORTCUT_PENDING } } }
+      : shortcut === "missing" ? { shortcutSolution: { startsWith: SHORTCUT_PENDING } } : {};
     const page = intParam(request, "page", 1, 1, 100_000);
     const pageSize = intParam(request, "pageSize", 20, 1, 100);
     const byStatus: Record<(typeof STATUS_FILTERS)[number], Prisma.QuestionWhereInput> = {
@@ -32,7 +38,7 @@ export async function GET(request: NextRequest) {
     const where: Prisma.QuestionWhereInput = {
       AND: [
         byStatus[status],
-        subject ? { subject } : {}, roundType ? { roundType } : {}, difficulty ? { difficulty } : {},
+        shortcutFilter, subject ? { subject } : {}, roundType ? { roundType } : {}, difficulty ? { difficulty } : {},
         search ? { OR: [{ questionText: containsText(search) }, { answer: containsText(search) }, { topic: containsText(search) }, { tags: containsText(search) }] } : {},
       ],
     };
