@@ -1,8 +1,8 @@
-import { PrismaClient } from "@prisma/client";
+import { createPrismaClient } from "../lib/prisma-factory";
 import { ensureRoles, emailSchema } from "../lib/auth/service";
 import { hashToken, randomToken } from "../lib/auth/crypto";
 
-const database = new PrismaClient();
+const database = createPrismaClient();
 async function main() {
   const email = emailSchema.parse(process.env.BOOTSTRAP_ADMIN_EMAIL);
   const appUrl = new URL(process.env.APP_URL ?? "http://localhost:3000");

@@ -4,7 +4,7 @@ import { appendFileSync, copyFileSync, mkdirSync, mkdtempSync, writeFileSync } f
 import { resolve } from "node:path";
 import { spawnSync } from "node:child_process";
 import { DatabaseSync, type SQLInputValue } from "node:sqlite";
-import { PrismaClient } from "@prisma/client";
+import { createPrismaClient } from "../lib/prisma-factory";
 import { mathematicsQuestions } from "../prisma/seed-data/mathematics";
 import { physicsQuestions } from "../prisma/seed-data/physics";
 import { chemistryQuestions } from "../prisma/seed-data/chemistry";
@@ -112,7 +112,7 @@ copyFileSync(legacyPath, upgradedPath);
 prisma(["db", "push", "--skip-generate"]);
 
 async function main() {
-  const db = new PrismaClient({ datasourceUrl: databaseUrl });
+  const db = createPrismaClient(databaseUrl);
   const previousFactoryOptIn = process.env.IMPORT_LEGACY_QUESTION_FACTORY;
   process.env.IMPORT_LEGACY_QUESTION_FACTORY = "false";
   try {

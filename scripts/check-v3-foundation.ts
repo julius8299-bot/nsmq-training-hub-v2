@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { mkdtempSync, mkdirSync, closeSync, openSync } from "node:fs";
 import { resolve } from "node:path";
 import { spawnSync } from "node:child_process";
-import { PrismaClient } from "@prisma/client";
+import { createPrismaClient } from "../lib/prisma-factory";
 import { NextRequest } from "next/server";
 import { acceptInvitation, createInvitation, ensureRoles, login, resolveSession } from "../lib/auth/service";
 import { hashPassword, hashToken, verifyPassword, PasswordCapacityError } from "../lib/auth/crypto";
@@ -20,7 +20,7 @@ const push = spawnSync(process.execPath, [resolve("node_modules/prisma/build/ind
   env: process.env, encoding: "utf8", windowsHide: true,
 });
 assert.equal(push.status, 0, push.stderr);
-const db = new PrismaClient();
+const db = createPrismaClient();
 const password = "Team training test passphrase 2026";
 let passed = 0;
 async function test(name: string, run: () => Promise<void> | void) {
