@@ -2,9 +2,9 @@ name: V3 Foundation
 
 on:
   pull_request:
-    branches: [main]
+    branches: [main, codex/v3-foundation]
   push:
-    branches: [codex/v3-foundation]
+    branches: [codex/v3-foundation, claude/v3-phase1-fixes]
 
 permissions:
   contents: read
@@ -15,7 +15,7 @@ concurrency:
 
 env:
   DATABASE_URL: file:./ci.db
-  POSTGRES_DATABASE_URL: postgresql://fixture:fixture@localhost:5432/unused
+  POSTGRES_URL_NON_POOLING: postgresql://fixture:fixture@localhost:5432/unused
   APP_URL: http://127.0.0.1:3143
   NEXT_TELEMETRY_DISABLED: '1'
 
@@ -57,6 +57,8 @@ jobs:
       - run: npx prisma validate --schema prisma/postgresql/schema.prisma
       - run: npm run test:foundation
       - run: npm run test:answers
+      - run: npm run test:elements
+      - run: npm run test:hosted-import
 
   question-bank-preservation:
     name: Question Bank Preservation

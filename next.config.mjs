@@ -6,6 +6,8 @@ const nextConfig = {
   async rewrites() {
     return { fallback: [{ source: "/gallery/NSMQ-trophy.jpg", destination: "/gallery/nsmq-trophy.jpg" }] };
   },
+  // Database drivers load native code at runtime; Next.js must not bundle them.
+  serverExternalPackages: ["@prisma/adapter-libsql", "@libsql/client", "libsql", "@prisma/adapter-pg", "pg"],
   experimental: {
     optimizePackageImports: ["lucide-react"],
   },

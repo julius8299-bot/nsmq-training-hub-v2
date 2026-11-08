@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Sans, Fraunces } from "next/font/google";
+import localFont from "next/font/local";
 import { SiteHeader } from "@/components/site-header";
 import { AccountControls } from "@/components/account-controls";
 import { headers } from "next/headers";
@@ -8,8 +8,23 @@ import { pageUser } from "@/lib/auth/http";
 import { AccessError } from "@/lib/auth/service";
 import "./globals.css";
 
-const bodyFont = DM_Sans({ subsets: ["latin"], variable: "--font-body" });
-const displayFont = Fraunces({ subsets: ["latin"], variable: "--font-display" });
+// Same typefaces as before (DM Sans, Fraunces), self-hosted from npm (OFL-1.1) so builds never depend on Google Fonts.
+const bodyFont = localFont({
+  src: [
+    { path: "../node_modules/@fontsource-variable/dm-sans/files/dm-sans-latin-wght-normal.woff2", weight: "100 1000", style: "normal" },
+    { path: "../node_modules/@fontsource-variable/dm-sans/files/dm-sans-latin-ext-wght-normal.woff2", weight: "100 1000", style: "normal" },
+  ],
+  variable: "--font-body",
+  display: "swap",
+});
+const displayFont = localFont({
+  src: [
+    { path: "../node_modules/@fontsource-variable/fraunces/files/fraunces-latin-wght-normal.woff2", weight: "100 900", style: "normal" },
+    { path: "../node_modules/@fontsource-variable/fraunces/files/fraunces-latin-ext-wght-normal.woff2", weight: "100 900", style: "normal" },
+  ],
+  variable: "--font-display",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "NSMQ Training Hub",

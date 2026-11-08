@@ -44,7 +44,7 @@ async function main() {
   const get = (path: string, token?: string) => fetch(base + path, {
     redirect: "manual", headers: token ? { cookie: "nsmq_session=" + token } : {},
   });
-  for (const path of ["/", "/gallery", "/login", "/accept-invite"]) {
+  for (const path of ["/", "/gallery", "/login", "/accept-invite", "/setup"]) {
     assert.equal((await get(path)).status, 200, path);
     console.log("PASS public " + path);
   }
@@ -58,7 +58,12 @@ async function main() {
     assert.match(response.headers.get("content-type") ?? "", /^image\//, path);
     console.log("PASS branding/gallery image " + path);
   }
-  for (const path of ["/dashboard", "/practice", "/full-contest", "/contest", "/speed-race", "/potd", "/problem-of-the-day", "/tf", "/true-false", "/riddles", "/question-bank", "/admin"]) {
+  const headers = (await get("/")).headers;
+  assert.match(headers.get("content-security-policy") ?? "", /frame-ancestors 'none'/);
+  assert.equal(headers.get("x-frame-options"), "DENY");
+  if (production) assert.match(headers.get("strict-transport-security") ?? "", /max-age=/);
+  console.log("PASS security headers");
+  for (const path of ["/dashboard", "/practice", "/elements", "/full-contest", "/contest", "/speed-race", "/potd", "/problem-of-the-day", "/tf", "/true-false", "/riddles", "/question-bank", "/admin"]) {
     assert.equal((await get(path)).status, 307, "Missing login redirect: " + path);
     assert.equal((await get(path, staffToken)).status, 200, "Authenticated route: " + path);
     console.log("PASS gated/authenticated " + path);
@@ -82,6 +87,29 @@ async function main() {
     assert.ok(data.questions.every((question: { roundType: string }) => question.roundType === roundType));
     console.log("PASS round filter " + roundType + ": " + data.total);
   }
+  // A full round trip over HTTP: random set without answers, server draw, scored attempt with feedback.
+  const post = (path: string, token: string, body: unknown) => fetch(base + path, {
+    method: "POST", headers: { origin: base, "Content-Type": "application/json", cookie: "nsmq_session=" + token }, body: JSON.stringify(body),
+  });
+  for (const roundType of ROUND_TYPES) {
+    const set = await (await get("/api/training/questions?limit=5&roundType=" + roundType, studentToken)).json();
+    assert.ok(set.questions.length > 0, "training set " + roundType);
+    assert.ok(set.questions.every((question: Record<string, unknown>) => !("answer" in question) && !("riddleClues" in question)));
+    const draw = await (await post("/api/training/draws", studentToken, { questionId: set.questions[0].id, mode: "SELF_PRACTICE" })).json();
+    assert.ok(draw.drawId && !("answer" in draw.question));
+    const attempt = await post("/api/attempts", studentToken, { drawId: draw.drawId, userAnswer: "my answer" });
+    assert.equal(attempt.status, 200);
+    assert.ok((await attempt.json()).feedback.answer);
+    console.log("PASS hidden-answer training round trip " + roundType);
+  }
+  const potd = await (await get("/api/potd", studentToken)).json();
+  assert.ok(potd.problem && !("answer" in potd.problem));
+  assert.equal((await (await get("/api/potd", studentToken)).json()).problem.id, potd.problem.id, "Same problem all day");
+  assert.equal((await get("/api/dashboard", studentToken)).status, 200);
+  assert.equal((await get("/api/admin/students", studentToken)).status, 403);
+  assert.equal((await get("/api/admin/students", staffToken)).status, 200);
+  assert.equal((await get("/api/admin/questions?status=queue", staffToken)).status, 200);
+  console.log("PASS POTD, dashboard and coach endpoints");
   const response = await fetch(base + "/api/auth/login", {
     method: "POST", headers: { origin: base, "Content-Type": "application/json" },
     body: JSON.stringify({ email: student.email, password }),

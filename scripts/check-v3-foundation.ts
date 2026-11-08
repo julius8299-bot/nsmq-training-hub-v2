@@ -4,8 +4,8 @@ import { resolve } from "node:path";
 import { spawnSync } from "node:child_process";
 import { createPrismaClient } from "../lib/prisma-factory";
 import { NextRequest } from "next/server";
-import { acceptInvitation, createInvitation, ensureRoles, login, resolveSession } from "../lib/auth/service";
-import { hashPassword, hashToken, verifyPassword, PasswordCapacityError } from "../lib/auth/crypto";
+import { acceptInvitation, createInvitation, createPasswordReset, ensureRoles, login, resolveSession } from "../lib/auth/service";
+import { hashPassword, hashToken, verifyPassword, PasswordCapacityError, MAX_ACTIVE_DERIVATIONS, MAX_QUEUED_DERIVATIONS } from "../lib/auth/crypto";
 import { can, canInvite } from "../lib/auth/policy";
 import { importSeedQuestions } from "../lib/questions/seed-import";
 import { seedDatabase } from "../prisma/seed";
@@ -59,10 +59,11 @@ async function main() {
     assert.equal((await resolveSession(db, signedIn.token)).id, student.id);
   });
   await test("password hashing has bounded memory/concurrency and overload fails closed", async () => {
-    const results = await Promise.allSettled(Array.from({ length: 8 }, () => hashPassword(password)));
-    assert.equal(results.filter((result) => result.status === "fulfilled").length, 5);
+    const capacity = MAX_ACTIVE_DERIVATIONS + MAX_QUEUED_DERIVATIONS;
+    const results = await Promise.allSettled(Array.from({ length: capacity + 6 }, () => hashPassword(password)));
+    assert.equal(results.filter((result) => result.status === "fulfilled").length, capacity);
     const rejected = results.filter((result) => result.status === "rejected");
-    assert.equal(rejected.length, 3);
+    assert.equal(rejected.length, 6);
     assert.ok(rejected.every((result) => result.reason instanceof PasswordCapacityError));
     const { errorResponse } = await import("../lib/auth/http");
     const response = errorResponse(new PasswordCapacityError());
@@ -159,18 +160,90 @@ async function main() {
     assert.equal((await reviewApi.POST(request("/review", adminSession.token, "POST", { ...review, revision: 2 }), context)).status, 200);
     assert.equal((await db.questionReview.findFirstOrThrow({ where: { questionId: draft.id } })).questionRevision, 2);
   });
-  await test("attempts use the session owner; per-student dashboard and server scoring", async () => {
-    const response = await attemptsApi.POST(request("/api/attempts", signedIn.token, "POST", {
-      questionId, userAnswer: "  Electron ", mode: "RIDDLE", riddleClueNumber: 4,
-      userId: admin.id, riddlePoints: 999, timeTakenSeconds: 10,
-    }));
+  const drawsApi = await import("../app/api/training/draws/route");
+  const clueApi = await import("../app/api/training/draws/[id]/clue/route");
+  const trainingApi = await import("../app/api/training/questions/route");
+  const startDraw = async (token: string, id: string, mode = "RIDDLE", extra: Record<string, unknown> = {}) => {
+    const response = await drawsApi.POST(request("/api/training/draws", token, "POST", { questionId: id, mode, ...extra }));
+    assert.equal(response.status, 201, await response.clone().text());
+    return response.json();
+  };
+  await test("answers, solutions and unseen clues never reach the student before answering", async () => {
+    const list = await (await trainingApi.GET(request("/api/training/questions?roundType=RIDDLE&limit=5", signedIn.token))).json();
+    assert.ok(list.questions.length >= 1);
+    for (const item of list.questions) {
+      for (const field of ["answer", "acceptedAnswers", "fullSolution", "shortcutSolution", "riddleClues"]) assert.ok(!(field in item), field + " leaked");
+    }
+    const draw = await startDraw(signedIn.token, questionId);
+    assert.ok(!("answer" in draw.question));
+    assert.equal(draw.clues.length, 1, "Only the first clue is sent");
+    const plain = await (await questionsApi.GET(request("/api/questions", signedIn.token))).json();
+    assert.ok(plain.every((item: Record<string, unknown>) => !("answer" in item)));
+  });
+  await test("attempts use the session owner; riddle points, time and double submits are enforced by the server", async () => {
+    const draw = await startDraw(signedIn.token, questionId);
+    for (let clue = 2; clue <= 4; clue += 1) {
+      const revealed = await (await clueApi.POST(request("/clue", signedIn.token, "POST", {}), { params: Promise.resolve({ id: draw.drawId }) })).json();
+      assert.equal(revealed.clues.length, clue);
+    }
+    // Mass assignment and client-chosen scoring are rejected outright.
+    const spoofed = await attemptsApi.POST(request("/api/attempts", signedIn.token, "POST", { drawId: draw.drawId, userAnswer: "electron", userId: admin.id, riddleClueNumber: 1, riddlePoints: 999 }));
+    assert.equal(spoofed.status, 400);
+    const response = await attemptsApi.POST(request("/api/attempts", signedIn.token, "POST", { drawId: draw.drawId, userAnswer: "  Electron " }));
     assert.equal(response.status, 200);
-    assert.equal((await response.json()).pointsAwarded, 3);
+    const result = await response.json();
+    assert.equal(result.pointsAwarded, 3, "Answering after the 4th clue is worth 3 points");
+    assert.equal(result.feedback.answer, "electron");
+    assert.equal((await attemptsApi.POST(request("/api/attempts", signedIn.token, "POST", { drawId: draw.drawId, userAnswer: "electron" }))).status, 409, "No double scoring");
+    assert.equal((await attemptsApi.POST(request("/api/attempts", adminSession.token, "POST", { drawId: draw.drawId, userAnswer: "electron" }))).status, 404, "Draws belong to one student");
     assert.equal(await db.attempt.count({ where: { userId: student.id } }), 1);
     assert.equal(await db.attempt.count({ where: { userId: admin.id } }), 0);
+    // A late answer is checked but earns nothing; a timeout never earns a penalty.
+    const late = await startDraw(signedIn.token, questionId);
+    await db.questionDraw.update({ where: { id: late.drawId }, data: { issuedAt: new Date(Date.now() - 10 * 60_000) } });
+    const lateResult = await (await attemptsApi.POST(request("/api/attempts", signedIn.token, "POST", { drawId: late.drawId, userAnswer: "electron" }))).json();
+    assert.deepEqual([lateResult.isCorrect, lateResult.pointsAwarded, lateResult.late], [true, 0, true]);
     const stats = await (await dashboardApi.GET(request("/api/dashboard", signedIn.token))).json();
     const adminStats = await (await dashboardApi.GET(request("/api/dashboard", adminSession.token))).json();
-    assert.equal(stats.attempts, 1); assert.equal(adminStats.attempts, 0);
+    assert.equal(stats.attempts, 2); assert.equal(adminStats.attempts, 0);
+    assert.equal(stats.dailyStreak, 1);
+  });
+  await test("coaches cannot approve their own questions; edits to live questions wait in review", async () => {
+    const coachA = await db.user.create({ data: { name: "Coach A", email: "coach-a@example.test", role: "COACH", roleId: "COACH", status: "ACTIVE", passwordHash: await hashPassword(password) } });
+    const coachB = await db.user.create({ data: { name: "Coach B", email: "coach-b@example.test", role: "COACH", roleId: "COACH", status: "ACTIVE", passwordHash: await hashPassword(password) } });
+    const tokenA = (await login(db, coachA.email, password)).token;
+    const tokenB = (await login(db, coachB.email, password)).token;
+    const draft = await (await questionsApi.POST(request("/api/questions", tokenA, "POST", { ...input, roundType: "ROUND_ONE", riddleClues: [], answer: "proton", questionText: "Which particle has charge +1?" }))).json();
+    const context = { params: Promise.resolve({ id: draft.id }) };
+    const review = { decision: "APPROVED", notes: "Checked answer and charge sign.", revision: 1 };
+    assert.equal((await reviewApi.POST(request("/review", tokenA, "POST", review), context)).status, 403);
+    assert.equal((await reviewApi.POST(request("/review", tokenB, "POST", review), context)).status, 200);
+    // Coach A proposes an edit: the live answer stays "proton" until someone else approves.
+    const edited = await (await itemApi.PUT(request("/edit", tokenA, "PUT", { ...input, roundType: "ROUND_ONE", riddleClues: [], answer: "a proton", questionText: "Which particle has charge +1?" }), context)).json();
+    assert.equal(edited.pendingEdit, true);
+    const live = await db.question.findUniqueOrThrow({ where: { id: draft.id } });
+    assert.deepEqual([live.answer, live.isPrivateOnly, live.reviewStatus], ["proton", false, "APPROVED"]);
+    assert.equal((await reviewApi.POST(request("/review", tokenA, "POST", { ...review, revision: live.revision }), context)).status, 403);
+    assert.equal((await reviewApi.POST(request("/review", tokenB, "POST", { ...review, revision: live.revision }), context)).status, 200);
+    assert.equal((await db.question.findUniqueOrThrow({ where: { id: draft.id } })).answer, "a proton");
+    // Coaches cannot archive live questions; admins can.
+    assert.equal((await itemApi.DELETE(request("/api/questions/" + draft.id, tokenA, "DELETE"), context)).status, 403);
+  });
+  await test("password reset links work once, sign out other devices, and need permission", async () => {
+    const session = await login(db, student.email, password);
+    await assert.rejects(() => createInvitation(db, { email: student.email, role: "STUDENT", actorId: admin.id }), (error: unknown) => (error as { status: number }).status === 409);
+    const coach = await db.user.findUniqueOrThrow({ where: { email: "coach-a@example.test" } });
+    await assert.rejects(() => createPasswordReset(db, { userId: admin.id, actorId: coach.id }), (error: unknown) => (error as { status: number }).status === 403);
+    const reset = await createPasswordReset(db, { userId: student.id, actorId: coach.id });
+    assert.equal(reset.invitation.purpose, "RESET");
+    const newPassword = "new kente pass 2026";
+    await acceptInvitation(db, { token: reset.token, email: student.email, password: newPassword });
+    await assert.rejects(() => resolveSession(db, session.token), "Old sessions are revoked");
+    await assert.rejects(() => acceptInvitation(db, { token: reset.token, email: student.email, password: newPassword }), "Single use");
+    await assert.rejects(() => login(db, student.email, password));
+    const fresh = await login(db, student.email, newPassword);
+    assert.equal((await resolveSession(db, fresh.token)).id, student.id);
+    await db.user.update({ where: { id: student.id }, data: { passwordHash: await hashPassword(password) } });
   });
   await test("archive and repeated seed preserve student records and attempts", async () => {
     const before = await db.attempt.findFirstOrThrow();
@@ -195,10 +268,17 @@ async function main() {
     assert.equal((await logoutApi.POST(request("/api/auth/logout", adminSession.token, "POST", {}))).status, 200);
     await assert.rejects(() => resolveSession(db, adminSession.token));
   });
-  await test("login throttling is database-backed", async () => {
+  await test("login throttling counts only failures, per account and per network", async () => {
+    await db.authThrottle.deleteMany();
+    for (let attempt = 0; attempt < 15; attempt += 1) await login(db, student.email, password, "203.0.113.5");
+    for (let attempt = 0; attempt < 10; attempt += 1) await assert.rejects(() => login(db, student.email, "wrong password 123", "203.0.113.9"));
+    // That network is now blocked for this account, but the student's own network is not.
+    await assert.rejects(() => login(db, student.email, password, "203.0.113.9"), (error: unknown) => (error as { status: number }).status === 429);
+    await login(db, student.email, password, "203.0.113.5");
     const key = hashToken("login:student@example.test");
-    await db.authThrottle.upsert({ where: { key }, update: { count: 10 }, create: { key, count: 10, windowEndsAt: new Date(Date.now() + 60_000) } });
-    await assert.rejects(() => login(db, student.email, password), (error: unknown) => (error as { status: number }).status === 429);
+    await db.authThrottle.update({ where: { key }, data: { count: 50 } });
+    await assert.rejects(() => login(db, student.email, password, "198.51.100.1"), (error: unknown) => (error as { status: number }).status === 429);
+    await db.authThrottle.deleteMany();
   });
   await test("another account cannot cause a persistent team-wide login lockout", async () => {
     await db.authThrottle.upsert({
@@ -208,6 +288,35 @@ async function main() {
     });
     const session = await login(db, admin.email, password);
     assert.equal((await resolveSession(db, session.token)).id, admin.id);
+  });
+  await test("first-admin setup is closed unless enabled, and closed once an admin exists", async () => {
+    const setupApi = await import("../app/api/setup/route");
+    delete process.env.SETUP_SECRET;
+    assert.equal((await setupApi.POST(request("/api/setup", undefined, "POST", { secret: "x", email: "owner@example.test" }))).status, 404);
+    process.env.SETUP_SECRET = "a-long-random-setup-secret-for-tests";
+    assert.equal((await setupApi.POST(request("/api/setup", undefined, "POST", { secret: "wrong-secret", email: "owner@example.test" }))).status, 403);
+    assert.equal((await setupApi.POST(request("/api/setup", undefined, "POST", { secret: process.env.SETUP_SECRET, email: "owner@example.test" }))).status, 409);
+    delete process.env.SETUP_SECRET;
+  });
+  await test("disabling a member signs them out; members cannot change themselves", async () => {
+    const memberApi = await import("../app/api/admin/members/[id]/route");
+    const session = await login(db, student.email, password);
+    const context = { params: Promise.resolve({ id: student.id }) };
+    assert.equal((await memberApi.PATCH(request("/m", session.token, "PATCH", { status: "DISABLED" }), context)).status, 403);
+    const adminToken = (await login(db, admin.email, password)).token;
+    assert.equal((await memberApi.PATCH(request("/m", adminToken, "PATCH", { status: "DISABLED" }), { params: Promise.resolve({ id: admin.id }) })).status, 400);
+    assert.equal((await memberApi.PATCH(request("/m", adminToken, "PATCH", { status: "DISABLED" }), context)).status, 200);
+    await assert.rejects(() => resolveSession(db, session.token));
+    assert.equal((await memberApi.PATCH(request("/m", adminToken, "PATCH", { status: "ACTIVE" }), context)).status, 200);
+  });
+  await test("malformed query numbers are 400s and unknown questions are 404s, never crashes", async () => {
+    const token = (await login(db, student.email, password)).token;
+    assert.equal((await questionsApi.GET(request("/api/questions?page=abc", token))).status, 400);
+    assert.equal((await questionsApi.GET(request("/api/questions?limit=-5", token))).status, 400);
+    assert.equal((await trainingApi.GET(request("/api/training/questions?limit=9999", token))).status, 400);
+    const adminToken = (await login(db, admin.email, password)).token;
+    assert.equal((await itemApi.PUT(request("/edit", adminToken, "PUT", input), { params: Promise.resolve({ id: "missing" }) })).status, 404);
+    assert.equal((await itemApi.DELETE(request("/del", adminToken, "DELETE"), { params: Promise.resolve({ id: "missing" }) })).status, 404);
   });
   console.log(passed + " foundation scenarios passed against a disposable database.");
   const { prisma } = await import("../lib/prisma");
