@@ -27,7 +27,7 @@
     "db:copy-local": "tsx scripts/copy-local-records.ts",
     "test:elements": "tsx scripts/check-elements.ts",
     "test:hosted-import": "tsx scripts/check-hosted-import.ts",
-    "test:text": "tsx scripts/check-text-format.ts"
+    "test:text": "tsx scripts/check-text-format.ts && tsx scripts/check-speech.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

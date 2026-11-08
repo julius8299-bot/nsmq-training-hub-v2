@@ -11,7 +11,7 @@ type Clue = { clueNumber: number; clueText: string; points: number };
 type PendingEdit = { fields: Record<string, unknown>; clues: string[]; proposedById: string; proposedByName: string; proposedAt: string };
 export type StaffQuestion = {
   id: string; subject: string; topic: string; subtopic: string; roundType: string; difficulty: string; timeLimitSeconds: number;
-  questionText: string; answer: string; acceptedAnswers: string; shortcutSolution: string; fullSolution: string; commonTrap: string;
+  questionText: string; answer: string; acceptedAnswers: string; shortcutSolution: string; fullSolution: string; commonTrap: string; reviewerNote?: string | null;
   encouragement: string; repeatedPattern: string; patternFamily: string; sourceType: string; sourceName: string | null; permissionStatus: string;
   isPastQuestion: boolean; isGhanaContext: boolean; ghanaContext: boolean; tags: string; markingScheme: string | null; examinerFocus: string | null;
   reviewStatus: string; revision: number; isPrivateOnly: boolean; archivedAt: string | null; updatedAt: string; preamble: string | null;
@@ -23,7 +23,7 @@ export type QuestionPage = { questions: StaffQuestion[]; total: number; page: nu
 
 const SHOWN_FIELDS: [string, string][] = [
   ["questionText", "Question"], ["answer", "Answer"], ["acceptedAnswers", "Also accepted"], ["shortcutSolution", "Shortcut"],
-  ["fullSolution", "Full solution"], ["commonTrap", "Common trap"], ["markingScheme", "Marking scheme"],
+  ["fullSolution", "Full solution"], ["commonTrap", "Common trap"], ["markingScheme", "Marking scheme"], ["reviewerNote", "Note for reviewers (staff only)"],
   ["subject", "Subject"], ["topic", "Topic"], ["subtopic", "Subtopic"], ["roundType", "Round"], ["difficulty", "Difficulty"],
   ["timeLimitSeconds", "Time limit (s)"], ["sourceType", "Source type"], ["sourceName", "Source"], ["permissionStatus", "Permission"],
 ];
@@ -69,7 +69,7 @@ export function ReviewCard({ question, user, onDone }: { question: StaffQuestion
           const value = candidate[key];
           if (value === null || value === undefined || value === "" || value === "[]") return null;
           const changed = edit && key in edit.fields && String(edit.fields[key] ?? "") !== String((question as unknown as Record<string, unknown>)[key] ?? "");
-          const wide = ["questionText", "shortcutSolution", "fullSolution", "commonTrap", "markingScheme"].includes(key);
+          const wide = ["questionText", "shortcutSolution", "fullSolution", "commonTrap", "markingScheme", "reviewerNote"].includes(key);
           return (
             <div key={key} className={`${wide ? "sm:col-span-2" : ""} rounded-xl p-3 ${changed ? "bg-blue-50 ring-1 ring-blue-200" : "bg-ink/[0.03]"}`}>
               <dt className="text-xs font-bold uppercase text-ink/45">{label}{changed && " · changed"}</dt>

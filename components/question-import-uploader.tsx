@@ -10,7 +10,7 @@ const REQUIRED = [
   "questionText", "answer", "shortcutSolution", "fullSolution", "commonTrap",
   "encouragement", "repeatedPattern", "patternFamily", "sourceType", "permissionStatus",
 ];
-const TEMPLATE_COLUMNS = [...REQUIRED, "importKey", "acceptedAnswers", "tags", "sourceName", "sourceYear", "contestStage", "isPastQuestion", "isGhanaContext", "markingScheme", "clue1", "clue2", "clue3", "clue4", "clue5"];
+const TEMPLATE_COLUMNS = [...REQUIRED, "importKey", "reviewerNote", "acceptedAnswers", "tags", "sourceName", "sourceYear", "contestStage", "isPastQuestion", "isGhanaContext", "markingScheme", "clue1", "clue2", "clue3", "clue4", "clue5"];
 const CHUNK = 200;
 
 type Row = Record<string, unknown>;

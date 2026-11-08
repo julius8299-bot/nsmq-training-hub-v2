@@ -33,6 +33,7 @@ export function prepareQuestion(raw: unknown) {
     tags: body.tags, ghanaContext: ghana, isGhanaContext: ghana,
     isPastQuestion: body.isPastQuestion === true || body.isPastQuestion === "true",
     examinerFocus: body.examinerFocus || null, markingScheme: body.markingScheme || null,
+    reviewerNote: body.reviewerNote || null,
     preamble: body.preamble || null,
   };
   return { fields, clues: body.roundType === "RIDDLE" ? clues : [] };

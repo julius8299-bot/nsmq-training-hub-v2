@@ -52,6 +52,8 @@ export async function GET(request: NextRequest) {
       const [questions, total] = await Promise.all([
         prisma.question.findMany({
           where, include: { riddleClues: { orderBy: { clueNumber: "asc" } } },
+          // Study mode shows answers and solutions, but never staff-only review data.
+          omit: { reviewerNote: true, pendingEditJson: true, createdById: true },
           skip: (page - 1) * pageSize, take: pageSize,
           orderBy: [{ subject: "asc" }, { topic: "asc" }, { createdAt: "desc" }, { id: "asc" }],
         }),

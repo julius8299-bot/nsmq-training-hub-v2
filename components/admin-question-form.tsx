@@ -23,7 +23,7 @@ const initial: Record<string, unknown> = {
   fullSolution: "", commonTrap: "", encouragement: "You missed the pattern, not the whole topic. Try 3 more from this pattern.",
   repeatedPattern: "", patternFamily: "", sourceType: "ORIGINAL", sourceName: "", sourceUrl: "",
   sourceYear: "", contestStage: "", videoTimestamp: "", permissionStatus: "ORIGINAL", tags: "", isGhanaContext: false,
-  isPastQuestion: false, markingScheme: "", examinerFocus: "", numericTolerance: "", preamble: "",
+  isPastQuestion: false, markingScheme: "", examinerFocus: "", reviewerNote: "", numericTolerance: "", preamble: "",
 };
 
 export function AdminQuestionForm({ onSaved, question, onCancel }: { onSaved?: () => void; question?: Question | null; onCancel?: () => void }) {
@@ -88,6 +88,7 @@ export function AdminQuestionForm({ onSaved, question, onCancel }: { onSaved?: (
             <label className="text-sm font-bold sm:col-span-2 lg:col-span-3">What the examiner is testing<textarea className="field min-h-16" {...field("examinerFocus")} /></label>
           </>
         )}
+        <label className="text-sm font-bold sm:col-span-2 lg:col-span-3">Note for reviewers <span className="font-normal text-ink/50">(staff only, never shown to students)</span><textarea className="field min-h-14" {...field("reviewerNote")} /></label>
         <label className="text-sm font-bold">Repeated pattern<input required className="field" {...field("repeatedPattern")} /></label>
         <label className="text-sm font-bold">Pattern family<input required className="field" {...field("patternFamily")} /></label>
         <label className="text-sm font-bold">Tags <span className="font-normal text-ink/50">(one per line)</span><textarea className="field min-h-16" placeholder={"motion\nkinematics"} {...field("tags")} /></label>

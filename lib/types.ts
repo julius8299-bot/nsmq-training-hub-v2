@@ -38,6 +38,7 @@ export type Question = {
   tags: string;
   examinerFocus?: string | null;
   markingScheme?: string | null;
+  reviewerNote?: string | null;
   preamble?: string | null;
   riddleClues?: RiddleClue[];
   reviewStatus?: string;

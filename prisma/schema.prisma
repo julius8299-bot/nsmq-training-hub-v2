@@ -68,6 +68,8 @@ model Question {
   tags             String            @default("[]")
   examinerFocus    String?
   markingScheme    String?
+  /// Staff-only notes for reviewers (source problems, corrections). Never sent to students.
+  reviewerNote     String?
   riddleClues      RiddleClue[]
   attempts         Attempt[]
   createdAt        DateTime          @default(now())

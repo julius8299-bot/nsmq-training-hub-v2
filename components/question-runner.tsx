@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { ArrowRight, Eye, Lightbulb, RotateCcw, Trophy } from "lucide-react";
+import { ArrowRight, Ear, Eye, Lightbulb, RotateCcw, Trophy, Volume2 } from "lucide-react";
 import { AnswerInput } from "@/components/answer-input";
 import { FeedbackPanel } from "@/components/feedback-panel";
 import { QuestionCard } from "@/components/question-card";
 import { Timer } from "@/components/timer";
 import { api, ApiError, signInHref } from "@/lib/client/api";
+import { useSpeech } from "@/lib/client/use-speech";
 import type { AttemptResult, Draw, PublicQuestion, RiddleClue } from "@/lib/types";
 
 type Props = {
@@ -44,6 +45,9 @@ function Runner({ questions, mode, timeLimitSeconds, timed = true, onScore, onNe
   const question = questions[index];
   const startedFor = useRef<string | null>(null);
   const submitting = useRef(false);
+  const voice = useSpeech();
+  const [reading, setReading] = useState(false);
+  const spokenClues = useRef(0);
 
   const start = useCallback(async () => {
     if (!question) return;
@@ -61,8 +65,30 @@ function Runner({ questions, mode, timeLimitSeconds, timed = true, onScore, onNe
     const key = question ? question.id + ":" + index : null;
     if (!key || startedFor.current === key) return;
     startedFor.current = key;
-    void start();
-  }, [question, index, start]);
+    spokenClues.current = 0;
+    // Quizmaster mode: the question is read first and the clock starts when reading ends, as in the NSMQ.
+    // Riddles start straight away; each clue is read as it appears.
+    if (voice.readAloud && question.roundType !== "RIDDLE") {
+      setReading(true);
+      void voice.speak([question.preamble, question.questionText].filter(Boolean).join(". ")).then(() => { setReading(false); void start(); });
+    } else {
+      void start();
+    }
+  }, [question, index, start, voice]);
+
+  useEffect(() => {
+    if (!voice.readAloud || result || clues.length <= spokenClues.current) return;
+    const fresh = clues.slice(spokenClues.current);
+    spokenClues.current = clues.length;
+    void voice.speak(fresh.map((clue) => `Clue ${clue.clueNumber}. ${clue.clueText}`).join(". "));
+  }, [clues, voice, result]);
+
+  const spokenResult = useRef<AttemptResult | null>(null);
+  useEffect(() => {
+    if (!voice.readAloud || !result || result.revealOnly || spokenResult.current === result) return;
+    spokenResult.current = result;
+    void voice.speak(result.isCorrect && !result.late ? "Correct." : `The answer is ${result.feedback.answer}.`);
+  }, [result, voice]);
 
   const submit = useCallback(async (options: { answer?: string; timedOut?: boolean; reveal?: boolean } = {}) => {
     const value = (options.answer ?? answer).trim();
@@ -131,7 +157,23 @@ function Runner({ questions, mode, timeLimitSeconds, timed = true, onScore, onNe
           <Timer seconds={limit} running={!result && !busy} resetKey={draw.drawId} onExpire={() => void submit({ timedOut: true })} />
         )}
       </div>
-      <QuestionCard question={question} index={index} total={questions.length}>
+      {voice.supported && (
+        <div className="mb-3 flex flex-wrap items-center gap-2 text-sm">
+          <button type="button" aria-pressed={voice.readAloud} className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 font-bold ${voice.readAloud ? "bg-ink text-gold" : "bg-ink/5 text-ink/70"}`} onClick={() => voice.update({ readAloud: !voice.readAloud })}>
+            <Volume2 size={15} /> Quizmaster voice {voice.readAloud ? "on" : "off"}
+          </button>
+          {voice.readAloud && (
+            <button type="button" aria-pressed={voice.listenOnly} className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 font-bold ${voice.listenOnly ? "bg-ink text-gold" : "bg-ink/5 text-ink/70"}`} onClick={() => voice.update({ listenOnly: !voice.listenOnly })}>
+              <Ear size={15} /> Listen only {voice.listenOnly ? "on" : "off"}
+            </button>
+          )}
+          {voice.readAloud && !result && question.roundType !== "RIDDLE" && !reading && draw && (
+            <button type="button" className="font-bold text-chemistry underline" onClick={() => void voice.speak([question.preamble, question.questionText].filter(Boolean).join(". "))}>Repeat question</button>
+          )}
+          {reading && <span className="font-bold text-ink/50">Quizmaster is reading… the clock starts when reading ends.</span>}
+        </div>
+      )}
+      <QuestionCard question={question} index={index} total={questions.length} hideText={voice.listenOnly && !result}>
         {error && (
           <div role="alert" className="mb-5 rounded-2xl bg-red-50 p-4 text-sm text-red-800">
             <p className="font-bold">{error.message}</p>
@@ -140,7 +182,7 @@ function Runner({ questions, mode, timeLimitSeconds, timed = true, onScore, onNe
               : !draw ? <button type="button" className="mt-2 font-bold underline" onClick={() => void start()}>Try again</button> : null}
           </div>
         )}
-        {!draw && !error && <p className="text-sm text-ink/50">Getting your question ready…</p>}
+        {!draw && !error && !reading && <p className="text-sm text-ink/50">Getting your question ready…</p>}
         {draw && riddle && (
           <div className="mb-5 space-y-3">
             {clues.map((clue) => (
