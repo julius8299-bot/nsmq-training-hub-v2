@@ -1,5 +1,5 @@
 import { ROUND_LABELS, SUBJECT_STYLES } from "@/lib/constants";
-import type { Question } from "@/lib/types";
+import type { PublicQuestion } from "@/lib/types";
 
 export function QuestionCard({
   question,
@@ -7,7 +7,7 @@ export function QuestionCard({
   total,
   children,
 }: {
-  question: Question;
+  question: Pick<PublicQuestion, "subject" | "difficulty" | "roundType" | "topic" | "questionText"> & { preamble?: string | null };
   index?: number;
   total?: number;
   children?: React.ReactNode;
@@ -29,7 +29,8 @@ export function QuestionCard({
         <p className="mt-5 text-xs font-bold uppercase tracking-[0.16em] text-ink/45">
           {ROUND_LABELS[question.roundType]} · {question.topic}
         </p>
-        <h2 className="mt-3 font-display text-2xl font-semibold leading-snug sm:text-3xl">
+        {question.preamble && <p className="mt-3 whitespace-pre-line text-sm leading-6 text-ink/70">{question.preamble}</p>}
+        <h2 className="mt-3 whitespace-pre-line font-display text-2xl font-semibold leading-snug sm:text-3xl">
           {question.questionText}
         </h2>
         {children && <div className="mt-7">{children}</div>}

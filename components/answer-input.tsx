@@ -50,11 +50,17 @@ export function AnswerInput({
         <input
           className="field flex-1"
           placeholder="Type your answer"
+          aria-label="Your answer"
+          autoFocus
           value={value}
           disabled={disabled}
           onChange={(event) => onChange(event.target.value)}
+          autoComplete="off"
+          autoCapitalize="off"
+          spellCheck={false}
+          enterKeyHint="send"
           onKeyDown={(event) => {
-            if (event.key === "Enter") onSubmit();
+            if (event.key === "Enter" && value.trim()) onSubmit();
           }}
         />
       )}

@@ -3,23 +3,34 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const nav = [
-  ["Dashboard", "/dashboard"],
-  ["Practice", "/practice"],
-  ["Full Contest", "/full-contest"],
-  ["Speed Race", "/speed-race"],
-  ["POTD", "/problem-of-the-day"],
-  ["T/F", "/true-false"],
-  ["Riddles", "/riddles"],
-  ["Question Bank", "/question-bank"],
-  ["Gallery", "/gallery"],
-  ["Admin", "/admin"],
+type SessionUser = { name: string; role: string; permissions: string[] };
+
+const nav: { label: string; href: string; staff?: boolean }[] = [
+  { label: "Dashboard", href: "/dashboard" },
+  { label: "Practice", href: "/practice" },
+  { label: "Elements", href: "/elements" },
+  { label: "Full Contest", href: "/full-contest" },
+  { label: "Speed Race", href: "/speed-race" },
+  { label: "POTD", href: "/problem-of-the-day" },
+  { label: "T/F", href: "/true-false" },
+  { label: "Riddles", href: "/riddles" },
+  { label: "Question Bank", href: "/question-bank" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "Coach Tools", href: "/admin", staff: true },
 ];
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [user, setUser] = useState<SessionUser | null>(null);
+  useEffect(() => {
+    fetch("/api/auth/session", { cache: "no-store" })
+      .then(async (response) => { if (response.ok) setUser((await response.json()).user); })
+      .catch(() => {});
+  }, []);
+  const staff = Boolean(user?.permissions.some((permission) => ["questions:write", "members:manage", "students:view"].includes(permission)));
+  const items = nav.filter((item) => !item.staff || staff);
   return (
     <header className="sticky top-0 z-50 border-b border-ink/10 bg-cream/90 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -36,8 +47,8 @@ export function SiteHeader() {
           </span>
           <span>NSMQ Training Hub</span>
         </Link>
-        <nav className="hidden items-center gap-5 text-sm font-semibold lg:flex">
-          {nav.map(([label, href]) => (
+        <nav className="hidden items-center gap-4 text-sm font-semibold xl:flex">
+          {items.map(({ label, href }) => (
             <Link key={href} href={href} className="text-ink/70 transition hover:text-chemistry">
               {label}
             </Link>
@@ -46,15 +57,16 @@ export function SiteHeader() {
         <button
           type="button"
           aria-label="Toggle navigation"
-          className="grid size-10 place-items-center rounded-xl border border-ink/10 lg:hidden"
+          aria-expanded={open}
+          className="grid size-10 place-items-center rounded-xl border border-ink/10 xl:hidden"
           onClick={() => setOpen((value) => !value)}
         >
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
       {open && (
-        <nav className="grid gap-1 border-t border-ink/10 bg-cream px-4 py-3 lg:hidden">
-          {nav.map(([label, href]) => (
+        <nav className="grid gap-1 border-t border-ink/10 bg-cream px-4 py-3 xl:hidden">
+          {items.map(({ label, href }) => (
             <Link
               key={href}
               href={href}

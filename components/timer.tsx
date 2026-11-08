@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Clock3 } from "lucide-react";
 
+/** Counts down from a fixed deadline (accurate even if the tab sleeps) and calls onExpire once. */
 export function Timer({
   seconds,
   running,
@@ -15,27 +16,38 @@ export function Timer({
   onExpire?: () => void;
 }) {
   const [remaining, setRemaining] = useState(seconds);
+  const deadline = useRef(Date.now() + seconds * 1000);
+  const expired = useRef(false);
+  const expire = useRef(onExpire);
+  expire.current = onExpire;
 
-  useEffect(() => setRemaining(seconds), [seconds, resetKey]);
   useEffect(() => {
-    if (!running || remaining <= 0) return;
-    const id = window.setInterval(() => {
-      setRemaining((value) => {
-        if (value <= 1) {
-          window.clearInterval(id);
-          onExpire?.();
-          return 0;
-        }
-        return value - 1;
-      });
-    }, 1000);
+    deadline.current = Date.now() + seconds * 1000;
+    expired.current = false;
+    setRemaining(seconds);
+  }, [seconds, resetKey]);
+
+  useEffect(() => {
+    if (!running) return;
+    const tick = () => {
+      const left = Math.max(0, Math.ceil((deadline.current - Date.now()) / 1000));
+      setRemaining(left);
+      if (left === 0 && !expired.current) {
+        expired.current = true;
+        expire.current?.();
+      }
+    };
+    tick();
+    const id = window.setInterval(tick, 250);
     return () => window.clearInterval(id);
-  }, [running, remaining, onExpire]);
+  }, [running, resetKey]);
 
   const urgent = remaining <= Math.min(10, Math.ceil(seconds / 3));
   return (
     <div
-      className={`inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-bold ${
+      role="timer"
+      aria-label={`${remaining} seconds left`}
+      className={`inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-bold tabular-nums ${
         urgent ? "bg-red-100 text-red-700" : "bg-ink/5 text-ink/65"
       }`}
     >

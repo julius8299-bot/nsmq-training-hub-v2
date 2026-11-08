@@ -59,7 +59,7 @@ export default function HomePage() {
               Start Practice <ArrowRight size={17} />
             </Link>
             <Link href="/full-contest" className="button-secondary">Full Contest</Link>
-            <Link href="/admin" className="button-secondary">Admin Upload</Link>
+            <Link href="/elements" className="button-secondary">Element Drills</Link>
           </div>
         </div>
         <div className="panel relative overflow-hidden">

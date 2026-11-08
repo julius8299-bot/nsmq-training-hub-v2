@@ -1,5 +1,5 @@
-import { AlertTriangle, CheckCircle2, Lightbulb, Sparkles } from "lucide-react";
-import type { Question } from "@/lib/types";
+import { AlertTriangle, CheckCircle2, Clock3, Eye, Lightbulb, Sparkles } from "lucide-react";
+import type { AttemptResult } from "@/lib/types";
 
 function SolutionBox({
   title,
@@ -36,40 +36,43 @@ export const EncouragementBox = ({ children }: { children: React.ReactNode }) =>
   <SolutionBox title="Coach's note">{children}</SolutionBox>
 );
 
-export function FeedbackPanel({
-  question,
-  isCorrect,
-  points,
-}: {
-  question: Question;
-  isCorrect: boolean;
-  points: number;
-}) {
+function headline(result: AttemptResult) {
+  if (result.revealOnly) return { icon: Eye, tone: "bg-ink/5 text-ink", title: "Solution revealed", detail: "Study the method, then try the next one on your own." };
+  if (result.late && result.isCorrect) return { icon: Clock3, tone: "bg-amber-100 text-amber-950", title: "Correct, but time was up.", detail: "No points this time — the shortcut below gets you there faster." };
+  if (result.late) return { icon: Clock3, tone: "bg-amber-100 text-amber-950", title: "Time up.", detail: `Answer: ${result.feedback.answer}` };
+  if (result.isCorrect) return { icon: CheckCircle2, tone: "bg-emerald-100 text-emerald-900", title: "Correct — sharp work.", detail: `${result.pointsAwarded} point${result.pointsAwarded === 1 ? "" : "s"} secured in ${result.timeTakenSeconds}s.` };
+  return { icon: AlertTriangle, tone: "bg-amber-100 text-amber-950", title: "Not this time — learn the pattern.", detail: `Correct answer: ${result.feedback.answer}${result.pointsAwarded < 0 ? ` (${result.pointsAwarded} point)` : ""}` };
+}
+
+export function FeedbackPanel({ result }: { result: AttemptResult }) {
+  const { feedback } = result;
+  const top = headline(result);
+  const Icon = top.icon;
   return (
-    <div className="mt-6 space-y-3">
-      <div
-        className={`flex items-start gap-3 rounded-2xl p-5 ${
-          isCorrect ? "bg-emerald-100 text-emerald-900" : "bg-amber-100 text-amber-950"
-        }`}
-      >
-        {isCorrect ? <CheckCircle2 className="shrink-0" /> : <AlertTriangle className="shrink-0" />}
+    <div className="mt-6 space-y-3" aria-live="polite">
+      <div className={`flex items-start gap-3 rounded-2xl p-5 ${top.tone}`}>
+        <Icon className="shrink-0" />
         <div>
-          <p className="font-display text-xl font-semibold">
-            {isCorrect ? "Correct — sharp work." : "Not bad — this is a common trap."}
-          </p>
-          <p className="mt-1 text-sm">
-            {isCorrect ? `${points} point${points === 1 ? "" : "s"} secured.` : `Correct answer: ${question.answer}`}
-          </p>
-          {isCorrect && <p className="mt-1 text-sm">Answer: {question.answer}</p>}
+          <p className="font-display text-xl font-semibold">{top.title}</p>
+          <p className="mt-1 text-sm">{top.detail}</p>
+          {result.isCorrect && !result.late && <p className="mt-1 text-sm">Answer: {feedback.answer}</p>}
+          {feedback.acceptedAnswers.length > 0 && <p className="mt-1 text-xs opacity-70">Also accepted: {feedback.acceptedAnswers.join(" · ")}</p>}
         </div>
       </div>
       <ShortcutSolutionBox>
-        <span className="flex gap-2"><Lightbulb className="mt-0.5 shrink-0 text-gold" size={18} />{question.shortcutSolution}</span>
+        <span className="flex gap-2"><Lightbulb className="mt-0.5 shrink-0 text-gold" size={18} />{feedback.shortcutSolution}</span>
       </ShortcutSolutionBox>
-      <FullSolutionBox>{question.fullSolution}</FullSolutionBox>
-      <CommonTrapBox>{question.commonTrap}</CommonTrapBox>
+      <FullSolutionBox>{feedback.fullSolution}</FullSolutionBox>
+      {feedback.markingScheme && <SolutionBox title="Marking scheme">{feedback.markingScheme}</SolutionBox>}
+      {feedback.examinerFocus && <SolutionBox title="What the examiner is testing">{feedback.examinerFocus}</SolutionBox>}
+      {feedback.riddleClues.length > result.cluesUsed && result.cluesUsed > 0 && (
+        <SolutionBox title="Clues you did not need">
+          {feedback.riddleClues.slice(result.cluesUsed).map((clue) => `${clue.clueNumber}. ${clue.clueText}`).join("\n")}
+        </SolutionBox>
+      )}
+      <CommonTrapBox>{feedback.commonTrap}</CommonTrapBox>
       <EncouragementBox>
-        <span className="flex gap-2"><Sparkles className="mt-0.5 shrink-0 text-gold" size={18} />{question.encouragement}</span>
+        <span className="flex gap-2"><Sparkles className="mt-0.5 shrink-0 text-gold" size={18} />{feedback.encouragement}</span>
       </EncouragementBox>
     </div>
   );

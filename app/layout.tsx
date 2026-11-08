@@ -18,9 +18,9 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const pathname = (await headers()).get("x-nsmq-pathname") ?? "/";
-  if (!["/", "/gallery", "/login", "/accept-invite"].includes(pathname)) {
+  if (!["/", "/gallery", "/login", "/accept-invite", "/setup", "/icon"].includes(pathname)) {
     try {
-      await pageUser(pathname.startsWith("/admin") ? "questions:write" : "train");
+      await pageUser("train");
     } catch (error) {
       if (error instanceof AccessError && error.status === 401) redirect("/login?next=" + encodeURIComponent(pathname));
       if (error instanceof AccessError && error.status === 403) redirect("/dashboard");
