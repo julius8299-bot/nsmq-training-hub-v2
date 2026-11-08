@@ -58,6 +58,7 @@ jobs:
       - run: npm run test:foundation
       - run: npm run test:answers
       - run: npm run test:elements
+      - run: npm run test:text
       - run: npm run test:hosted-import
 
   question-bank-preservation:

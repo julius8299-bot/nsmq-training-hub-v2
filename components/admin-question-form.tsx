@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { ShortcutEditor } from "@/components/shortcut-editor";
 import { Minus, Plus } from "lucide-react";
 import { api, ApiError } from "@/lib/client/api";
 import { DIFFICULTIES, PERMISSION_STATUSES, ROUND_LABELS, ROUND_TYPES, SOURCE_TYPES, SUBJECTS } from "@/lib/constants";
@@ -77,7 +78,8 @@ export function AdminQuestionForm({ onSaved, question, onCancel }: { onSaved?: (
         <label className="text-sm font-bold">Answer<input required className="field" {...field("answer")} /></label>
         <label className="text-sm font-bold">Other accepted answers <span className="font-normal text-ink/50">(one per line)</span><textarea className="field min-h-20" placeholder={"24\n24 m s^-1"} {...field("acceptedAnswers")} /></label>
         <label className="text-sm font-bold">Numeric tolerance <span className="font-normal text-ink/50">(optional)</span><input className="field" type="number" step="any" min={0} placeholder="default 0.5%" {...field("numericTolerance")} /></label>
-        {[["shortcutSolution", "Shortcut solution"], ["fullSolution", "Full solution"], ["commonTrap", "Common trap"], ["encouragement", "Coach's note"]].map(([name, label]) => (
+        <ShortcutEditor value={String(form.shortcutSolution ?? "")} onChange={(value) => set("shortcutSolution", value)} />
+        {[["fullSolution", "Full solution"], ["commonTrap", "Common trap"], ["encouragement", "Coach's note"]].map(([name, label]) => (
           <label key={name} className="text-sm font-bold sm:col-span-2 lg:col-span-3">{label}<textarea required className="field min-h-20" {...field(name)} /></label>
         ))}
         {form.roundType === "PROBLEM_OF_THE_DAY" && (

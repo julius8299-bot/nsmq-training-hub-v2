@@ -7,6 +7,7 @@ import { LoadState } from "@/components/load-state";
 import { PageHeading } from "@/components/page-heading";
 import { MotivationCorner } from "@/components/MotivationCorner";
 import { api, ApiError } from "@/lib/client/api";
+import { DailyPlan } from "@/components/daily-plan";
 import { TrainingRecord, type DashboardStats } from "@/components/training-record";
 
 type Leader = { userId: string; name: string; points: number; attempted: number; accuracy: number };
@@ -26,6 +27,7 @@ export default function DashboardPage() {
   return (
     <div className="page-shell">
       <PageHeading eyebrow="Your dashboard" title="Your training record" description="Track the patterns you own, the topics that need work, and your next best challenge." />
+      <div className="mb-8"><DailyPlan /></div>
       <TrainingRecord stats={stats} />
       <div className="mt-8 grid gap-5 lg:grid-cols-2">
         {stats.problem && (

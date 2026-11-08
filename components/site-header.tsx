@@ -10,6 +10,8 @@ type SessionUser = { name: string; role: string; permissions: string[] };
 const nav: { label: string; href: string; staff?: boolean }[] = [
   { label: "Dashboard", href: "/dashboard" },
   { label: "Practice", href: "/practice" },
+  { label: "Review", href: "/review" },
+  { label: "Learn", href: "/learn" },
   { label: "Elements", href: "/elements" },
   { label: "Full Contest", href: "/full-contest" },
   { label: "Speed Race", href: "/speed-race" },

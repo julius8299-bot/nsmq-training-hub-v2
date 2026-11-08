@@ -26,7 +26,8 @@
     "db:import-elements": "tsx scripts/import-elements.ts",
     "db:copy-local": "tsx scripts/copy-local-records.ts",
     "test:elements": "tsx scripts/check-elements.ts",
-    "test:hosted-import": "tsx scripts/check-hosted-import.ts"
+    "test:hosted-import": "tsx scripts/check-hosted-import.ts",
+    "test:text": "tsx scripts/check-text-format.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

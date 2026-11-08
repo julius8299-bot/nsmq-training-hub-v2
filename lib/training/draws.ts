@@ -7,7 +7,7 @@ import { isStudentVisible } from "@/lib/questions/visibility";
 import { publicQuestion, questionFeedback } from "./questions";
 
 export const TRAINING_MODES = [
-  "SELF_PRACTICE", "FULL_CONTEST", "TEAM_CONTEST", "SPEED_RACE", "TRUE_FALSE", "RIDDLE", "PROBLEM_OF_THE_DAY", "ELEMENT_DRILL",
+  "SELF_PRACTICE", "FULL_CONTEST", "TEAM_CONTEST", "SPEED_RACE", "TRUE_FALSE", "RIDDLE", "PROBLEM_OF_THE_DAY", "ELEMENT_DRILL", "MISTAKE_REVIEW",
 ] as const;
 /** Modes where the student picks the clock (or none); everywhere else the question's own limit applies. */
 const STUDENT_TIMED_MODES = new Set(["SELF_PRACTICE", "ELEMENT_DRILL"]);

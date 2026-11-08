@@ -1,4 +1,5 @@
 import { ROUND_LABELS, SUBJECT_STYLES } from "@/lib/constants";
+import { MathText } from "@/components/math-text";
 import type { PublicQuestion } from "@/lib/types";
 
 export function QuestionCard({
@@ -29,9 +30,9 @@ export function QuestionCard({
         <p className="mt-5 text-xs font-bold uppercase tracking-[0.16em] text-ink/45">
           {ROUND_LABELS[question.roundType]} · {question.topic}
         </p>
-        {question.preamble && <p className="mt-3 whitespace-pre-line text-sm leading-6 text-ink/70">{question.preamble}</p>}
+        {question.preamble && <p className="mt-3 text-sm leading-6 text-ink/70"><MathText>{question.preamble}</MathText></p>}
         <h2 className="mt-3 whitespace-pre-line font-display text-2xl font-semibold leading-snug sm:text-3xl">
-          {question.questionText}
+          <MathText>{question.questionText}</MathText>
         </h2>
         {children && <div className="mt-7">{children}</div>}
       </div>

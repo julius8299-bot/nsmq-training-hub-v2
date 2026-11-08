@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { ShortcutView } from "@/components/math-text";
 import { Check, X } from "lucide-react";
 import { api, ApiError } from "@/lib/client/api";
 import { ROUND_LABELS, ROUND_TYPES, SUBJECT_LABELS, SUBJECTS } from "@/lib/constants";
@@ -72,7 +73,7 @@ export function ReviewCard({ question, user, onDone }: { question: StaffQuestion
           return (
             <div key={key} className={`${wide ? "sm:col-span-2" : ""} rounded-xl p-3 ${changed ? "bg-blue-50 ring-1 ring-blue-200" : "bg-ink/[0.03]"}`}>
               <dt className="text-xs font-bold uppercase text-ink/45">{label}{changed && " · changed"}</dt>
-              <dd className="mt-1 whitespace-pre-line">{formatList(value)}</dd>
+              <dd className="mt-1 whitespace-pre-line">{key === "shortcutSolution" ? <ShortcutView text={String(value)} dark={false} /> : formatList(value)}</dd>
               {changed && <dd className="mt-2 whitespace-pre-line text-xs text-ink/45 line-through">{formatList((question as unknown as Record<string, unknown>)[key])}</dd>}
             </div>
           );

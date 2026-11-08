@@ -352,6 +352,40 @@ async function main() {
     const riddle = await importQuestions(db, coach.id, [{ ...input, questionText: "Who am I? (three-clue import)", riddleClues: [1, 2, 3].map((n) => ({ clueText: "Import clue " + n })) }]);
     assert.equal(riddle[0].status, "imported");
   });
+  await test("mistake review ladder and daily plan", async () => {
+    const { prepareQuestion } = await import("../lib/questions/editing");
+    const { reviewSchedule, dueReviewQuestions } = await import("../lib/training/review");
+    const { dailyPlan } = await import("../lib/training/daily-plan");
+    const learner = await db.user.create({ data: { name: "Review Student", email: "review@example.test", role: "STUDENT", roleId: "STUDENT", status: "ACTIVE" } });
+    const { fields } = prepareQuestion({ ...input, roundType: "SPEED_RACE", questionText: "Review ladder: 6 x 7?", answer: "42", riddleClues: [] });
+    const question = await db.question.create({ data: { ...fields, reviewStatus: "APPROVED", isPrivateOnly: false } });
+    const at = (daysAgo: number) => new Date(Date.now() - daysAgo * 86_400_000);
+    const attempt = (isCorrect: boolean, daysAgo: number, mode = "SPEED_RACE") => db.attempt.create({ data: {
+      userId: learner.id, questionId: question.id, userAnswer: isCorrect ? "42" : "48", isCorrect, timeTakenSeconds: 4, pointsAwarded: isCorrect ? 3 : -1, mode, createdAt: at(daysAgo),
+    } });
+    await attempt(true, 10);
+    assert.equal((await reviewSchedule(db, learner.id)).due.length, 0, "never missed = never in review");
+    await attempt(false, 5);
+    let schedule = await reviewSchedule(db, learner.id);
+    assert.equal(schedule.due.length, 1, "a miss is due straight away");
+    assert.equal((await dueReviewQuestions(db, learner.id)).questions[0].id, question.id);
+    assert.equal(JSON.stringify((await dueReviewQuestions(db, learner.id)).questions[0]).includes("42"), false, "no answer leaked");
+    await attempt(true, 0.5, "MISTAKE_REVIEW");
+    schedule = await reviewSchedule(db, learner.id);
+    assert.equal(schedule.due.length, 0); assert.equal(schedule.upcoming.length, 1, "one right answer: back in a day");
+    await db.attempt.updateMany({ where: { userId: learner.id, mode: "MISTAKE_REVIEW" }, data: { createdAt: at(2) } });
+    assert.equal((await reviewSchedule(db, learner.id)).due.length, 1, "due again after a day");
+    for (const daysAgo of [1.5, 1.2, 1]) await attempt(true, daysAgo, "MISTAKE_REVIEW");
+    schedule = await reviewSchedule(db, learner.id);
+    assert.equal(schedule.mastered, 1); assert.equal(schedule.due.length + schedule.upcoming.length, 0, "four in a row = mastered");
+    await attempt(false, 0);
+    assert.equal((await reviewSchedule(db, learner.id)).due.length, 1, "a new miss restarts the ladder");
+    const plan = await dailyPlan(db, learner.id);
+    assert.equal(plan.steps.length, 5);
+    assert.equal(plan.steps.find((step) => step.id === "review")!.target, 1);
+    assert.equal(plan.steps.find((step) => step.id === "speed")!.done, 1);
+    assert.ok(plan.streak >= 1);
+  });
   console.log(passed + " foundation scenarios passed against a disposable database.");
   const { prisma } = await import("../lib/prisma");
   await prisma.$disconnect();

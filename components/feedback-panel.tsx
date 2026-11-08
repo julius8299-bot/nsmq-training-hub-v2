@@ -1,5 +1,7 @@
 import { AlertTriangle, CheckCircle2, Clock3, Eye, Lightbulb, Sparkles } from "lucide-react";
 import type { AttemptResult } from "@/lib/types";
+import { MathText, ShortcutView } from "@/components/math-text";
+import { parseShortcut } from "@/lib/text/shortcut";
 
 function SolutionBox({
   title,
@@ -60,9 +62,11 @@ export function FeedbackPanel({ result }: { result: AttemptResult }) {
         </div>
       </div>
       <ShortcutSolutionBox>
-        <span className="flex gap-2"><Lightbulb className="mt-0.5 shrink-0 text-gold" size={18} />{feedback.shortcutSolution}</span>
+        {parseShortcut(feedback.shortcutSolution)
+          ? <ShortcutView text={feedback.shortcutSolution} />
+          : <span className="flex gap-2"><Lightbulb className="mt-0.5 shrink-0 text-gold" size={18} /><MathText>{feedback.shortcutSolution}</MathText></span>}
       </ShortcutSolutionBox>
-      <FullSolutionBox>{feedback.fullSolution}</FullSolutionBox>
+      <FullSolutionBox><MathText>{feedback.fullSolution}</MathText></FullSolutionBox>
       {feedback.markingScheme && <SolutionBox title="Marking scheme">{feedback.markingScheme}</SolutionBox>}
       {feedback.examinerFocus && <SolutionBox title="What the examiner is testing">{feedback.examinerFocus}</SolutionBox>}
       {feedback.riddleClues.length > result.cluesUsed && result.cluesUsed > 0 && (
