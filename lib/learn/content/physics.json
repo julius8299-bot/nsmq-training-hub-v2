@@ -1,1 +1,2641 @@
-{"subject":"PHYSICS","topics":[]}
+{
+ "subject": "PHYSICS",
+ "topics": [
+  {
+   "topic": "Physical quantities, units and measurement",
+   "strand": "Mechanics and Matter",
+   "university": false,
+   "summary": "This topic covers base and derived quantities, SI units, dimensions, measuring instruments and how errors combine. In NSMQ it shows up as quick dimension checks, unit conversions, instrument readings and percentage-error questions, and dimensional reasoning helps rule out wrong options in every other topic too.",
+   "keyIdeas": [
+    "The seven SI base quantities and units are length (m), mass (kg), time (s), electric current (A), temperature (K), amount of substance (mol) and luminous intensity (cd).",
+    "Derived quantities are built from base quantities, e.g. force in N = kg m s⁻², energy in J = kg m² s⁻², power in W = kg m² s⁻³.",
+    "Scalars have magnitude only (mass, energy, speed); vectors have magnitude and direction (displacement, velocity, force, momentum).",
+    "An equation can only be physically correct if every term has the same dimensions; a dimensionally correct equation can still be wrong by a pure number such as 2π.",
+    "Accuracy is closeness to the true value; precision is how close repeated readings are to each other and how fine the instrument scale is.",
+    "Systematic errors (such as zero error) shift every reading the same way and are not reduced by averaging; random errors scatter readings and are reduced by averaging.",
+    "Least count of a vernier caliper is usually 0.1 mm (0.01 cm); a micrometer screw gauge is usually 0.01 mm.",
+    "Prefixes go in steps of 10³: n (10⁻⁹), μ (10⁻⁶), m (10⁻³), k (10³), M (10⁶), G (10⁹)."
+   ],
+   "formulas": [
+    {
+     "name": "Percentage error",
+     "formula": "% error = (Δx / x) × 100%",
+     "note": "Δx is the absolute uncertainty in the measured value x."
+    },
+    {
+     "name": "Errors in sums and differences",
+     "formula": "Q = a ± b  ⇒  ΔQ = Δa + Δb",
+     "note": "Absolute errors add, even when the quantities are subtracted."
+    },
+    {
+     "name": "Errors in products and quotients",
+     "formula": "Q = ab or a/b  ⇒  ΔQ/Q = Δa/a + Δb/b",
+     "note": "Fractional (or percentage) errors add for maximum error."
+    },
+    {
+     "name": "Errors in powers",
+     "formula": "Q = aⁿ  ⇒  ΔQ/Q = |n| Δa/a",
+     "note": "The power multiplies the percentage error; works for roots too (n = ½)."
+    },
+    {
+     "name": "Vernier caliper reading",
+     "formula": "Reading = main scale reading + (coinciding vernier division × least count)",
+     "note": "Least count = 1 main scale division − 1 vernier scale division, typically 0.01 cm."
+    },
+    {
+     "name": "Micrometer reading",
+     "formula": "Reading = sleeve reading + (thimble division × least count); least count = pitch / number of thimble divisions",
+     "note": "Pitch 0.5 mm with 50 divisions gives least count 0.01 mm."
+    },
+    {
+     "name": "Zero error correction",
+     "formula": "Correct reading = observed reading − zero error",
+     "note": "Zero error is positive if the instrument reads above zero when closed, negative if below."
+    },
+    {
+     "name": "Common dimensions",
+     "formula": "Force [MLT⁻²], Energy [ML²T⁻²], Power [ML²T⁻³], Pressure [ML⁻¹T⁻²], Momentum [MLT⁻¹]",
+     "note": "Torque has the same dimensions as energy but is not energy."
+    },
+    {
+     "name": "Density",
+     "formula": "ρ = m / V",
+     "note": "SI unit kg m⁻³; 1 g cm⁻³ = 1000 kg m⁻³."
+    },
+    {
+     "name": "Speed conversion",
+     "formula": "1 km/h = 1/3.6 m/s = 5/18 m/s",
+     "note": "Multiply m/s by 3.6 to get km/h."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "km/h to m/s",
+     "rule": "Divide by 3.6, or multiply by 5/18; multiples of 18 km/h convert cleanly (18 → 5, 36 → 10, 72 → 20, 90 → 25, 108 → 30).",
+     "example": "72 km/h ÷ 3.6 = 20 m/s; 90 km/h × 5/18 = 25 m/s."
+    },
+    {
+     "name": "Error scales with the power",
+     "rule": "For Q ∝ aⁿ, multiply the percentage error of a by n; ignore constants like 4/3 and π.",
+     "example": "Sphere radius measured with 2% error: V = (4/3)πr³ so V has 3 × 2% = 6% error."
+    },
+    {
+     "name": "Combined percentage error by inspection",
+     "rule": "For a product or quotient of powers, multiply each percentage error by its power and add them all — division still adds.",
+     "example": "g = 4π²L/T² with 1% error in L and 0.5% error in T: 1% + 2 × 0.5% = 2%."
+    },
+    {
+     "name": "Derive a formula by dimensions",
+     "rule": "Write the quantity as a product of powers, match M, L, T exponents and solve.",
+     "example": "Wave speed on a string v = Tᵃμᵇ (T tension, μ mass per length): [MLT⁻²]ᵃ[ML⁻¹]ᵇ = LT⁻¹ gives a + b = 0, a − b = 1, −2a = −1, so a = ½, b = −½ and v = √(T/μ)."
+    },
+    {
+     "name": "Dimension check to eliminate options",
+     "rule": "Check only the dimensions of each option; any option that does not reduce to the right dimensions is out.",
+     "example": "Pendulum period options √(l/g) and √(g/l): √(L ÷ LT⁻²) = √(T²) = T, so √(l/g) is the only possible form."
+    },
+    {
+     "name": "Vernier reading in one line",
+     "rule": "Main scale reading, then append the coinciding vernier division as the next digit when least count is 0.01 cm.",
+     "example": "Main scale 2.3 cm, 7th vernier division coincides: reading = 2.3 + 7 × 0.01 = 2.37 cm."
+    }
+   ],
+   "traps": [
+    "Saying the gram is the SI base unit of mass; it is the kilogram.",
+    "Subtracting errors when quantities are subtracted; absolute errors always add.",
+    "Adding a zero error instead of subtracting it (a negative zero error must be added to the reading, a positive one subtracted).",
+    "Treating a dimensionally correct equation as automatically correct; dimensions cannot detect pure numbers like ½ or 2π.",
+    "Listing speed or energy as vectors; they are scalars."
+   ],
+   "nsmqTips": [
+    "When asked for the unit of a quantity in base units, write its defining formula and substitute: e.g. pressure = force/area = kg m s⁻² / m² = kg m⁻¹ s⁻².",
+    "For riddles about instruments, know which reads to 0.1 mm (vernier) and which to 0.01 mm (micrometer).",
+    "In multiple-choice formula questions, run a quick dimension check first; it often leaves one option.",
+    "State units with every numerical answer; quizmasters may reject a bare number."
+   ]
+  },
+  {
+   "topic": "Kinematics and projectiles",
+   "strand": "Mechanics and Matter",
+   "university": false,
+   "summary": "Kinematics describes motion with displacement, velocity and acceleration, using graphs and the equations of uniformly accelerated motion. Projectile questions split motion into a uniform horizontal part and a uniformly accelerated vertical part, and they are a favourite NSMQ speed round.",
+   "keyIdeas": [
+    "The equations of motion apply only when acceleration is constant.",
+    "The gradient of a displacement–time graph is velocity; the gradient of a velocity–time graph is acceleration; the area under a velocity–time graph is displacement.",
+    "Free-fall acceleration g ≈ 9.8 m s⁻² (often 10 m s⁻² in quiz work) acts downward at all times, including at the top of the path.",
+    "In projectile motion (no air resistance) horizontal velocity stays constant and vertical motion has acceleration g downward; the two are independent.",
+    "At maximum height the vertical velocity is zero but the horizontal velocity u cosθ remains.",
+    "For launch and landing at the same level, range is greatest at 45°, and complementary angles (θ and 90° − θ) give the same range.",
+    "A body dropped and a body thrown horizontally from the same height reach the ground at the same time.",
+    "Relative velocity of A with respect to B is v_A − v_B (vector subtraction)."
+   ],
+   "formulas": [
+    {
+     "name": "Velocity–time",
+     "formula": "v = u + at",
+     "note": "u initial velocity, v final velocity, a constant acceleration, t time."
+    },
+    {
+     "name": "Displacement–time",
+     "formula": "s = ut + ½at²",
+     "note": "Use when final velocity is not given."
+    },
+    {
+     "name": "Velocity–displacement",
+     "formula": "v² = u² + 2as",
+     "note": "Use when time is not given."
+    },
+    {
+     "name": "Average velocity form",
+     "formula": "s = ½(u + v)t",
+     "note": "Use when acceleration is not given."
+    },
+    {
+     "name": "Distance in the nth second",
+     "formula": "sₙ = u + ½a(2n − 1)",
+     "note": "Displacement during the nth second only, not up to it."
+    },
+    {
+     "name": "Time of flight",
+     "formula": "T = 2u sinθ / g",
+     "note": "Projectile launched and landing at the same level, θ above horizontal."
+    },
+    {
+     "name": "Maximum height",
+     "formula": "H = u² sin²θ / (2g)",
+     "note": "Depends only on the vertical component u sinθ."
+    },
+    {
+     "name": "Range",
+     "formula": "R = u² sin2θ / g; R_max = u²/g at θ = 45°",
+     "note": "Same launch and landing height, no air resistance."
+    },
+    {
+     "name": "Trajectory equation",
+     "formula": "y = x tanθ − g x² / (2u² cos²θ)",
+     "note": "A parabola; y is height at horizontal distance x."
+    },
+    {
+     "name": "Horizontal launch from height h",
+     "formula": "t = √(2h/g); horizontal distance = u√(2h/g)",
+     "note": "u is the horizontal launch speed."
+    },
+    {
+     "name": "Vertical throw",
+     "formula": "Max height = u²/(2g); time to top = u/g; total time = 2u/g",
+     "note": "Thrown straight up from ground level."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Odd-number rule (Galileo)",
+     "rule": "From rest under constant acceleration, distances covered in successive equal time intervals are in ratio 1 : 3 : 5 : 7 …",
+     "example": "Dropped stone with g = 10 m s⁻²: 5 m in the 1st second, 15 m in the 2nd, 25 m in the 3rd; total after 3 s = 45 m."
+    },
+    {
+     "name": "Complementary angles",
+     "rule": "Angles θ and 90° − θ give the same range at the same speed; only the height and flight time differ.",
+     "example": "u = 20 m s⁻¹, g = 10: at 30°, R = 400 × sin60° / 10 ≈ 40 × 0.866 = 34.6 m; at 60° the range is also 34.6 m."
+    },
+    {
+     "name": "Range–height link",
+     "rule": "R tanθ = 4H, so at 45° the range is four times the maximum height.",
+     "example": "A ball at 45° reaches a maximum height of 5 m: range = 4 × 5 = 20 m."
+    },
+    {
+     "name": "Height from flight time",
+     "rule": "H = gT²/8 for a symmetric flight (half the flight is a fall from the top).",
+     "example": "Time of flight 4 s, g = 10: H = 10 × 16 / 8 = 20 m (check: falling for 2 s gives ½ × 10 × 2² = 20 m)."
+    },
+    {
+     "name": "Stopping distance scales as speed squared",
+     "rule": "With the same braking deceleration, stopping distance ∝ u².",
+     "example": "A car stops in 20 m from 36 km/h; from 72 km/h (double speed) it needs 4 × 20 = 80 m."
+    },
+    {
+     "name": "Vertical throw in multiples of 10",
+     "rule": "With g = 10, time to top = u/10 and height = u²/20.",
+     "example": "u = 30 m s⁻¹: reaches top in 3 s, height = 900/20 = 45 m, lands after 6 s."
+    }
+   ],
+   "traps": [
+    "Saying the acceleration at the top of a projectile path is zero; it is still g downward.",
+    "Saying the velocity at the top is zero for an angled projectile; only the vertical component is zero.",
+    "Mixing sign conventions: if up is positive, g must be −9.8 m s⁻² throughout.",
+    "Using the range formula R = u² sin2θ / g when launch and landing heights are different.",
+    "Confusing distance travelled in the nth second with total distance travelled in n seconds."
+   ],
+   "nsmqTips": [
+    "Most quiz projectile problems use g = 10 m s⁻² and angles of 30°, 45°, 60°; memorise sin30° = 0.5, sin45° ≈ 0.707, sin60° ≈ 0.866.",
+    "For graph questions, say immediately what the gradient and the area represent; that usually is the answer.",
+    "In 'which reaches the ground first' riddles, only the vertical motion matters.",
+    "Write down the three known quantities among u, v, a, s, t and pick the equation without the missing one."
+   ]
+  },
+  {
+   "topic": "Newton's laws, momentum and collisions",
+   "strand": "Mechanics and Matter",
+   "university": false,
+   "summary": "Newton's three laws relate force to changes in motion, and momentum conservation follows from the third law. NSMQ uses this topic for lift problems, connected bodies, recoil and collision calculations where knowing the standard results saves a lot of time.",
+   "keyIdeas": [
+    "First law: a body stays at rest or in uniform straight-line motion unless a resultant external force acts; inertia is measured by mass.",
+    "Second law: resultant force equals rate of change of momentum, F = Δp/Δt, which reduces to F = ma for constant mass.",
+    "Third law: forces come in equal and opposite pairs acting on different bodies, so they never cancel each other on one body.",
+    "Impulse FΔt equals change in momentum; it is the area under a force–time graph.",
+    "Total momentum of an isolated system is conserved in all collisions and explosions.",
+    "Kinetic energy is conserved only in elastic collisions; in inelastic collisions some becomes heat, sound or deformation.",
+    "Coefficient of restitution e = 1 for perfectly elastic, 0 for perfectly inelastic (bodies stick together), between 0 and 1 otherwise.",
+    "Weight is a force (W = mg, in newtons); mass is the amount of matter (kg) and is the same everywhere."
+   ],
+   "formulas": [
+    {
+     "name": "Newton's second law",
+     "formula": "F = ma = Δp/Δt",
+     "note": "F is the resultant force on the body."
+    },
+    {
+     "name": "Momentum",
+     "formula": "p = mv",
+     "note": "Vector; unit kg m s⁻¹ or N s."
+    },
+    {
+     "name": "Impulse",
+     "formula": "J = FΔt = mv − mu",
+     "note": "For a ball bouncing back, Δp = m(v + u) when speeds are taken as magnitudes."
+    },
+    {
+     "name": "Conservation of momentum",
+     "formula": "m₁u₁ + m₂u₂ = m₁v₁ + m₂v₂",
+     "note": "Take one direction as positive; velocities in the other direction are negative."
+    },
+    {
+     "name": "Coefficient of restitution",
+     "formula": "e = (v₂ − v₁) / (u₁ − u₂)",
+     "note": "Relative speed of separation divided by relative speed of approach."
+    },
+    {
+     "name": "Perfectly inelastic collision",
+     "formula": "v = (m₁u₁ + m₂u₂) / (m₁ + m₂)",
+     "note": "Bodies move off together."
+    },
+    {
+     "name": "Elastic collision, target at rest",
+     "formula": "v₁ = (m₁ − m₂)u₁/(m₁ + m₂); v₂ = 2m₁u₁/(m₁ + m₂)",
+     "note": "One-dimensional, m₂ initially at rest."
+    },
+    {
+     "name": "Kinetic energy and momentum",
+     "formula": "KE = p² / (2m)",
+     "note": "For equal momenta, KE ∝ 1/m."
+    },
+    {
+     "name": "Apparent weight in a lift",
+     "formula": "R = m(g + a) going up with acceleration a; R = m(g − a) accelerating downward",
+     "note": "In free fall a = g and R = 0."
+    },
+    {
+     "name": "Atwood machine",
+     "formula": "a = (m₁ − m₂)g / (m₁ + m₂); T = 2m₁m₂g / (m₁ + m₂)",
+     "note": "Two masses over a light frictionless pulley, m₁ > m₂."
+    },
+    {
+     "name": "Recoil",
+     "formula": "m_gun v_gun = m_bullet v_bullet",
+     "note": "Total momentum is zero before firing, so it is zero after."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Equal masses swap velocities",
+     "rule": "In a 1D elastic collision between equal masses, the velocities are exchanged.",
+     "example": "A 0.2 kg ball at 5 m s⁻¹ hits an identical ball at rest elastically: the first stops, the second moves at 5 m s⁻¹."
+    },
+    {
+     "name": "Fraction of KE lost when sticking to a body at rest",
+     "rule": "Fraction lost = m₂/(m₁ + m₂), where m₂ is the target at rest.",
+     "example": "2 kg at 6 m s⁻¹ hits 4 kg at rest and sticks: fraction lost = 4/6 = 2/3. Check: KE before 36 J, v = 12/6 = 2 m s⁻¹, KE after ½ × 6 × 4 = 12 J, lost 24 J = 2/3."
+    },
+    {
+     "name": "Recoil energy ratio",
+     "rule": "In an explosion from rest, the two parts have equal momenta, so their KE ratio is the inverse of their mass ratio.",
+     "example": "0.01 kg bullet at 400 m s⁻¹ from a 4 kg gun: p = 4 N s, gun speed 1 m s⁻¹, gun KE 2 J, bullet KE 800 J (ratio 400 = 4/0.01)."
+    },
+    {
+     "name": "Atwood in fractions of g",
+     "rule": "a = g × (difference / sum) of the masses.",
+     "example": "3 kg and 2 kg, g = 10: a = 10 × 1/5 = 2 m s⁻², T = 2 × 3 × 2 × 10 / 5 = 24 N (check: 30 − 24 = 3 × 2)."
+    },
+    {
+     "name": "Lift reading in one step",
+     "rule": "Replace g by (g + a) for upward acceleration or (g − a) for downward acceleration; constant velocity means normal weight.",
+     "example": "60 kg person, lift accelerating up at 2 m s⁻², g = 10: scale reads 60 × 12 = 720 N; with the cable cut it reads 0."
+    },
+    {
+     "name": "Limiting cases of elastic collision",
+     "rule": "Heavy hits light at rest: light moves off at about 2u. Light hits very heavy wall: bounces back with the same speed.",
+     "example": "A truck at 10 m s⁻¹ hits a tennis ball at rest elastically: the ball leaves at about 20 m s⁻¹."
+    }
+   ],
+   "traps": [
+    "Claiming action and reaction cancel; they act on different bodies.",
+    "Forgetting momentum is a vector: a 0.1 kg ball hitting a wall at 10 m s⁻¹ and bouncing back at 10 m s⁻¹ has Δp = 2 N s, not 0.",
+    "Assuming kinetic energy is conserved in every collision; only momentum is always conserved.",
+    "Giving weight in kg; weight is a force measured in newtons.",
+    "Using the resultant of only some forces in F = ma; F must be the net force."
+   ],
+   "nsmqTips": [
+    "Recognise the collision type from the wording: 'stick together' or 'coalesce' means perfectly inelastic; 'elastic' means KE also conserved.",
+    "For 'why does a gun recoil' or 'why do we bend our knees on landing' questions, name the law (third law, impulse) in your first sentence.",
+    "Memorise the equal-mass and target-at-rest results; they answer many questions instantly.",
+    "For F–t graphs, the area is impulse; divide by mass to get the change in velocity."
+   ]
+  },
+  {
+   "topic": "Work, energy and power",
+   "strand": "Mechanics and Matter",
+   "university": false,
+   "summary": "Work is energy transferred by a force moving through a displacement, and power is the rate of transfer. NSMQ asks about energy conservation, machines and efficiency, pumps and vehicles, and many answers come quickly from scaling and conservation arguments.",
+   "keyIdeas": [
+    "Work is done only when the force has a component along the displacement; W = 0 when force is perpendicular to motion.",
+    "Energy cannot be created or destroyed, only converted; in the absence of friction, mechanical energy (KE + PE) is constant.",
+    "The work–energy theorem: net work done on a body equals its change in kinetic energy.",
+    "Power is the rate of doing work; for a vehicle at constant speed, P = Fv where F is the driving force equal to resistance.",
+    "The kilowatt-hour is a unit of energy: 1 kWh = 3.6 × 10⁶ J.",
+    "For machines: mechanical advantage MA = load/effort, velocity ratio VR = distance moved by effort / distance moved by load, efficiency = MA/VR.",
+    "No real machine has efficiency of 100% because of friction and the weight of moving parts.",
+    "The speed reached on a frictionless slope depends only on the vertical drop, not the shape of the slope."
+   ],
+   "formulas": [
+    {
+     "name": "Work done",
+     "formula": "W = Fs cosθ",
+     "note": "θ is the angle between force and displacement; unit joule."
+    },
+    {
+     "name": "Kinetic energy",
+     "formula": "KE = ½mv²",
+     "note": "Also KE = p²/(2m)."
+    },
+    {
+     "name": "Gravitational potential energy",
+     "formula": "PE = mgh",
+     "note": "Valid near the Earth's surface where g is constant."
+    },
+    {
+     "name": "Elastic potential energy",
+     "formula": "E = ½kx² = ½Fx",
+     "note": "Spring obeying Hooke's law, extension x."
+    },
+    {
+     "name": "Work–energy theorem",
+     "formula": "W_net = ½mv² − ½mu²",
+     "note": "Use for braking distances and work done by friction."
+    },
+    {
+     "name": "Power",
+     "formula": "P = W/t = Fv",
+     "note": "Unit watt (J s⁻¹)."
+    },
+    {
+     "name": "Efficiency",
+     "formula": "η = (useful energy output / energy input) × 100% = (MA/VR) × 100%",
+     "note": "Can also use useful power out / power in."
+    },
+    {
+     "name": "Machine ratios",
+     "formula": "MA = load/effort; VR = effort distance / load distance",
+     "note": "Pulley system VR = number of supporting rope sections; inclined plane VR = length/height."
+    },
+    {
+     "name": "Pump power",
+     "formula": "P = mgh/t (+ ½mv²/t if water leaves with speed v)",
+     "note": "m/t is the mass of water lifted per second."
+    },
+    {
+     "name": "Energy unit conversion",
+     "formula": "1 kWh = 1000 W × 3600 s = 3.6 × 10⁶ J",
+     "note": "Electricity bills use kWh."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Free-fall speed table",
+     "rule": "With g = 10, falling h = 5n² metres gives v = 10n m s⁻¹.",
+     "example": "Fall of 5 m → 10 m s⁻¹; 20 m → 20 m s⁻¹; 45 m → 30 m s⁻¹; 80 m → 40 m s⁻¹."
+    },
+    {
+     "name": "Percentage change in KE",
+     "rule": "KE ∝ v² and KE ∝ p², so square the factor.",
+     "example": "Speed up 10%: KE × 1.1² = 1.21, a 21% rise. Momentum up 20%: KE × 1.44, a 44% rise."
+    },
+    {
+     "name": "Power at constant speed",
+     "rule": "At steady speed driving force equals resistance, so P = resistance × speed.",
+     "example": "A car meets 1500 N resistance at 20 m s⁻¹: P = 1500 × 20 = 30 000 W = 30 kW."
+    },
+    {
+     "name": "Pump power by mental arithmetic",
+     "rule": "Work out mgh first, then divide by the time in seconds.",
+     "example": "Lift 600 kg of water through 10 m in 1 minute, g = 10: 600 × 10 × 10 = 60 000 J, ÷ 60 s = 1 kW."
+    },
+    {
+     "name": "Efficiency from MA and VR",
+     "rule": "η = MA/VR; skip the energy calculation.",
+     "example": "Load 400 N, effort 100 N, VR 5: MA = 4, efficiency = 4/5 = 80%."
+    },
+    {
+     "name": "Spring energy scaling",
+     "rule": "Elastic energy ∝ x², so doubling the compression quadruples the stored energy.",
+     "example": "A spring stores 3 J at 2 cm; at 4 cm it stores 12 J; at 6 cm it stores 27 J."
+    }
+   ],
+   "traps": [
+    "Saying a person carrying a box along level ground does work against gravity; the weight is perpendicular to the motion.",
+    "Treating the kWh as a unit of power; it is a unit of energy.",
+    "Forgetting that friction does negative work and turns mechanical energy into heat.",
+    "Giving efficiency greater than 100% after mixing up MA and VR.",
+    "Using total mass instead of mass per second in pump power questions."
+   ],
+   "nsmqTips": [
+    "Questions on a body sliding or swinging without friction are usually energy conservation: mgh = ½mv², so mass cancels.",
+    "For 'calculate the cost' riddles, convert to kWh: power in kW × hours × price per kWh.",
+    "Expect pulley questions: VR equals the number of rope sections supporting the load block.",
+    "State the energy changes in order (e.g. chemical → electrical → light + heat) when asked to describe conversions."
+   ]
+  },
+  {
+   "topic": "Statics, moments and friction",
+   "strand": "Mechanics and Matter",
+   "university": false,
+   "summary": "Statics is the study of bodies in equilibrium under several forces, using resolution of forces, moments and centre of gravity. Friction sets the limit of equilibrium on rough surfaces. NSMQ favours beam and metre-rule balancing, incline problems and tensions in strings.",
+   "keyIdeas": [
+    "A body is in equilibrium when the resultant force is zero and the resultant moment about any point is zero.",
+    "The moment of a force is force × perpendicular distance from the pivot to the line of action of the force.",
+    "A couple is two equal, opposite, parallel forces not on the same line; it produces rotation but no translation.",
+    "The weight of a uniform body acts at its geometric centre (centre of gravity).",
+    "Stability: a body is more stable with a low centre of gravity and a wide base; it topples when the line of action of its weight falls outside its base.",
+    "Static friction adjusts up to a maximum μₛR; once sliding, kinetic friction μₖR is usually slightly smaller.",
+    "Limiting friction is roughly independent of contact area and depends on the nature of the surfaces and the normal reaction.",
+    "Three non-parallel forces in equilibrium must meet at one point and can be drawn as a closed triangle."
+   ],
+   "formulas": [
+    {
+     "name": "Moment of a force",
+     "formula": "Moment = F × d",
+     "note": "d is the perpendicular distance from the pivot; unit N m."
+    },
+    {
+     "name": "Principle of moments",
+     "formula": "Σ clockwise moments = Σ anticlockwise moments",
+     "note": "Take moments about a point where an unknown force acts to eliminate it."
+    },
+    {
+     "name": "Conditions for equilibrium",
+     "formula": "ΣFₓ = 0, ΣF_y = 0, ΣM = 0",
+     "note": "Apply to any rigid body at rest."
+    },
+    {
+     "name": "Torque of a couple",
+     "formula": "τ = F × d",
+     "note": "d is the perpendicular separation of the two forces."
+    },
+    {
+     "name": "Limiting friction",
+     "formula": "F = μR",
+     "note": "R is the normal reaction; μ has no units."
+    },
+    {
+     "name": "Angle of friction (repose)",
+     "formula": "μ = tanθ",
+     "note": "θ is the incline angle at which a block is just about to slide."
+    },
+    {
+     "name": "Normal reaction on an incline",
+     "formula": "R = mg cosθ",
+     "note": "With no other forces perpendicular to the incline."
+    },
+    {
+     "name": "Acceleration down a rough incline",
+     "formula": "a = g(sinθ − μ cosθ)",
+     "note": "Only if tanθ > μ; otherwise the block stays at rest."
+    },
+    {
+     "name": "Lami's theorem",
+     "formula": "F₁/sinα = F₂/sinβ = F₃/sinγ",
+     "note": "Three concurrent forces in equilibrium; each angle is the one opposite (between the other two forces)."
+    },
+    {
+     "name": "Centre of gravity",
+     "formula": "x̄ = Σmx / Σm",
+     "note": "Use for composite bodies or systems of point masses."
+    },
+    {
+     "name": "Symmetric hanging load",
+     "formula": "T = W / (2cosθ)",
+     "note": "Two equal strings, each at θ to the vertical, supporting weight W."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Metre rule mass from balance",
+     "rule": "The rule's weight acts at the 50 cm mark; balance its moment against the hanging mass about the pivot.",
+     "example": "Uniform metre rule balances on a pivot at 40 cm with 50 g hung at 10 cm: 50 × 30 = m × 10, so m = 150 g."
+    },
+    {
+     "name": "Reactions by inverse distances",
+     "rule": "A load on a beam between two supports is shared inversely to its distances from them.",
+     "example": "10 m light plank on supports A and B, 600 N load 2 m from A: R_B = 600 × 2/10 = 120 N, R_A = 600 − 120 = 480 N."
+    },
+    {
+     "name": "Friction coefficient from tilt angle",
+     "rule": "If the block just begins to slide at angle θ, μ = tanθ — no forces needed.",
+     "example": "Block just slides at 30°: μ = tan30° = 1/√3 ≈ 0.58; at 45°, μ = 1."
+    },
+    {
+     "name": "Tension in a symmetric sling",
+     "rule": "T = W/(2cosθ); at θ = 60° to the vertical each string carries the full weight.",
+     "example": "20 N picture on two strings each at 60° to the vertical: T = 20/(2 × 0.5) = 20 N."
+    },
+    {
+     "name": "Three equal forces at 120°",
+     "rule": "Three equal forces separated by 120° are in equilibrium by symmetry; any two have a resultant equal and opposite to the third.",
+     "example": "Forces of 5 N, 5 N, 5 N at 120° apart: resultant = 0, and the resultant of any two is 5 N."
+    }
+   ],
+   "traps": [
+    "Using the slant distance instead of the perpendicular distance in moments.",
+    "Forgetting the weight of a non-light beam acting at its centre.",
+    "Taking the normal reaction on an incline as mg instead of mg cosθ.",
+    "Using μR as the friction force when the body is not on the point of slipping; static friction can be less than μR.",
+    "Giving μ a unit; it is a ratio of two forces."
+   ],
+   "nsmqTips": [
+    "Take moments about the pivot or about an unknown force so that it drops out of the equation.",
+    "Riddles on stability often point to 'low centre of gravity and wide base' (e.g. racing cars, bus design).",
+    "For 'why is friction useful or harmful' questions, give one concrete example of each: walking and brakes versus wear in engines.",
+    "In Lami's theorem questions, check you are using the angle opposite each force."
+   ]
+  },
+  {
+   "topic": "Circular motion, gravitation and SHM",
+   "strand": "Mechanics and Matter",
+   "university": false,
+   "summary": "This topic links motion in a circle, Newton's law of gravitation and orbits, and simple harmonic motion such as pendulums and springs. NSMQ often tests scaling with r, g and l, satellite speeds, and SHM phase relations, all of which reward quick ratio reasoning.",
+   "keyIdeas": [
+    "A body moving in a circle at constant speed is accelerating towards the centre; a resultant (centripetal) force is needed, supplied by tension, gravity, friction or a normal force.",
+    "Gravitational force between point masses is attractive and follows an inverse-square law.",
+    "For a satellite, gravity provides the centripetal force; orbital speed and period depend on the orbit radius, not on the satellite's mass.",
+    "A geostationary satellite orbits above the equator with a period of 24 h (one sidereal day ≈ 23 h 56 min), moving in the same direction as the Earth's rotation.",
+    "SHM: acceleration is proportional to displacement from equilibrium and directed towards it, a = −ω²x.",
+    "In SHM speed is greatest at equilibrium; acceleration is greatest at the extremes.",
+    "The period of a simple pendulum (small amplitude) is independent of the bob's mass and amplitude; the period of a mass–spring system is independent of g.",
+    "Astronauts in orbit feel weightless because they and their craft are in free fall together, not because gravity is absent."
+   ],
+   "formulas": [
+    {
+     "name": "Angular speed and acceleration",
+     "formula": "v = ωr; a = v²/r = ω²r",
+     "note": "ω in rad s⁻¹; ω = 2π/T = 2πf."
+    },
+    {
+     "name": "Centripetal force",
+     "formula": "F = mv²/r = mω²r",
+     "note": "The net inward force, not an extra force."
+    },
+    {
+     "name": "Newton's law of gravitation",
+     "formula": "F = GMm/r²",
+     "note": "G = 6.67 × 10⁻¹¹ N m² kg⁻²; r measured between centres."
+    },
+    {
+     "name": "Surface gravity",
+     "formula": "g = GM/R²; at height h, g' = g R²/(R + h)²",
+     "note": "At depth d inside a uniform Earth, g' = g(1 − d/R)."
+    },
+    {
+     "name": "Orbital speed and period",
+     "formula": "v = √(GM/r); T² = 4π²r³/(GM)",
+     "note": "T² ∝ r³ is Kepler's third law."
+    },
+    {
+     "name": "Escape velocity",
+     "formula": "vₑ = √(2GM/R) = √(2gR)",
+     "note": "About 11.2 km s⁻¹ for Earth; independent of mass of the object."
+    },
+    {
+     "name": "SHM displacement",
+     "formula": "x = A sin(ωt + φ)",
+     "note": "A amplitude, φ phase constant."
+    },
+    {
+     "name": "SHM speed and acceleration",
+     "formula": "v = ω√(A² − x²); v_max = Aω; a_max = ω²A",
+     "note": "a = −ω²x at every point."
+    },
+    {
+     "name": "Simple pendulum",
+     "formula": "T = 2π√(l/g)",
+     "note": "Small angles (below about 10°)."
+    },
+    {
+     "name": "Mass–spring system",
+     "formula": "T = 2π√(m/k)",
+     "note": "Same formula for horizontal or vertical springs."
+    },
+    {
+     "name": "SHM energy",
+     "formula": "E = ½mω²A² = ½kA²",
+     "note": "KE = ½mω²(A² − x²), PE = ½mω²x²."
+    },
+    {
+     "name": "Vertical circle limits",
+     "formula": "v_top,min = √(gr); v_bottom,min = √(5gr)",
+     "note": "For a mass on a string going round a complete vertical circle."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Escape is √2 times orbital",
+     "rule": "Escape speed from a surface = √2 × the speed of a circular orbit just above that surface.",
+     "example": "Low Earth orbit ≈ 7.9 km s⁻¹, so escape ≈ 7.9 × 1.414 ≈ 11.2 km s⁻¹."
+    },
+    {
+     "name": "Kepler scaling",
+     "rule": "T ∝ r^(3/2): multiply r by 4 → T × 8; by 9 → T × 27.",
+     "example": "A satellite with period 3 h moves to an orbit of 4 times the radius: new period = 3 × 8 = 24 h."
+    },
+    {
+     "name": "Seconds-pendulum rule",
+     "rule": "T ≈ 2√l (T in s, l in m) because 2π/√9.8 ≈ 2.0; period ∝ √l.",
+     "example": "l = 1 m → T ≈ 2 s; l = 0.25 m → T ≈ 1 s; length ×4 → period ×2."
+    },
+    {
+     "name": "Gravity at one Earth radius up",
+     "rule": "Doubling the distance from Earth's centre divides g by 4; tripling divides by 9.",
+     "example": "At height h = R: g' = 9.8/4 = 2.45 m s⁻²; at h = 2R: 9.8/9 ≈ 1.09 m s⁻²."
+    },
+    {
+     "name": "SHM at half amplitude",
+     "rule": "At x = A/2, speed = (√3/2)v_max and KE is ¾ of the total energy.",
+     "example": "v_max = 4 m s⁻¹: at x = A/2, v = 4 × 0.866 ≈ 3.46 m s⁻¹; if total energy is 8 J, KE = 6 J and PE = 2 J."
+    },
+    {
+     "name": "Vertical circle tension gap",
+     "rule": "For a mass whirled in a vertical circle, T_bottom − T_top = 6mg (energy conservation plus F = mv²/r).",
+     "example": "0.5 kg stone, g = 10: tension at the bottom exceeds that at the top by 6 × 0.5 × 10 = 30 N."
+    }
+   ],
+   "traps": [
+    "Drawing centripetal force as an extra force on a free-body diagram; it is the resultant of the real forces.",
+    "Measuring r from the Earth's surface instead of from its centre.",
+    "Saying a heavier pendulum bob swings faster; mass does not affect the period.",
+    "Saying the period of a mass–spring system changes on the Moon; it does not depend on g.",
+    "Thinking escape velocity depends on the mass of the object or the launch direction (ignoring air resistance)."
+   ],
+   "nsmqTips": [
+    "Answer satellite comparisons with ratios: higher orbit means slower speed and longer period.",
+    "Know the phase relations: velocity leads displacement by π/2 and acceleration is in antiphase (π) with displacement.",
+    "For pendulum-clock riddles: a longer pendulum (e.g. expanded in heat) has a longer period, so the clock loses time.",
+    "For 'g on a planet' questions, use g ∝ M/R²; for the same density, g ∝ R."
+   ]
+  },
+  {
+   "topic": "Properties of matter, pressure and fluids",
+   "strand": "Mechanics and Matter",
+   "university": false,
+   "summary": "This topic covers elasticity, pressure in fluids, flotation and upthrust, surface tension, viscosity and fluid flow. NSMQ asks quick calculations on Young's modulus, hydraulic machines, relative density and floating, plus many 'explain why' riddles about everyday fluid behaviour.",
+   "keyIdeas": [
+    "Hooke's law: extension is proportional to load up to the limit of proportionality; beyond the elastic limit the material is permanently deformed.",
+    "Pressure in a fluid at rest acts equally in all directions at a given depth and depends only on depth, density and g, not on the shape of the container.",
+    "Pascal's principle: pressure applied to an enclosed liquid is transmitted equally throughout it, which is the basis of hydraulic presses and brakes.",
+    "Archimedes' principle: the upthrust on a body in a fluid equals the weight of fluid displaced.",
+    "A floating body displaces its own weight of fluid (law of flotation).",
+    "Surface tension makes a liquid surface behave like a stretched skin; water rises in narrow glass tubes, mercury is depressed.",
+    "Viscosity is internal friction in a fluid; a sphere falling through a viscous fluid reaches terminal velocity when weight = upthrust + viscous drag.",
+    "In steady flow, a fluid speeds up where the pipe narrows, and faster-moving fluid has lower pressure (Bernoulli)."
+   ],
+   "formulas": [
+    {
+     "name": "Hooke's law",
+     "formula": "F = kx",
+     "note": "k is the spring constant in N m⁻¹."
+    },
+    {
+     "name": "Stress, strain and Young's modulus",
+     "formula": "Stress = F/A; strain = e/L; E = stress/strain = FL/(Ae)",
+     "note": "Strain has no units; E and stress are in Pa."
+    },
+    {
+     "name": "Energy stored in a stretched wire",
+     "formula": "E = ½Fe",
+     "note": "Area under the force–extension graph within the proportional region."
+    },
+    {
+     "name": "Pressure",
+     "formula": "P = F/A",
+     "note": "1 Pa = 1 N m⁻²; 1 atm ≈ 1.01 × 10⁵ Pa."
+    },
+    {
+     "name": "Liquid pressure",
+     "formula": "P = ρgh",
+     "note": "Gauge pressure at depth h; add atmospheric pressure for absolute pressure."
+    },
+    {
+     "name": "Upthrust (Archimedes)",
+     "formula": "U = ρ_fluid V_displaced g",
+     "note": "Apparent loss in weight equals upthrust."
+    },
+    {
+     "name": "Fraction submerged when floating",
+     "formula": "V_sub / V = ρ_body / ρ_fluid",
+     "note": "Valid only for a freely floating body."
+    },
+    {
+     "name": "Relative density",
+     "formula": "RD = ρ_substance / ρ_water = weight in air / loss of weight in water",
+     "note": "No units."
+    },
+    {
+     "name": "Hydraulic press",
+     "formula": "F₁/A₁ = F₂/A₂",
+     "note": "Force ratio = area ratio = (diameter ratio)²."
+    },
+    {
+     "name": "Continuity equation",
+     "formula": "A₁v₁ = A₂v₂",
+     "note": "Incompressible fluid in steady flow."
+    },
+    {
+     "name": "Bernoulli's equation",
+     "formula": "P + ½ρv² + ρgh = constant",
+     "note": "Along a streamline, non-viscous incompressible steady flow."
+    },
+    {
+     "name": "Stokes' law and terminal velocity",
+     "formula": "F = 6πηrv; v_t = 2r²(ρ − σ)g / (9η)",
+     "note": "η viscosity, ρ sphere density, σ fluid density."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Floating fraction equals relative density",
+     "rule": "A floating body has the fraction RD of its volume submerged in water (RD_body / RD_liquid in another liquid).",
+     "example": "Wood of RD 0.6 floats with 60% submerged; ice (≈ 917 kg m⁻³) floats in fresh water with about 92% submerged."
+    },
+    {
+     "name": "Hydraulic gain from diameters",
+     "rule": "Force gain = (large diameter / small diameter)².",
+     "example": "Pistons of diameter 2 cm and 20 cm: gain = 10² = 100, so 50 N on the small piston lifts 5000 N."
+    },
+    {
+     "name": "10 m of water ≈ 1 atmosphere",
+     "rule": "ρgh = 1000 × 10 × 10 = 10⁵ Pa, so each 10 m of water adds about 1 atm.",
+     "example": "A diver 30 m deep feels about 1 + 3 = 4 atm absolute pressure."
+    },
+    {
+     "name": "Relative density from two weighings",
+     "rule": "RD = weight in air / (weight in air − weight in water).",
+     "example": "A stone weighs 10 N in air and 6 N in water: upthrust = 4 N, RD = 10/4 = 2.5."
+    },
+    {
+     "name": "Extension scaling for wires",
+     "rule": "e ∝ FL/d² for the same material; multiply the factors.",
+     "example": "Same load, wire twice as long and half the diameter: e × 2 × 4 = 8 times the extension."
+    },
+    {
+     "name": "Pipe narrows, speed by area ratio",
+     "rule": "v ∝ 1/A ∝ 1/d²: halving the diameter quadruples the speed.",
+     "example": "Water at 2 m s⁻¹ in a 4 cm pipe flows at 2 × 4 = 8 m s⁻¹ in a 2 cm section."
+    }
+   ],
+   "traps": [
+    "Thinking a wider container produces more pressure at the bottom; pressure depends on depth only.",
+    "Mixing gauge and absolute pressure: at depth h, absolute pressure = P_atm + ρgh.",
+    "Saying upthrust depends on the weight of the object; it depends on the volume of fluid displaced.",
+    "Assuming faster-flowing air has higher pressure; it has lower pressure.",
+    "Giving strain a unit; it is a ratio of lengths."
+   ],
+   "nsmqTips": [
+    "For 'explain why' riddles (aircraft lift, atomiser spray, ships of steel floating), name the principle first: Bernoulli, Archimedes or flotation.",
+    "Use g = 10 and ρ_water = 1000 kg m⁻³ for quick pressure answers unless told otherwise.",
+    "Ratios answer most elasticity, hydraulic and terminal-velocity questions without full substitution.",
+    "Remember why mercury is used in barometers: high density gives a short column (about 0.76 m instead of about 10 m for water)."
+   ]
+  },
+  {
+   "topic": "Rotational dynamics",
+   "strand": "Mechanics and Matter",
+   "university": true,
+   "summary": "Rotational dynamics extends Newton's laws to rigid bodies turning about an axis, using torque, moment of inertia and angular momentum. In NSMQ it appears in rolling-race questions, spinning skaters and flywheel energy, where knowing standard moments of inertia and the linear–rotational analogy gives fast answers.",
+   "keyIdeas": [
+    "Every linear quantity has a rotational partner: displacement s ↔ angle θ, velocity v ↔ ω, acceleration a ↔ α, mass m ↔ moment of inertia I, force F ↔ torque τ, momentum p ↔ angular momentum L.",
+    "Moment of inertia depends on the mass and on how far the mass is from the chosen axis; the same body has different I about different axes.",
+    "Angular momentum is conserved when no external torque acts, so reducing I increases ω.",
+    "For rolling without slipping, v = ωR and total KE = translational + rotational.",
+    "Objects rolling down the same incline arrive in order of increasing I/(mR²), independent of their mass and radius.",
+    "In pure rolling, static friction does no work because the contact point is momentarily at rest.",
+    "The parallel-axis theorem works for any body; the perpendicular-axis theorem applies only to flat laminae."
+   ],
+   "formulas": [
+    {
+     "name": "Newton's second law for rotation",
+     "formula": "τ = Iα",
+     "note": "τ resultant torque about the axis, α angular acceleration."
+    },
+    {
+     "name": "Moment of inertia",
+     "formula": "I = Σmr²",
+     "note": "r is the perpendicular distance of each mass element from the axis; unit kg m²."
+    },
+    {
+     "name": "Angular momentum",
+     "formula": "L = Iω",
+     "note": "Conserved when external torque is zero: I₁ω₁ = I₂ω₂."
+    },
+    {
+     "name": "Rotational kinetic energy",
+     "formula": "KE = ½Iω² = L²/(2I)",
+     "note": "Add ½mv² for a body that also translates."
+    },
+    {
+     "name": "Standard moments of inertia",
+     "formula": "Ring MR²; disc MR²/2; solid sphere 2MR²/5; hollow sphere 2MR²/3; rod about centre ML²/12; rod about end ML²/3",
+     "note": "Axes through the centre (symmetry axis for ring and disc) unless stated."
+    },
+    {
+     "name": "Parallel-axis theorem",
+     "formula": "I = I_cm + Md²",
+     "note": "d is the distance between the new axis and a parallel axis through the centre of mass."
+    },
+    {
+     "name": "Perpendicular-axis theorem",
+     "formula": "I_z = I_x + I_y",
+     "note": "Flat lamina only; z axis perpendicular to the plane."
+    },
+    {
+     "name": "Rotational kinematics",
+     "formula": "ω = ω₀ + αt; θ = ω₀t + ½αt²; ω² = ω₀² + 2αθ",
+     "note": "Constant angular acceleration."
+    },
+    {
+     "name": "Rolling down an incline",
+     "formula": "a = g sinθ / (1 + I/(mR²)); v = √(2gh / (1 + I/(mR²)))",
+     "note": "Rolling without slipping from rest through height h."
+    },
+    {
+     "name": "Rotational work and power",
+     "formula": "W = τθ; P = τω",
+     "note": "θ in radians."
+    },
+    {
+     "name": "Torque",
+     "formula": "τ = rF sinφ",
+     "note": "φ is the angle between r and F."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Rolling race order",
+     "rule": "Smallest I/(mR²) wins: solid sphere (2/5) > solid disc or cylinder (1/2) > hollow sphere (2/3) > ring or hollow cylinder (1).",
+     "example": "A small marble and a large bowling ball (both solid spheres) tie; either beats a hoop of any mass."
+    },
+    {
+     "name": "Speed of a rolling solid sphere",
+     "rule": "For a solid sphere, v = √(10gh/7); pick h as a multiple of 7 for clean numbers.",
+     "example": "Solid sphere rolls from rest down a drop of 7 m, g = 10: v² = 10 × 10 × 7/7 = 100, so v = 10 m s⁻¹."
+    },
+    {
+     "name": "Fraction of KE that is rotational",
+     "rule": "With β = I/(mR²), rotational fraction = β/(1 + β).",
+     "example": "Disc: (1/2)/(3/2) = 1/3; ring: 1/2; solid sphere: (2/5)/(7/5) = 2/7."
+    },
+    {
+     "name": "Skater pulling arms in",
+     "rule": "L fixed: ω ∝ 1/I and KE = L²/(2I) ∝ 1/I.",
+     "example": "Moment of inertia halved from 4 to 2 kg m²: spin rate doubles and kinetic energy doubles (the extra comes from the skater's muscles)."
+    },
+    {
+     "name": "Rod: centre to end",
+     "rule": "Shift by L/2 with the parallel-axis theorem: ML²/12 + M(L/2)² = ML²/3.",
+     "example": "A 3 kg rod of length 2 m: about the centre I = 3 × 4/12 = 1 kg m²; about one end I = 3 × 4/3 = 4 kg m²."
+    },
+    {
+     "name": "Acceleration of a rolling sphere on a slope",
+     "rule": "a = (5/7)g sinθ for a solid sphere; (2/3)g sinθ for a disc; (1/2)g sinθ for a ring.",
+     "example": "Solid sphere on a 30° slope, g = 9.8: a = (5/7) × 9.8 × 0.5 = 3.5 m s⁻²."
+    }
+   ],
+   "traps": [
+    "Quoting one moment of inertia for a body without stating the axis.",
+    "Assuming kinetic energy is conserved whenever angular momentum is conserved (the skater gains KE).",
+    "Using the perpendicular-axis theorem for a solid three-dimensional body.",
+    "Forgetting the rotational KE when a body rolls, which overestimates its speed.",
+    "Using θ in degrees in rotational kinematics; use radians."
+   ],
+   "nsmqTips": [
+    "Learn the standard I values as fractions of MR²: 1, 1/2, 2/5, 2/3; most rolling questions reduce to these numbers.",
+    "For 'which reaches the bottom first' riddles, answer with the I/(mR²) ranking and note that mass and radius do not matter.",
+    "Use the linear–rotational dictionary to turn a rotation question into a familiar linear one.",
+    "Spinning skater, diver tucking, collapsing star spinning faster: all are conservation of angular momentum."
+   ]
+  },
+  {
+   "topic": "Heat, temperature and thermal properties",
+   "strand": "Energy",
+   "university": false,
+   "summary": "This topic covers temperature scales, heat capacity, latent heat, thermal expansion and heat transfer by conduction, convection and radiation. NSMQ uses it for calorimetry calculations, temperature conversions, radiation laws and many everyday 'explain why' riddles.",
+   "keyIdeas": [
+    "Temperature measures the average kinetic energy of particles; heat is energy transferred because of a temperature difference.",
+    "A temperature change of 1 K equals a change of 1 °C; absolute temperature T(K) = θ(°C) + 273.15.",
+    "During a change of state (melting, boiling) energy is absorbed or released as latent heat with no change in temperature.",
+    "Water has a high specific heat capacity (about 4200 J kg⁻¹ K⁻¹), which is why it is a good coolant and why coastal climates are mild.",
+    "Water expands when cooled from 4 °C to 0 °C (anomalous expansion), so lakes freeze from the top and water is densest at 4 °C.",
+    "Conduction occurs mainly through solids; convection needs a fluid; radiation needs no medium and can cross a vacuum.",
+    "Dull black surfaces are good absorbers and emitters of radiation; shiny silvered surfaces are poor absorbers and emitters.",
+    "In an isolated mixture, heat lost by hot bodies equals heat gained by cold bodies."
+   ],
+   "formulas": [
+    {
+     "name": "Specific heat capacity",
+     "formula": "Q = mcΔθ",
+     "note": "c in J kg⁻¹ K⁻¹; Δθ can be in K or °C."
+    },
+    {
+     "name": "Heat capacity",
+     "formula": "C = mc = Q/Δθ",
+     "note": "For a whole object; unit J K⁻¹."
+    },
+    {
+     "name": "Latent heat",
+     "formula": "Q = mL",
+     "note": "Water: L_f ≈ 3.34 × 10⁵ J kg⁻¹, L_v ≈ 2.26 × 10⁶ J kg⁻¹."
+    },
+    {
+     "name": "Temperature conversions",
+     "formula": "T(K) = θ(°C) + 273.15; θ(°F) = (9/5)θ(°C) + 32",
+     "note": "Ice point 0 °C = 32 °F = 273.15 K; steam point 100 °C = 212 °F."
+    },
+    {
+     "name": "Linear expansion",
+     "formula": "ΔL = αL₀Δθ",
+     "note": "α linear expansivity in K⁻¹."
+    },
+    {
+     "name": "Area and volume expansivity",
+     "formula": "β ≈ 2α; γ ≈ 3α",
+     "note": "For isotropic solids."
+    },
+    {
+     "name": "Thermal conduction",
+     "formula": "Q/t = kAΔθ/d",
+     "note": "k thermal conductivity, d thickness, A cross-sectional area."
+    },
+    {
+     "name": "Stefan–Boltzmann law",
+     "formula": "P = eσAT⁴",
+     "note": "σ = 5.67 × 10⁻⁸ W m⁻² K⁻⁴; e emissivity (1 for a black body); T in kelvin."
+    },
+    {
+     "name": "Wien's displacement law",
+     "formula": "λ_max T = 2.9 × 10⁻³ m K",
+     "note": "Hotter bodies peak at shorter wavelengths."
+    },
+    {
+     "name": "Electrical heating",
+     "formula": "VIt = Pt = mcΔθ",
+     "note": "Assumes no heat loss."
+    },
+    {
+     "name": "Method of mixtures",
+     "formula": "m₁c₁(θ₁ − θ) = m₂c₂(θ − θ₂)",
+     "note": "θ is the final common temperature; include the container if its heat capacity is given."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Mixing the same liquid",
+     "rule": "Final temperature is the mass-weighted average, since c cancels.",
+     "example": "2 kg of water at 80 °C mixed with 3 kg at 20 °C: (2 × 80 + 3 × 20)/5 = 220/5 = 44 °C."
+    },
+    {
+     "name": "−40 is the same on both scales",
+     "rule": "−40 °C = −40 °F; use (9/5)θ + 32 for exact conversion.",
+     "example": "Body temperature 37 °C: 1.8 × 37 + 32 = 66.6 + 32 = 98.6 °F."
+    },
+    {
+     "name": "Stefan scaling",
+     "rule": "Radiated power ∝ T⁴ in kelvin: doubling T gives 16 times the power.",
+     "example": "A body heated from 27 °C to 327 °C goes from 300 K to 600 K, so it radiates 2⁴ = 16 times as much power."
+    },
+    {
+     "name": "Wien in one line",
+     "rule": "T = 2.9 × 10⁻³ / λ_max; at λ_max = 500 nm, T ≈ 5800 K.",
+     "example": "The Sun peaks near 500 nm: T = 2.9 × 10⁻³ / (5 × 10⁻⁷) = 5800 K."
+    },
+    {
+     "name": "Kettle time",
+     "rule": "t = mcΔθ / P; heating 1 kg of water by 1 °C needs 4.2 kJ.",
+     "example": "2 kW kettle heats 1 kg of water from 20 °C to 100 °C: 1 × 4200 × 80 = 336 000 J, ÷ 2000 W = 168 s."
+    },
+    {
+     "name": "Expansivity multiples",
+     "rule": "Area change uses 2α and volume change uses 3α.",
+     "example": "α = 1.2 × 10⁻⁵ K⁻¹ for steel: β = 2.4 × 10⁻⁵ K⁻¹, γ = 3.6 × 10⁻⁵ K⁻¹."
+    }
+   ],
+   "traps": [
+    "Using °C instead of K in the Stefan–Boltzmann and Wien laws.",
+    "Saying temperature rises during melting or boiling; the energy goes into latent heat.",
+    "Confusing heat (energy, J) with temperature (K or °C).",
+    "Forgetting the heat absorbed by the container in calorimetry when its heat capacity is given.",
+    "Saying water is densest at 0 °C; it is densest at about 4 °C."
+   ],
+   "nsmqTips": [
+    "For 'explain why' riddles (vacuum flask, sea breeze, black kettle bottoms, gaps in railway lines), name the heat-transfer mode or property in the first sentence.",
+    "Memorise c_water ≈ 4200 J kg⁻¹ K⁻¹ and L_f ≈ 3.34 × 10⁵ J kg⁻¹; most calorimetry questions use them.",
+    "A sea breeze blows from sea to land by day because land heats faster (lower specific heat capacity); the land breeze reverses at night.",
+    "In mixture problems, set up 'heat lost = heat gained' before plugging in numbers."
+   ]
+  },
+  {
+   "topic": "Gas laws and kinetic theory",
+   "strand": "Energy",
+   "university": false,
+   "summary": "The gas laws relate pressure, volume and temperature of a fixed mass of gas, and kinetic theory explains them using moving molecules. NSMQ asks ratio-based gas law problems, molecular speeds and diffusion rates, which can usually be done without ever using the value of R.",
+   "keyIdeas": [
+    "All gas law calculations need absolute temperature in kelvin.",
+    "Boyle's law: at constant temperature, P ∝ 1/V; Charles's law: at constant pressure, V ∝ T; pressure law: at constant volume, P ∝ T.",
+    "An ideal gas obeys PV = nRT exactly; real gases behave nearly ideally at low pressure and high temperature.",
+    "Kinetic theory assumptions: many molecules in random motion, negligible molecular volume, no intermolecular forces except during collisions, perfectly elastic collisions, collision time much smaller than time between collisions.",
+    "Gas pressure is caused by molecules colliding with and changing momentum at the container walls.",
+    "The average translational kinetic energy of a molecule depends only on absolute temperature: (3/2)kT.",
+    "At absolute zero (0 K) an ideal gas would have zero average kinetic energy; real gases liquefy before reaching it.",
+    "Lighter gas molecules move faster at the same temperature and diffuse faster (Graham's law)."
+   ],
+   "formulas": [
+    {
+     "name": "Boyle's law",
+     "formula": "P₁V₁ = P₂V₂",
+     "note": "Fixed mass at constant temperature."
+    },
+    {
+     "name": "Charles's law",
+     "formula": "V₁/T₁ = V₂/T₂",
+     "note": "Fixed mass at constant pressure; T in K."
+    },
+    {
+     "name": "Pressure law",
+     "formula": "P₁/T₁ = P₂/T₂",
+     "note": "Fixed mass at constant volume; T in K."
+    },
+    {
+     "name": "General gas equation",
+     "formula": "P₁V₁/T₁ = P₂V₂/T₂",
+     "note": "Fixed mass when all three change."
+    },
+    {
+     "name": "Ideal gas equation",
+     "formula": "PV = nRT = NkT",
+     "note": "R = 8.31 J mol⁻¹ K⁻¹; k = 1.38 × 10⁻²³ J K⁻¹; N_A = 6.02 × 10²³ mol⁻¹; R = N_A k."
+    },
+    {
+     "name": "Kinetic theory pressure",
+     "formula": "P = ⅓ρ⟨c²⟩ = (1/3)(Nm/V)⟨c²⟩",
+     "note": "⟨c²⟩ is the mean square speed, m mass of one molecule."
+    },
+    {
+     "name": "Mean kinetic energy of a molecule",
+     "formula": "½m⟨c²⟩ = (3/2)kT",
+     "note": "Translational KE only."
+    },
+    {
+     "name": "Root mean square speed",
+     "formula": "c_rms = √(3RT/M) = √(3kT/m)",
+     "note": "M is molar mass in kg mol⁻¹."
+    },
+    {
+     "name": "Graham's law of diffusion",
+     "formula": "rate₁/rate₂ = √(M₂/M₁)",
+     "note": "At the same temperature and pressure."
+    },
+    {
+     "name": "Dalton's law of partial pressures",
+     "formula": "P_total = P₁ + P₂ + P₃ + …",
+     "note": "Non-reacting gas mixture."
+    },
+    {
+     "name": "Molar volume",
+     "formula": "V_m ≈ 22.4 dm³ mol⁻¹ at 0 °C and 1 atm",
+     "note": "About 24 dm³ mol⁻¹ at room temperature (≈ 20–25 °C) and 1 atm."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Ratio method, no R needed",
+     "rule": "Only the quantity that changes matters; multiply by the ratio of the new to old kelvin temperatures (or volumes).",
+     "example": "Gas at 27 °C and 1 atm heated to 127 °C at constant volume: P = 1 × 400/300 ≈ 1.33 atm."
+    },
+    {
+     "name": "rms speed scales with √T",
+     "rule": "c_rms ∝ √T: four times the kelvin temperature doubles the speed.",
+     "example": "Gas heated from 27 °C (300 K) to 927 °C (1200 K): T × 4, so rms speed × 2."
+    },
+    {
+     "name": "Graham with perfect squares",
+     "rule": "Pick molar masses whose ratio is a perfect square.",
+     "example": "H₂ (M = 2) versus O₂ (M = 32): rate ratio = √(32/2) = √16 = 4, so hydrogen diffuses 4 times faster."
+    },
+    {
+     "name": "Rising bubble with 10 m rule",
+     "rule": "Each 10 m of water adds about 1 atm; at constant temperature, volume ∝ 1/P.",
+     "example": "A bubble of 2 cm³ at 10 m depth (≈ 2 atm) rises to the surface (1 atm): volume ≈ 4 cm³."
+    },
+    {
+     "name": "Same temperature, same average KE",
+     "rule": "Different gases at the same temperature have equal mean molecular KE; only their speeds differ, as 1/√M.",
+     "example": "He and O₂ both at 300 K: equal mean KE; helium's rms speed is √(32/4) = √8 ≈ 2.8 times that of oxygen."
+    }
+   ],
+   "traps": [
+    "Using °C in gas law ratios; 27 °C to 54 °C is not a doubling of temperature (300 K to 327 K).",
+    "Using molar mass in g mol⁻¹ instead of kg mol⁻¹ in c_rms = √(3RT/M).",
+    "Mixing STP conventions: 22.4 dm³ mol⁻¹ is for 0 °C and 1 atm; at 0 °C and 100 kPa (IUPAC) it is about 22.7 dm³ mol⁻¹.",
+    "Saying heavier molecules have more average KE at the same temperature; average KE depends only on T.",
+    "Applying gas laws when the mass of gas changes (e.g. a leaking tyre)."
+   ],
+   "nsmqTips": [
+    "Convert every temperature to kelvin first; this alone catches most trick questions.",
+    "Expect 'state the assumptions of the kinetic theory' or 'how does kinetic theory explain pressure' — have a crisp list ready.",
+    "When a question gives a doubling or halving, answer by ratio immediately rather than substituting into PV = nRT.",
+    "Know when real gases deviate from ideal behaviour: high pressure and low temperature."
+   ]
+  },
+  {
+   "topic": "Thermodynamics",
+   "strand": "Energy",
+   "university": true,
+   "summary": "Thermodynamics deals with energy transfers as heat and work, the internal energy of systems, and the limits on converting heat into work. In NSMQ it appears as first-law sign questions, P–V diagram work, heat engine and refrigerator efficiencies, and entropy changes, many of which have one-line answers once the standard ratios are known.",
+   "keyIdeas": [
+    "Zeroth law: if two bodies are each in thermal equilibrium with a third, they are in equilibrium with each other; this is the basis of thermometers.",
+    "First law: energy is conserved; heat supplied to a system goes into increasing internal energy and doing external work.",
+    "The internal energy of an ideal gas depends only on its temperature, so ΔU = 0 in any isothermal process and in any complete cycle.",
+    "Work done by a gas equals the area under its P–V curve; in a cycle, net work equals the area enclosed by the loop.",
+    "Isothermal: ΔT = 0; adiabatic: Q = 0; isobaric: ΔP = 0; isochoric (isovolumetric): ΔV = 0 so W = 0.",
+    "Second law: no heat engine working in a cycle can convert all the heat it takes in into work; heat does not flow by itself from cold to hot.",
+    "No engine working between two temperatures can be more efficient than a reversible (Carnot) engine working between them.",
+    "The total entropy of an isolated system never decreases; it stays constant only for reversible processes."
+   ],
+   "formulas": [
+    {
+     "name": "First law",
+     "formula": "ΔU = Q − W",
+     "note": "Q heat supplied to the gas, W work done by the gas (some books use ΔU = Q + W with W done on the gas)."
+    },
+    {
+     "name": "Work at constant pressure",
+     "formula": "W = PΔV",
+     "note": "Isobaric process."
+    },
+    {
+     "name": "Isothermal work (ideal gas)",
+     "formula": "W = nRT ln(V₂/V₁)",
+     "note": "ΔU = 0, so Q = W."
+    },
+    {
+     "name": "Adiabatic relations",
+     "formula": "PV^γ = constant; TV^(γ−1) = constant",
+     "note": "Reversible adiabatic process, ideal gas."
+    },
+    {
+     "name": "Adiabatic work",
+     "formula": "W = (P₁V₁ − P₂V₂)/(γ − 1)",
+     "note": "Work done by the gas; equals −ΔU."
+    },
+    {
+     "name": "Molar heat capacities",
+     "formula": "C_p − C_v = R; γ = C_p/C_v",
+     "note": "Monatomic: C_v = (3/2)R, γ = 5/3; diatomic (room temperature): C_v = (5/2)R, γ = 7/5."
+    },
+    {
+     "name": "Internal energy change",
+     "formula": "ΔU = nC_vΔT",
+     "note": "Valid for any process of an ideal gas."
+    },
+    {
+     "name": "Heat engine efficiency",
+     "formula": "η = W/Q_h = 1 − Q_c/Q_h",
+     "note": "Q_h heat taken in from the hot reservoir, Q_c heat rejected."
+    },
+    {
+     "name": "Carnot efficiency",
+     "formula": "η = 1 − T_c/T_h",
+     "note": "Maximum possible; temperatures in kelvin."
+    },
+    {
+     "name": "Refrigerator coefficient of performance",
+     "formula": "COP = Q_c/W; Carnot COP = T_c/(T_h − T_c)",
+     "note": "Heat pump: COP = Q_h/W = T_h/(T_h − T_c)."
+    },
+    {
+     "name": "Entropy change",
+     "formula": "ΔS = Q_rev/T",
+     "note": "Unit J K⁻¹; for a phase change at constant T, ΔS = mL/T."
+    },
+    {
+     "name": "Isothermal entropy change of ideal gas",
+     "formula": "ΔS = nR ln(V₂/V₁)",
+     "note": "Positive for expansion."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Carnot with kelvin fractions",
+     "rule": "Convert to K, then η = 1 − T_c/T_h as a simple fraction.",
+     "example": "Engine between 527 °C and 27 °C: 800 K and 300 K, η = 1 − 3/8 = 5/8 = 62.5%."
+    },
+    {
+     "name": "Cycle work = loop area",
+     "rule": "Over a full cycle ΔU = 0, so net heat in = net work out = area enclosed on the P–V diagram.",
+     "example": "Rectangular cycle with ΔP = 2 × 10⁵ Pa and ΔV = 3 × 10⁻³ m³: W = 2 × 10⁵ × 3 × 10⁻³ = 600 J."
+    },
+    {
+     "name": "Isobaric energy split",
+     "rule": "For isobaric heating of an ideal gas, Q : ΔU : W = C_p : C_v : R, which is 5 : 3 : 2 for a monatomic gas and 7 : 5 : 2 for a diatomic gas.",
+     "example": "500 J supplied to a monatomic gas at constant pressure: ΔU = 300 J, W = 200 J."
+    },
+    {
+     "name": "Free expansion",
+     "rule": "Expansion into a vacuum in an insulated container: Q = 0 and W = 0, so ΔU = 0 and an ideal gas keeps the same temperature (but entropy rises).",
+     "example": "1 mol of ideal gas doubles its volume into a vacuum at 300 K: final temperature 300 K, ΔS = R ln 2 ≈ 5.8 J K⁻¹."
+    },
+    {
+     "name": "Entropy of melting",
+     "rule": "ΔS = mL/T with T the melting point in kelvin.",
+     "example": "Melting 1 kg of ice at 273 K: ΔS = 3.34 × 10⁵ / 273 ≈ 1220 J K⁻¹."
+    },
+    {
+     "name": "Carnot fridge COP",
+     "rule": "COP = T_c/(T_h − T_c); a small temperature gap gives a large COP.",
+     "example": "Fridge interior at 270 K, room at 300 K: COP = 270/30 = 9."
+    }
+   ],
+   "traps": [
+    "Mixing sign conventions for W (work done by the gas versus on the gas); state which you are using.",
+    "Using °C in Carnot efficiency or COP formulas.",
+    "Confusing adiabatic (no heat exchange) with isothermal (constant temperature).",
+    "Claiming a perfect engine could reach 100% efficiency; that would need T_c = 0 K.",
+    "Applying C_p − C_v = R to specific heat capacities per kilogram; it holds per mole (per kilogram it is R/M)."
+   ],
+   "nsmqTips": [
+    "Learn the four process names with their 'zero' quantity: isothermal ΔU = 0, adiabatic Q = 0, isochoric W = 0, cyclic ΔU = 0.",
+    "For P–V diagram questions, look for the area; it usually gives the work directly.",
+    "State the second law in either the Kelvin–Planck (no engine converts all heat to work) or Clausius (no spontaneous heat flow from cold to hot) form when asked.",
+    "Quote γ = 5/3 for monatomic and 7/5 for diatomic gases without hesitation; they come up often."
+   ]
+  },
+  {
+   "topic": "Waves and sound",
+   "strand": "Energy",
+   "university": false,
+   "summary": "Waves carry energy from place to place without carrying matter, and sound is a longitudinal mechanical wave that needs a medium. NSMQ rounds use this topic heavily for quick ratio questions on pipes, strings, echoes, beats, decibels and the Doppler effect.",
+   "keyIdeas": [
+    "Transverse waves vibrate perpendicular to the direction of travel (light, waves on a string); longitudinal waves vibrate parallel to it (sound), forming compressions and rarefactions.",
+    "Frequency is fixed by the source and does not change when a wave enters a new medium; speed and wavelength change together.",
+    "Sound cannot travel through a vacuum; it is fastest in solids, slower in liquids and slowest in gases.",
+    "In a gas the speed of sound is proportional to √T (T in kelvin) and does not depend on pressure at constant temperature.",
+    "Pitch depends on frequency, loudness on amplitude (intensity), and quality (timbre) on the mix of overtones.",
+    "Stationary waves form when two identical waves travel in opposite directions; node to node is λ/2 and node to adjacent antinode is λ/4.",
+    "A pipe closed at one end gives only odd harmonics (1 : 3 : 5); a pipe open at both ends and a stretched string give all harmonics (1 : 2 : 3).",
+    "Human hearing range is roughly 20 Hz to 20 kHz; below is infrasound, above is ultrasound."
+   ],
+   "formulas": [
+    {
+     "name": "Wave equation",
+     "formula": "v = fλ",
+     "note": "v speed (m/s), f frequency (Hz), λ wavelength (m). Works for every type of wave."
+    },
+    {
+     "name": "Period",
+     "formula": "T = 1/f",
+     "note": "T in seconds; one complete oscillation."
+    },
+    {
+     "name": "Speed of sound in a gas",
+     "formula": "v = √(γRT/M)",
+     "note": "γ ratio of heat capacities, R = 8.31 J mol⁻¹ K⁻¹, T in K, M molar mass in kg/mol. Gives v ∝ √T and v ∝ 1/√M."
+    },
+    {
+     "name": "Speed of a transverse wave on a string",
+     "formula": "v = √(T/μ)",
+     "note": "T tension (N), μ mass per unit length (kg/m)."
+    },
+    {
+     "name": "Stretched string harmonics",
+     "formula": "fₙ = n v/(2L) = (n/2L)√(T/μ), n = 1, 2, 3, …",
+     "note": "L vibrating length. Fundamental f₁ = v/(2L)."
+    },
+    {
+     "name": "Closed pipe harmonics",
+     "formula": "fₙ = n v/(4L), n = 1, 3, 5, …",
+     "note": "Closed at one end. With end correction use L + e, e ≈ 0.3d (d = internal diameter)."
+    },
+    {
+     "name": "Open pipe harmonics",
+     "formula": "fₙ = n v/(2L), n = 1, 2, 3, …",
+     "note": "Open at both ends; antinodes at both ends."
+    },
+    {
+     "name": "Beat frequency",
+     "formula": "f_beat = |f₁ − f₂|",
+     "note": "Two close frequencies sounded together; used to tune instruments."
+    },
+    {
+     "name": "Doppler effect (sound)",
+     "formula": "f′ = f (v + v_o)/(v − v_s)",
+     "note": "v speed of sound; v_o observer speed (positive towards source); v_s source speed (positive towards observer). Reverse the signs for motion away."
+    },
+    {
+     "name": "Intensity from a point source",
+     "formula": "I = P/(4πr²)",
+     "note": "P power (W), r distance (m). Inverse square law."
+    },
+    {
+     "name": "Sound intensity level",
+     "formula": "β = 10 log₁₀(I/I₀)",
+     "note": "β in decibels, I₀ = 1.0 × 10⁻¹² W m⁻² (threshold of hearing)."
+    },
+    {
+     "name": "Echo distance",
+     "formula": "d = vt/2",
+     "note": "t is the total time from shout to echo; the sound goes there and back."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Echo in one step",
+     "rule": "With v = 340 m/s, distance to the wall = 170 × t (t = echo time in seconds).",
+     "example": "Echo heard after 3 s: d = 170 × 3 = 510 m. Echo after 0.5 s: d = 85 m."
+    },
+    {
+     "name": "Decibel arithmetic",
+     "rule": "Multiplying intensity by 10 adds 10 dB; multiplying by 100 adds 20 dB; doubling adds about 3 dB; doubling distance from a point source (intensity ÷ 4) subtracts about 6 dB.",
+     "example": "One machine gives 60 dB. 100 identical machines: 60 + 20 = 80 dB. A speaker reads 80 dB at 2 m; at 4 m it reads about 74 dB."
+    },
+    {
+     "name": "Square-root scaling for strings and gases",
+     "rule": "f ∝ √T on a string and v ∝ √T(kelvin) in a gas: to double the result, multiply the cause by 4.",
+     "example": "A string gives 256 Hz at 40 N tension. At 160 N (×4) it gives 512 Hz. Sound at 273 K travels 330 m/s; at 1092 K (×4) it travels 660 m/s."
+    },
+    {
+     "name": "Temperature correction for sound in air",
+     "rule": "v ≈ 331 + 0.6θ m/s, θ in °C (valid near room temperature).",
+     "example": "At 30 °C: v ≈ 331 + 18 = 349 m/s."
+    },
+    {
+     "name": "Closed pipe = half-length open pipe",
+     "rule": "A closed pipe of length L has the same fundamental as an open pipe of length 2L, and its overtones are 3f₁, 5f₁, … only.",
+     "example": "v = 340 m/s, closed pipe L = 0.85 m: f₁ = 340/(4 × 0.85) = 340/3.4 = 100 Hz; overtones 300 Hz and 500 Hz. An open pipe of 1.7 m also has f₁ = 100 Hz, but its overtones are 200 Hz and 300 Hz."
+    },
+    {
+     "name": "Small-speed Doppler",
+     "rule": "When the source speed is small compared with v, the fractional change in frequency ≈ v_s/v (up when approaching, down when receding).",
+     "example": "f = 1000 Hz, v_s = 34 m/s towards you, v = 340 m/s: approx shift = 1000 × 34/340 = 100 Hz, so f′ ≈ 1100 Hz. Exact: 1000 × 340/306 ≈ 1111 Hz."
+    }
+   ],
+   "traps": [
+    "Taking node-to-node distance as λ instead of λ/2.",
+    "Listing even harmonics (2f₁, 4f₁) for a pipe closed at one end.",
+    "Forgetting to halve the time in echo problems.",
+    "Thinking frequency changes when sound passes from air into water; it is speed and wavelength that change.",
+    "Using °C instead of kelvin in v ∝ √T."
+   ],
+   "nsmqTips": [
+    "Most questions are ratios: write the proportionality (f ∝ √T, f ∝ 1/L, I ∝ 1/r²) and scale, rather than plugging full formulas.",
+    "For riddles, sound clues include 'longitudinal', 'needs a medium', 'compressions and rarefactions' and 'reverberation'.",
+    "For pipes, say first whether the pipe is open or closed; that one decision fixes the whole harmonic series.",
+    "Quote I₀ = 10⁻¹² W m⁻² and the 20 Hz to 20 kHz hearing range from memory; they come up as quick recall questions."
+   ]
+  },
+  {
+   "topic": "Light and optics",
+   "strand": "Energy",
+   "university": false,
+   "summary": "Optics covers reflection, refraction, lenses, mirrors, dispersion and the wave behaviour of light (interference and diffraction). In NSMQ it gives fast numerical questions on the lens formula, refractive index, critical angle and images in mirrors.",
+   "keyIdeas": [
+    "Laws of reflection: the angle of incidence equals the angle of reflection, and the incident ray, reflected ray and normal lie in one plane.",
+    "A plane mirror forms a virtual, upright, laterally inverted image as far behind the mirror as the object is in front.",
+    "Light bends towards the normal on entering a denser medium; frequency stays the same while speed and wavelength decrease.",
+    "Total internal reflection needs light going from a denser to a less dense medium at an angle greater than the critical angle (used in optical fibres and prism periscopes).",
+    "A convex (converging) lens can form real or virtual images; a concave (diverging) lens and a convex mirror always form virtual, upright, diminished images.",
+    "Myopia (short sight) is corrected with a diverging lens; hypermetropia (long sight) with a converging lens.",
+    "In a prism, violet light is deviated most and red least, because the refractive index is larger for shorter wavelengths.",
+    "Interference and diffraction are evidence that light behaves as a wave; polarisation shows that it is transverse."
+   ],
+   "formulas": [
+    {
+     "name": "Lens and mirror formula",
+     "formula": "1/f = 1/u + 1/v",
+     "note": "Real-is-positive convention: real distances positive, virtual negative. f positive for converging lens and concave mirror."
+    },
+    {
+     "name": "Linear magnification",
+     "formula": "m = v/u = hᵢ/hₒ",
+     "note": "Ratio of image distance to object distance, or image height to object height."
+    },
+    {
+     "name": "Focal length of a curved mirror",
+     "formula": "f = r/2",
+     "note": "r radius of curvature."
+    },
+    {
+     "name": "Snell's law",
+     "formula": "n₁ sin θ₁ = n₂ sin θ₂",
+     "note": "θ measured from the normal. From air: n = sin i / sin r."
+    },
+    {
+     "name": "Refractive index",
+     "formula": "n = c/v = real depth / apparent depth",
+     "note": "c = 3.0 × 10⁸ m/s. Apparent depth formula holds for viewing from nearly overhead."
+    },
+    {
+     "name": "Critical angle",
+     "formula": "sin C = 1/n",
+     "note": "For the medium–air boundary. For two media: sin C = n₂/n₁ with n₁ > n₂."
+    },
+    {
+     "name": "Lateral displacement by a glass block (apparent shift)",
+     "formula": "shift = t(1 − 1/n)",
+     "note": "t real thickness; the apparent rise of an object seen through the block."
+    },
+    {
+     "name": "Power of a lens",
+     "formula": "P = 1/f",
+     "note": "f in metres, P in dioptres (D). Converging positive, diverging negative."
+    },
+    {
+     "name": "Lenses in contact",
+     "formula": "1/F = 1/f₁ + 1/f₂, P = P₁ + P₂",
+     "note": "Thin lenses touching each other."
+    },
+    {
+     "name": "Images between two plane mirrors",
+     "formula": "N = 360°/θ − 1",
+     "note": "θ angle between mirrors; exact when 360°/θ is an even whole number."
+    },
+    {
+     "name": "Prism at minimum deviation",
+     "formula": "n = sin[(A + D)/2] / sin(A/2)",
+     "note": "A refracting angle, D angle of minimum deviation."
+    },
+    {
+     "name": "Young's double slit fringe spacing",
+     "formula": "y = λD/d",
+     "note": "D slit-to-screen distance, d slit separation. Grating: d sin θ = nλ."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Object at 2F",
+     "rule": "When u = 2f, then v = 2f and m = 1 (real, inverted, same size). The smallest object-to-real-image distance for a converging lens is 4f.",
+     "example": "f = 10 cm, object at 20 cm: image at 20 cm, same size. Object and screen 40 cm apart: only one sharp position, lens in the middle."
+    },
+    {
+     "name": "Product over sum",
+     "rule": "f = uv/(u + v) and v = uf/(u − f): no fractions needed.",
+     "example": "u = 30 cm, v = 60 cm: f = 1800/90 = 20 cm. u = 15 cm, f = 10 cm: v = 150/5 = 30 cm, m = 30/15 = 2."
+    },
+    {
+     "name": "Apparent depth",
+     "rule": "Divide real depth by n: water (n = 4/3) looks 3/4 as deep, glass (n = 1.5) looks 2/3 as thick.",
+     "example": "A pool 2 m deep looks 1.5 m deep. A 6 cm glass block looks 4 cm thick, so the mark rises by 2 cm."
+    },
+    {
+     "name": "Critical angles to memorise",
+     "rule": "n = 2 → 30°; n = √2 ≈ 1.41 → 45°; n = 1.5 → 41.8°; n = 4/3 → 48.6°.",
+     "example": "Glass with n = 1.5: a ray hitting the glass–air surface at 45° inside the glass exceeds 41.8°, so it is totally internally reflected (this is how a 45° prism periscope works)."
+    },
+    {
+     "name": "Mirror tricks",
+     "rule": "Rotate a mirror by θ and the reflected ray turns 2θ. Walk towards a plane mirror at speed v and your image approaches you at 2v. To see your full height you need a mirror half your height.",
+     "example": "Mirror turned 15°: reflected ray turns 30°. A student 1.8 m tall needs a mirror 0.9 m long."
+    },
+    {
+     "name": "Images between mirrors",
+     "rule": "Use 360/θ − 1 for the angles NSMQ gives.",
+     "example": "90° → 3 images, 60° → 5, 45° → 7, 30° → 11, parallel mirrors → infinitely many."
+    }
+   ],
+   "traps": [
+    "Using f in centimetres for lens power: f = 25 cm gives P = 1/0.25 = +4 D, not 0.04 D.",
+    "Mixing sign conventions halfway through a problem; choose real-is-positive or Cartesian and stick to it.",
+    "Saying red light is deviated most by a prism; violet is.",
+    "Claiming total internal reflection can happen when light goes from air into glass.",
+    "Swapping the corrections: short sight uses a concave (diverging) lens."
+   ],
+   "nsmqTips": [
+    "Quickly sketch where the object is relative to F and 2F; the image type (real or virtual, bigger or smaller) usually follows without calculation.",
+    "Learn n for water (1.33) and crown glass (1.5) and the matching critical angles; they appear as quick-fire questions.",
+    "Riddles about optical fibres, mirages, sparkling diamonds or rainbows point to total internal reflection or dispersion.",
+    "Give the unit with lens power: dioptre (D), equal to m⁻¹."
+   ]
+  },
+  {
+   "topic": "Electrostatics and capacitors",
+   "strand": "Electric Field, Magnetic Field and Electronics",
+   "university": false,
+   "summary": "Electrostatics studies charges at rest, the forces and fields they produce and electric potential, and capacitors store charge and energy in an electric field. NSMQ uses it for scaling questions on Coulomb's law and quick network questions on capacitors in series and parallel.",
+   "keyIdeas": [
+    "Like charges repel and unlike charges attract; charge is conserved and quantised in units of e = 1.6 × 10⁻¹⁹ C.",
+    "Electric field is a vector (force per unit positive charge); potential is a scalar (work per unit charge), so potentials add algebraically.",
+    "Field lines leave positive charges, enter negative charges, never cross, and meet a conductor surface at right angles.",
+    "Inside a charged conductor at equilibrium the field is zero and the potential is constant; charge sits on the outer surface and gathers at sharp points (lightning conductors).",
+    "Capacitors in parallel have the same p.d. and their capacitances add; capacitors in series carry the same charge and their reciprocals add.",
+    "Inserting a dielectric increases capacitance by the factor εᵣ.",
+    "When a battery charges a capacitor, half of the energy it supplies (QV) is stored and half is lost as heat in the circuit."
+   ],
+   "formulas": [
+    {
+     "name": "Coulomb's law",
+     "formula": "F = kq₁q₂/r², k = 1/(4πε₀) ≈ 9.0 × 10⁹ N m² C⁻²",
+     "note": "ε₀ = 8.85 × 10⁻¹² F/m. In a medium divide by εᵣ."
+    },
+    {
+     "name": "Electric field strength",
+     "formula": "E = F/q",
+     "note": "Units N/C or V/m."
+    },
+    {
+     "name": "Field of a point charge",
+     "formula": "E = kQ/r²",
+     "note": "Directed away from a positive charge."
+    },
+    {
+     "name": "Potential of a point charge",
+     "formula": "V = kQ/r",
+     "note": "Scalar; sign follows the charge."
+    },
+    {
+     "name": "Uniform field between plates",
+     "formula": "E = V/d",
+     "note": "V p.d. between plates, d separation."
+    },
+    {
+     "name": "Work done moving a charge",
+     "formula": "W = qV",
+     "note": "1 eV = 1.6 × 10⁻¹⁹ J is the energy gained by an electron across 1 V."
+    },
+    {
+     "name": "Capacitance",
+     "formula": "C = Q/V",
+     "note": "Unit farad (F); 1 μF = 10⁻⁶ F, 1 pF = 10⁻¹² F."
+    },
+    {
+     "name": "Parallel-plate capacitor",
+     "formula": "C = ε₀εᵣA/d",
+     "note": "A plate overlap area (m²), d separation (m)."
+    },
+    {
+     "name": "Energy stored",
+     "formula": "W = ½QV = ½CV² = Q²/(2C)",
+     "note": "Choose the form that holds the constant quantity fixed."
+    },
+    {
+     "name": "Series and parallel",
+     "formula": "Series: 1/C = 1/C₁ + 1/C₂ + …; Parallel: C = C₁ + C₂ + …",
+     "note": "Opposite of the resistor rules."
+    },
+    {
+     "name": "Capacitance of an isolated sphere",
+     "formula": "C = 4πε₀R",
+     "note": "R radius of the sphere."
+    },
+    {
+     "name": "RC discharge",
+     "formula": "Q = Q₀ e^(−t/RC), τ = RC",
+     "note": "Charging: Q = Q₀(1 − e^(−t/RC)). τ in seconds when R in Ω and C in F."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Coulomb scaling",
+     "rule": "F ∝ q₁q₂/r²: multiply by the change in each charge and divide by the square of the change in distance.",
+     "example": "F = 36 N. Both charges doubled and distance tripled: 36 × (2 × 2)/3² = 36 × 4/9 = 16 N."
+    },
+    {
+     "name": "Identical and paired capacitors",
+     "rule": "n identical capacitors C: series C/n, parallel nC. Two in series: product over sum.",
+     "example": "Four 8 μF in series = 2 μF; in parallel = 32 μF. 3 μF and 6 μF in series = 18/9 = 2 μF."
+    },
+    {
+     "name": "Series voltage split",
+     "rule": "In series the smaller capacitor takes the larger voltage: V divides in inverse ratio of C.",
+     "example": "3 μF and 6 μF in series across 12 V: ratio of voltages 2 : 1, so 8 V across 3 μF and 4 V across 6 μF. Check: Q = 2 μF × 12 V = 24 μC; 24/3 = 8, 24/6 = 4."
+    },
+    {
+     "name": "Connected or isolated?",
+     "rule": "Still connected to the battery: V is constant. Disconnected: Q is constant. Then use C ∝ εᵣA/d.",
+     "example": "Isolated capacitor, plate separation doubled: C halves, V = Q/C doubles, energy Q²/(2C) doubles. Same change with battery connected: C halves, Q halves, energy ½CV² halves."
+    },
+    {
+     "name": "Charge sharing on touching",
+     "rule": "Two identical conducting spheres that touch end with half the total charge each.",
+     "example": "+8 μC and −2 μC touch: each gets (8 − 2)/2 = +3 μC. Force changes from attractive with product 16 to repulsive with product 9, so its size becomes 9/16 of the original."
+    },
+    {
+     "name": "Time-constant percentages",
+     "rule": "After one τ = RC: a charging capacitor reaches 63% of full charge; a discharging one keeps 37%. After 5τ it is effectively complete.",
+     "example": "R = 10 kΩ, C = 100 μF: τ = 10⁴ × 10⁻⁴ = 1 s. After 1 s discharge about 37% of the charge is left; after about 5 s it is nearly empty."
+    }
+   ],
+   "traps": [
+    "Adding capacitors in series like resistors (C₁ + C₂); for capacitors that is the parallel rule.",
+    "Adding potentials as vectors; potential is a scalar, field is the vector.",
+    "Forgetting μF and pF prefixes: 2 μF = 2 × 10⁻⁶ F.",
+    "Assuming the field inside a hollow charged conductor is non-zero.",
+    "Using ½CV² when the capacitor is isolated and V is changing; Q²/(2C) is easier because Q is fixed."
+   ],
+   "nsmqTips": [
+    "Spot first whether the question keeps Q or V constant; that decides every ratio.",
+    "Capacitor networks in NSMQ are usually symmetric or use nice numbers (2, 3, 6 μF); collapse them step by step in your head.",
+    "Riddle clues: 'the region around a charge where it feels a force' (electric field), 'two conductors separated by an insulator' (capacitor), 'gold-leaf electroscope'.",
+    "State units for answers: farad, coulomb, volt, N/C or V/m."
+   ]
+  },
+  {
+   "topic": "Current electricity and circuits",
+   "strand": "Electric Field, Magnetic Field and Electronics",
+   "university": false,
+   "summary": "Current electricity deals with the flow of charge, resistance, e.m.f., power and circuit analysis using Ohm's and Kirchhoff's laws. It is one of the most reliable sources of NSMQ calculation questions, especially resistor networks, internal resistance and the cost of electrical energy.",
+   "keyIdeas": [
+    "Current is the rate of flow of charge; conventional current flows from + to −, opposite to electron flow.",
+    "Ohm's law (V ∝ I at constant temperature) holds for metallic conductors; filament lamps and diodes are non-ohmic.",
+    "In series the current is the same everywhere and resistances add; in parallel the p.d. is the same and conductances (1/R) add.",
+    "E.m.f. is the energy given per coulomb by the source; terminal p.d. is less than e.m.f. when current flows because of internal resistance.",
+    "Kirchhoff's first law (junction rule) expresses conservation of charge; the second (loop rule) expresses conservation of energy.",
+    "Metal resistance rises with temperature; semiconductor (thermistor) resistance falls.",
+    "An ideal ammeter has zero resistance and goes in series; an ideal voltmeter has infinite resistance and goes in parallel.",
+    "The kilowatt-hour (kWh) is a unit of energy: 1 kWh = 3.6 × 10⁶ J."
+   ],
+   "formulas": [
+    {
+     "name": "Current",
+     "formula": "I = Q/t",
+     "note": "1 A = 1 C/s."
+    },
+    {
+     "name": "Ohm's law",
+     "formula": "V = IR",
+     "note": "R in ohms (Ω)."
+    },
+    {
+     "name": "Resistivity",
+     "formula": "R = ρL/A",
+     "note": "ρ resistivity (Ω m), L length, A cross-sectional area."
+    },
+    {
+     "name": "Series and parallel resistors",
+     "formula": "Series: R = R₁ + R₂ + …; Parallel: 1/R = 1/R₁ + 1/R₂ + …",
+     "note": "Two in parallel: R = R₁R₂/(R₁ + R₂)."
+    },
+    {
+     "name": "Electrical power",
+     "formula": "P = IV = I²R = V²/R",
+     "note": "Use I²R when current is common (series), V²/R when voltage is common (parallel)."
+    },
+    {
+     "name": "Electrical energy",
+     "formula": "W = VIt = Pt",
+     "note": "Joules if t in s; kWh if P in kW and t in h."
+    },
+    {
+     "name": "E.m.f. and internal resistance",
+     "formula": "E = I(R + r), V = E − Ir",
+     "note": "r internal resistance, V terminal p.d."
+    },
+    {
+     "name": "Maximum power transfer",
+     "formula": "P is maximum when R = r; P_max = E²/(4r)",
+     "note": "Efficiency at that point is only 50%."
+    },
+    {
+     "name": "Wheatstone bridge balance",
+     "formula": "P/Q = R/S",
+     "note": "Galvanometer reads zero; metre bridge: R/S = l/(100 − l)."
+    },
+    {
+     "name": "Potentiometer comparison of e.m.f.s",
+     "formula": "E₁/E₂ = l₁/l₂",
+     "note": "l balance lengths; no current drawn from the cell at balance."
+    },
+    {
+     "name": "Temperature dependence of resistance",
+     "formula": "R_θ = R₀(1 + αθ)",
+     "note": "α temperature coefficient of resistance, θ in °C."
+    },
+    {
+     "name": "Drift velocity",
+     "formula": "I = nAvq",
+     "note": "n charge carriers per m³, v drift speed, q = e for electrons."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Parallel pairs and identical sets",
+     "rule": "Two in parallel: product over sum. n identical R in parallel: R/n. Parallel total is always less than the smallest resistor.",
+     "example": "6 Ω ∥ 3 Ω = 18/9 = 2 Ω. Five 10 Ω in parallel = 2 Ω. 4 Ω ∥ 12 Ω = 48/16 = 3 Ω."
+    },
+    {
+     "name": "Stretching and cutting wires",
+     "rule": "Stretch to n times the length (volume fixed): R becomes n²R. Cut into n equal pieces and connect them in parallel: R becomes R/n².",
+     "example": "A 4 Ω wire stretched to double length: 4 × 4 = 16 Ω. A 12 Ω wire cut in half and the halves joined in parallel: 12/4 = 3 Ω."
+    },
+    {
+     "name": "Which bulb glows brighter?",
+     "rule": "For bulbs with the same voltage rating, R = V²/P, so the lower-wattage bulb has the bigger resistance and glows brighter in series (P = I²R); in parallel the higher-wattage bulb is brighter.",
+     "example": "240 V, 60 W bulb: R = 57600/60 = 960 Ω. 240 V, 100 W bulb: R = 576 Ω. In series the 60 W bulb is brighter."
+    },
+    {
+     "name": "Cost of electricity",
+     "rule": "Units (kWh) = kW × hours; cost = units × tariff.",
+     "example": "A 2 kW heater used 3 h a day for 30 days: 2 × 3 × 30 = 180 kWh. At 1.50 cedis per kWh the cost is 270 cedis."
+    },
+    {
+     "name": "Internal resistance from 'lost volts'",
+     "rule": "r = (E − V)/I: the drop in terminal p.d. divided by the current.",
+     "example": "Cell e.m.f. 12 V, terminal p.d. 10 V while delivering 2 A: r = 2/2 = 1 Ω. Maximum power it can deliver to a load: E²/(4r) = 144/4 = 36 W."
+    },
+    {
+     "name": "Balanced bridge symmetry",
+     "rule": "If the ratios across a bridge match, the middle resistor carries no current and can be removed.",
+     "example": "Arms 2 Ω and 4 Ω on top, 3 Ω and 6 Ω below, a 5 Ω resistor across the middle: 2/4 = 3/6, so remove the 5 Ω. Total = (2 + 4) ∥ (3 + 6) = 6 ∥ 9 = 54/15 = 3.6 Ω."
+    }
+   ],
+   "traps": [
+    "Calling the kilowatt-hour a unit of power; it is energy.",
+    "Using P = V²/R for series components where the current, not the voltage, is shared.",
+    "Forgetting internal resistance when the question gives one; terminal p.d. is not equal to e.m.f.",
+    "Putting a voltmeter in series or an ammeter in parallel.",
+    "Assuming every component obeys Ohm's law; filament lamps and diodes do not."
+   ],
+   "nsmqTips": [
+    "Redraw messy networks mentally: find points at the same potential and collapse parallel groups first.",
+    "Have R = V²/P ready for bulb and heater questions; ratings are usually 240 V or 12 V.",
+    "In riddles, 'opposition to flow of current', 'energy per unit charge' and 'rate of flow of charge' are standard definitions; answer with the exact term.",
+    "Check the answer's size: a parallel combination cannot exceed its smallest branch."
+   ]
+  },
+  {
+   "topic": "Magnetism and electromagnetism",
+   "strand": "Electric Field, Magnetic Field and Electronics",
+   "university": false,
+   "summary": "This topic covers magnets, magnetic fields, the fields produced by currents and the forces on currents and moving charges in magnetic fields. NSMQ asks about direction rules, field formulas for wires and solenoids, charged-particle paths and converting galvanometers into meters.",
+   "keyIdeas": [
+    "Like poles repel, unlike poles attract; field lines run from N to S outside a magnet and never cross.",
+    "The Earth's geographic North Pole is near a magnetic south pole, which is why a compass N-pole points north.",
+    "A current-carrying conductor produces a magnetic field; its direction follows the right-hand grip rule.",
+    "A conductor carrying current across a magnetic field feels a force given by Fleming's left-hand rule; this is the motor effect.",
+    "The magnetic force on a moving charge is always perpendicular to its velocity, so it changes direction but does no work and the speed stays constant.",
+    "Soft iron (easily magnetised and demagnetised) is used for electromagnets and transformer cores; steel (retains magnetism) for permanent magnets.",
+    "Ferromagnetic materials lose their magnetism above the Curie temperature.",
+    "Parallel currents in the same direction attract; opposite directions repel."
+   ],
+   "formulas": [
+    {
+     "name": "Force on a current-carrying conductor",
+     "formula": "F = BIL sin θ",
+     "note": "B flux density (T), L length in the field, θ angle between wire and field."
+    },
+    {
+     "name": "Force on a moving charge",
+     "formula": "F = qvB sin θ",
+     "note": "θ angle between velocity and field. Zero when moving parallel to B."
+    },
+    {
+     "name": "Radius of circular path",
+     "formula": "r = mv/(qB) = p/(qB)",
+     "note": "Charge moving perpendicular to a uniform field."
+    },
+    {
+     "name": "Period of circular motion in a field",
+     "formula": "T = 2πm/(qB)",
+     "note": "Independent of speed (basis of the cyclotron)."
+    },
+    {
+     "name": "Field of a long straight wire",
+     "formula": "B = μ₀I/(2πr)",
+     "note": "μ₀ = 4π × 10⁻⁷ T m A⁻¹, r distance from the wire."
+    },
+    {
+     "name": "Field at centre of a circular coil",
+     "formula": "B = μ₀NI/(2R)",
+     "note": "N turns, R radius."
+    },
+    {
+     "name": "Field inside a long solenoid",
+     "formula": "B = μ₀nI",
+     "note": "n turns per metre (N/L). Multiply by μᵣ for an iron core."
+    },
+    {
+     "name": "Force between parallel wires",
+     "formula": "F/L = μ₀I₁I₂/(2πd)",
+     "note": "d separation; basis of the former definition of the ampere."
+    },
+    {
+     "name": "Torque on a rectangular coil",
+     "formula": "τ = BANI sin θ",
+     "note": "θ angle between B and the normal to the coil; maximum when the coil plane is parallel to B."
+    },
+    {
+     "name": "Velocity selector",
+     "formula": "v = E/B",
+     "note": "Crossed electric and magnetic fields; only particles of this speed pass undeflected."
+    },
+    {
+     "name": "Shunt for an ammeter",
+     "formula": "R_s = I_g r_g / (I − I_g)",
+     "note": "Small resistor in parallel with the galvanometer; I full-scale current required."
+    },
+    {
+     "name": "Multiplier for a voltmeter",
+     "formula": "R_m = V/I_g − r_g",
+     "note": "Large resistor in series with the galvanometer; V full-scale voltage required."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "μ₀/(2π) = 2 × 10⁻⁷",
+     "rule": "Wire field B = 2 × 10⁻⁷ × I/r and force per metre between wires = 2 × 10⁻⁷ × I₁I₂/d.",
+     "example": "I = 10 A at r = 0.02 m: B = 2 × 10⁻⁷ × 500 = 1 × 10⁻⁴ T. Two wires each 5 A, 0.1 m apart: F/L = 2 × 10⁻⁷ × 25/0.1 = 5 × 10⁻⁵ N/m."
+    },
+    {
+     "name": "Range-extension factor n",
+     "rule": "To make the range n times bigger: ammeter shunt R_s = r_g/(n − 1); voltmeter multiplier R_m = (n − 1)r_g.",
+     "example": "Galvanometer 50 Ω, full scale 1 mA. As a 10 mA ammeter (n = 10): R_s = 50/9 ≈ 5.6 Ω. As a 1 V voltmeter (galvanometer full scale is 0.05 V, so n = 20): R_m = 19 × 50 = 950 Ω."
+    },
+    {
+     "name": "Radius comparison of particles",
+     "rule": "r = mv/(qB). Same speed: r ∝ m/q. Same kinetic energy: r ∝ √m/q.",
+     "example": "Proton (m = 1, q = 1) and alpha (m = 4, q = 2) at the same speed: alpha radius is 4/2 = 2 times bigger. At the same kinetic energy: √4/2 = 1, so the radii are equal."
+    },
+    {
+     "name": "Fleming's left-hand rule mnemonic",
+     "rule": "thuMb = Motion (force), First finger = Field, seCond finger = Current. For electrons point the second finger opposite to their motion.",
+     "example": "Field into the page, current to the right: force on the wire is up the page. An electron moving right in the same field is pushed down the page."
+    },
+    {
+     "name": "Zero-force check",
+     "rule": "If the current or velocity is parallel to B, the force is zero; if a charge moves in a magnetic field only, its kinetic energy never changes.",
+     "example": "An electron fired along a solenoid's axis goes straight through undeflected. A proton circling in a 0.5 T field keeps exactly the same speed."
+    }
+   ],
+   "traps": [
+    "Using the right-hand rule for force on a conductor (that is for induced current); the motor effect uses the left hand.",
+    "Forgetting to reverse the direction for negative charges such as electrons.",
+    "Saying a magnetic field speeds up a charged particle; it only changes its direction.",
+    "Using total turns N instead of turns per metre n in B = μ₀nI.",
+    "Thinking the compass N-pole points to a magnetic north pole; it points to a magnetic south pole in the Arctic."
+   ],
+   "nsmqTips": [
+    "Many questions only need the direction: picture the hand rule and answer 'into the page', 'upwards', and so on.",
+    "Remember 4π × 10⁻⁷ and 2 × 10⁻⁷; they shorten almost every field calculation.",
+    "Riddles mention 'domains', 'Curie point', 'hysteresis', 'soft iron', 'solenoid' or 'electric bell'; link each to magnetism quickly.",
+    "For shunt and multiplier questions, state 'small resistor in parallel' or 'large resistor in series' even before calculating."
+   ]
+  },
+  {
+   "topic": "Electromagnetic induction and AC",
+   "strand": "Electric Field, Magnetic Field and Electronics",
+   "university": false,
+   "summary": "Electromagnetic induction is the production of e.m.f. by a changing magnetic flux, the principle behind generators, transformers and power transmission. NSMQ asks about Faraday's and Lenz's laws, transformer ratios, r.m.s. values, reactance and resonance.",
+   "keyIdeas": [
+    "Faraday's law: induced e.m.f. equals the rate of change of flux linkage.",
+    "Lenz's law: the induced current flows so as to oppose the change that causes it (a consequence of energy conservation).",
+    "Fleming's right-hand rule gives the direction of induced current in a moving conductor (generator rule).",
+    "In an a.c. generator the e.m.f. is maximum when the coil plane is parallel to the field (flux zero, changing fastest) and zero when the flux is maximum.",
+    "Transformers work only with a.c.; laminated soft-iron cores reduce eddy-current losses.",
+    "Power is transmitted at high voltage and low current to reduce I²R losses in the cables.",
+    "In a pure capacitor current leads voltage by 90°; in a pure inductor voltage leads current by 90°; in a resistor they are in phase.",
+    "At resonance in a series LCR circuit X_L = X_C, impedance is minimum (Z = R) and current is maximum."
+   ],
+   "formulas": [
+    {
+     "name": "Magnetic flux",
+     "formula": "Φ = BA cos θ",
+     "note": "Unit weber (Wb); θ angle between B and the normal to the area. Flux linkage = NΦ."
+    },
+    {
+     "name": "Faraday–Lenz law",
+     "formula": "E = −N dΦ/dt",
+     "note": "Minus sign expresses Lenz's law."
+    },
+    {
+     "name": "E.m.f. in a moving rod",
+     "formula": "E = BLv",
+     "note": "Rod of length L moving at speed v perpendicular to B."
+    },
+    {
+     "name": "A.c. generator",
+     "formula": "e = E₀ sin ωt, E₀ = NBAω",
+     "note": "ω = 2πf angular speed of the coil."
+    },
+    {
+     "name": "Ideal transformer",
+     "formula": "Vₛ/Vₚ = Nₛ/Nₚ = Iₚ/Iₛ",
+     "note": "Step-up when Nₛ > Nₚ. Assumes 100% efficiency."
+    },
+    {
+     "name": "Transformer efficiency",
+     "formula": "η = (VₛIₛ)/(VₚIₚ) × 100%",
+     "note": "Losses: copper (I²R), eddy currents, hysteresis, flux leakage."
+    },
+    {
+     "name": "Root-mean-square values",
+     "formula": "I_rms = I₀/√2, V_rms = V₀/√2",
+     "note": "Sinusoidal a.c. only. Mean power P = V_rms I_rms for a resistor."
+    },
+    {
+     "name": "Inductive reactance",
+     "formula": "X_L = 2πfL",
+     "note": "L inductance in henry (H)."
+    },
+    {
+     "name": "Capacitive reactance",
+     "formula": "X_C = 1/(2πfC)",
+     "note": "C in farad."
+    },
+    {
+     "name": "Impedance of series LCR",
+     "formula": "Z = √[R² + (X_L − X_C)²]",
+     "note": "I_rms = V_rms/Z; tan φ = (X_L − X_C)/R."
+    },
+    {
+     "name": "Resonant frequency",
+     "formula": "f₀ = 1/(2π√(LC))",
+     "note": "Used for tuning radio receivers."
+    },
+    {
+     "name": "Self-induction and stored energy",
+     "formula": "E = −L dI/dt, W = ½LI²",
+     "note": "Energy stored in the magnetic field of an inductor."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Peak and r.m.s. in one multiplication",
+     "rule": "Peak = r.m.s. × 1.414; r.m.s. = peak × 0.707.",
+     "example": "Mains 230 V r.m.s.: peak ≈ 230 × 1.414 ≈ 325 V. 240 V mains: peak ≈ 339 V. Peak current 10 A: r.m.s. ≈ 7.07 A."
+    },
+    {
+     "name": "Turns ratio does everything",
+     "rule": "Voltage scales by Nₛ/Nₚ; current scales by the inverse ratio.",
+     "example": "Nₚ = 1000, Nₛ = 50, input 240 V: ratio 1/20, so output 12 V. If the secondary draws 2 A, the primary draws 2/20 = 0.1 A (ideal)."
+    },
+    {
+     "name": "Transmission loss scales as 1/V²",
+     "rule": "For the same power, raising the voltage n times cuts the current n times and the I²R loss n² times.",
+     "example": "Stepping up from 10 kV to 100 kV (n = 10) cuts cable loss by a factor of 100: a 50 kW loss becomes 0.5 kW."
+    },
+    {
+     "name": "Reactance with frequency",
+     "rule": "X_L ∝ f, X_C ∝ 1/f. On steady d.c. (f = 0) an inductor acts as a plain wire and a capacitor as a break.",
+     "example": "A coil with X_L = 30 Ω at 50 Hz has 60 Ω at 100 Hz. A capacitor with X_C = 30 Ω at 50 Hz has 15 Ω at 100 Hz."
+    },
+    {
+     "name": "Phase mnemonic CIVIL",
+     "rule": "CIVIL: in C, I leads V; V leads I in L. Equivalent: ELI the ICE man.",
+     "example": "In a circuit containing only a capacitor, current peaks a quarter cycle (90°) before voltage."
+    },
+    {
+     "name": "Resonance with nice numbers",
+     "rule": "Pick L and C so that LC is a perfect square power of ten, then f₀ = 1/(2π√LC) ≈ 0.159/√LC.",
+     "example": "L = 0.1 H, C = 10 μF: LC = 10⁻⁶, √LC = 10⁻³ s, f₀ = 1/(2π × 10⁻³) ≈ 159 Hz."
+    }
+   ],
+   "traps": [
+    "Saying a transformer can step up d.c.; a constant current produces no changing flux.",
+    "Confusing r.m.s. with average: average over a full cycle is zero, over a half cycle is 0.637 × peak.",
+    "Thinking generator e.m.f. is largest when flux through the coil is largest; it is largest when flux is changing fastest (flux zero).",
+    "Applying the left-hand rule to generators; induced current uses the right-hand rule.",
+    "Assuming a step-up transformer gives more power out; voltage rises but current falls, and power out ≤ power in."
+   ],
+   "nsmqTips": [
+    "Transformer questions are almost always a one-step ratio; say the ratio aloud and scale.",
+    "Have 1.414 and 0.707 ready; mains questions (230 V or 240 V, 50 Hz in Ghana) are common.",
+    "For Lenz's law questions, answer as 'the coil face becomes a N-pole to repel the approaching N-pole', which is quicker than drawing.",
+    "Riddle clues: 'laminated core', 'slip rings', 'commutator', 'eddy currents', 'back e.m.f.'."
+   ]
+  },
+  {
+   "topic": "Electronics and semiconductors",
+   "strand": "Electric Field, Magnetic Field and Electronics",
+   "university": false,
+   "summary": "This topic covers semiconductor materials, doping, p-n junction diodes, rectification, transistors, operational amplifiers and logic gates. NSMQ uses it for definition questions, truth tables and quick calculations of transistor gain and diode currents.",
+   "keyIdeas": [
+    "Pure (intrinsic) silicon and germanium are group 14 elements whose conductivity rises with temperature as more electron–hole pairs form.",
+    "n-type material is doped with a group 15 donor (P, As, Sb) and has electrons as majority carriers; p-type is doped with a group 13 acceptor (B, Al, Ga, In) and has holes as majority carriers. Both remain electrically neutral.",
+    "A p-n junction forms a depletion layer; forward bias (p to +) narrows it and current flows, reverse bias widens it and almost no current flows.",
+    "A diode acts as a rectifier; a bridge of four diodes gives full-wave rectification, and a capacitor smooths the output.",
+    "A Zener diode is designed to conduct in reverse at a fixed breakdown voltage and is used as a voltage regulator.",
+    "A bipolar transistor (npn or pnp) uses a small base current to control a larger collector current; it can be an amplifier or a switch.",
+    "NAND and NOR are universal gates: any logic circuit can be built from only one of them.",
+    "LEDs emit light when forward biased; photodiodes and LDRs respond to light."
+   ],
+   "formulas": [
+    {
+     "name": "Barrier (turn-on) voltage",
+     "formula": "Si ≈ 0.7 V, Ge ≈ 0.3 V",
+     "note": "Forward voltage drop across a conducting diode."
+    },
+    {
+     "name": "Diode circuit current",
+     "formula": "I = (V_s − V_D)/R",
+     "note": "V_D ≈ 0.7 V for silicon; R series resistor."
+    },
+    {
+     "name": "Transistor currents",
+     "formula": "I_E = I_B + I_C",
+     "note": "Kirchhoff's junction rule applied to the transistor."
+    },
+    {
+     "name": "Common-emitter current gain",
+     "formula": "β = I_C/I_B",
+     "note": "Typically 50–300; also written h_FE."
+    },
+    {
+     "name": "Common-base current gain",
+     "formula": "α = I_C/I_E, β = α/(1 − α)",
+     "note": "α is slightly less than 1."
+    },
+    {
+     "name": "Voltage gain",
+     "formula": "A_v = V_out/V_in, gain in dB = 20 log₁₀ A_v",
+     "note": "Power gain in dB = 10 log₁₀(P_out/P_in)."
+    },
+    {
+     "name": "Inverting op-amp amplifier",
+     "formula": "A = −R_f/R_in",
+     "note": "Output is 180° out of phase with input."
+    },
+    {
+     "name": "Non-inverting op-amp amplifier",
+     "formula": "A = 1 + R_f/R_in",
+     "note": "Output in phase with input."
+    },
+    {
+     "name": "Rectifier average output",
+     "formula": "Half-wave: V_dc = V₀/π; Full-wave: V_dc = 2V₀/π",
+     "note": "V₀ peak voltage (ideal diodes)."
+    },
+    {
+     "name": "Ripple frequency",
+     "formula": "Half-wave: f; Full-wave: 2f",
+     "note": "f supply frequency."
+    },
+    {
+     "name": "Zener series resistor",
+     "formula": "R = (V_in − V_Z)/I",
+     "note": "I total current through R (Zener plus load)."
+    },
+    {
+     "name": "Boolean expressions of gates",
+     "formula": "AND: A·B; OR: A + B; NOT: Ā; NAND: (A·B)‾; NOR: (A + B)‾; XOR: A ⊕ B",
+     "note": "XOR gives 1 when the inputs differ."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "β straight from α",
+     "rule": "β = α/(1 − α): divide α by what is left over from 1.",
+     "example": "α = 0.98: β = 0.98/0.02 = 49. α = 0.99: β = 99. α = 0.95: β = 0.95/0.05 = 19."
+    },
+    {
+     "name": "Gate outputs by one rule each",
+     "rule": "AND is 1 only if all inputs are 1; OR is 0 only if all inputs are 0; NAND and NOR are the inverses; XOR is 1 when an odd number of inputs are 1.",
+     "example": "Inputs A = 1, B = 0: AND 0, OR 1, NAND 1, NOR 0, XOR 1, XNOR 0."
+    },
+    {
+     "name": "Tie the inputs",
+     "rule": "A NAND or NOR gate with its inputs joined works as a NOT gate (De Morgan: (A·B)‾ = Ā + B̄ and (A + B)‾ = Ā·B̄).",
+     "example": "To make a NOT gate from NAND only, join both inputs: input 1 gives output 0, input 0 gives output 1."
+    },
+    {
+     "name": "Dopant mnemonic",
+     "rule": "n-type 'PAS' (Phosphorus, Arsenic, antimony Sb: group 15, five valence electrons, one spare electron). p-type 'BAGI' (Boron, Aluminium, Gallium, Indium: group 13, three valence electrons, one hole).",
+     "example": "Silicon doped with gallium: Ga is in BAGI, so the material is p-type with holes as majority carriers."
+    },
+    {
+     "name": "Subtract 0.7 V first",
+     "rule": "For a forward-biased silicon diode, remove 0.7 V from the supply, then use Ohm's law on the resistor.",
+     "example": "5 V supply, 1 kΩ resistor, silicon diode forward biased: I = (5 − 0.7)/1000 = 4.3 mA. Reverse it: I ≈ 0."
+    },
+    {
+     "name": "Op-amp gain in one glance",
+     "rule": "Inverting gain = −R_f/R_in; non-inverting = that ratio plus 1.",
+     "example": "R_f = 100 kΩ, R_in = 10 kΩ: inverting gain −10, non-inverting +11. A 0.2 V input gives −2 V or +2.2 V."
+    }
+   ],
+   "traps": [
+    "Calling n-type material negatively charged; doped semiconductors are neutral overall.",
+    "Thinking semiconductor resistance rises with temperature like a metal; it falls.",
+    "Confusing ripple frequencies: a full-wave rectifier on 50 Hz mains gives 100 Hz ripple, not 50 Hz.",
+    "Writing I_C = I_B + I_E; the emitter current is the largest: I_E = I_B + I_C.",
+    "Mixing up NAND and NOR outputs for inputs 1, 0: NAND gives 1, NOR gives 0."
+   ],
+   "nsmqTips": [
+    "Truth-table questions are quickest with the one-line rules above; do not build the full table unless asked.",
+    "Expect definitions such as 'majority carriers', 'depletion layer', 'forward bias', 'doping'; answer with the exact term.",
+    "Riddle clues: 'universal gate' (NAND or NOR), 'light-emitting', 'voltage regulator' (Zener), 'three terminals: emitter, base, collector' (transistor).",
+    "For transistor switches, remember that a small base current turns on a large collector current; the base current is usually tens of microamps."
+   ]
+  },
+  {
+   "topic": "Atomic physics and quantum",
+   "strand": "Atomic and Nuclear Physics",
+   "university": false,
+   "summary": "This topic covers the structure of the atom, energy levels and spectra, the photoelectric effect, X-rays and wave–particle duality. NSMQ questions test photon energies, hydrogen energy levels, the photoelectric equation and de Broglie wavelength, often with quick electronvolt arithmetic.",
+   "keyIdeas": [
+    "Rutherford's alpha-scattering experiment showed a tiny, dense, positive nucleus; most of the atom is empty space.",
+    "In Bohr's model electrons occupy discrete energy levels; they emit or absorb a photon whose energy equals the difference between levels.",
+    "Emission spectra are bright lines on a dark background; absorption spectra are dark lines on a continuous spectrum, at the same wavelengths.",
+    "Hydrogen series: Lyman (ending on n = 1, ultraviolet), Balmer (n = 2, visible), Paschen (n = 3, infrared).",
+    "Photoelectric effect: emission happens only above a threshold frequency; maximum kinetic energy depends on frequency, while the number of electrons depends on intensity; emission is instantaneous.",
+    "Light behaves as particles (photons) in the photoelectric effect and as waves in interference; electrons show wave behaviour in diffraction.",
+    "X-rays are produced when fast electrons strike a metal target; the shortest wavelength is set by the accelerating voltage."
+   ],
+   "formulas": [
+    {
+     "name": "Photon energy",
+     "formula": "E = hf = hc/λ",
+     "note": "h = 6.63 × 10⁻³⁴ J s, c = 3.0 × 10⁸ m/s."
+    },
+    {
+     "name": "Einstein's photoelectric equation",
+     "formula": "hf = φ + KE_max",
+     "note": "φ work function. KE_max = ½mv²_max."
+    },
+    {
+     "name": "Stopping potential",
+     "formula": "eV_s = KE_max",
+     "note": "V_s is numerically equal to KE_max in eV."
+    },
+    {
+     "name": "Threshold frequency and wavelength",
+     "formula": "f₀ = φ/h, λ₀ = hc/φ",
+     "note": "No emission if f < f₀ (λ > λ₀), whatever the intensity."
+    },
+    {
+     "name": "de Broglie wavelength",
+     "formula": "λ = h/p = h/(mv) = h/√(2mK)",
+     "note": "K kinetic energy. For an electron through V volts, K = eV."
+    },
+    {
+     "name": "Hydrogen energy levels",
+     "formula": "Eₙ = −13.6/n² eV",
+     "note": "Ground state n = 1; ionisation energy 13.6 eV."
+    },
+    {
+     "name": "Photon from a transition",
+     "formula": "hf = E_upper − E_lower",
+     "note": "Emission when falling, absorption when rising."
+    },
+    {
+     "name": "Rydberg formula",
+     "formula": "1/λ = R(1/n₁² − 1/n₂²)",
+     "note": "R = 1.097 × 10⁷ m⁻¹, n₂ > n₁."
+    },
+    {
+     "name": "Bohr radius and angular momentum",
+     "formula": "rₙ = n²a₀, a₀ ≈ 0.053 nm; L = nh/(2π)",
+     "note": "Hydrogen atom."
+    },
+    {
+     "name": "Minimum X-ray wavelength",
+     "formula": "λ_min = hc/(eV)",
+     "note": "V accelerating voltage of the tube (Duane–Hunt law)."
+    },
+    {
+     "name": "Useful constant",
+     "formula": "hc ≈ 1240 eV nm; 1 eV = 1.6 × 10⁻¹⁹ J",
+     "note": "Lets you convert between eV and nm instantly."
+    },
+    {
+     "name": "Number of possible emission lines",
+     "formula": "N = n(n − 1)/2",
+     "note": "Electron starting in level n and falling by all possible routes."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "1240 rule",
+     "rule": "Photon energy in eV = 1240 ÷ wavelength in nm (and the reverse).",
+     "example": "620 nm: 1240/620 = 2.0 eV. 400 nm: 3.1 eV. A 10.2 eV photon: 1240/10.2 ≈ 122 nm (ultraviolet)."
+    },
+    {
+     "name": "Hydrogen level ladder",
+     "rule": "Learn −13.6, −3.4, −1.51, −0.85 eV for n = 1 to 4; differences give the lines.",
+     "example": "n = 2 → 1 (Lyman α): 13.6 − 3.4 = 10.2 eV. n = 3 → 2 (Balmer α, red): 3.4 − 1.51 = 1.89 eV → 1240/1.89 ≈ 656 nm."
+    },
+    {
+     "name": "Counting spectral lines",
+     "rule": "From level n the number of different lines is n(n − 1)/2.",
+     "example": "From n = 4: 4 × 3/2 = 6 lines. From n = 5: 10 lines."
+    },
+    {
+     "name": "Photoelectric in electronvolts",
+     "rule": "Work everything in eV: KE_max = (1240/λ) − φ, and the stopping potential in volts is the same number.",
+     "example": "λ = 310 nm, φ = 2.3 eV: photon energy 1240/310 = 4.0 eV, KE_max = 1.7 eV, stopping potential 1.7 V."
+    },
+    {
+     "name": "Electron de Broglie wavelength",
+     "rule": "For an electron accelerated through V volts, λ ≈ 1.23/√V nm.",
+     "example": "V = 100 V: λ ≈ 1.23/10 = 0.123 nm, similar to atomic spacing, so electrons diffract from crystals."
+    },
+    {
+     "name": "X-ray cut-off",
+     "rule": "λ_min in nm = 1240 ÷ (voltage in volts).",
+     "example": "50 kV tube: λ_min = 1240/50000 ≈ 0.0248 nm."
+    }
+   ],
+   "traps": [
+    "Saying brighter light gives faster photoelectrons; intensity changes the number of electrons, frequency changes their energy.",
+    "Forgetting to convert eV to joules (× 1.6 × 10⁻¹⁹) when using SI formulas.",
+    "Mixing up threshold frequency (minimum) with threshold wavelength (maximum).",
+    "Leaving out the minus sign in hydrogen energies, or giving ionisation energy as negative.",
+    "Writing the Rydberg formula with n₁ and n₂ the wrong way round, which gives a negative wavelength."
+   ],
+   "nsmqTips": [
+    "Almost every numerical here is fastest in eV and nm with hc = 1240 eV nm.",
+    "Memorise the visible range (about 400 to 700 nm, 1.8 to 3.1 eV); questions often ask which series or region a line belongs to.",
+    "Riddle clues: 'gold foil' (Rutherford), 'quantised orbits' (Bohr), 'matter waves' (de Broglie), 'work function' (photoelectric).",
+    "When asked what changes with intensity versus frequency, answer in one line: intensity → current; frequency → KE_max."
+   ]
+  },
+  {
+   "topic": "Nuclear physics and radioactivity",
+   "strand": "Atomic and Nuclear Physics",
+   "university": false,
+   "summary": "This topic covers nuclear structure, radioactive decay, half-life, nuclear equations, binding energy, fission and fusion. NSMQ often sets half-life fractions, decay-chain counting and the properties of alpha, beta and gamma radiation.",
+   "keyIdeas": [
+    "A nucleus is described by mass number A (protons + neutrons) and atomic number Z (protons); isotopes have the same Z but different A.",
+    "Alpha particles are helium nuclei (⁴₂He): strongly ionising, weakly penetrating, stopped by paper or a few cm of air.",
+    "Beta-minus particles are fast electrons from a neutron changing into a proton; they are stopped by a few mm of aluminium.",
+    "Gamma rays are high-energy photons: weakly ionising, very penetrating, reduced by thick lead or concrete, and not deflected by fields.",
+    "Radioactive decay is random and spontaneous, not affected by temperature, pressure or chemical state.",
+    "Binding energy per nucleon peaks near iron-56 (about 8.8 MeV); heavy nuclei release energy by fission, light nuclei by fusion.",
+    "In a nuclear reaction both mass number and atomic number (charge) are conserved."
+   ],
+   "formulas": [
+    {
+     "name": "Decay law",
+     "formula": "N = N₀ e^(−λt)",
+     "note": "λ decay constant (s⁻¹), N undecayed nuclei."
+    },
+    {
+     "name": "Half-life form",
+     "formula": "N = N₀ (½)^(t/T½)",
+     "note": "Easiest form when t is a whole number of half-lives."
+    },
+    {
+     "name": "Half-life and decay constant",
+     "formula": "T½ = ln 2/λ ≈ 0.693/λ",
+     "note": "Mean life τ = 1/λ = 1.44 T½."
+    },
+    {
+     "name": "Activity",
+     "formula": "A = λN = A₀ e^(−λt)",
+     "note": "Unit becquerel (Bq) = 1 decay per second."
+    },
+    {
+     "name": "Alpha decay",
+     "formula": "ᴬ_Z X → ᴬ⁻⁴_(Z−2) Y + ⁴₂He",
+     "note": "A falls by 4, Z falls by 2."
+    },
+    {
+     "name": "Beta-minus and beta-plus decay",
+     "formula": "β⁻: n → p + e⁻ + ν̄ (Z + 1); β⁺: p → n + e⁺ + ν (Z − 1)",
+     "note": "A unchanged in both."
+    },
+    {
+     "name": "Gamma emission",
+     "formula": "X* → X + γ",
+     "note": "A and Z unchanged; the nucleus loses excess energy."
+    },
+    {
+     "name": "Mass–energy equivalence",
+     "formula": "E = mc²; 1 u = 931.5 MeV/c²",
+     "note": "1 u = 1.66 × 10⁻²⁷ kg."
+    },
+    {
+     "name": "Mass defect and binding energy",
+     "formula": "Δm = Zmₚ + (A − Z)mₙ − M_nucleus; BE = Δm c²",
+     "note": "Binding energy per nucleon = BE/A."
+    },
+    {
+     "name": "Nuclear radius",
+     "formula": "R = R₀A^(1/3), R₀ ≈ 1.2 fm",
+     "note": "Nuclear density is about the same for all nuclei."
+    },
+    {
+     "name": "Counting α and β in a chain",
+     "formula": "Number of α = ΔA/4; number of β⁻ = 2(number of α) − ΔZ",
+     "note": "ΔA and ΔZ are the total drops from parent to final daughter."
+    },
+    {
+     "name": "Gamma absorption",
+     "formula": "I = I₀ e^(−μx), half-value thickness x½ = 0.693/μ",
+     "note": "μ linear attenuation coefficient."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Halving chain",
+     "rule": "After n half-lives the fraction left is 1/2ⁿ: 1/2, 1/4, 1/8, 1/16, 1/32 …",
+     "example": "64 g of a nuclide with T½ = 2 days, after 6 days (3 half-lives): 64 → 32 → 16 → 8 g left; 56 g (7/8) has decayed."
+    },
+    {
+     "name": "Age from fraction remaining",
+     "rule": "Turn the fraction into a power of 2, then multiply by the half-life.",
+     "example": "1/16 of a sample remains and T½ = 5 days: 16 = 2⁴, so 4 half-lives = 20 days old."
+    },
+    {
+     "name": "Decay-chain counting",
+     "rule": "α from the mass drop, then β from the leftover charge.",
+     "example": "²³⁸₉₂U → ²⁰⁶₈₂Pb: ΔA = 32, so 8 α. 8 α lower Z by 16 (to 76), but Z only fell by 10, so 16 − 10 = 6 β⁻ decays."
+    },
+    {
+     "name": "931 MeV per u",
+     "rule": "Multiply the mass defect in u by 931.5 for MeV; divide by A for per-nucleon value.",
+     "example": "He-4 mass defect 0.0304 u: BE ≈ 0.0304 × 931.5 ≈ 28.3 MeV, per nucleon ≈ 7.1 MeV."
+    },
+    {
+     "name": "Cube-root radius",
+     "rule": "R ∝ A^(1/3): pick perfect cubes.",
+     "example": "Al-27: R = 1.2 × 3 = 3.6 fm. A nucleus with A = 216 has radius 2 times that of A = 27 (since 216/27 = 8 = 2³)."
+    },
+    {
+     "name": "λ from T½ with 693",
+     "rule": "λ = 0.693/T½: choose numbers that cancel 693.",
+     "example": "T½ = 693 s → λ = 1.0 × 10⁻³ s⁻¹. With N = 10²⁰ nuclei, activity = 10¹⁷ Bq."
+    }
+   ],
+   "traps": [
+    "Thinking the sample is gone after two half-lives; a quarter remains.",
+    "Saying beta particles are orbital electrons; they come from the nucleus.",
+    "Changing A or Z for gamma emission.",
+    "Assuming heating or compressing a sample changes its half-life.",
+    "Putting fusion on the heavy side of the binding-energy curve; fusion releases energy for light nuclei, fission for heavy ones."
+   ],
+   "nsmqTips": [
+    "Half-life questions are almost always designed to give whole numbers of half-lives; count the halvings out loud.",
+    "For nuclear equations, balance A on top and Z at the bottom; the missing particle is whatever closes both sums.",
+    "Know the penetration and ionisation order (α > β > γ for ionising, the reverse for penetrating) and the deflection rules in fields.",
+    "Riddle clues: 'Becquerel', 'Curies', 'chain reaction', 'moderator', 'control rods', 'carbon dating (T½ ≈ 5730 years)'."
+   ]
+  },
+  {
+   "topic": "Relativity and modern physics",
+   "strand": "Atomic and Nuclear Physics",
+   "university": true,
+   "summary": "Special relativity describes physics at speeds close to that of light, predicting time dilation, length contraction and mass–energy equivalence, and modern physics extends this to photon momentum and Compton scattering. In NSMQ it appears in harder rounds, where knowing standard γ values and limiting cases lets you answer in seconds.",
+   "keyIdeas": [
+    "Einstein's postulates: the laws of physics are the same in all inertial frames, and the speed of light in vacuum is the same for all inertial observers.",
+    "Moving clocks run slow (time dilation); proper time is measured by a clock at rest relative to the events.",
+    "Moving objects are shorter along the direction of motion only (length contraction); proper length is measured in the object's rest frame.",
+    "Events simultaneous in one frame need not be simultaneous in another.",
+    "No object with mass can reach c, because its energy would become infinite.",
+    "Rest energy E₀ = mc²: electron 0.511 MeV, proton 938 MeV.",
+    "Photons have zero rest mass but carry momentum p = E/c; Compton scattering of X-rays by electrons confirms this.",
+    "At low speeds all relativistic formulas reduce to Newtonian ones."
+   ],
+   "formulas": [
+    {
+     "name": "Lorentz factor",
+     "formula": "γ = 1/√(1 − v²/c²)",
+     "note": "γ ≥ 1; γ = 1 at rest."
+    },
+    {
+     "name": "Time dilation",
+     "formula": "Δt = γΔt₀",
+     "note": "Δt₀ proper time."
+    },
+    {
+     "name": "Length contraction",
+     "formula": "L = L₀/γ",
+     "note": "L₀ proper length, contraction along motion only."
+    },
+    {
+     "name": "Relativistic momentum",
+     "formula": "p = γmv",
+     "note": "m rest mass."
+    },
+    {
+     "name": "Total and kinetic energy",
+     "formula": "E = γmc², KE = (γ − 1)mc²",
+     "note": "Not ½γmv²."
+    },
+    {
+     "name": "Energy–momentum relation",
+     "formula": "E² = (pc)² + (mc²)²",
+     "note": "For a photon m = 0, so E = pc."
+    },
+    {
+     "name": "Velocity addition",
+     "formula": "u = (u′ + v)/(1 + u′v/c²)",
+     "note": "Speeds along the same line; result never exceeds c."
+    },
+    {
+     "name": "Relativistic Doppler (approaching)",
+     "formula": "f_obs = f √[(1 + β)/(1 − β)], β = v/c",
+     "note": "Use (1 − β)/(1 + β) for receding (redshift)."
+    },
+    {
+     "name": "Photon momentum",
+     "formula": "p = h/λ = E/c",
+     "note": "Radiation pressure on a surface comes from this."
+    },
+    {
+     "name": "Compton shift",
+     "formula": "Δλ = (h/mₑc)(1 − cos θ), h/mₑc ≈ 2.43 pm",
+     "note": "θ scattering angle of the photon."
+    },
+    {
+     "name": "Pair production threshold",
+     "formula": "E_γ ≥ 2mₑc² = 1.022 MeV",
+     "note": "Needs a nearby nucleus to conserve momentum."
+    },
+    {
+     "name": "Schwarzschild radius",
+     "formula": "r_s = 2GM/c²",
+     "note": "Event horizon radius of a non-rotating black hole."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Standard γ values",
+     "rule": "0.6c → γ = 1.25; 0.8c → γ = 5/3; 0.866c (√3/2 c) → γ = 2; 0.98c → γ ≈ 5. The first two come from the 3-4-5 triangle.",
+     "example": "A muon with proper lifetime 2.2 μs at 0.8c lives 2.2 × 5/3 ≈ 3.67 μs in the lab. A 100 m rocket at 0.6c measures 100/1.25 = 80 m."
+    },
+    {
+     "name": "3-4-5 energy triangle",
+     "rule": "E² = (pc)² + (mc²)² is a right triangle with hypotenuse E. For γ = 5/3: E = 5/3 mc², pc = 4/3 mc², KE = 2/3 mc².",
+     "example": "A proton at 0.8c: E = 5/3 × 938 ≈ 1563 MeV, pc ≈ 4/3 × 938 ≈ 1251 MeV, KE ≈ 625 MeV."
+    },
+    {
+     "name": "KE equals rest energy means γ = 2",
+     "rule": "If KE = mc², then γ − 1 = 1, so γ = 2 and v = 0.866c.",
+     "example": "An electron accelerated through 511 kV gains 0.511 MeV = its rest energy, so it moves at about 0.866c."
+    },
+    {
+     "name": "Velocity addition limits",
+     "rule": "Anything combined with c gives c; two speeds of 0.5c give 0.8c, not c.",
+     "example": "0.5c + 0.5c: (1.0c)/(1 + 0.25) = 0.8c. Light emitted forward from a ship at 0.9c still travels at c."
+    },
+    {
+     "name": "Low-speed check",
+     "rule": "γ ≈ 1 + v²/(2c²) for v ≪ c, so KE ≈ ½mv². Use it to test whether relativity matters.",
+     "example": "v = 0.1c: γ ≈ 1 + 0.01/2 = 1.005 (exact 1.00504), only 0.5% different, so Newtonian answers are fine."
+    },
+    {
+     "name": "Compton at key angles",
+     "rule": "Shift = 2.43 pm × (1 − cos θ): 0 at 0°, 2.43 pm at 90°, 4.86 pm (maximum) at 180°.",
+     "example": "A 0.100 nm X-ray scattered at 90° comes out at 0.100 + 0.00243 ≈ 0.1024 nm."
+    }
+   ],
+   "traps": [
+    "Assigning proper time to the wrong observer; it is the clock at rest with respect to the events.",
+    "Contracting lengths perpendicular to the motion.",
+    "Writing KE = ½γmv² or ½mv² at high speed; use (γ − 1)mc².",
+    "Adding velocities by simple addition and getting more than c.",
+    "Treating 'relativistic mass' as rest mass in E² = (pc)² + (mc²)²; m there is the rest mass."
+   ],
+   "nsmqTips": [
+    "Questions are built around 0.6c, 0.8c and 0.866c; recognise them and use the γ values directly.",
+    "Do a limiting-case check aloud: if v → 0 the result should become Newtonian; if v → c, γ → ∞.",
+    "Quote rest energies (electron 0.511 MeV, proton 938 MeV) from memory; they turn most energy questions into one multiplication.",
+    "Riddle clues: 'twin paradox', 'muon reaching sea level', 'Michelson–Morley', 'event horizon'."
+   ]
+  },
+  {
+   "topic": "Earth, atmosphere and space science",
+   "strand": "Energy",
+   "university": false,
+   "summary": "This topic links gravitation and radiation to the Earth, its atmosphere, the solar system and the wider universe, including satellites, seasons, the structure of the Earth and how stars radiate. NSMQ uses it for recall questions on layers and planets and for ratio questions on orbits, gravity and radiation.",
+   "keyIdeas": [
+    "Seasons are caused by the tilt of the Earth's axis (about 23.5°), not by changes in its distance from the Sun.",
+    "The atmosphere's layers from the ground up are troposphere (weather, temperature falls with height), stratosphere (ozone layer absorbs UV), mesosphere, thermosphere (ionosphere, aurora) and exosphere.",
+    "The greenhouse effect: the Earth absorbs short-wavelength solar radiation and emits long-wavelength infrared, part of which is absorbed by CO₂, water vapour and methane.",
+    "Seismic P-waves are longitudinal and pass through solids and liquids; S-waves are transverse and cannot pass through liquids, which shows the outer core is liquid.",
+    "A geostationary satellite orbits above the equator, west to east, with a period of 24 h at about 36 000 km altitude.",
+    "Astronauts in orbit feel weightless because they are in free fall, not because gravity is absent.",
+    "The Sun produces energy by nuclear fusion of hydrogen into helium; distant galaxies show a redshift, evidence that the universe is expanding."
+   ],
+   "formulas": [
+    {
+     "name": "Newton's law of gravitation",
+     "formula": "F = GMm/r²",
+     "note": "G = 6.67 × 10⁻¹¹ N m² kg⁻²; r between centres."
+    },
+    {
+     "name": "Surface gravity",
+     "formula": "g = GM/R²",
+     "note": "Earth: g ≈ 9.8 m/s², R ≈ 6.4 × 10⁶ m, M ≈ 6.0 × 10²⁴ kg."
+    },
+    {
+     "name": "Gravity above the surface",
+     "formula": "g_h = g R²/(R + h)²",
+     "note": "Below the surface (uniform Earth): g_d = g(1 − d/R)."
+    },
+    {
+     "name": "Orbital speed",
+     "formula": "v = √(GM/r)",
+     "note": "Near the surface v ≈ √(gR) ≈ 7.9 km/s."
+    },
+    {
+     "name": "Escape speed",
+     "formula": "v_e = √(2GM/R) = √(2gR)",
+     "note": "Earth ≈ 11.2 km/s; independent of the mass of the object."
+    },
+    {
+     "name": "Kepler's third law",
+     "formula": "T² = 4π²r³/(GM)",
+     "note": "T² ∝ r³ for bodies orbiting the same central mass."
+    },
+    {
+     "name": "Gravitational potential energy",
+     "formula": "U = −GMm/r",
+     "note": "Zero at infinity; total energy of an orbit = −GMm/(2r)."
+    },
+    {
+     "name": "Atmospheric and fluid pressure",
+     "formula": "p = ρgh; 1 atm = 1.013 × 10⁵ Pa = 760 mmHg",
+     "note": "About 10 m of water exerts 1 atm."
+    },
+    {
+     "name": "Wien's displacement law",
+     "formula": "λ_max T = 2.9 × 10⁻³ m K",
+     "note": "Hotter bodies peak at shorter wavelengths."
+    },
+    {
+     "name": "Stefan–Boltzmann law",
+     "formula": "P = σAT⁴, σ = 5.67 × 10⁻⁸ W m⁻² K⁻⁴",
+     "note": "Total power radiated by a black body; multiply by emissivity for real bodies."
+    },
+    {
+     "name": "Astronomical distances",
+     "formula": "1 AU ≈ 1.5 × 10¹¹ m; 1 ly ≈ 9.46 × 10¹⁵ m; 1 pc ≈ 3.09 × 10¹⁶ m ≈ 3.26 ly",
+     "note": "Light-year and parsec are distances, not times."
+    },
+    {
+     "name": "Hubble's law",
+     "formula": "v = H₀d",
+     "note": "H₀ ≈ 70 km s⁻¹ Mpc⁻¹; 1/H₀ estimates the age of the universe."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Escape = √2 × orbital",
+     "rule": "At the same radius, escape speed is √2 ≈ 1.414 times circular orbital speed.",
+     "example": "Low Earth orbit 7.9 km/s → escape speed ≈ 7.9 × 1.414 ≈ 11.2 km/s."
+    },
+    {
+     "name": "Kepler scaling",
+     "rule": "T ∝ r^(3/2): choose radius ratios that are perfect squares.",
+     "example": "A planet at 4 AU: T = 4^(3/2) = 8 years. At 9 AU: 27 years. Saturn at about 9.5 AU takes about 29 years."
+    },
+    {
+     "name": "Gravity at height R",
+     "rule": "At height h = R the distance from the centre doubles, so g falls to g/4; inside a uniform Earth g ∝ r.",
+     "example": "At 6400 km altitude: g ≈ 9.8/4 ≈ 2.45 m/s². Halfway to the centre: g ≈ 4.9 m/s²."
+    },
+    {
+     "name": "Wien in one division",
+     "rule": "λ_max = 2.9 × 10⁻³ / T; about 500 nm for the Sun, about 10 μm for the Earth.",
+     "example": "Sun 5800 K: 2.9 × 10⁻³/5800 = 5.0 × 10⁻⁷ m = 500 nm (visible). Earth 290 K: 1.0 × 10⁻⁵ m = 10 μm (infrared), which greenhouse gases absorb."
+    },
+    {
+     "name": "T⁴ and light-time",
+     "rule": "Double the temperature → 16 times the radiated power. Light time = distance ÷ (3 × 10⁸).",
+     "example": "A star twice as hot with the same size radiates 16 times more. Sun to Earth: 1.5 × 10¹¹/3 × 10⁸ = 500 s ≈ 8.3 min. Moon to Earth: 3.84 × 10⁸/3 × 10⁸ ≈ 1.3 s."
+    },
+    {
+     "name": "Order mnemonics",
+     "rule": "Planets: My Very Educated Mother Just Served Us Noodles (Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune). Atmosphere upwards: The Strong Man's Tie Exploded (Troposphere, Stratosphere, Mesosphere, Thermosphere, Exosphere).",
+     "example": "Which layer holds the ozone layer? Second word, Strong → stratosphere. Fourth planet from the Sun? Mother → Mars."
+    }
+   ],
+   "traps": [
+    "Saying summer happens because the Earth is closer to the Sun; the Earth is actually nearest the Sun in early January.",
+    "Calling a light-year a unit of time.",
+    "Thinking astronauts in orbit have no gravity acting on them; g at the ISS altitude is still about 90% of surface g.",
+    "Placing a geostationary satellite over any latitude; it must be above the equator.",
+    "Assuming g keeps increasing as you go down a mine; for a uniform Earth it decreases towards the centre."
+   ],
+   "nsmqTips": [
+    "Many questions here are pure recall: layers, planet order, seismic waves, greenhouse gases. Use the mnemonics and answer in one word.",
+    "For gravity and orbit ratios, write the proportionality (g ∝ 1/r², T² ∝ r³, P ∝ T⁴) and scale; do not substitute G.",
+    "Remember the Earth numbers: R ≈ 6400 km, g ≈ 9.8 m/s², orbital speed 7.9 km/s, escape speed 11.2 km/s.",
+    "Riddle clues: 'Kármán line' (100 km), 'Van Allen belts', 'Moho', 'shadow zone', 'red giant', 'redshift'."
+   ]
+  }
+ ]
+}
