@@ -11,11 +11,12 @@ export const runtime = "nodejs";
 export async function POST(request: NextRequest) {
   try {
     assertSameOrigin(request);
-    const configured = process.env.SETUP_SECRET ?? "";
+    // Ignore stray spaces or line breaks from copy-pasting into Vercel or the form.
+    const configured = (process.env.SETUP_SECRET ?? "").trim();
     if (configured.length < 24) throw new AccessError(404, "Setup is not enabled.");
     const body = z.object({ secret: z.string().max(512), email: emailSchema }).strict().parse(await readJsonRequest(request, 4096));
     const digest = (value: string) => createHash("sha256").update(value).digest();
-    if (!timingSafeEqual(digest(body.secret), digest(configured))) {
+    if (!timingSafeEqual(digest(body.secret.trim()), digest(configured))) {
       await new Promise((done) => setTimeout(done, 1000));
       throw new AccessError(403, "The setup secret is incorrect.");
     }
