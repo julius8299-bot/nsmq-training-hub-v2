@@ -109,6 +109,11 @@ export function errorResponse(error: unknown) {
   if (typeof error === "object" && error && (error as { code?: string }).code === "P2025") {
     return NextResponse.json({ error: "Not found." }, { status: 404 });
   }
-  console.error("Request failed", error instanceof Error ? error.name : "UnknownError");
+  // Log enough to diagnose (name, Prisma/driver code, message) without request bodies or secrets.
+  const detail = error instanceof Error
+    ? { name: error.name, code: (error as { code?: string }).code, message: error.message.slice(0, 500),
+        cause: (error as { cause?: { message?: string } }).cause?.message?.slice(0, 300) }
+    : { name: "UnknownError" };
+  console.error("Request failed", JSON.stringify(detail));
   return NextResponse.json({ error: "The request could not be completed." }, { status: 500 });
 }
