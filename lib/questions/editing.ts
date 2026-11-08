@@ -7,13 +7,16 @@ import { isStudentVisible } from "./visibility";
 
 export type QuestionInput = z.infer<typeof questionInput>;
 const RIDDLE_POINTS = [5, 4, 3, 3, 3];
+/** Imported past questions start with this shortcut text; they cannot be approved until a real shortcut replaces it. */
+export const SHORTCUT_PENDING = "[Shortcut pending]";
+export const hasPendingShortcut = (value: string | null | undefined) => (value ?? "").trimStart().startsWith(SHORTCUT_PENDING);
 
 /** Validates a create/edit payload and returns the stored fields (clues kept separately). */
 export function prepareQuestion(raw: unknown) {
   const body = questionInput.parse(raw);
   const clues = (body.riddleClues ?? []).map((clue) => clue.clueText.trim()).filter(Boolean);
-  if (body.roundType === "RIDDLE" && (clues.length < 4 || clues.length > 5)) {
-    throw new AccessError(400, "Riddles need four or five clues.");
+  if (body.roundType === "RIDDLE" && (clues.length < 3 || clues.length > 5)) {
+    throw new AccessError(400, "Riddles need three to five clues.");
   }
   const ghana = body.isGhanaContext === true || body.isGhanaContext === "true" || body.ghanaContext === true || body.ghanaContext === "true";
   const fields = {
@@ -122,14 +125,19 @@ export async function reviewQuestion(db: PrismaClient, actor: { id: string; role
     throw new AccessError(403, "A different coach or an administrator must approve your own question.");
   }
   const candidate = pending ? { ...question, ...pending.fields } : question;
+  const sourced = candidate.isPastQuestion || candidate.sourceType !== "ORIGINAL";
+  // A reviewer's confirmation that the team may use sourced material is what clears PRIVATE_REVIEW / NEEDS_PERMISSION.
+  const permissionStatus = PUBLISHABLE_PERMISSIONS.includes(candidate.permissionStatus) ? candidate.permissionStatus : "LICENSED";
   if (input.decision === "APPROVED") {
-    if (!PUBLISHABLE_PERMISSIONS.includes(candidate.permissionStatus)) {
-      throw new AccessError(400, "Set the permission status to ORIGINAL, PUBLIC or LICENSED before approving.");
+    if (hasPendingShortcut(candidate.shortcutSolution)) {
+      throw new AccessError(400, "This question still needs a shortcut. Edit it to add one, then approve.");
     }
-    if (candidate.isPastQuestion || candidate.sourceType !== "ORIGINAL") {
+    if (sourced) {
       if (!candidate.sourceName?.trim() || input.permissionConfirmed !== true) {
         throw new AccessError(400, "Sourced and past questions need a source name and your confirmation that the team may use them.");
       }
+    } else if (!PUBLISHABLE_PERMISSIONS.includes(candidate.permissionStatus)) {
+      throw new AccessError(400, "Set the permission status to ORIGINAL, PUBLIC or LICENSED before approving.");
     }
   }
   await db.$transaction(async (tx) => {
@@ -137,11 +145,13 @@ export async function reviewQuestion(db: PrismaClient, actor: { id: string; role
     if (pending && input.decision === "APPROVED") {
       await tx.riddleClue.deleteMany({ where: { questionId: id } });
       if (pending.clues.length) await tx.riddleClue.createMany({ data: clueRows(pending.clues).map((clue) => ({ ...clue, questionId: id })) });
-      data = { ...pending.fields, pendingEditJson: null, reviewStatus: "APPROVED", isPrivateOnly: false };
+      data = { ...pending.fields, permissionStatus, pendingEditJson: null, reviewStatus: "APPROVED", isPrivateOnly: false };
     } else if (pending) {
       data = { pendingEditJson: null }; // Rejecting a proposed edit leaves the live question untouched.
     } else {
-      data = { reviewStatus: input.decision, isPrivateOnly: input.decision !== "APPROVED" };
+      data = input.decision === "APPROVED"
+        ? { reviewStatus: "APPROVED", isPrivateOnly: false, permissionStatus }
+        : { reviewStatus: "REJECTED", isPrivateOnly: true };
     }
     const updated = await tx.question.updateMany({ where: { id, revision: input.revision, archivedAt: null }, data });
     if (updated.count !== 1) throw new AccessError(409, "Question changed. Review the latest revision.");

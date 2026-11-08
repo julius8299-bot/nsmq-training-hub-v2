@@ -43,6 +43,7 @@ export function ReviewCard({ question, user, onDone }: { question: StaffQuestion
   const own = proposedBy === user.id && user.role !== "ADMIN";
   const candidate = edit ? { ...question, ...edit.fields } as Record<string, unknown> : question as unknown as Record<string, unknown>;
   const sourced = Boolean(candidate.isPastQuestion) || candidate.sourceType !== "ORIGINAL";
+  const shortcutMissing = String(candidate.shortcutSolution ?? "").trimStart().startsWith("[Shortcut pending]");
   const clues = edit ? edit.clues : question.riddleClues.map((clue) => clue.clueText);
 
   const decide = async (decision: "APPROVED" | "REJECTED") => {
@@ -83,6 +84,7 @@ export function ReviewCard({ question, user, onDone }: { question: StaffQuestion
           </div>
         )}
       </dl>
+      {shortcutMissing && <p className="mt-4 rounded-xl bg-amber-50 p-3 text-sm text-amber-900">This imported question has no shortcut yet. You can reject it or fix it in Question bank, but it can't be approved until a shortcut is added.</p>}
       {own ? (
         <p className="mt-4 rounded-xl bg-ink/5 p-3 text-sm">You wrote this, so another coach or an administrator needs to approve it.</p>
       ) : (
@@ -98,7 +100,7 @@ export function ReviewCard({ question, user, onDone }: { question: StaffQuestion
           )}
           {message && <p role="alert" className="text-sm font-bold text-red-700">{message}</p>}
           <div className="flex flex-wrap gap-2">
-            <button type="button" className="button-primary" disabled={busy || notes.trim().length < 10} onClick={() => void decide("APPROVED")}><Check size={16} /> Approve{edit ? " edit" : " and publish"}</button>
+            <button type="button" className="button-primary" disabled={busy || shortcutMissing || notes.trim().length < 10} onClick={() => void decide("APPROVED")}><Check size={16} /> Approve{edit ? " edit" : " and publish"}</button>
             <button type="button" className="button-secondary" disabled={busy || notes.trim().length < 10} onClick={() => void decide("REJECTED")}><X size={16} /> {edit ? "Reject edit (keep live version)" : "Reject"}</button>
           </div>
         </div>

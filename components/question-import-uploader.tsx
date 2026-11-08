@@ -10,11 +10,11 @@ const REQUIRED = [
   "questionText", "answer", "shortcutSolution", "fullSolution", "commonTrap",
   "encouragement", "repeatedPattern", "patternFamily", "sourceType", "permissionStatus",
 ];
-const TEMPLATE_COLUMNS = [...REQUIRED, "acceptedAnswers", "tags", "sourceName", "sourceYear", "contestStage", "isPastQuestion", "isGhanaContext", "markingScheme", "clue1", "clue2", "clue3", "clue4", "clue5"];
+const TEMPLATE_COLUMNS = [...REQUIRED, "importKey", "acceptedAnswers", "tags", "sourceName", "sourceYear", "contestStage", "isPastQuestion", "isGhanaContext", "markingScheme", "clue1", "clue2", "clue3", "clue4", "clue5"];
 const CHUNK = 200;
 
 type Row = Record<string, unknown>;
-type Result = { row: number; status: "imported" | "duplicate" | "error"; message?: string };
+type Result = { row: number; status: "imported" | "updated" | "unchanged" | "duplicate" | "error"; message?: string };
 
 /** JSON array, or "a | b | c". Commas are kept inside answers such as "1,000". */
 function listField(value: unknown, splitter: RegExp) {
@@ -63,7 +63,7 @@ export function QuestionImportUploader({ onImported }: { onImported?: () => void
       setRows(parsed);
       setProblems(parsed.map((row) => [
         ...REQUIRED.filter((field) => !String(row[field] ?? "").trim()).map((field) => `missing ${field}`),
-        ...(row.roundType === "RIDDLE" && !Array.isArray(row.riddleClues) && !row.clue1 ? ["riddles need clue1–clue4 (or clue5)"] : []),
+        ...(row.roundType === "RIDDLE" && !Array.isArray(row.riddleClues) && !row.clue1 ? ["riddles need clue1–clue3 (up to clue5)"] : []),
       ]));
       setStatus(`${parsed.length} row${parsed.length === 1 ? "" : "s"} read. Check the preview, then import.`);
     } catch (error) {
@@ -82,11 +82,11 @@ export function QuestionImportUploader({ onImported }: { onImported?: () => void
         const response = await api<{ results: Result[] }>("/api/admin/questions/import", { body: { rows: chunk } });
         all.push(...response.results.map((result) => ({ ...result, row: result.row + start })));
       }
-      const imported = all.filter((item) => item.status === "imported").length;
-      const duplicates = all.filter((item) => item.status === "duplicate").length;
-      setStatus(`${imported} imported into the review queue · ${duplicates} already in the bank · ${all.length - imported - duplicates} with errors.`);
-      setResults(all.filter((item) => item.status !== "imported"));
-      if (imported) { setRows([]); setProblems([]); onImported?.(); }
+      const count = (status: Result["status"]) => all.filter((item) => item.status === status).length;
+      const imported = count("imported"), updated = count("updated");
+      setStatus(`${imported} new in the review queue · ${updated} updated · ${count("unchanged")} unchanged · ${count("duplicate")} already in the bank · ${count("error")} with errors.`);
+      setResults(all.filter((item) => item.status === "error" || item.status === "duplicate" || (item.status === "updated" && item.message)));
+      if (imported || updated) { setRows([]); setProblems([]); onImported?.(); }
     } catch (error) { setStatus((error as ApiError).message); }
     finally { setBusy(false); }
   };
@@ -97,7 +97,7 @@ export function QuestionImportUploader({ onImported }: { onImported?: () => void
       "A body starts from rest and accelerates uniformly at 4 m/s^2. Find its speed after 6 s.", "24 m/s",
       "Use v = u + at with u = 0.", "v = 0 + 4 × 6 = 24 m/s.", "Using s = ut + ½at² instead of v = u + at.",
       "Name the equation first, then substitute.", "speed from rest", "SUVAT", "PAST_QUESTION", "LICENSED",
-      "24 | 24 m s^-1", "kinematics | suvat", "NSMQ 2019 one-eighth stage", 2019, "One-eighth", "true", "false", "", "", "", "", "", "",
+      "", "24 | 24 m s^-1", "kinematics | suvat", "NSMQ 2019 one-eighth stage", 2019, "One-eighth", "true", "false", "", "", "", "", "", "",
     ]] });
     const link = document.createElement("a");
     link.href = URL.createObjectURL(new Blob([csv], { type: "text/csv" }));
@@ -110,7 +110,7 @@ export function QuestionImportUploader({ onImported }: { onImported?: () => void
     <div className="panel p-5 sm:p-7">
       <div className="flex items-center gap-3"><span className="grid size-10 place-items-center rounded-xl bg-gold/20 text-ink"><Upload size={19} /></span><div><h2 className="font-display text-2xl font-semibold">Bulk import</h2><p className="text-sm text-ink/50">CSV or JSON. Everything imported waits in the review queue.</p></div></div>
       <button type="button" className="button-secondary mt-4" onClick={template}><Download size={16} /> Download CSV template</button>
-      <p className="mt-3 text-xs leading-5 text-ink/55">Separate multiple accepted answers with a vertical bar: <code>24 | 24 m s^-1</code>. Riddles use columns clue1 to clue5. Past NSMQ questions: set sourceType PAST_QUESTION, fill sourceName and year, and set permissionStatus to what you actually hold.</p>
+      <p className="mt-3 text-xs leading-5 text-ink/55">Separate multiple accepted answers with a vertical bar: <code>24 | 24 m s^-1</code>. Riddles use columns clue1 to clue5. Give each row a stable <code>importKey</code> if you plan to upload an improved version later: the same key updates the question instead of adding a copy. Past NSMQ questions: set sourceType PAST_QUESTION, fill sourceName and year, and set permissionStatus to what you actually hold.</p>
       <label className="mt-5 flex cursor-pointer flex-col items-center rounded-2xl border-2 border-dashed border-ink/15 p-8 text-center transition hover:border-chemistry hover:bg-emerald-50">
         <span className="flex gap-2 text-ink/45"><FileSpreadsheet /><FileJson /></span>
         <span className="mt-3 font-bold">Choose a CSV or JSON file</span>

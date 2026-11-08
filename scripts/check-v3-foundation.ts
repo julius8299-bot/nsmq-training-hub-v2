@@ -318,6 +318,40 @@ async function main() {
     assert.equal((await itemApi.PUT(request("/edit", adminToken, "PUT", input), { params: Promise.resolve({ id: "missing" }) })).status, 404);
     assert.equal((await itemApi.DELETE(request("/del", adminToken, "DELETE"), { params: Promise.resolve({ id: "missing" }) })).status, 404);
   });
+  await test("bank import: re-upload by importKey, shortcut placeholder blocks approval, reviewer clears permission", async () => {
+    const { importQuestions } = await import("../lib/questions/bulk-import");
+    const { reviewQuestion } = await import("../lib/questions/editing");
+    const coach = await db.user.create({ data: { name: "Import Coach", email: "importcoach@example.test", role: "COACH", roleId: "COACH", status: "ACTIVE" } });
+    const row = {
+      ...input, roundType: "SPEED_RACE", questionText: "Bank import check: what is 7 x 8?", answer: "56", riddleClues: [],
+      shortcutSolution: "[Shortcut pending] Original working kept below.", sourceType: "PAST_QUESTION", permissionStatus: "PRIVATE_REVIEW",
+      isPastQuestion: true, sourceName: "NSMQ 2022, Maths, Round 2", importKey: "nsmq2022/maths/r2/q1",
+    };
+    const [first] = await importQuestions(db, coach.id, [row]);
+    assert.equal(first.status, "imported");
+    assert.equal((await importQuestions(db, coach.id, [row]))[0].status, "unchanged");
+    assert.equal((await importQuestions(db, coach.id, [{ ...row, importKey: undefined }]))[0].status, "duplicate");
+    let question = await db.question.findUniqueOrThrow({ where: { id: first.id! } });
+    const decision = { decision: "APPROVED" as const, notes: "Checked answer and source.", permissionConfirmed: true };
+    await assert.rejects(() => reviewQuestion(db, admin, question.id, { ...decision, revision: question.revision }), /shortcut/);
+    const improved = { ...row, shortcutSolution: "Recognise: times table. Fast route: 7 x 8 = 56 (5-6-7-8 pattern)." };
+    assert.equal((await importQuestions(db, coach.id, [improved]))[0].status, "updated");
+    question = await db.question.findUniqueOrThrow({ where: { id: first.id! } });
+    assert.equal(question.reviewStatus, "PENDING_REVIEW");
+    await assert.rejects(() => reviewQuestion(db, admin, question.id, { ...decision, permissionConfirmed: false, revision: question.revision }), /confirmation/);
+    await reviewQuestion(db, admin, question.id, { ...decision, revision: question.revision });
+    question = await db.question.findUniqueOrThrow({ where: { id: first.id! } });
+    assert.equal(question.reviewStatus, "APPROVED");
+    assert.equal(question.permissionStatus, "LICENSED");
+    const live = await importQuestions(db, coach.id, [{ ...improved, answer: "56 exactly" }]);
+    assert.equal(live[0].status, "updated");
+    question = await db.question.findUniqueOrThrow({ where: { id: first.id! } });
+    assert.equal(question.answer, "56");
+    assert.ok(question.pendingEditJson);
+    assert.equal((await importQuestions(db, coach.id, [{ ...row, importKey: "bad key with spaces" }]))[0].status, "error");
+    const riddle = await importQuestions(db, coach.id, [{ ...input, questionText: "Who am I? (three-clue import)", riddleClues: [1, 2, 3].map((n) => ({ clueText: "Import clue " + n })) }]);
+    assert.equal(riddle[0].status, "imported");
+  });
   console.log(passed + " foundation scenarios passed against a disposable database.");
   const { prisma } = await import("../lib/prisma");
   await prisma.$disconnect();
