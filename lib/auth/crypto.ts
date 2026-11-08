@@ -10,15 +10,18 @@ export function hashToken(token: string) {
 
 export class PasswordCapacityError extends Error {}
 
-let deriving = false;
+// Each derivation uses ~128 MiB for ~0.35 s. Two at once plus a short queue lets a whole class sign in
+// within seconds while still bounding memory (~256 MiB) against floods; overflow fails closed with 503.
+export const MAX_ACTIVE_DERIVATIONS = 2;
+export const MAX_QUEUED_DERIVATIONS = 16;
+let active = 0;
 const waiting: Array<() => void> = [];
 
 async function derive(password: string, salt: string): Promise<Buffer> {
-  // Keep unauthenticated concurrent requests from multiplying scrypt's memory cost.
-  if (deriving) {
-    if (waiting.length >= 4) throw new PasswordCapacityError("Password verification is busy.");
+  if (active >= MAX_ACTIVE_DERIVATIONS) {
+    if (waiting.length >= MAX_QUEUED_DERIVATIONS) throw new PasswordCapacityError("Password verification is busy.");
     await new Promise<void>((resume) => waiting.push(resume));
-  } else deriving = true;
+  } else active += 1;
   try {
     return await new Promise<Buffer>((resolve, reject) => {
       scrypt(password, salt, 64, { N: 131072, r: 8, p: 1, maxmem: 256 * 1024 * 1024 }, (error, key) => {
@@ -27,9 +30,10 @@ async function derive(password: string, salt: string): Promise<Buffer> {
       });
     });
   } finally {
+    // Hand this slot directly to the next waiter, or release it.
     const resume = waiting.shift();
     if (resume) resume();
-    else deriving = false;
+    else active -= 1;
   }
 }
 

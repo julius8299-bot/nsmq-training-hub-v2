@@ -10,7 +10,7 @@
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "db:seed": "tsx prisma/seed.ts",
-    "db:ensure": "tsx scripts/prepare-sqlite.ts && prisma db push && tsx scripts/ensure-database.ts",
+    "db:ensure": "tsx scripts/prepare-sqlite.ts && prisma db push --skip-generate && tsx scripts/ensure-database.ts && tsx scripts/import-catalog.ts && tsx scripts/import-elements.ts",
     "auth:bootstrap": "tsx scripts/bootstrap-admin.ts",
     "test:foundation": "tsx scripts/check-v3-foundation.ts",
     "test:v3-routes": "tsx scripts/check-v3-routes.ts",
@@ -20,7 +20,11 @@
     "test:answers": "tsx scripts/check-answer-regression.ts",
     "test:question-bank": "tsx scripts/check-question-bank-regression.ts",
     "test:routes": "tsx scripts/check-app-routes.ts",
-    "test:upgrade": "tsx scripts/check-training-upgrade.ts"
+    "test:upgrade": "tsx scripts/check-training-upgrade.ts",
+    "vercel-build": "prisma generate --schema prisma/postgresql/schema.prisma && prisma db push --schema prisma/postgresql/schema.prisma --skip-generate && tsx scripts/ensure-database.ts && tsx scripts/import-catalog.ts && tsx scripts/import-elements.ts && next build",
+    "db:import-catalog": "tsx scripts/import-catalog.ts",
+    "db:import-elements": "tsx scripts/import-elements.ts",
+    "db:copy-local": "tsx scripts/copy-local-records.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
@@ -59,5 +63,8 @@
     "tsx": {
       "esbuild": "0.28.2"
     }
+  },
+  "engines": {
+    "node": ">=22.5"
   }
 }
