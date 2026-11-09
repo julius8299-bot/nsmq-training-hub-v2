@@ -167,6 +167,17 @@ function Runner({ questions, mode, timeLimitSeconds, timed = true, onScore, onNe
               <Ear size={15} /> Listen only {voice.listenOnly ? "on" : "off"}
             </button>
           )}
+          {voice.readAloud && voice.voices.length > 0 && (
+            <select aria-label="Voice" className="input w-auto max-w-[14rem] py-1.5 text-sm" value={voice.currentVoice}
+              onChange={(event) => { voice.update({ voiceName: event.target.value }); void voice.speak("This is the quiz mistress. Good luck."); }}>
+              {voice.voices.map((option) => <option key={option.name} value={option.name}>{option.name.replace(/^(Microsoft|Google)\s+/, "")} ({option.lang})</option>)}
+            </select>
+          )}
+          {voice.readAloud && (
+            <select aria-label="Speed" className="input w-auto py-1.5 text-sm" value={String(voice.rate)} onChange={(event) => voice.update({ rate: Number(event.target.value) })}>
+              <option value="0.85">Slower</option><option value="1">Normal speed</option><option value="1.15">Faster</option>
+            </select>
+          )}
           {voice.readAloud && !result && question.roundType !== "RIDDLE" && !reading && draw && (
             <button type="button" className="font-bold text-chemistry underline" onClick={() => void voice.speak([question.preamble, question.questionText].filter(Boolean).join(". "))}>Repeat question</button>
           )}
