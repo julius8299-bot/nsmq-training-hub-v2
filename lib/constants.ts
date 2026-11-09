@@ -6,6 +6,7 @@ export const ROUND_TYPES = [
   "TRUE_FALSE",
   "RIDDLE",
 ] as const;
+export const SUBJECT_LABELS: Record<string, string> = { MATHEMATICS: "Mathematics", PHYSICS: "Physics", CHEMISTRY: "Chemistry", BIOLOGY: "Biology" };
 export const DIFFICULTIES = ["EASY", "MEDIUM", "HARD", "NSMQ_FINAL_LEVEL"] as const;
 export const SOURCE_TYPES = [
   "ORIGINAL",

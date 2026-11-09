@@ -1,0 +1,2359 @@
+{
+ "subject": "CHEMISTRY",
+ "topics": [
+  {
+   "topic": "Atomic structure and quantum numbers",
+   "strand": "Physical Chemistry",
+   "university": false,
+   "summary": "How protons, neutrons and electrons are arranged in an atom, and how the four quantum numbers fix where each electron sits. Electron configurations underlie periodicity, bonding and spectra, so NSMQ uses this topic constantly for quick-fire configuration, quantum-number and spectral-line questions.",
+   "keyIdeas": [
+    "Atomic number Z = number of protons; mass number A = protons + neutrons. Isotopes have the same Z but different A and almost identical chemistry.",
+    "Principal quantum number n = 1, 2, 3, …; azimuthal l = 0 to n − 1 (s, p, d, f for l = 0, 1, 2, 3); magnetic mₗ = −l to +l; spin mₛ = +½ or −½.",
+    "Pauli exclusion principle: no two electrons in an atom share all four quantum numbers, so an orbital holds at most two electrons of opposite spin.",
+    "Aufbau principle: subshells fill in order of increasing (n + l); when two subshells tie, the one with lower n fills first.",
+    "Hund's rule: electrons occupy degenerate orbitals singly with parallel spins before pairing, e.g. N 2p³ has three unpaired electrons.",
+    "Cr is [Ar]3d⁵4s¹ and Cu is [Ar]3d¹⁰4s¹ because half-filled and filled d subshells are extra stable.",
+    "Transition metals lose 4s electrons before 3d when they form ions: Fe²⁺ is [Ar]3d⁶, not [Ar]3d⁴4s².",
+    "Hydrogen emission series: Lyman ends at n = 1 (ultraviolet), Balmer at n = 2 (visible), Paschen at n = 3 (infrared)."
+   ],
+   "formulas": [
+    {
+     "name": "Mass number",
+     "formula": "A = Z + N",
+     "note": "N = number of neutrons. Neutrons = A − Z."
+    },
+    {
+     "name": "Relative atomic mass",
+     "formula": "Aᵣ = Σ (isotopic mass × fractional abundance)",
+     "note": "Weighted average over all isotopes; why Cl is 35.5, not a whole number."
+    },
+    {
+     "name": "Electrons in a shell",
+     "formula": "maximum = 2n²",
+     "note": "n = 1, 2, 3, 4 gives 2, 8, 18, 32."
+    },
+    {
+     "name": "Orbitals in a shell and subshell",
+     "formula": "shell: n² orbitals; subshell: 2l + 1 orbitals holding 2(2l + 1) electrons",
+     "note": "s, p, d, f have 1, 3, 5, 7 orbitals and 2, 6, 10, 14 electrons."
+    },
+    {
+     "name": "Nodes in an orbital",
+     "formula": "total nodes = n − 1; angular nodes = l; radial nodes = n − l − 1",
+     "note": "3p: 2 nodes in total, 1 angular and 1 radial."
+    },
+    {
+     "name": "Photon energy",
+     "formula": "E = hf = hc/λ",
+     "note": "h = 6.626 × 10⁻³⁴ J s, c = 3.00 × 10⁸ m s⁻¹."
+    },
+    {
+     "name": "Bohr energy levels",
+     "formula": "Eₙ = −13.6 Z²/n² eV",
+     "note": "For hydrogen (Z = 1) and hydrogen-like ions such as He⁺ and Li²⁺ only. 1 eV = 1.602 × 10⁻¹⁹ J."
+    },
+    {
+     "name": "Rydberg equation",
+     "formula": "1/λ = R_H Z² (1/n₁² − 1/n₂²)",
+     "note": "R_H = 1.097 × 10⁷ m⁻¹; n₂ > n₁; n₁ is the lower level the electron falls to."
+    },
+    {
+     "name": "de Broglie wavelength",
+     "formula": "λ = h/(mv) = h/p",
+     "note": "Wave nature of electrons; heavier or faster particles have shorter wavelengths."
+    },
+    {
+     "name": "Number of spectral lines",
+     "formula": "lines = n(n − 1)/2",
+     "note": "All possible lines when electrons fall from level n down to n = 1 in a sample of atoms."
+    },
+    {
+     "name": "Spin-only magnetic moment",
+     "formula": "μ = √[u(u + 2)] BM",
+     "note": "u = number of unpaired electrons; u = 0 means diamagnetic."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "(n + l) filling rule",
+     "rule": "Add n + l for each subshell; smaller sum fills first; on a tie, smaller n first.",
+     "example": "6s: 6 + 0 = 6; 4f: 4 + 3 = 7; 5d: 5 + 2 = 7. So the order is 6s, then 4f (n = 4 smaller), then 5d."
+    },
+    {
+     "name": "Spectral lines count",
+     "rule": "Lines from level n = n(n − 1)/2, i.e. the triangular number of (n − 1).",
+     "example": "Electrons excited to n = 5: 5 × 4/2 = 10 lines. From n = 4: 4 × 3/2 = 6 lines."
+    },
+    {
+     "name": "Noble-gas core then remove 4s first",
+     "rule": "Subtract the previous noble gas's Z, fill 4s then 3d; for cations strip 4s before 3d.",
+     "example": "Fe, Z = 26: 26 − 18 = 8 → [Ar]4s²3d⁶. Fe³⁺: remove 4s² and one 3d → [Ar]3d⁵, five unpaired electrons."
+    },
+    {
+     "name": "Hydrogen-like ionisation energy",
+     "rule": "Ionisation energy from the ground state = 13.6 × Z² eV.",
+     "example": "He⁺: 13.6 × 4 = 54.4 eV. Li²⁺: 13.6 × 9 = 122.4 eV."
+    },
+    {
+     "name": "Photon energy in eV",
+     "rule": "E (eV) ≈ 1240 / λ (nm).",
+     "example": "λ = 620 nm: 1240/620 = 2.0 eV. λ = 124 nm: 10 eV."
+    },
+    {
+     "name": "Two-isotope average",
+     "rule": "Start from the lighter mass and add (abundance of heavier isotope × mass difference).",
+     "example": "Cl: 75% ³⁵Cl, 25% ³⁷Cl → 35 + 0.25 × 2 = 35.5."
+    }
+   ],
+   "traps": [
+    "Writing quantum numbers with l = n (for example a '2d' orbital): l can only go up to n − 1, so 1p, 2d and 3f do not exist.",
+    "Removing 3d electrons before 4s when writing transition-metal ions: Cu²⁺ is [Ar]3d⁹, not [Ar]3d⁸4s¹.",
+    "Forgetting the Cr and Cu exceptions and writing 3d⁴4s² or 3d⁹4s².",
+    "Confusing mass number (a whole number for one isotope) with relative atomic mass (a weighted average).",
+    "Pairing electrons too early: O 2p⁴ has two unpaired electrons, not zero."
+   ],
+   "nsmqTips": [
+    "For 'how many unpaired electrons' questions, write only the outer subshell and draw boxes in your head; for d⁵ the answer is 5, for d⁶ and d⁴ it is 4.",
+    "Quantum-number sets: check l < n first, then |mₗ| ≤ l, then mₛ = ±½. Most 'which set is not allowed' options fail on the first test.",
+    "Learn the H series names and regions as a triple (Lyman–UV–n=1, Balmer–visible–n=2, Paschen–IR–n=3); these are asked as quick recall."
+   ]
+  },
+  {
+   "topic": "The mole concept and stoichiometry",
+   "strand": "Physical Chemistry",
+   "university": false,
+   "summary": "The mole links the mass, number of particles, gas volume and concentration of a substance, and balanced equations give the mole ratios between reactants and products. Nearly every numerical chemistry question in NSMQ passes through a mole calculation, so speed here pays off everywhere.",
+   "keyIdeas": [
+    "One mole contains 6.022 × 10²³ particles (the Avogadro constant, N_A).",
+    "Molar mass in g mol⁻¹ equals the relative formula mass Mᵣ.",
+    "Coefficients in a balanced equation are mole ratios, not mass ratios.",
+    "At the same temperature and pressure, equal volumes of gases contain equal numbers of moles (Avogadro's law), so gas volume ratios equal mole ratios.",
+    "The limiting reagent is used up first and fixes the maximum amount of product.",
+    "Empirical formula is the simplest whole-number ratio of atoms; the molecular formula is a whole-number multiple of it.",
+    "Concentration in mol dm⁻³ is moles per dm³ of solution; 1 dm³ = 1000 cm³."
+   ],
+   "formulas": [
+    {
+     "name": "Moles from mass",
+     "formula": "n = m/M",
+     "note": "m in g, M in g mol⁻¹."
+    },
+    {
+     "name": "Moles from particles",
+     "formula": "n = N/N_A",
+     "note": "N_A = 6.022 × 10²³ mol⁻¹."
+    },
+    {
+     "name": "Moles of gas",
+     "formula": "n = V/V_m",
+     "note": "V_m = 22.4 dm³ mol⁻¹ at s.t.p. (0 °C, 1 atm); about 24 dm³ mol⁻¹ at room conditions."
+    },
+    {
+     "name": "Molar concentration",
+     "formula": "c = n/V",
+     "note": "V in dm³; convert cm³ by dividing by 1000."
+    },
+    {
+     "name": "Mass concentration",
+     "formula": "mass concentration (g dm⁻³) = c × M",
+     "note": "Converts mol dm⁻³ into g dm⁻³."
+    },
+    {
+     "name": "Dilution",
+     "formula": "c₁V₁ = c₂V₂",
+     "note": "Moles of solute stay the same when only water is added."
+    },
+    {
+     "name": "Titration ratio",
+     "formula": "(c_A V_A)/(c_B V_B) = a/b",
+     "note": "a and b are the coefficients of A and B in the balanced equation."
+    },
+    {
+     "name": "Percentage by mass of an element",
+     "formula": "% = (number of atoms × Aᵣ / Mᵣ) × 100",
+     "note": "For example % N in NH₄NO₃ = 28/80 × 100 = 35%."
+    },
+    {
+     "name": "Percentage yield",
+     "formula": "% yield = (actual yield / theoretical yield) × 100",
+     "note": "Theoretical yield comes from the limiting reagent."
+    },
+    {
+     "name": "Molecular formula",
+     "formula": "molecular formula = (Mᵣ / empirical formula mass) × empirical formula",
+     "note": "The multiplier must be a whole number."
+    },
+    {
+     "name": "Atom economy",
+     "formula": "atom economy = (M of desired product / total M of reactants) × 100",
+     "note": "Uses the balanced equation; measures waste, not yield."
+    },
+    {
+     "name": "Hydrocarbon combustion",
+     "formula": "CₓHᵧ + (x + y/4) O₂ → x CO₂ + (y/2) H₂O",
+     "note": "Gives oxygen demand directly."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Assume 100 g",
+     "rule": "For percentage composition, treat the percentages as grams, divide by Aᵣ, then divide by the smallest.",
+     "example": "C 40.0%, H 6.7%, O 53.3%: C 40/12 = 3.33, H 6.7/1 = 6.7, O 53.3/16 = 3.33 → ratio 1 : 2 : 1 → CH₂O."
+    },
+    {
+     "name": "Oxygen demand of a hydrocarbon",
+     "rule": "Moles of O₂ per mole of CₓHᵧ = x + y/4.",
+     "example": "C₃H₈: 3 + 8/4 = 5 mol O₂. C₂H₄: 2 + 1 = 3 mol O₂."
+    },
+    {
+     "name": "Gas volumes as mole ratios",
+     "rule": "For gases at the same T and P, read volumes straight from the coefficients.",
+     "example": "20 cm³ CH₄ + 2O₂ → CO₂ + 2H₂O: needs 40 cm³ O₂ and gives 20 cm³ CO₂."
+    },
+    {
+     "name": "One-line titration",
+     "rule": "c_unknown = (ratio) × c_known × V_known / V_unknown.",
+     "example": "25.0 cm³ NaOH needs 12.5 cm³ of 0.10 mol dm⁻³ H₂SO₄ (2 NaOH : 1 H₂SO₄): c = 2 × 0.10 × 12.5/25.0 = 0.10 mol dm⁻³."
+    },
+    {
+     "name": "Divide by coefficient for limiting reagent",
+     "rule": "Divide each reactant's moles by its coefficient; the smallest result is limiting.",
+     "example": "2H₂ + O₂ → 2H₂O with 4 g H₂ (2 mol ÷ 2 = 1) and 64 g O₂ (2 mol ÷ 1 = 2): H₂ is limiting, so 2 mol H₂O = 36 g."
+    },
+    {
+     "name": "Half-mole water",
+     "rule": "Know that 9 g of water is 0.5 mol, then scale.",
+     "example": "9 g H₂O = 0.5 mol = 3.01 × 10²³ molecules; each has 3 atoms, so 9.03 × 10²³ atoms."
+    }
+   ],
+   "traps": [
+    "Using mass ratios from the equation instead of mole ratios.",
+    "Forgetting to convert cm³ to dm³ (divide by 1000) before using c = n/V.",
+    "Using single atoms for diatomic gases: 32 g of oxygen gas is 1 mol O₂, not 2 mol.",
+    "Leaving out water of crystallisation: CuSO₄·5H₂O has M = 249.5 g mol⁻¹, not 159.5 g mol⁻¹.",
+    "Using 22.4 dm³ mol⁻¹ when the question states room temperature (use about 24 dm³ mol⁻¹)."
+   ],
+   "nsmqTips": [
+    "Memorise common molar masses: H₂O 18, CO₂ 44, NaOH 40, HCl 36.5, H₂SO₄ 98, CaCO₃ 100, NaCl 58.5, Na₂CO₃ 106. Skipping the addition saves seconds.",
+    "In riddles that give a gas volume at s.t.p., divide by 22.4 first; 11.2 dm³ is 0.5 mol and 5.6 dm³ is 0.25 mol.",
+    "State the answer with its unit (mol, g, mol dm⁻³); quizmasters can reject a bare number."
+   ]
+  },
+  {
+   "topic": "States of matter and gas laws",
+   "strand": "Physical Chemistry",
+   "university": false,
+   "summary": "This topic covers how particle motion and intermolecular forces give solids, liquids and gases their properties, and how gas pressure, volume, temperature and amount are related. NSMQ favours quick gas-law ratio questions, Graham's law and kinetic-theory recall.",
+   "keyIdeas": [
+    "Kinetic theory of an ideal gas: particles of negligible volume move randomly, collide elastically and have no intermolecular forces; average kinetic energy is proportional to absolute temperature.",
+    "Real gases deviate most from ideal behaviour at high pressure and low temperature, and for polar or large molecules (NH₃, H₂O, CO₂ more than He, H₂).",
+    "Compressibility factor Z = PV/(nRT); Z = 1 for an ideal gas.",
+    "All gas-law calculations need temperature in kelvin: T(K) = θ(°C) + 273.",
+    "A liquid boils when its vapour pressure equals the external pressure, so water boils below 100 °C at high altitude.",
+    "The triple point is where solid, liquid and vapour coexist; above the critical temperature a gas cannot be liquefied by pressure alone.",
+    "Diffusion and effusion rates are inversely proportional to the square root of molar mass."
+   ],
+   "formulas": [
+    {
+     "name": "Boyle's law",
+     "formula": "P₁V₁ = P₂V₂",
+     "note": "Fixed n and T."
+    },
+    {
+     "name": "Charles's law",
+     "formula": "V₁/T₁ = V₂/T₂",
+     "note": "Fixed n and P; T in K."
+    },
+    {
+     "name": "Pressure law (Gay-Lussac)",
+     "formula": "P₁/T₁ = P₂/T₂",
+     "note": "Fixed n and V; T in K."
+    },
+    {
+     "name": "Combined gas law",
+     "formula": "P₁V₁/T₁ = P₂V₂/T₂",
+     "note": "Fixed amount of gas."
+    },
+    {
+     "name": "Ideal gas equation",
+     "formula": "PV = nRT",
+     "note": "R = 8.314 J mol⁻¹ K⁻¹ (P in Pa, V in m³) or 0.0821 dm³ atm mol⁻¹ K⁻¹."
+    },
+    {
+     "name": "Molar mass from density",
+     "formula": "M = ρRT/P",
+     "note": "Rearranged ideal gas equation; ρ in g dm⁻³ gives M in g mol⁻¹ with R = 0.0821 and P in atm."
+    },
+    {
+     "name": "Dalton's law of partial pressures",
+     "formula": "P_total = P₁ + P₂ + …; Pᵢ = xᵢ P_total",
+     "note": "xᵢ = mole fraction of gas i."
+    },
+    {
+     "name": "Graham's law",
+     "formula": "r₁/r₂ = √(M₂/M₁)",
+     "note": "Rate of effusion or diffusion; time taken is proportional to √M."
+    },
+    {
+     "name": "Kinetic gas equation",
+     "formula": "PV = ⅓ N m c̄²",
+     "note": "c̄² = mean square speed; N = number of molecules of mass m."
+    },
+    {
+     "name": "Average kinetic energy",
+     "formula": "Eₖ = (3/2)RT per mole = (3/2)kT per molecule",
+     "note": "Depends only on temperature, not on the identity of the gas."
+    },
+    {
+     "name": "Root-mean-square speed",
+     "formula": "c_rms = √(3RT/M)",
+     "note": "M in kg mol⁻¹."
+    },
+    {
+     "name": "van der Waals equation",
+     "formula": "(P + an²/V²)(V − nb) = nRT",
+     "note": "a corrects for attractions, b for molecular volume."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Graham ratio by inspection",
+     "rule": "Take the square root of the molar-mass ratio, heavier over lighter; the lighter gas is that many times faster.",
+     "example": "H₂ (2) vs O₂ (32): √16 = 4, H₂ is 4 times faster. CH₄ (16) vs SO₂ (64): √4 = 2."
+    },
+    {
+     "name": "Unknown molar mass from effusion time",
+     "rule": "If gas X takes k times as long as a reference gas, M_X = k² × M_ref.",
+     "example": "X takes twice as long as O₂: M_X = 4 × 32 = 128 g mol⁻¹."
+    },
+    {
+     "name": "Molar mass from density at s.t.p.",
+     "rule": "M = ρ (g dm⁻³) × 22.4.",
+     "example": "ρ = 1.25 g dm⁻³: M = 1.25 × 22.4 = 28 g mol⁻¹ (N₂ or CO)."
+    },
+    {
+     "name": "Vapour density doubling",
+     "rule": "Mᵣ = 2 × vapour density (vapour density is relative to H₂).",
+     "example": "Vapour density 22 → Mᵣ = 44 (CO₂ or C₃H₈)."
+    },
+    {
+     "name": "Gas law by multiplying ratios",
+     "rule": "Start with the old value and multiply by a ratio for each change, choosing each ratio so it moves the value the right way.",
+     "example": "100 cm³ at 27 °C, 1 atm → 127 °C, 2 atm: V = 100 × (400/300) × (1/2) = 66.7 cm³."
+    },
+    {
+     "name": "rms speed scaling",
+     "rule": "c_rms ∝ √T: quadrupling T (in K) doubles the speed; doubling T multiplies it by about 1.41.",
+     "example": "300 K → 1200 K: speed doubles. 300 K → 600 K: speed × 1.41."
+    }
+   ],
+   "traps": [
+    "Using degrees Celsius in gas laws: doubling from 20 °C to 40 °C does not double the volume (293 K → 313 K).",
+    "Thinking heavier gas molecules have more kinetic energy at the same temperature; they have the same Eₖ and simply move more slowly.",
+    "Mixing units of R: 8.314 needs Pa and m³; 0.0821 needs atm and dm³.",
+    "Saying real gases behave ideally at high pressure; it is the opposite.",
+    "Treating rate and time in Graham's law the same way: rate ∝ 1/√M but time ∝ √M."
+   ],
+   "nsmqTips": [
+    "Most gas-law riddles can be done with the multiply-by-ratios method without writing an equation; sense-check that heating expands and compressing raises pressure.",
+    "Expect 'which gas diffuses fastest' with a list; pick the smallest molar mass.",
+    "Know the ideal-gas assumptions as a list; a recall round may ask you to give two."
+   ]
+  },
+  {
+   "topic": "Energetics and thermochemistry",
+   "strand": "Physical Chemistry",
+   "university": false,
+   "summary": "Energetics measures the heat taken in or given out by reactions and uses Hess's law, bond enthalpies and Born–Haber cycles to find enthalpy changes that cannot be measured directly. Entropy and Gibbs energy then show whether a reaction is feasible, which NSMQ tests with sign reasoning and short calculations.",
+   "keyIdeas": [
+    "Exothermic reactions have ΔH < 0 (heat released, surroundings warm); endothermic reactions have ΔH > 0.",
+    "Standard conditions: 298 K, 100 kPa (1 bar, often taken as 1 atm), 1 mol dm⁻³ solutions, substances in their standard states.",
+    "The standard enthalpy of formation of an element in its standard state is zero (O₂(g), C(graphite), Na(s)).",
+    "Hess's law: the total enthalpy change is independent of the route taken.",
+    "Bond breaking is endothermic and bond making is exothermic; bond-enthalpy values are averages, so answers are approximate.",
+    "Lattice enthalpy is larger for smaller ions and higher charges (MgO ≫ NaCl).",
+    "A reaction is feasible when ΔG = ΔH − TΔS < 0; entropy increases with more gas moles, melting, boiling and dissolving."
+   ],
+   "formulas": [
+    {
+     "name": "Heat from calorimetry",
+     "formula": "q = mcΔT",
+     "note": "m = mass of solution or water (not the solute); c(water) = 4.18 J g⁻¹ K⁻¹."
+    },
+    {
+     "name": "Molar enthalpy change",
+     "formula": "ΔH = −q/n",
+     "note": "n = moles of limiting reactant; the minus sign makes a temperature rise give a negative ΔH."
+    },
+    {
+     "name": "Hess's law from formation",
+     "formula": "ΔH_r = ΣΔH_f(products) − ΣΔH_f(reactants)",
+     "note": "Multiply each ΔH_f by its coefficient."
+    },
+    {
+     "name": "Hess's law from combustion",
+     "formula": "ΔH_r = ΣΔH_c(reactants) − ΣΔH_c(products)",
+     "note": "Note the reversed order compared with formation data."
+    },
+    {
+     "name": "Bond enthalpies",
+     "formula": "ΔH = Σ(bonds broken) − Σ(bonds formed)",
+     "note": "Valid for gaseous species."
+    },
+    {
+     "name": "Born–Haber cycle",
+     "formula": "ΔH_f = ΔH_at(metal) + ΣIE + ΔH_at(non-metal) + ΣEA + ΔH_latt",
+     "note": "ΔH_latt here is lattice formation enthalpy (negative)."
+    },
+    {
+     "name": "Gibbs energy",
+     "formula": "ΔG = ΔH − TΔS",
+     "note": "Convert ΔS from J K⁻¹ mol⁻¹ to kJ K⁻¹ mol⁻¹ before combining with ΔH in kJ."
+    },
+    {
+     "name": "Crossover temperature",
+     "formula": "T = ΔH/ΔS",
+     "note": "Temperature at which ΔG = 0 and feasibility changes."
+    },
+    {
+     "name": "Gibbs energy and K",
+     "formula": "ΔG° = −RT ln K",
+     "note": "ΔG° < 0 means K > 1."
+    },
+    {
+     "name": "Entropy change of reaction",
+     "formula": "ΔS_r = ΣS°(products) − ΣS°(reactants)",
+     "note": "Unlike ΔH_f, standard entropies of elements are not zero."
+    },
+    {
+     "name": "First law and ΔH vs ΔU",
+     "formula": "ΔU = q + w; ΔH = ΔU + Δn_g RT",
+     "note": "w = −PΔV for expansion work done by the system; Δn_g = change in moles of gas."
+    },
+    {
+     "name": "Enthalpy of neutralisation",
+     "formula": "H⁺(aq) + OH⁻(aq) → H₂O(l), ΔH ≈ −57 kJ mol⁻¹",
+     "note": "For strong acid with strong base; weak acids or bases give a less negative value."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Neutralisation temperature rise",
+     "rule": "Moles of water × 57 kJ gives q; ΔT = q/(total mass × 4.18).",
+     "example": "50 cm³ of 1.0 mol dm⁻³ HCl + 50 cm³ of 1.0 mol dm⁻³ NaOH: 0.050 mol × 57 = 2.85 kJ; ΔT = 2850/(100 × 4.18) ≈ 6.8 K."
+    },
+    {
+     "name": "Scaling calorimetry results",
+     "rule": "ΔT depends on concentration, not volume: doubling both volumes at the same concentration keeps ΔT; doubling concentrations doubles ΔT.",
+     "example": "From 6.8 K above: 100 cm³ + 100 cm³ of 1.0 mol dm⁻³ still gives 6.8 K; 50 cm³ + 50 cm³ of 2.0 mol dm⁻³ gives 13.6 K."
+    },
+    {
+     "name": "Skip the zeros",
+     "rule": "Elements in standard states have ΔH_f = 0, so leave them out of the sum.",
+     "example": "CH₄ + 2O₂ → CO₂ + 2H₂O(l) with ΔH_f: CO₂ −394, H₂O −286, CH₄ −75: ΔH = −394 + 2(−286) − (−75) = −891 kJ mol⁻¹."
+    },
+    {
+     "name": "ΔG sign grid",
+     "rule": "ΔH −, ΔS + always feasible; ΔH +, ΔS − never; ΔH −, ΔS − feasible at low T; ΔH +, ΔS + feasible at high T, above T = ΔH/ΔS.",
+     "example": "CaCO₃ → CaO + CO₂: ΔH = +178 kJ mol⁻¹, ΔS = +161 J K⁻¹ mol⁻¹, so T = 178000/161 ≈ 1106 K."
+    },
+    {
+     "name": "Entropy by counting gas moles",
+     "rule": "If moles of gas increase, ΔS > 0; if they decrease, ΔS < 0.",
+     "example": "N₂ + 3H₂ → 2NH₃: 4 mol gas → 2 mol gas, so ΔS is negative."
+    },
+    {
+     "name": "Manipulating equations",
+     "rule": "Reversing an equation flips the sign of ΔH; multiplying the equation by k multiplies ΔH by k.",
+     "example": "If H₂ + ½O₂ → H₂O has ΔH = −286 kJ, then 2H₂O → 2H₂ + O₂ has ΔH = +572 kJ."
+    }
+   ],
+   "traps": [
+    "Using the mass of the solid or acid instead of the mass of the whole solution in q = mcΔT.",
+    "Forgetting the minus sign: a temperature rise means an exothermic reaction with a negative ΔH.",
+    "Combining ΔH in kJ with ΔS in J K⁻¹ without converting.",
+    "Reversing the order (products − reactants) when using combustion data.",
+    "Using bond enthalpies for liquids such as H₂O(l); the values apply to gases."
+   ],
+   "nsmqTips": [
+    "Feasibility questions are usually sign questions; answer from the ΔG grid without calculating.",
+    "Know the standard definitions word for word (formation, combustion, neutralisation, atomisation, lattice); they appear as 'define' or 'name this enthalpy' riddles.",
+    "Remember −57 kJ mol⁻¹ for strong acid–strong base neutralisation; questions often ask why ethanoic acid gives a smaller value (energy is used to ionise the weak acid)."
+   ]
+  },
+  {
+   "topic": "Reaction kinetics",
+   "strand": "Physical Chemistry",
+   "university": false,
+   "summary": "Kinetics studies how fast reactions go, what controls the rate and how rate depends on concentration through the rate equation. NSMQ tests order from data, half-life counting, units of k and the effects of temperature and catalysts.",
+   "keyIdeas": [
+    "Collision theory: particles react only when they collide with energy at least equal to the activation energy Eₐ and with the correct orientation.",
+    "Rate increases with concentration (or pressure for gases), temperature, surface area and catalysts.",
+    "Raising temperature increases the fraction of molecules with E ≥ Eₐ (the Maxwell–Boltzmann tail), which matters far more than the extra collision frequency.",
+    "A catalyst provides an alternative pathway of lower Eₐ; it is not used up and changes neither ΔH nor the equilibrium constant.",
+    "Orders of reaction are found by experiment and are not, in general, the stoichiometric coefficients.",
+    "The rate-determining step is the slowest step in a mechanism; species in the rate equation appear in or before it.",
+    "A first-order reaction has a constant half-life, independent of starting concentration (radioactive decay is first order)."
+   ],
+   "formulas": [
+    {
+     "name": "Rate of reaction",
+     "formula": "for aA → products, rate = −(1/a) Δ[A]/Δt",
+     "note": "Units mol dm⁻³ s⁻¹."
+    },
+    {
+     "name": "Rate equation",
+     "formula": "rate = k[A]ᵐ[B]ⁿ",
+     "note": "m and n are orders; overall order = m + n."
+    },
+    {
+     "name": "Units of k",
+     "formula": "units = (mol dm⁻³)^(1 − order) s⁻¹",
+     "note": "Zero order mol dm⁻³ s⁻¹; first s⁻¹; second dm³ mol⁻¹ s⁻¹; third dm⁶ mol⁻² s⁻¹."
+    },
+    {
+     "name": "Zero-order integrated law",
+     "formula": "[A] = [A]₀ − kt; t½ = [A]₀/(2k)",
+     "note": "Straight-line [A] vs t."
+    },
+    {
+     "name": "First-order integrated law",
+     "formula": "ln[A] = ln[A]₀ − kt; t½ = ln 2/k ≈ 0.693/k",
+     "note": "Straight-line ln[A] vs t."
+    },
+    {
+     "name": "Second-order integrated law",
+     "formula": "1/[A] = 1/[A]₀ + kt; t½ = 1/(k[A]₀)",
+     "note": "Straight-line 1/[A] vs t."
+    },
+    {
+     "name": "Fraction left after n half-lives",
+     "formula": "[A]/[A]₀ = (½)ⁿ",
+     "note": "n = t/t½ (first order)."
+    },
+    {
+     "name": "Arrhenius equation",
+     "formula": "k = A e^(−Eₐ/RT); ln k = ln A − Eₐ/(RT)",
+     "note": "A plot of ln k against 1/T has gradient −Eₐ/R."
+    },
+    {
+     "name": "Two-temperature Arrhenius",
+     "formula": "ln(k₂/k₁) = (Eₐ/R)(1/T₁ − 1/T₂)",
+     "note": "Finds Eₐ from rate constants at two temperatures."
+    },
+    {
+     "name": "Initial rate from clock reactions",
+     "formula": "rate ∝ 1/t",
+     "note": "t = time for a fixed amount of change, e.g. a cross to disappear."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Half-life counting",
+     "rule": "Divide the time by t½ to get n, then halve n times.",
+     "example": "80 g, t½ = 5 min, after 20 min: n = 4 → 80 → 40 → 20 → 10 → 5 g."
+    },
+    {
+     "name": "Order from a concentration change",
+     "rule": "Rate factor = (concentration factor)^order.",
+     "example": "[A] tripled and rate × 9: 3² = 9, so second order in A. [A] doubled and rate unchanged: zero order."
+    },
+    {
+     "name": "10-degree rule of thumb",
+     "rule": "Near room temperature, rate roughly doubles for each 10 °C rise (for Eₐ of about 50 kJ mol⁻¹).",
+     "example": "20 °C → 60 °C is four 10 °C rises: rate × 2⁴ ≈ 16."
+    },
+    {
+     "name": "Half-life fingerprint",
+     "rule": "How t½ responds to halving [A]₀: unchanged → first order; doubles → second order; halves → zero order.",
+     "example": "t½ goes from 40 s to 80 s when [A]₀ is halved → second order."
+    },
+    {
+     "name": "Order from the units of k",
+     "rule": "Read the order straight off the units.",
+     "example": "k = 3.0 × 10⁻³ dm³ mol⁻¹ s⁻¹ → second order; k in s⁻¹ → first order."
+    },
+    {
+     "name": "Powers of two for fractions",
+     "rule": "1/8 left = 3 half-lives; 1/16 = 4; 1/1024 ≈ 0.1% = 10 half-lives.",
+     "example": "First-order t½ = 6 min; time for 87.5% to react (1/8 left) = 3 × 6 = 18 min."
+    }
+   ],
+   "traps": [
+    "Taking the order from the balanced equation instead of from experimental data.",
+    "Saying a catalyst shifts equilibrium or changes ΔH; it only speeds up forward and reverse reactions equally.",
+    "Thinking a higher temperature only speeds up endothermic reactions; it increases the rate of every reaction.",
+    "Using t½ = 0.693/k for a reaction that is not first order.",
+    "Explaining the temperature effect only by 'more collisions'; the key reason is more collisions with energy ≥ Eₐ."
+   ],
+   "nsmqTips": [
+    "For data tables, find two runs where only one concentration changes and compare factors; you rarely need to calculate k.",
+    "When a question mentions a constant half-life or radioactive decay, think first order immediately.",
+    "Be ready to sketch or describe a Maxwell–Boltzmann curve: at higher T the peak lowers and shifts right, the area stays the same, and the tail beyond Eₐ grows."
+   ]
+  },
+  {
+   "topic": "Chemical equilibrium",
+   "strand": "Equilibria",
+   "university": false,
+   "summary": "In a reversible reaction in a closed system, forward and reverse rates become equal and the composition stops changing; the equilibrium constant measures where that balance lies. NSMQ tests Le Chatelier predictions, K expressions, Kp–Kc relations and short ICE-table calculations.",
+   "keyIdeas": [
+    "Equilibrium is dynamic: both reactions continue at equal rates, and it needs a closed system.",
+    "Pure solids and pure liquids do not appear in K expressions (e.g. K for CaCO₃(s) ⇌ CaO(s) + CO₂(g) is Kp = p(CO₂)).",
+    "Le Chatelier's principle: a system at equilibrium shifts to partly oppose an imposed change in concentration, pressure or temperature.",
+    "Only temperature changes the value of K. For exothermic reactions K falls as T rises; for endothermic reactions K rises.",
+    "A catalyst does not change K or the equilibrium position; it only lets equilibrium be reached faster.",
+    "Large K (≫ 1) means products dominate; small K (≪ 1) means reactants dominate.",
+    "Haber process (N₂ + 3H₂ ⇌ 2NH₃, ΔH < 0) uses about 450 °C, 200 atm and an iron catalyst as a compromise between yield and rate; Contact process uses V₂O₅."
+   ],
+   "formulas": [
+    {
+     "name": "Concentration equilibrium constant",
+     "formula": "Kc = [C]ᶜ[D]ᵈ / ([A]ᵃ[B]ᵇ)",
+     "note": "For aA + bB ⇌ cC + dD, using equilibrium concentrations."
+    },
+    {
+     "name": "Pressure equilibrium constant",
+     "formula": "Kp = p_Cᶜ p_Dᵈ / (p_Aᵃ p_Bᵇ)",
+     "note": "Partial pressures of gases."
+    },
+    {
+     "name": "Kp–Kc relation",
+     "formula": "Kp = Kc(RT)^Δn",
+     "note": "Δn = moles of gaseous products − moles of gaseous reactants."
+    },
+    {
+     "name": "Reaction quotient",
+     "formula": "Q has the same form as K but uses current values",
+     "note": "Q < K: shifts forward; Q > K: shifts backward; Q = K: at equilibrium."
+    },
+    {
+     "name": "Manipulating K",
+     "formula": "reverse: K' = 1/K; multiply by n: K' = Kⁿ; add two reactions: K = K₁ × K₂",
+     "note": "Follows from how the expression is built."
+    },
+    {
+     "name": "Gibbs energy and K",
+     "formula": "ΔG° = −RT ln K",
+     "note": "K > 1 when ΔG° < 0."
+    },
+    {
+     "name": "van 't Hoff equation",
+     "formula": "ln(K₂/K₁) = −(ΔH°/R)(1/T₂ − 1/T₁)",
+     "note": "Temperature dependence of K."
+    },
+    {
+     "name": "Degree of dissociation (PCl₅ type)",
+     "formula": "PCl₅ ⇌ PCl₃ + Cl₂: Kp = α²P / (1 − α²)",
+     "note": "α = fraction dissociated, P = total pressure."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Count gas moles for pressure changes",
+     "rule": "Higher pressure favours the side with fewer gas moles; equal moles means pressure has no effect.",
+     "example": "N₂ + 3H₂ ⇌ 2NH₃: 4 → 2, so high pressure favours NH₃. H₂ + I₂ ⇌ 2HI: 2 → 2, no effect."
+    },
+    {
+     "name": "Kp = Kc when Δn = 0",
+     "rule": "If gas moles are equal on both sides, Kp = Kc and K has no units.",
+     "example": "H₂ + I₂ ⇌ 2HI: Δn = 0, so Kp = Kc. N₂O₄ ⇌ 2NO₂: Δn = 1, Kp = Kc(RT)."
+    },
+    {
+     "name": "Reverse and power",
+     "rule": "Reverse → reciprocal; double the equation → square.",
+     "example": "A ⇌ B has K = 4; then 2B ⇌ 2A has K = 1/4² = 1/16."
+    },
+    {
+     "name": "Square-root trick for symmetric ICE tables",
+     "rule": "When the K expression is a perfect square, take √K to get a linear equation.",
+     "example": "H₂ + I₂ ⇌ 2HI, K = 64, start with 1 mol each in 1 dm³: √64 = 8 = 2x/(1 − x) → x = 0.8, so [HI] = 1.6 mol dm⁻³. Check: 1.6²/0.2² = 64."
+    },
+    {
+     "name": "Temperature direction from ΔH",
+     "rule": "Treat heat as a product (exothermic) or reactant (endothermic) and apply Le Chatelier.",
+     "example": "2SO₂ + O₂ ⇌ 2SO₃, ΔH = −197 kJ: heating shifts left and lowers K."
+    }
+   ],
+   "traps": [
+    "Saying a catalyst increases yield; it does not change the equilibrium position.",
+    "Thinking adding an inert gas at constant volume shifts the equilibrium; partial pressures are unchanged, so nothing happens.",
+    "Including solids or pure liquids (CaCO₃(s), H₂O(l) as solvent) in K.",
+    "Saying a change of concentration or pressure changes K; only temperature does.",
+    "Confusing 'position shifts right' with 'rate increases'; they are different ideas."
+   ],
+   "nsmqTips": [
+    "For Le Chatelier questions, state the direction and the reason in one breath: 'shifts right, fewer gas moles'.",
+    "Industrial conditions (Haber: Fe, ~450 °C, ~200 atm; Contact: V₂O₅, ~450 °C, 1–2 atm) are frequent recall questions.",
+    "When asked for the units of Kc, count concentration terms: (mol dm⁻³)^Δn."
+   ]
+  },
+  {
+   "topic": "Acids, bases, salts and pH",
+   "strand": "Equilibria",
+   "university": false,
+   "summary": "This topic covers the definitions of acids and bases, the strength of acids and bases, the pH scale, buffers, indicators and the kinds of salts and their behaviour in water. NSMQ asks rapid pH calculations, conjugate-pair identification and predictions of salt pH.",
+   "keyIdeas": [
+    "Arrhenius: acids give H⁺ in water, bases give OH⁻. Brønsted–Lowry: acids donate protons, bases accept them. Lewis: acids accept electron pairs, bases donate them.",
+    "A conjugate acid–base pair differs by one H⁺ (NH₄⁺/NH₃, H₂O/OH⁻, H₃O⁺/H₂O).",
+    "Strong acids ionise fully (HCl, HNO₃, H₂SO₄ first proton); weak acids ionise partly (CH₃COOH, H₂CO₃). Strength is not the same as concentration.",
+    "Kw = 1.0 × 10⁻¹⁴ at 25 °C, so neutral water has pH 7 only at 25 °C; Kw rises with temperature and neutral pH falls.",
+    "A buffer (weak acid + its salt, or weak base + its salt) resists pH change on adding small amounts of acid or base.",
+    "Indicators: methyl orange changes at pH ≈ 3.1–4.4 (strong acid–weak base titrations); phenolphthalein at ≈ 8.2–10 (weak acid–strong base).",
+    "Salt types: normal (NaCl), acid (NaHSO₄), basic (Mg(OH)Cl), double (alums such as KAl(SO₄)₂·12H₂O), complex (K₄[Fe(CN)₆])."
+   ],
+   "formulas": [
+    {
+     "name": "pH and pOH",
+     "formula": "pH = −log[H⁺]; pOH = −log[OH⁻]",
+     "note": "[H⁺] = 10⁻ᵖᴴ."
+    },
+    {
+     "name": "Ionic product of water",
+     "formula": "Kw = [H⁺][OH⁻] = 1.0 × 10⁻¹⁴; pH + pOH = 14",
+     "note": "At 25 °C."
+    },
+    {
+     "name": "Acid dissociation constant",
+     "formula": "Ka = [H⁺][A⁻]/[HA]; pKa = −log Ka",
+     "note": "Smaller pKa means a stronger acid."
+    },
+    {
+     "name": "Weak acid pH",
+     "formula": "[H⁺] ≈ √(Ka c); pH = ½(pKa − log c)",
+     "note": "Valid when ionisation is small (below about 5%)."
+    },
+    {
+     "name": "Weak base",
+     "formula": "[OH⁻] ≈ √(Kb c)",
+     "note": "Then pH = 14 − pOH."
+    },
+    {
+     "name": "Conjugate pair relation",
+     "formula": "Ka × Kb = Kw; pKa + pKb = 14",
+     "note": "For a conjugate acid–base pair at 25 °C."
+    },
+    {
+     "name": "Henderson–Hasselbalch",
+     "formula": "pH = pKa + log([A⁻]/[HA])",
+     "note": "Buffer pH; equals pKa when [A⁻] = [HA]."
+    },
+    {
+     "name": "Ostwald dilution law",
+     "formula": "α ≈ √(Ka/c)",
+     "note": "Degree of ionisation of a weak acid rises as it is diluted."
+    },
+    {
+     "name": "Strong acid dilution",
+     "formula": "each 10-fold dilution raises pH by 1",
+     "note": "Holds until the pH approaches 7; water then dominates."
+    },
+    {
+     "name": "Salt of weak acid + strong base",
+     "formula": "pH = 7 + ½pKa + ½log c",
+     "note": "Hydrolysis of A⁻ makes the solution basic (25 °C)."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Power of ten gives pH",
+     "rule": "For [H⁺] = 10⁻ⁿ, pH = n.",
+     "example": "0.01 mol dm⁻³ HCl: pH 2. 0.005 mol dm⁻³ H₂SO₄ (both protons counted): [H⁺] = 0.01, pH 2."
+    },
+    {
+     "name": "Log 2, 3, 5",
+     "rule": "log 2 = 0.30, log 3 = 0.48, log 5 = 0.70; pH of a × 10⁻ⁿ = n − log a.",
+     "example": "2 × 10⁻³ mol dm⁻³ HCl: pH = 3 − 0.30 = 2.70. 5 × 10⁻⁴: pH = 4 − 0.70 = 3.30."
+    },
+    {
+     "name": "Weak acid in one line",
+     "rule": "pH = ½(pKa − log c).",
+     "example": "0.10 mol dm⁻³ ethanoic acid, pKa = 4.74: pH = ½(4.74 + 1) = 2.87."
+    },
+    {
+     "name": "Bases via pOH",
+     "rule": "Find [OH⁻], take pOH, subtract from 14; count OH⁻ per formula unit.",
+     "example": "0.05 mol dm⁻³ Ba(OH)₂: [OH⁻] = 0.10, pOH 1, pH 13."
+    },
+    {
+     "name": "Salt pH from its parents",
+     "rule": "The stronger parent wins: strong acid + weak base → acidic; weak acid + strong base → basic; strong + strong → neutral.",
+     "example": "NH₄Cl acidic, CH₃COONa basic, Na₂CO₃ basic, NaCl neutral."
+    },
+    {
+     "name": "Half-equivalence point",
+     "rule": "Halfway to the equivalence point in a weak acid–strong base titration, pH = pKa.",
+     "example": "Ethanoic acid titrated with NaOH: halfway, pH = 4.74."
+    }
+   ],
+   "traps": [
+    "Saying 10⁻⁸ mol dm⁻³ HCl has pH 8; an acid cannot be basic. Water's own H⁺ dominates and the pH is about 6.98.",
+    "Calling a concentrated weak acid 'strong'; strength means extent of ionisation.",
+    "Forgetting that diprotic acids and bases such as H₂SO₄ and Ba(OH)₂ release two H⁺ or OH⁻.",
+    "Assuming every salt is neutral.",
+    "Taking pH 7 as neutral at any temperature."
+   ],
+   "nsmqTips": [
+    "Memorise log 2, 3 and 5; nearly every pH answer needs one of them.",
+    "For 'identify the conjugate base' questions, remove one H⁺ and lower the charge by one: H₂PO₄⁻ → HPO₄²⁻.",
+    "Indicator choice is a common one-word answer: strong acid–weak base → methyl orange; weak acid–strong base → phenolphthalein; weak–weak → no suitable indicator."
+   ]
+  },
+  {
+   "topic": "Solubility and solubility product",
+   "strand": "Equilibria",
+   "university": false,
+   "summary": "This topic covers how much of a sparingly soluble ionic solid dissolves, expressed as the solubility product Ksp, and how common ions and mixing affect precipitation. It underlies qualitative analysis, and NSMQ asks quick s ↔ Ksp conversions and 'will a precipitate form' questions.",
+   "keyIdeas": [
+    "For a sparingly soluble salt in a saturated solution, solid and ions are in dynamic equilibrium: MₓAᵧ(s) ⇌ xMʸ⁺(aq) + yAˣ⁻(aq).",
+    "Ksp is constant at a given temperature; the solid is left out of the expression.",
+    "Molar solubility s is the moles of salt that dissolve per dm³ of saturated solution.",
+    "Precipitation occurs when the ionic product Q exceeds Ksp.",
+    "Common ion effect: adding an ion already in the salt lowers its solubility (AgCl is much less soluble in NaCl(aq) than in water).",
+    "Ksp values can be compared directly only for salts with the same formula type (AB vs AB, AB₂ vs AB₂).",
+    "Solubility rules: all Na⁺, K⁺, NH₄⁺ and NO₃⁻ salts are soluble; chlorides are soluble except AgCl and PbCl₂; sulfates are soluble except BaSO₄ and PbSO₄ (CaSO₄ only slightly soluble); carbonates and hydroxides are mostly insoluble except those of group 1 and NH₄⁺."
+   ],
+   "formulas": [
+    {
+     "name": "General Ksp",
+     "formula": "Ksp = [Mʸ⁺]ˣ[Aˣ⁻]ʸ",
+     "note": "Equilibrium concentrations in a saturated solution."
+    },
+    {
+     "name": "1 : 1 salt (AB)",
+     "formula": "Ksp = s²; s = √Ksp",
+     "note": "AgCl, BaSO₄, CaCO₃."
+    },
+    {
+     "name": "1 : 2 or 2 : 1 salt (AB₂, A₂B)",
+     "formula": "Ksp = (s)(2s)² = 4s³",
+     "note": "PbI₂, CaF₂, Ag₂CrO₄, Mg(OH)₂."
+    },
+    {
+     "name": "1 : 3 or 3 : 1 salt",
+     "formula": "Ksp = (s)(3s)³ = 27s⁴",
+     "note": "Fe(OH)₃, Al(OH)₃, Ag₃PO₄."
+    },
+    {
+     "name": "2 : 3 salt (A₂B₃)",
+     "formula": "Ksp = (2s)²(3s)³ = 108s⁵",
+     "note": "Ca₃(PO₄)₂ is 3 : 2, same result."
+    },
+    {
+     "name": "General formula type",
+     "formula": "Ksp = xˣ yʸ s^(x + y)",
+     "note": "For MₓAᵧ; generates all the rows above."
+    },
+    {
+     "name": "Precipitation test",
+     "formula": "Q = [Mʸ⁺]ˣ[Aˣ⁻]ʸ using concentrations after mixing; precipitate if Q > Ksp",
+     "note": "Remember the dilution on mixing."
+    },
+    {
+     "name": "Common ion (AB salt)",
+     "formula": "s ≈ Ksp / [common ion]",
+     "note": "Valid when the added ion concentration ≫ s."
+    },
+    {
+     "name": "Mass solubility",
+     "formula": "solubility (g dm⁻³) = s × M",
+     "note": "Converts mol dm⁻³ to g dm⁻³."
+    },
+    {
+     "name": "Crystallisation from solubility curves",
+     "formula": "mass deposited = (solubility at T₁ − solubility at T₂) × (mass of water / 100 g)",
+     "note": "Solubility in g per 100 g water."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Formula-type coefficients",
+     "rule": "Memorise 1 : 1 → s², 1 : 2 → 4s³, 1 : 3 → 27s⁴, 2 : 3 → 108s⁵.",
+     "example": "PbI₂ with s = 1.0 × 10⁻³ mol dm⁻³: Ksp = 4 × (10⁻³)³ = 4.0 × 10⁻⁹."
+    },
+    {
+     "name": "Common ion cut",
+     "rule": "For an AB salt in c mol dm⁻³ of a common ion, s ≈ Ksp/c.",
+     "example": "AgCl (Ksp = 1.8 × 10⁻¹⁰) in 0.10 mol dm⁻³ NaCl: s = 1.8 × 10⁻⁹ mol dm⁻³, compared with 1.3 × 10⁻⁵ in pure water."
+    },
+    {
+     "name": "Halve on equal-volume mixing",
+     "rule": "Mixing equal volumes halves each concentration before you compute Q.",
+     "example": "2 × 10⁻⁴ mol dm⁻³ AgNO₃ + equal volume 2 × 10⁻⁴ mol dm⁻³ NaCl: each 1 × 10⁻⁴, Q = 1 × 10⁻⁸ > 1.8 × 10⁻¹⁰ → AgCl precipitates."
+    },
+    {
+     "name": "Don't compare Ksp across formula types",
+     "rule": "Convert to s first when formula types differ.",
+     "example": "AgCl Ksp 1.8 × 10⁻¹⁰ → s ≈ 1.3 × 10⁻⁵; Ag₂CrO₄ Ksp 1.1 × 10⁻¹² → s = (1.1 × 10⁻¹²/4)^(1/3) ≈ 6.5 × 10⁻⁵. Ag₂CrO₄ is more soluble despite the smaller Ksp."
+    },
+    {
+     "name": "SNAP mnemonic",
+     "rule": "Salts of Sodium, Nitrate, Ammonium and Potassium are always soluble.",
+     "example": "Will KNO₃ + NaCl give a precipitate? Every possible product contains Na⁺, K⁺ or NO₃⁻, so no."
+    },
+    {
+     "name": "Even squares for 1 : 1 salts",
+     "rule": "If Ksp has an even power of ten, s is just the square root of each part.",
+     "example": "BaSO₄ Ksp = 1.0 × 10⁻¹⁰ → s = 1.0 × 10⁻⁵ mol dm⁻³; × 233 g mol⁻¹ ≈ 2.3 × 10⁻³ g dm⁻³."
+    }
+   ],
+   "traps": [
+    "Writing Ksp = s × 2s for PbI₂; the iodide concentration must be squared: (2s)².",
+    "Forgetting the dilution when two solutions are mixed before computing Q.",
+    "Concluding that a smaller Ksp always means lower solubility, even for different formula types.",
+    "Including the solid in the Ksp expression.",
+    "Doubling s for the common-ion source: in 0.1 mol dm⁻³ CaCl₂ the chloride concentration is 0.2 mol dm⁻³."
+   ],
+   "nsmqTips": [
+    "Most questions ask s from Ksp or Ksp from s; say the formula type out loud (4s³, 27s⁴) and the answer follows.",
+    "Know the classic precipitates and colours: AgCl white, AgBr cream, AgI yellow, PbI₂ yellow, BaSO₄ white, Cu(OH)₂ blue, Fe(OH)₃ red-brown, Fe(OH)₂ green.",
+    "For 'why does adding HCl lower NaCl solubility' riddles, answer 'common ion effect' first, then explain."
+   ]
+  },
+  {
+   "topic": "Redox and electrochemistry",
+   "strand": "Equilibria",
+   "university": false,
+   "summary": "Redox reactions transfer electrons; electrochemistry turns these reactions into cell voltages (galvanic cells) or uses electricity to drive them (electrolysis). NSMQ tests oxidation numbers, E°cell, electrolysis products and Faraday's-law calculations.",
+   "keyIdeas": [
+    "Oxidation is loss of electrons or an increase in oxidation number; reduction is gain of electrons or a decrease in oxidation number.",
+    "An oxidising agent is itself reduced; a reducing agent is itself oxidised.",
+    "Oxidation occurs at the anode and reduction at the cathode in every cell. In a galvanic cell the anode is negative; in electrolysis the anode is positive.",
+    "A more positive standard reduction potential means a stronger oxidising agent (F₂ is strongest); a more negative one means a stronger reducing agent (Li is strongest in water).",
+    "A cell reaction is feasible when E°cell > 0 (so ΔG° < 0).",
+    "Standard hydrogen electrode: Pt | H₂ (1 bar) | H⁺ (1 mol dm⁻³), E° = 0.00 V by definition.",
+    "In aqueous electrolysis, products depend on position in the series, concentration and electrode: concentrated NaCl(aq) gives H₂ at the cathode and Cl₂ at the anode; dilute gives O₂ at the anode."
+   ],
+   "formulas": [
+    {
+     "name": "Standard cell potential",
+     "formula": "E°cell = E°(cathode) − E°(anode)",
+     "note": "Both values are standard reduction potentials; do not multiply them when balancing electrons."
+    },
+    {
+     "name": "Cell potential and Gibbs energy",
+     "formula": "ΔG° = −nFE°cell",
+     "note": "n = moles of electrons transferred; F = 96 485 C mol⁻¹."
+    },
+    {
+     "name": "Charge",
+     "formula": "Q = It",
+     "note": "I in A, t in s, Q in C."
+    },
+    {
+     "name": "Faraday's first law",
+     "formula": "m = QM/(nF)",
+     "note": "n = charge on the ion (electrons per ion discharged)."
+    },
+    {
+     "name": "Faraday's second law",
+     "formula": "for the same charge, moles deposited ∝ 1/n",
+     "note": "Masses deposited are proportional to M/n."
+    },
+    {
+     "name": "Nernst equation",
+     "formula": "E = E° − (RT/nF) ln Q = E° − (0.0592/n) log Q",
+     "note": "Second form at 25 °C."
+    },
+    {
+     "name": "E° and K",
+     "formula": "log K = nE°cell / 0.0592",
+     "note": "At 25 °C; large positive E° means very large K."
+    },
+    {
+     "name": "Oxidation number rules",
+     "formula": "sum = 0 for a neutral compound or = the ion charge; F = −1; O = −2 (−1 in peroxides, +2 in OF₂); H = +1 (−1 in metal hydrides); group 1 = +1, group 2 = +2",
+     "note": "Apply in that priority order."
+    },
+    {
+     "name": "Cell notation",
+     "formula": "anode | anode electrolyte || cathode electrolyte | cathode",
+     "note": "e.g. Zn | Zn²⁺ || Cu²⁺ | Cu; || is the salt bridge."
+    },
+    {
+     "name": "Daniell cell",
+     "formula": "Zn + Cu²⁺ → Zn²⁺ + Cu, E° = 0.34 − (−0.76) = +1.10 V",
+     "note": "Classic galvanic cell."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "OIL RIG and AN OX, RED CAT",
+     "rule": "Oxidation Is Loss, Reduction Is Gain; ANode = OXidation, REDuction = CAThode.",
+     "example": "In Zn | Zn²⁺ || Cu²⁺ | Cu, Zn loses electrons (oxidised, anode) and Cu²⁺ gains them (reduced, cathode)."
+    },
+    {
+     "name": "Grams per faraday",
+     "rule": "One faraday deposits M/n grams: Ag 108 g, Cu 31.75 g, Al 9 g.",
+     "example": "2.0 A for 965 s: Q = 1930 C = 0.020 F → Cu 0.010 mol = 0.635 g."
+    },
+    {
+     "name": "Cells in series",
+     "rule": "Same charge, so moles deposited are in the ratio 1/n: Ag⁺ : Cu²⁺ : Al³⁺ = 6 : 3 : 2.",
+     "example": "1.08 g Ag (0.010 mol) deposited → Cu deposited = 0.005 mol = 0.3175 g; Al = 0.0033 mol = 0.090 g."
+    },
+    {
+     "name": "Oxidation-number algebra",
+     "rule": "Set the unknown as x and make the sum equal the charge.",
+     "example": "Cr in Cr₂O₇²⁻: 2x − 14 = −2 → x = +6. Mn in MnO₄⁻: x − 8 = −1 → x = +7."
+    },
+    {
+     "name": "Electron counts for titrations",
+     "rule": "MnO₄⁻ → Mn²⁺ takes 5 e⁻; Cr₂O₇²⁻ → 2Cr³⁺ takes 6 e⁻; Fe²⁺ → Fe³⁺ gives 1 e⁻.",
+     "example": "Ratio MnO₄⁻ : Fe²⁺ = 1 : 5. So 0.002 mol KMnO₄ oxidises 0.010 mol Fe²⁺."
+    },
+    {
+     "name": "Higher reduction potential is the cathode",
+     "rule": "Put the more positive E° on the right (cathode) and subtract.",
+     "example": "Ag⁺/Ag +0.80 V and Cu²⁺/Cu +0.34 V: E°cell = 0.80 − 0.34 = +0.46 V, with Cu as the anode."
+    }
+   ],
+   "traps": [
+    "Multiplying E° by the stoichiometric coefficient when balancing half-equations; E° is an intensive property.",
+    "Thinking the anode is always positive; it is negative in a galvanic cell.",
+    "Forgetting the charge on the ion (n) in Faraday's law: Cu²⁺ needs 2 F per mole.",
+    "Leaving time in minutes instead of seconds in Q = It.",
+    "Calling the oxidising agent the substance that is oxidised."
+   ],
+   "nsmqTips": [
+    "Electrolysis product questions: for the cathode, metals below hydrogen (Cu, Ag) deposit, otherwise H₂; for the anode, concentrated halide gives halogen, otherwise O₂ (unless the anode is an active metal such as Cu, which dissolves).",
+    "Keep 96 500 C and simple multiples (965 s, 1930 C) in mind; quiz setters choose numbers that cancel cleanly.",
+    "When asked which species is the strongest oxidising or reducing agent from a list of E° values, pick the most positive for oxidising and the most negative for reducing."
+   ]
+  },
+  {
+   "topic": "Periodicity and periodic trends",
+   "strand": "Systematic Chemistry of the Elements",
+   "university": false,
+   "summary": "The periodic table arranges elements by atomic number so that electron configuration, and with it properties, repeats periodically. NSMQ often gives a list of elements and asks for the one with the largest radius, highest ionisation energy or most acidic oxide, so trends and their exceptions must be automatic.",
+   "keyIdeas": [
+    "Across a period nuclear charge increases while shielding stays about the same, so effective nuclear charge rises: radius falls, ionisation energy and electronegativity rise.",
+    "Down a group a new shell is added each period: radius increases, ionisation energy and electronegativity fall, and metallic character increases.",
+    "First ionisation energy dips from group 2 to 13 (Be > B, Mg > Al: p electron is higher in energy) and from group 15 to 16 (N > O, P > S: pairing repulsion).",
+    "Cations are smaller than their parent atoms and anions are larger; in an isoelectronic series, radius falls as Z increases.",
+    "Fluorine is the most electronegative element (Pauling 4.0), but chlorine has the most exothermic first electron affinity because the F atom is small and crowded.",
+    "Period 3 oxides go from basic (Na₂O, MgO) through amphoteric (Al₂O₃) to acidic (SiO₂, P₄O₁₀, SO₃, Cl₂O₇).",
+    "Diagonal relationships (Li–Mg, Be–Al, B–Si) arise from similar charge-to-size ratios.",
+    "Melting points across period 3 rise to a maximum at Si (giant covalent) and then drop for simple molecular P₄, S₈, Cl₂ and Ar."
+   ],
+   "formulas": [
+    {
+     "name": "Effective nuclear charge",
+     "formula": "Z_eff = Z − S",
+     "note": "S = shielding constant; simple estimate S ≈ number of inner electrons, so Na ≈ 11 − 10 = 1 and Cl ≈ 17 − 10 = 7."
+    },
+    {
+     "name": "Position from configuration",
+     "formula": "period = highest n; s- and p-block group = valence electrons (p-block: 10 + valence electrons in 1–18 numbering)",
+     "note": "e.g. [Ne]3s²3p⁵ → period 3, group 17."
+    },
+    {
+     "name": "First ionisation energy",
+     "formula": "X(g) → X⁺(g) + e⁻, ΔH = IE₁",
+     "note": "Always endothermic; successive IEs always increase."
+    },
+    {
+     "name": "First electron affinity",
+     "formula": "X(g) + e⁻ → X⁻(g)",
+     "note": "Usually exothermic; second electron affinity (e.g. O⁻ → O²⁻) is endothermic."
+    },
+    {
+     "name": "Period 2 IE₁ order",
+     "formula": "Li < B < Be < C < O < N < F < Ne",
+     "note": "Shows the two dips."
+    },
+    {
+     "name": "Isoelectronic radius order (10 e⁻)",
+     "formula": "N³⁻ > O²⁻ > F⁻ > Na⁺ > Mg²⁺ > Al³⁺",
+     "note": "More protons pull the same electrons closer."
+    },
+    {
+     "name": "Period 3 oxide character",
+     "formula": "Na₂O, MgO basic → Al₂O₃ amphoteric → SiO₂, P₄O₁₀, SO₃, Cl₂O₇ acidic",
+     "note": "Ionic to covalent across the period."
+    },
+    {
+     "name": "Charge density",
+     "formula": "charge density ∝ charge / radius",
+     "note": "Explains polarising power, lattice energy trends and diagonal relationships."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Big jump finds the group",
+     "rule": "In successive ionisation energies, the first very large jump comes after the last valence electron is removed.",
+     "example": "IE₁ to IE₄ = 578, 1817, 2745, 11577 kJ mol⁻¹: the jump is after IE₃, so 3 valence electrons → group 13 (this is Al)."
+    },
+    {
+     "name": "Subtract the noble gas (periods 4 and 5)",
+     "rule": "Group number (1–18) = Z − Z of the previous noble gas.",
+     "example": "Z = 34: 34 − 18 = 16 → group 16, period 4 (Se). Z = 47: 47 − 36 = 11 → group 11 (Ag)."
+    },
+    {
+     "name": "Isoelectronic ordering",
+     "rule": "Same electron count: more protons means smaller.",
+     "example": "Rank S²⁻, Cl⁻, K⁺, Ca²⁺ (18 e⁻): Z = 16, 17, 19, 20, so S²⁻ > Cl⁻ > K⁺ > Ca²⁺."
+    },
+    {
+     "name": "Corner rule",
+     "rule": "Bottom-left (Cs, Fr) is largest and most metallic with the lowest IE; top-right (F, excluding noble gases for electronegativity) is smallest and most electronegative.",
+     "example": "Among Na, Mg, K, Ca the largest atom is K (lower and further left); the highest IE₁ is Mg."
+    },
+    {
+     "name": "Zig-zag dips",
+     "rule": "IE₁ drops at groups 2→13 and 15→16 in every period.",
+     "example": "Which is higher, P or S? P (group 15, half-filled 3p). Mg or Al? Mg."
+    }
+   ],
+   "traps": [
+    "Saying fluorine has the highest electron affinity; chlorine does.",
+    "Forgetting the ionisation-energy dips and ranking O above N.",
+    "Comparing an atom's radius with an ion's without accounting for the lost or gained shell: Na⁺ is far smaller than Na.",
+    "Giving noble gases a Pauling electronegativity value in trend questions; they are usually excluded.",
+    "Calling Al₂O₃ basic; it is amphoteric and reacts with both acids and alkalis."
+   ],
+   "nsmqTips": [
+    "When given four elements, first locate each by period and group in your head, then apply the corner rule; check for an IE exception only if two are neighbours.",
+    "Successive-IE tables are a favourite riddle; look for the jump, don't calculate anything.",
+    "Learn the period 3 sequences (radius, IE, melting point, oxide and chloride character) as a chain you can recite."
+   ]
+  },
+  {
+   "topic": "Chemical bonding and molecular shape",
+   "strand": "Systematic Chemistry of the Elements",
+   "university": false,
+   "summary": "This topic explains how atoms are held together by ionic, covalent, dative and metallic bonds and intermolecular forces, and how electron-pair repulsion (VSEPR) sets molecular shape and polarity. NSMQ frequently asks for shapes, bond angles, hybridisation, σ/π counts and polarity of named species.",
+   "keyIdeas": [
+    "Ionic bonds form by electron transfer (large electronegativity difference); covalent bonds share electron pairs; a dative bond is a shared pair supplied by one atom (NH₄⁺, H₃O⁺, CO).",
+    "VSEPR: electron pairs around the central atom spread out to minimise repulsion. Repulsion order is lone pair–lone pair > lone pair–bond pair > bond pair–bond pair.",
+    "Shape is named from atom positions only, but lone pairs still count when finding the electron-pair arrangement.",
+    "A molecule with polar bonds is nonpolar if its shape is symmetric and the outer atoms are identical (CO₂, BF₃, CCl₄, SF₆).",
+    "Hydrogen bonding needs H bonded directly to N, O or F; it explains the high boiling points of H₂O, HF and NH₃.",
+    "Intermolecular force strength: hydrogen bonds > permanent dipole–dipole > London (dispersion) forces; dispersion forces grow with the number of electrons.",
+    "Exceptions to the octet rule: BF₃ and BeCl₂ (incomplete octet); PCl₅, SF₆ and XeF₄ (expanded octet, period 3 and beyond).",
+    "Molecular orbital theory explains why O₂ is paramagnetic (two unpaired electrons in π* orbitals)."
+   ],
+   "formulas": [
+    {
+     "name": "Steric number (electron pairs on central atom)",
+     "formula": "SN = ½(V + M − q)",
+     "note": "V = valence electrons of central atom; M = number of monovalent atoms bonded (H, halogens); q = ion charge with sign (+1 for NH₄⁺, −2 for SO₄²⁻). Divalent O and S atoms add 0."
+    },
+    {
+     "name": "Lone pairs",
+     "formula": "lone pairs = SN − number of atoms bonded to the centre",
+     "note": "Decides the shape within each arrangement."
+    },
+    {
+     "name": "Basic shapes",
+     "formula": "SN 2 linear 180°; 3 trigonal planar 120°; 4 tetrahedral 109.5°; 5 trigonal bipyramidal 90° and 120°; 6 octahedral 90°",
+     "note": "Arrangements when there are no lone pairs."
+    },
+    {
+     "name": "Shapes with lone pairs",
+     "formula": "SN 3, 1 LP bent (<120°); SN 4, 1 LP trigonal pyramidal (~107°); SN 4, 2 LP bent (~104.5°); SN 5, 1 LP see-saw; 2 LP T-shaped; 3 LP linear; SN 6, 1 LP square pyramidal; 2 LP square planar",
+     "note": "Examples: SO₂, NH₃, H₂O, SF₄, ClF₃, XeF₂, BrF₅, XeF₄."
+    },
+    {
+     "name": "Hybridisation",
+     "formula": "SN 2 → sp; 3 → sp²; 4 → sp³; 5 → sp³d; 6 → sp³d²",
+     "note": "Matches the steric number."
+    },
+    {
+     "name": "σ and π bonds",
+     "formula": "single = 1σ; double = 1σ + 1π; triple = 1σ + 2π",
+     "note": "π bonds come from sideways overlap of p orbitals."
+    },
+    {
+     "name": "Formal charge",
+     "formula": "FC = V − (non-bonding electrons) − ½(bonding electrons)",
+     "note": "The best Lewis structure keeps formal charges small."
+    },
+    {
+     "name": "Bond order (MO theory)",
+     "formula": "bond order = ½(bonding electrons − antibonding electrons)",
+     "note": "Higher bond order: shorter and stronger bond."
+    },
+    {
+     "name": "Dipole moment",
+     "formula": "μ = q × d",
+     "note": "Units C m or debye (1 D ≈ 3.34 × 10⁻³⁰ C m)."
+    },
+    {
+     "name": "Electronegativity guide",
+     "formula": "Δχ > about 1.7 mainly ionic; 0.4–1.7 polar covalent; < 0.4 nonpolar covalent",
+     "note": "A rough guide, not a sharp boundary."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Steric number in one line",
+     "rule": "SN = ½(V + M − q), then subtract bonded atoms to get lone pairs.",
+     "example": "XeF₄: ½(8 + 4) = 6, 2 LP → square planar. ClF₃: ½(7 + 3) = 5, 2 LP → T-shaped. I₃⁻: ½(7 + 2 + 1) = 5, 3 LP → linear."
+    },
+    {
+     "name": "Isoelectronic means same shape",
+     "rule": "Species with the same number of atoms and valence electrons share a shape.",
+     "example": "CO₂, N₂O, NO₂⁺ and N₃⁻ (16 valence e⁻) are all linear; CO₃²⁻, NO₃⁻ and BF₃ (24 valence e⁻) are all trigonal planar."
+    },
+    {
+     "name": "σ/π counting",
+     "rule": "Every bond gives one σ; add one π for each extra bond in a double or triple bond.",
+     "example": "Ethyne H–C≡C–H: 3σ, 2π. Benzene C₆H₆: 6 C–C σ + 6 C–H σ = 12σ, 3π."
+    },
+    {
+     "name": "Lone pairs squeeze the angle",
+     "rule": "From 109.5°, each lone pair cuts roughly 2.5°.",
+     "example": "CH₄ 109.5° > NH₃ ≈ 107° > H₂O ≈ 104.5°."
+    },
+    {
+     "name": "Bond order from electron count (second-period diatomics)",
+     "rule": "14 total electrons → bond order 3; each electron above 14 (up to 20) lowers it by ½; each electron below 14 (down to 10) also lowers it by ½.",
+     "example": "O₂ (16 e⁻): 3 − 1 = 2. O₂⁻ (17): 1.5. F₂ (18): 1. N₂, CO, CN⁻, NO⁺ (14): 3. C₂ (12): 2."
+    },
+    {
+     "name": "Symmetry test for polarity",
+     "rule": "Identical outer atoms in a symmetric shape with no lone pairs on the centre (or symmetric lone pairs, as in XeF₄) → nonpolar.",
+     "example": "CCl₄, BF₃, SF₆, XeF₄ nonpolar; CHCl₃, NH₃, SO₂ polar."
+    }
+   ],
+   "traps": [
+    "Naming the shape from the electron-pair arrangement: NH₃ is trigonal pyramidal, not tetrahedral.",
+    "Calling a molecule polar just because its bonds are polar (CO₂ and CCl₄ are nonpolar).",
+    "Claiming hydrogen bonding in CH₄ or HCl; H must be bonded to N, O or F.",
+    "Forcing an octet on boron in BF₃; boron has only six valence electrons there.",
+    "Forgetting that a double or triple bond counts as one electron-pair region in VSEPR."
+   ],
+   "nsmqTips": [
+    "For 'shape of X' questions, say steric number → lone pairs → shape in your head; the one-line SN formula handles ions like NH₄⁺, ClO₄⁻ and ICl₄⁻ in seconds.",
+    "Have bond angles ready as numbers (180, 120, 109.5, 107, 104.5, 90); quiz setters often ask for the angle rather than the shape name.",
+    "In boiling-point comparison questions, check for hydrogen bonding first, then molar mass for dispersion forces."
+   ]
+  },
+  {
+   "topic": "Chemistry of non-metals",
+   "strand": "Systematic Chemistry of the Elements",
+   "university": false,
+   "summary": "The preparation, properties, tests and industrial manufacture of the important non-metals and their compounds: hydrogen, carbon, nitrogen, oxygen, sulphur, the halogens and the noble gases. NSMQ loves this topic for quick-fire questions on industrial conditions, catalysts, gas tests and oxidation states.",
+   "keyIdeas": [
+    "Non-metals are mostly electronegative; they form acidic or neutral oxides (CO₂, SO₂, SO₃, NO₂, P₄O₁₀ are acidic; CO, NO, N₂O are neutral).",
+    "Halogen reactivity and oxidising power fall down Group 17 (F₂ > Cl₂ > Br₂ > I₂); a halogen displaces any halide below it from solution.",
+    "Allotropes: carbon (diamond, graphite, fullerenes, graphene), sulphur (rhombic stable below about 96 °C, monoclinic above), phosphorus (white, red), oxygen (O₂, O₃).",
+    "Graphite conducts because each C uses three electrons in σ-bonds and the fourth is delocalised between layers; diamond (four bonds per C) does not.",
+    "Concentrated H₂SO₄ acts as an acid, a dehydrating agent, a drying agent and an oxidising agent.",
+    "Chlorine bleaches only when moist: HOCl oxidises the dye (permanent). SO₂ bleaches by reduction (temporary).",
+    "Nitrogen spans oxidation states −3 (NH₃) to +5 (HNO₃, N₂O₅).",
+    "Noble gases are unreactive because their valence shells are full; Xe still forms fluorides and oxides such as XeF₂, XeF₄ and XeO₃."
+   ],
+   "formulas": [
+    {
+     "name": "Haber process",
+     "formula": "N₂ + 3H₂ ⇌ 2NH₃, ΔH = −92 kJ mol⁻¹",
+     "note": "Iron catalyst, about 450 °C, about 200 atm. The forward reaction is exothermic, and 4 volumes of gas give 2."
+    },
+    {
+     "name": "Contact process",
+     "formula": "2SO₂ + O₂ ⇌ 2SO₃",
+     "note": "V₂O₅ catalyst, about 450 °C, 1–2 atm. SO₃ is absorbed in concentrated H₂SO₄ to give oleum (H₂S₂O₇), which is then diluted with water."
+    },
+    {
+     "name": "Ostwald process",
+     "formula": "4NH₃ + 5O₂ → 4NO + 6H₂O; 2NO + O₂ → 2NO₂; 4NO₂ + O₂ + 2H₂O → 4HNO₃",
+     "note": "Pt–Rh gauze catalyst, about 850 °C, for the first step."
+    },
+    {
+     "name": "Laboratory ammonia",
+     "formula": "2NH₄Cl + Ca(OH)₂ → CaCl₂ + 2NH₃ + 2H₂O",
+     "note": "Heat the mixture. Dry over CaO (quicklime) and collect by upward delivery."
+    },
+    {
+     "name": "Laboratory chlorine",
+     "formula": "MnO₂ + 4HCl → MnCl₂ + Cl₂ + 2H₂O",
+     "note": "Concentrated HCl, warmed. Pass the gas through water (removes HCl), then conc H₂SO₄ (dries it), and collect by downward delivery."
+    },
+    {
+     "name": "Laboratory oxygen",
+     "formula": "2H₂O₂ → 2H₂O + O₂ (MnO₂ catalyst); 2KClO₃ → 2KCl + 3O₂ (heat, MnO₂)",
+     "note": "MnO₂ is only a catalyst and is unchanged at the end."
+    },
+    {
+     "name": "Chlorine and water",
+     "formula": "Cl₂ + H₂O ⇌ HCl + HOCl",
+     "note": "HOCl (chloric(I) acid) is the bleaching and disinfecting species."
+    },
+    {
+     "name": "Chlorine and NaOH",
+     "formula": "Cold, dilute: Cl₂ + 2NaOH → NaCl + NaOCl + H₂O; hot, concentrated: 3Cl₂ + 6NaOH → 5NaCl + NaClO₃ + 3H₂O",
+     "note": "Disproportionation: Cl goes from 0 to −1 and +1 (cold), or to −1 and +5 (hot)."
+    },
+    {
+     "name": "Dehydration by conc H₂SO₄",
+     "formula": "C₁₂H₂₂O₁₁ → 12C + 11H₂O",
+     "note": "Sugar chars to black carbon. The acid removes H and O in a 2:1 ratio."
+    },
+    {
+     "name": "Water gas",
+     "formula": "C + H₂O → CO + H₂ (over white-hot coke)",
+     "note": "Industrial source of hydrogen. The CO is then shifted: CO + H₂O → CO₂ + H₂."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Halogen ladder for displacement",
+     "rule": "Write F, Cl, Br, I top to bottom. A free halogen displaces only the halides below it.",
+     "example": "Cl₂ + 2KBr → 2KCl + Br₂ (solution turns orange-brown). I₂ + KCl gives no reaction because I is below Cl."
+    },
+    {
+     "name": "Compare with air (Mr 29) to pick a collection method",
+     "rule": "Mr < 29 means the gas is lighter than air: collect by upward delivery. Mr > 29 means downward delivery. Collect over water only if the gas is insoluble.",
+     "example": "NH₃ (17): upward, and never over water because it is very soluble. Cl₂ (71) and HCl (36.5): downward. H₂ and O₂: over water."
+    },
+    {
+     "name": "Nitrogen oxidation-state ladder",
+     "rule": "Memorise NH₃ −3, N₂H₄ −2, NH₂OH −1, N₂ 0, N₂O +1, NO +2, N₂O₃/HNO₂ +3, NO₂ +4, N₂O₅/HNO₃ +5.",
+     "example": "HNO₂: H is +1 and 2 O are −4, so N = +3. It sits in the middle, so HNO₂ can act as an oxidising or a reducing agent."
+    },
+    {
+     "name": "Gas-test mnemonic",
+     "rule": "Pop–Relight–Milky–Blue–Bleach–Green: H₂ squeaky pop, O₂ relights a glowing splint, CO₂ turns limewater milky, NH₃ turns damp red litmus blue, Cl₂ bleaches damp litmus, SO₂ turns acidified K₂Cr₂O₇ from orange to green.",
+     "example": "A gas turns orange dichromate paper green and smells choking: SO₂. A gas bleaches damp blue litmus after first turning it red: Cl₂."
+    },
+    {
+     "name": "Process–catalyst pairs",
+     "rule": "Fe for Haber, V₂O₅ for Contact, Pt–Rh for Ostwald, Ni for hydrogenation. All three big processes run near 450 °C, except Ostwald (about 850 °C).",
+     "example": "Asked for the catalyst in making H₂SO₄, answer V₂O₅ (vanadium(V) oxide) at once. Pt is the older, easily poisoned alternative."
+    },
+    {
+     "name": "Le Chatelier on gas volumes",
+     "rule": "Count gas moles on each side. Fewer moles on the product side means high pressure raises the yield. An exothermic forward reaction means low temperature raises the yield, and the industrial temperature is a compromise with rate.",
+     "example": "Haber: 4 → 2 moles, so high pressure helps. ΔH is negative, so low temperature favours yield, but 450 °C is used for speed."
+    }
+   ],
+   "traps": [
+    "Drying NH₃ with conc H₂SO₄ or anhydrous CaCl₂: both react with it. Use CaO.",
+    "Saying SO₃ is dissolved directly in water in the Contact process. That forms a corrosive acid mist, so it is absorbed in conc H₂SO₄ instead.",
+    "Assuming metals with HNO₃ give H₂. Concentrated HNO₃ usually gives NO₂ and dilute HNO₃ gives NO, because nitrate is the oxidant. Only Mg and Mn with very dilute acid give H₂.",
+    "Thinking HF is a strong acid because F is the most electronegative halogen. HF is a weak acid (strong H–F bond and H-bonding).",
+    "Confusing the bleaching mechanisms: Cl₂/HOCl bleaches by oxidation (permanent), SO₂ by reduction (colour can return)."
+   ],
+   "nsmqTips": [
+    "Industrial-process questions almost always ask for catalyst, temperature, pressure, or why a compromise is used. Learn them as a three-line table.",
+    "For 'identify the gas' riddles, listen for the test result word (pop, relights, milky, blue, bleaches, green) and answer from the mnemonic.",
+    "When asked for an oxidation state, use the H = +1, O = −2 bookkeeping out loud only if you are stuck. Otherwise recall the nitrogen and sulphur ladders (S: −2 in H₂S, +4 in SO₂, +6 in H₂SO₄)."
+   ]
+  },
+  {
+   "topic": "Metals, ores and extraction",
+   "strand": "Systematic Chemistry of the Elements",
+   "university": false,
+   "summary": "How metals are obtained from their ores, how the extraction method follows from the reactivity series, and how metals corrode and are protected. Ghana's gold, bauxite, manganese and diamonds make this a favourite NSMQ topic, alongside the blast furnace and electrolysis calculations.",
+   "keyIdeas": [
+    "Extraction method depends on reactivity: K to Al are extracted by electrolysis of molten compounds; Zn, Fe, Sn and Pb by reduction with C or CO; Cu and Hg by roasting or heating; Ag and Au often occur native.",
+    "Ore processing steps: concentration (froth flotation, magnetic separation, washing), conversion (roasting sulphides or calcining carbonates to oxides), reduction, then refining.",
+    "In the blast furnace, CO is the main reducing agent. Limestone removes silica as slag (CaSiO₃), and pig iron contains about 4% carbon.",
+    "Aluminium: bauxite is purified to Al₂O₃ (Bayer process), dissolved in molten cryolite and electrolysed with carbon electrodes (Hall–Héroult). Ghana's smelter is VALCO at Tema, and bauxite is mined at Awaso.",
+    "Copper is purified electrolytically: impure Cu anode, pure Cu cathode, CuSO₄ electrolyte. Ag and Au collect as anode sludge.",
+    "Rusting needs both water and oxygen and is speeded up by salt. Prevention: barrier methods (paint, oil, plating) or sacrificial protection with Zn or Mg (galvanising, sacrificial anodes).",
+    "Ghana resources: gold (Obuasi, Tarkwa), manganese (Nsuta), bauxite (Awaso, Nyinahin), diamonds (Akwatia)."
+   ],
+   "formulas": [
+    {
+     "name": "Blast furnace reactions",
+     "formula": "C + O₂ → CO₂; CO₂ + C → 2CO; Fe₂O₃ + 3CO → 2Fe + 3CO₂",
+     "note": "Coke burns to give heat and then CO, which reduces the haematite."
+    },
+    {
+     "name": "Slag formation",
+     "formula": "CaCO₃ → CaO + CO₂; CaO + SiO₂ → CaSiO₃",
+     "note": "Basic CaO removes acidic silica impurity as molten slag, which floats on the iron."
+    },
+    {
+     "name": "Hall–Héroult electrolysis",
+     "formula": "Cathode: Al³⁺ + 3e⁻ → Al; Anode: 2O²⁻ → O₂ + 4e⁻",
+     "note": "Al₂O₃ in molten Na₃AlF₆ (cryolite) at about 950 °C. The carbon anodes burn away (C + O₂ → CO₂) and must be replaced."
+    },
+    {
+     "name": "Bayer process",
+     "formula": "Al₂O₃ + 2NaOH + 3H₂O → 2NaAl(OH)₄",
+     "note": "Amphoteric Al₂O₃ dissolves; Fe₂O₃ does not and is filtered off as red mud. Al(OH)₃ is then precipitated and heated to give pure Al₂O₃."
+    },
+    {
+     "name": "Downs process (sodium)",
+     "formula": "Cathode: Na⁺ + e⁻ → Na; Anode: 2Cl⁻ → Cl₂ + 2e⁻",
+     "note": "Molten NaCl with CaCl₂ added to lower the melting point to about 600 °C."
+    },
+    {
+     "name": "Roasting sulphide ores",
+     "formula": "2ZnS + 3O₂ → 2ZnO + 2SO₂",
+     "note": "Converts sulphide to oxide before reduction: ZnO + C → Zn + CO."
+    },
+    {
+     "name": "Gold cyanidation",
+     "formula": "4Au + 8NaCN + O₂ + 2H₂O → 4Na[Au(CN)₂] + 4NaOH",
+     "note": "Gold dissolves as a cyanide complex and is recovered by zinc displacement or activated carbon."
+    },
+    {
+     "name": "Faraday's law",
+     "formula": "m = MIt / (nF), F ≈ 96 500 C mol⁻¹",
+     "note": "m in g, I in A, t in s, n = electrons per ion. One faraday deposits M/n grams."
+    },
+    {
+     "name": "Rusting",
+     "formula": "4Fe + 3O₂ + 2xH₂O → 2Fe₂O₃·xH₂O",
+     "note": "Hydrated iron(III) oxide. Electrochemical: Fe → Fe²⁺ + 2e⁻ at anodic sites, O₂ + 2H₂O + 4e⁻ → 4OH⁻ at cathodic sites."
+    },
+    {
+     "name": "Common ores",
+     "formula": "Bauxite Al₂O₃·2H₂O; haematite Fe₂O₃; magnetite Fe₃O₄; siderite FeCO₃; malachite CuCO₃·Cu(OH)₂; chalcopyrite CuFeS₂; galena PbS; zinc blende ZnS; cassiterite SnO₂; cinnabar HgS; pyrolusite MnO₂",
+     "note": "Name-to-formula questions are common. Learn them in pairs."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Reactivity series mnemonic",
+     "rule": "Please Stop Calling Me A Careless Zebra, Instead Try Learning How Copper Saves Gold = K, Na, Ca, Mg, Al, C, Zn, Fe, Sn (tin), Pb (lead), H, Cu, Ag, Au.",
+     "example": "Is Mg extracted by carbon? Mg sits above C (the 'Careless') so no, it needs electrolysis. Sn is below C, so carbon reduction works."
+    },
+    {
+     "name": "Mass per faraday = M/n",
+     "rule": "Divide molar mass by ion charge once, then scale by the number of faradays.",
+     "example": "965 C = 0.01 F. Ag⁺ (108/1) gives 1.08 g Ag; Cu²⁺ (63.5/2 = 31.75) gives 0.3175 g Cu; Al³⁺ (27/3 = 9) gives 0.09 g Al."
+    },
+    {
+     "name": "Same charge, compare moles of metal",
+     "rule": "Metals deposited by the same charge are in moles proportional to 1/n.",
+     "example": "The same current runs through Ag⁺, Cu²⁺ and Al³⁺ cells in series: moles are in the ratio 6 : 3 : 2 (1/1 : 1/2 : 1/3 scaled by 6)."
+    },
+    {
+     "name": "Percent metal in an ore",
+     "rule": "Memorise the big three: Fe₂O₃ is 70% Fe (112/160), Fe₃O₄ is about 72.4% Fe (168/232), Al₂O₃ is about 52.9% Al (54/102).",
+     "example": "Maximum Fe from 1 tonne of pure haematite = 0.70 tonne = 700 kg."
+    },
+    {
+     "name": "Sacrificial protection test",
+     "rule": "The coating protects iron after scratching only if it is MORE reactive than Fe (higher in the series).",
+     "example": "Galvanised (Zn) bucket scratched: Zn corrodes, iron is safe. Tin-plated can scratched: iron corrodes faster than if bare, because Fe is more reactive than Sn."
+    }
+   ],
+   "traps": [
+    "Calling cryolite a catalyst. It is a solvent that lowers the operating temperature from about 2050 °C (m.p. of Al₂O₃) and improves conductivity.",
+    "Saying coke directly reduces Fe₂O₃ as the main step. CO is the main reductant; limestone is for slag, not reduction.",
+    "Thinking aluminium is unreactive because it does not corrode. Its thin, tough Al₂O₃ layer protects it, but Al is high in the series.",
+    "Forgetting that Downs and Hall–Héroult use MOLTEN electrolytes. Electrolysing aqueous NaCl gives H₂ at the cathode, not Na.",
+    "Mixing up anode and cathode in copper refining: the impure copper is the anode and dissolves; pure copper plates on the cathode."
+   ],
+   "nsmqTips": [
+    "When a riddle mentions Obuasi, Tarkwa, Nsuta, Awaso or Akwatia, the answer is gold, gold, manganese, bauxite/aluminium and diamond.",
+    "For electrolysis calculations, convert charge to faradays first (divide by 96 500). Numbers like 965, 9650 and 19 300 C are deliberately chosen to give 0.01, 0.1 and 0.2 F.",
+    "'Why is X extracted by electrolysis?' has a one-line answer: X is above carbon in the reactivity series, so carbon cannot reduce its oxide."
+   ]
+  },
+  {
+   "topic": "Transition metals and complexes",
+   "strand": "Systematic Chemistry of the Elements",
+   "university": true,
+   "summary": "The d-block elements, their electronic configurations, variable oxidation states, colour, magnetism and catalytic activity, and the coordination compounds they form, explained with crystal field theory. NSMQ uses it for configuration quick-fires and magnetic-moment calculations; university courses extend it to CFSE, isomerism and the 18-electron rule.",
+   "keyIdeas": [
+    "A transition element has, or forms an ion with, an incomplete d subshell. Zn is excluded (Zn and Zn²⁺ are both d¹⁰). Many school syllabuses also exclude Sc because Sc³⁺ is d⁰, although the Sc atom (3d¹) meets the IUPAC definition.",
+    "Exceptions to the filling order: Cr is [Ar]3d⁵4s¹ and Cu is [Ar]3d¹⁰4s¹, because half-filled and filled d subshells are extra stable.",
+    "On ionisation, 4s electrons are lost before 3d: Fe²⁺ is [Ar]3d⁶ and Fe³⁺ is [Ar]3d⁵.",
+    "In an octahedral field the d orbitals split into a lower t₂g set (3) and an upper e_g set (2), separated by Δo. Colour arises from d–d transitions absorbing visible light; the observed colour is the complement.",
+    "Spectrochemical series (weak to strong field): I⁻ < Br⁻ < Cl⁻ < F⁻ < OH⁻ < H₂O < NH₃ < en < NO₂⁻ < CN⁻ < CO. Strong-field ligands favour low-spin complexes.",
+    "Coordination number = number of donor atoms bonded to the metal: 2 linear, 4 tetrahedral or square planar (d⁸ Ni²⁺, Pd²⁺, Pt²⁺ with strong ligands), 6 octahedral.",
+    "Chelating ligands (en, C₂O₄²⁻, EDTA⁴⁻) bind through several donor atoms and form extra-stable complexes (chelate effect, entropy-driven).",
+    "Transition metals and their compounds are catalysts because they have variable oxidation states and surfaces that adsorb reactants: Fe (Haber), V₂O₅ (Contact), Ni (hydrogenation), MnO₂ (H₂O₂ decomposition)."
+   ],
+   "formulas": [
+    {
+     "name": "Spin-only magnetic moment",
+     "formula": "μ = √[n(n + 2)] BM",
+     "note": "n = number of unpaired electrons; BM = Bohr magnetons. Good for first-row ions."
+    },
+    {
+     "name": "Octahedral CFSE",
+     "formula": "CFSE = (−0.4x + 0.6y)Δo (+ pairing energy for each extra pair forced)",
+     "note": "x = electrons in t₂g, y = electrons in e_g."
+    },
+    {
+     "name": "Tetrahedral splitting",
+     "formula": "Δt ≈ (4/9)Δo",
+     "note": "e set lower, t₂ set upper (inverted). Δt is small, so tetrahedral complexes are almost always high spin."
+    },
+    {
+     "name": "Metal oxidation state",
+     "formula": "Oxidation state of M = overall charge − Σ(ligand charges)",
+     "note": "Neutral ligands: H₂O, NH₃, CO, en. Anionic: Cl⁻, CN⁻, OH⁻, C₂O₄²⁻ (2−), EDTA (4−)."
+    },
+    {
+     "name": "d-electron count",
+     "formula": "dⁿ: n = group number − oxidation state (groups 3–12)",
+     "note": "For the 3d series. Fe³⁺: 8 − 3 = d⁵."
+    },
+    {
+     "name": "Effective atomic number (EAN)",
+     "formula": "EAN = Z − oxidation state + 2 × (number of donor atoms)",
+     "note": "Stable complexes often reach the next noble-gas number (36 for 3d metals)."
+    },
+    {
+     "name": "18-electron rule",
+     "formula": "Metal valence electrons (group number for M⁰) + 2 per σ-donor ligand (± charge) = 18",
+     "note": "Works best for organometallics and carbonyls such as Ni(CO)₄, Fe(CO)₅, Cr(CO)₆."
+    },
+    {
+     "name": "Splitting energy from absorption",
+     "formula": "Δo = hc/λ per ion; per mole E (kJ mol⁻¹) ≈ 119 600 / λ(nm)",
+     "note": "λ = wavelength of maximum absorption."
+    },
+    {
+     "name": "Naming complexes",
+     "formula": "Ligands (alphabetical, with di/tri/tetra) then metal (oxidation state in Roman numerals); anionic complexes end in -ate",
+     "note": "e.g. [Cu(NH₃)₄]²⁺ tetraamminecopper(II); [Fe(CN)₆]³⁻ hexacyanoferrate(III); [Ag(NH₃)₂]⁺ diamminesilver(I)."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Memorise the μ table",
+     "rule": "n = 1, 2, 3, 4, 5 gives μ = 1.73, 2.83, 3.87, 4.90, 5.92 BM (√3, √8, √15, √24, √35).",
+     "example": "[Fe(H₂O)₆]³⁺, high-spin d⁵ with 5 unpaired: 5.92 BM. [Fe(CN)₆]³⁻, low-spin t₂g⁵ with 1 unpaired: 1.73 BM."
+    },
+    {
+     "name": "Group minus oxidation state",
+     "rule": "Get the d count without writing configurations: dⁿ = group − oxidation state.",
+     "example": "MnO₄⁻: Mn is +7, group 7, so d⁰, and its purple colour is charge transfer, not d–d. [Co(NH₃)₆]³⁺: 9 − 3 = d⁶, low spin, so diamagnetic (μ = 0)."
+    },
+    {
+     "name": "d⁰ / d¹⁰ means colourless",
+     "rule": "No partly filled d subshell means no d–d transition, so the compound is white or colourless (unless charge transfer occurs).",
+     "example": "Zn²⁺ (d¹⁰), Sc³⁺ (d⁰), Ti⁴⁺ (d⁰), Cu⁺ (d¹⁰), Ag⁺ (d¹⁰): ZnSO₄ and CuCl are white."
+    },
+    {
+     "name": "CFSE quick values",
+     "rule": "Octahedral, ignoring pairing energy: d³ −1.2Δo; d⁵ high spin 0; d⁶ low spin −2.4Δo; d⁸ −1.2Δo; d¹⁰ 0.",
+     "example": "Why is Cr³⁺ (d³) so inert in octahedral complexes? It has a large CFSE (−1.2Δo) with three unpaired electrons, one in each t₂g orbital."
+    },
+    {
+     "name": "Isomer counting by formula type",
+     "rule": "Octahedral MA₄B₂: 2 (cis/trans). MA₃B₃: 2 (fac/mer). [M(AA)₃]: one pair of optical isomers. cis-[M(AA)₂B₂] is chiral, trans is not. Square planar MA₂B₂: 2 (cis/trans), never optical.",
+     "example": "[Pt(NH₃)₂Cl₂] has 2 isomers; the cis form is the anticancer drug cisplatin."
+    },
+    {
+     "name": "18-electron check",
+     "rule": "For a neutral metal carbonyl, metal group number + 2 × (number of CO) should equal 18.",
+     "example": "Ni(CO)₄: 10 + 8 = 18. Fe(CO)₅: 8 + 10 = 18. Cr(CO)₆: 6 + 12 = 18. So the formula of the stable chromium carbonyl must be Cr(CO)₆."
+    }
+   ],
+   "traps": [
+    "Writing Fe²⁺ as [Ar]3d⁴4s². The 4s electrons go first, so Fe²⁺ is [Ar]3d⁶.",
+    "Counting ligands instead of donor atoms for coordination number: [Co(en)₃]³⁺ has 3 ligands but coordination number 6.",
+    "Explaining KMnO₄ or K₂Cr₂O₇ colour by d–d transitions. Both are d⁰; the colour comes from ligand-to-metal charge transfer.",
+    "Assuming every strong-field complex is low spin. Low spin happens only when Δo exceeds the pairing energy, and only for d⁴–d⁷ octahedral is there a choice.",
+    "Confusing the colour absorbed with the colour seen: [Cu(H₂O)₆]²⁺ absorbs orange-red light and looks blue."
+   ],
+   "nsmqTips": [
+    "'Write the electronic configuration of Cr / Cu / Fe³⁺' is a classic 10-second question. Have the exceptions and the ion rule ready.",
+    "For magnetic-moment questions, count unpaired electrons first (using high or low spin), then quote the table value. Do not try to compute square roots live.",
+    "For naming, say the ligands alphabetically, ignoring multiplying prefixes (ammine before chlorido), then the metal with -ate for anions: ferrate, cuprate, argentate, aurate, plumbate, stannate."
+   ]
+  },
+  {
+   "topic": "Organic nomenclature and isomerism",
+   "strand": "Chemistry of Carbon Compounds",
+   "university": false,
+   "summary": "The IUPAC rules for naming organic compounds, and the types of isomerism: structural (chain, position, functional group) and stereoisomerism (geometric and optical). NSMQ often gives a structure to name, or asks how many isomers a formula has, so counting tricks pay off.",
+   "keyIdeas": [
+    "Name = prefix (substituents with locants) + root (longest chain containing the main functional group) + suffix (main functional group).",
+    "Number the chain so the principal functional group, then multiple bonds, then substituents get the lowest locants. Substituents are listed alphabetically.",
+    "Priority of suffix groups: carboxylic acid > ester > acyl chloride > amide > nitrile > aldehyde > ketone > alcohol > amine. Halo, nitro and alkyl groups are always prefixes.",
+    "Structural isomers share a molecular formula but differ in connectivity: chain, position or functional group isomers (alcohol/ether, aldehyde/ketone, acid/ester, alkene/cycloalkane).",
+    "Geometric (cis/trans or E/Z) isomerism needs restricted rotation (C=C or a ring) AND two different groups on each of the two carbons.",
+    "Optical isomerism needs a chiral molecule, usually a carbon with four different groups. Enantiomers rotate plane-polarised light equally in opposite directions; a 50:50 racemic mixture is optically inactive.",
+    "E/Z uses Cahn–Ingold–Prelog priorities (higher atomic number first). Z means the two higher-priority groups are on the same side."
+   ],
+   "formulas": [
+    {
+     "name": "Chain-length roots",
+     "formula": "meth 1, eth 2, prop 3, but 4, pent 5, hex 6, hept 7, oct 8, non 9, dec 10",
+     "note": "The root counts the carbons in the main chain."
+    },
+    {
+     "name": "General formulas",
+     "formula": "Alkane CₙH₂ₙ₊₂; alkene and cycloalkane CₙH₂ₙ; alkyne CₙH₂ₙ₋₂; alkanol CₙH₂ₙ₊₁OH; aldehyde/ketone CₙH₂ₙO; acid/ester CₙH₂ₙO₂",
+     "note": "Isomers share a general formula across classes (e.g. acids and esters)."
+    },
+    {
+     "name": "Degree of unsaturation (DBE)",
+     "formula": "DBE = (2C + 2 + N − H − X) / 2",
+     "note": "C, N, H, X = number of carbon, nitrogen, hydrogen and halogen atoms. Ignore O. Each ring or π bond counts 1."
+    },
+    {
+     "name": "Maximum stereoisomers",
+     "formula": "Number of stereoisomers ≤ 2ⁿ",
+     "note": "n = number of stereocentres (chiral C atoms plus stereogenic C=C). Fewer if a meso form exists."
+    },
+    {
+     "name": "Alkane structural isomer counts",
+     "formula": "C₄ 2, C₅ 3, C₆ 5, C₇ 9, C₈ 18, C₉ 35, C₁₀ 75",
+     "note": "Counts structural (constitutional) isomers only."
+    },
+    {
+     "name": "Alkyl group isomer counts",
+     "formula": "CH₃– 1, C₂H₅– 1, C₃H₇– 2, C₄H₉– 4, C₅H₁₁– 8",
+     "note": "The basis for counting alcohols, haloalkanes, aldehydes and acids."
+    },
+    {
+     "name": "Ester naming",
+     "formula": "R′OOC–R or RCOOR′ is named 'R′-yl R-oate'",
+     "note": "The alcohol-derived part comes first: CH₃COOCH₂CH₃ is ethyl ethanoate; HCOOCH₃ is methyl methanoate."
+    },
+    {
+     "name": "Chiral centre condition",
+     "formula": "C bonded to four different groups (Cabcd)",
+     "note": "Look for a CH with three different other groups, e.g. CH₃CH(OH)CH₂CH₃."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "DBE in your head",
+     "rule": "Compare with the saturated alkane CₙH₂ₙ₊₂: every 2 H missing = 1 ring or π bond.",
+     "example": "C₆H₆: saturated would be C₆H₁₄, 8 H missing, so DBE = 4 (one ring + three C=C), which fits benzene. C₄H₈: DBE = 1, so it is butene or cyclobutane."
+    },
+    {
+     "name": "Count by alkyl group",
+     "rule": "For R–Y with one functional group, isomers = number of alkyl isomers of R.",
+     "example": "C₄H₉OH: C₄H₉ has 4 forms, so 4 alcohols. Add the 3 ethers (methyl propyl, methyl isopropyl, diethyl) for 7 structural isomers of C₄H₁₀O. C₅H₁₀O₂ acids = C₄H₉COOH = 4."
+    },
+    {
+     "name": "Ester isomer split",
+     "rule": "Split CₙH₂ₙO₂ esters into (acid carbons, alcohol carbons) pairs and multiply alkyl counts.",
+     "example": "C₄H₈O₂ esters: HCOOC₃H₇ (2, propyl and isopropyl) + CH₃COOC₂H₅ (1) + C₂H₅COOCH₃ (1) = 4 esters."
+    },
+    {
+     "name": "Geometric isomer check",
+     "rule": "Look at each alkene carbon. If either carbon carries two identical groups, there is no cis/trans.",
+     "example": "But-1-ene (CH₂=) has none. But-2-ene has cis and trans. 2-methylbut-2-ene has none, because one carbon carries two CH₃."
+    },
+    {
+     "name": "Chiral by symmetry",
+     "rule": "Put your finger on the candidate carbon and read the four groups. If two chains going out are identical, it is not chiral.",
+     "example": "2-chlorobutane: H, Cl, CH₃, C₂H₅, so chiral. 3-chloropentane: H, Cl, C₂H₅, C₂H₅, so not chiral. Butan-2-ol is chiral; propan-2-ol is not."
+    },
+    {
+     "name": "Spot the hidden longer chain",
+     "rule": "If a name has an ethyl on C2 or a propyl on C3, the main chain was chosen wrongly. Redraw and recount.",
+     "example": "'2-ethylbutane' is really 3-methylpentane (6-carbon chain). '2-ethylpentane' is really 3-methylhexane."
+    }
+   ],
+   "traps": [
+    "Giving a locant to the carbon of –COOH or –CHO: it is always C1, so the name is butanoic acid, not butan-1-oic acid.",
+    "Numbering from the wrong end: 3-methylbutane is wrong. The lowest-locant rule gives 2-methylbutane.",
+    "Forgetting that cycloalkanes are isomers of alkenes (C₃H₆ is propene or cyclopropane), and ethers of alcohols.",
+    "Saying a racemic mixture contains no chiral molecules. It contains equal amounts of both enantiomers, whose rotations cancel.",
+    "Using cis/trans for alkenes with three or four different substituents. Use E/Z with CIP priorities instead."
+   ],
+   "nsmqTips": [
+    "'How many isomers of C₄H₉Cl?' type questions: answer 4 at once from the alkyl table. For C₅H₁₁X the answer is 8 structural isomers.",
+    "When naming from a spoken structure, write the chain quickly as carbon numbers on paper, find the longest chain, then fix the lowest locants. Say substituents alphabetically (ethyl before methyl).",
+    "Optical-isomer questions usually hinge on one carbon. Name the four groups aloud to justify your answer."
+   ]
+  },
+  {
+   "topic": "Hydrocarbons",
+   "strand": "Chemistry of Carbon Compounds",
+   "university": false,
+   "summary": "Alkanes, alkenes, alkynes and benzene: their sources, preparation, reactions and tests. NSMQ asks about combustion stoichiometry, gas-volume (eudiometry) problems, tests for unsaturation and the different reactions of benzene versus alkenes.",
+   "keyIdeas": [
+    "Alkanes are saturated and fairly unreactive. They undergo combustion and free-radical substitution with halogens in UV light.",
+    "Alkenes and alkynes are unsaturated and undergo electrophilic addition (H₂, X₂, HX, H₂O). Alkenes decolourise bromine water and acidified or alkaline KMnO₄.",
+    "Markovnikov's rule: when HX adds to an unsymmetrical alkene, H goes to the carbon that already has more H atoms (via the more stable carbocation).",
+    "Benzene's delocalised π system makes it resist addition. It prefers electrophilic substitution (nitration, halogenation with FeBr₃/AlCl₃, Friedel–Crafts).",
+    "Boiling points rise with chain length; branching lowers boiling point (smaller surface contact, weaker London forces).",
+    "Crude oil is separated by fractional distillation (refinery gas, petrol, naphtha, kerosene, diesel, lubricating oil, bitumen). Cracking breaks long chains into shorter alkanes plus alkenes.",
+    "Terminal alkynes (with ≡C–H) give precipitates with ammoniacal AgNO₃ (white) or ammoniacal Cu₂Cl₂ (red); alkenes do not."
+   ],
+   "formulas": [
+    {
+     "name": "General combustion",
+     "formula": "CₓHᵧ + (x + y/4)O₂ → xCO₂ + (y/2)H₂O",
+     "note": "Complete combustion. Limited oxygen gives CO or soot."
+    },
+    {
+     "name": "Free-radical substitution",
+     "formula": "CH₄ + Cl₂ → CH₃Cl + HCl (UV light)",
+     "note": "Initiation Cl₂ → 2Cl•; propagation Cl• + CH₄ → HCl + •CH₃, then •CH₃ + Cl₂ → CH₃Cl + Cl•. Gives a mixture up to CCl₄."
+    },
+    {
+     "name": "Hydrogenation",
+     "formula": "C₂H₄ + H₂ → C₂H₆",
+     "note": "Ni catalyst, about 150 °C. Basis of margarine manufacture."
+    },
+    {
+     "name": "Bromine test",
+     "formula": "C₂H₄ + Br₂ → CH₂BrCH₂Br",
+     "note": "Red-brown bromine is decolourised: the test for C=C. The product is 1,2-dibromoethane."
+    },
+    {
+     "name": "Hydration of ethene",
+     "formula": "C₂H₄ + H₂O → C₂H₅OH",
+     "note": "H₃PO₄ catalyst on silica, about 300 °C, 60–70 atm."
+    },
+    {
+     "name": "Baeyer's test",
+     "formula": "CH₂=CH₂ + [O] + H₂O → HOCH₂CH₂OH",
+     "note": "Cold dilute alkaline KMnO₄: purple to brown (MnO₂). Product is ethane-1,2-diol."
+    },
+    {
+     "name": "Ethyne from calcium carbide",
+     "formula": "CaC₂ + 2H₂O → C₂H₂ + Ca(OH)₂",
+     "note": "Laboratory and welding source of ethyne."
+    },
+    {
+     "name": "Laboratory methane",
+     "formula": "CH₃COONa + NaOH → CH₄ + Na₂CO₃",
+     "note": "Heat sodium ethanoate with soda lime (decarboxylation)."
+    },
+    {
+     "name": "Nitration of benzene",
+     "formula": "C₆H₆ + HNO₃ → C₆H₅NO₂ + H₂O",
+     "note": "Conc HNO₃ + conc H₂SO₄, kept below about 55 °C to avoid further nitration."
+    },
+    {
+     "name": "Cracking",
+     "formula": "C₁₀H₂₂ → C₈H₁₈ + C₂H₄",
+     "note": "Thermal or catalytic (zeolite, Al₂O₃/SiO₂). Always produces at least one alkene."
+    },
+    {
+     "name": "Molar masses of series",
+     "formula": "Alkane Mr = 14n + 2; alkene Mr = 14n; alkyne Mr = 14n − 2",
+     "note": "n = number of carbon atoms."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Oxygen moles = x + y/4",
+     "rule": "For each hydrocarbon molecule, O₂ needed = carbons + hydrogens/4. Double everything if you get a half.",
+     "example": "C₃H₈: 3 + 2 = 5 O₂. C₈H₁₈: 8 + 4.5 = 12.5, so 2C₈H₁₈ + 25O₂ → 16CO₂ + 18H₂O."
+    },
+    {
+     "name": "Eudiometry from volumes",
+     "rule": "Volume of CO₂ ÷ volume of hydrocarbon = x. O₂ used ÷ hydrocarbon volume = x + y/4. Solve for y.",
+     "example": "10 cm³ of hydrocarbon uses 50 cm³ O₂ and gives 30 cm³ CO₂: x = 3, 3 + y/4 = 5, so y = 8: C₃H₈ (propane)."
+    },
+    {
+     "name": "Mr to formula via 14n",
+     "rule": "Divide Mr by 14: remainder +2 means alkane, 0 means alkene, −2 (i.e. 12) means alkyne.",
+     "example": "Mr 72: 72 = 14×5 + 2, so pentane C₅H₁₂. Mr 56 = 14×4, so butene. Mr 40 = 14×3 − 2, so propyne."
+    },
+    {
+     "name": "H₂ uptake counts π bonds",
+     "rule": "Moles of H₂ (or Br₂) absorbed per mole of hydrocarbon = number of C=C equivalents (a C≡C counts 2).",
+     "example": "0.10 mol of a hydrocarbon takes up 4.48 dm³ H₂ at STP = 0.20 mol, so 2 π bonds: an alkyne or a diene."
+    },
+    {
+     "name": "Markovnikov: the rich get richer",
+     "rule": "The carbon with more H gets the H; the X goes to the more substituted carbon.",
+     "example": "Propene + HBr gives 2-bromopropane as the major product, not 1-bromopropane."
+    },
+    {
+     "name": "Sooty flame by C:H ratio",
+     "rule": "The higher the C:H ratio, the smokier the flame.",
+     "example": "Ethyne (C₂H₂) and benzene (C₆H₆) are both 1:1 and burn very sooty. Methane (1:4) burns with a clean blue flame."
+    }
+   ],
+   "traps": [
+    "Saying benzene decolourises bromine water like an alkene. It does not; it reacts with Br₂ only with a FeBr₃ catalyst, by substitution.",
+    "Writing only CH₃Cl for methane chlorination. Free-radical substitution gives a mixture of CH₃Cl, CH₂Cl₂, CHCl₃ and CCl₄.",
+    "Applying Markovnikov to symmetrical alkenes (but-2-ene gives a single product), or forgetting the peroxide (anti-Markovnikov) effect, which works only for HBr.",
+    "In eudiometry, forgetting that liquid water takes up no volume at room temperature, and that KOH absorbs CO₂.",
+    "Thinking branched isomers boil higher: 2,2-dimethylpropane (about 10 °C) boils far lower than pentane (about 36 °C)."
+   ],
+   "nsmqTips": [
+    "Gas-volume combustion problems are typical riddle maths. Set x from CO₂ first; it takes 5 seconds.",
+    "'Distinguish ethene from ethane' answers: bromine water decolourised, or KMnO₄ purple to colourless/brown. 'Ethene from ethyne': ammoniacal AgNO₃ or Cu₂Cl₂ precipitate with ethyne only.",
+    "Learn catalysts and conditions as pairs: Ni for hydrogenation, H₃PO₄ for hydration, UV for substitution, FeBr₃/AlCl₃ for aromatic halogenation, conc H₂SO₄ for nitration."
+   ]
+  },
+  {
+   "topic": "Functional group chemistry",
+   "strand": "Chemistry of Carbon Compounds",
+   "university": false,
+   "summary": "The preparation and reactions of alkanols, alkanals and alkanones, alkanoic acids, esters, amines and haloalkanes, and the chemical tests that tell them apart. NSMQ often asks for the reagent and observation for a test, oxidation products, or ester naming.",
+   "keyIdeas": [
+    "Alcohols are classed by how many carbons are attached to the C–OH carbon: primary (1), secondary (2), tertiary (3).",
+    "Oxidation with acidified K₂Cr₂O₇ (orange to green) or KMnO₄: primary alcohol gives an aldehyde, then a carboxylic acid; secondary gives a ketone; tertiary resists oxidation.",
+    "Aldehydes are reducing agents (positive Tollens' and Fehling's); ketones are not. Both give an orange precipitate with 2,4-DNPH (Brady's reagent).",
+    "Acidity order: carboxylic acid > phenol > water > alcohol. Only acids are strong enough to release CO₂ from NaHCO₃.",
+    "Esters form from acids and alcohols (reversible, conc H₂SO₄ catalyst). They smell fruity and are hydrolysed by acid (reversible) or alkali (saponification, goes to completion).",
+    "Haloalkanes with aqueous OH⁻ undergo substitution to alcohols; with ethanolic KOH (hot) they undergo elimination to alkenes.",
+    "Amines are weak bases (lone pair on N) and form salts with acids; aliphatic amines are stronger bases than NH₃."
+   ],
+   "formulas": [
+    {
+     "name": "Fermentation",
+     "formula": "C₆H₁₂O₆ → 2C₂H₅OH + 2CO₂",
+     "note": "Yeast (zymase), anaerobic, about 25–37 °C. Stops at about 15% ethanol. Basis of akpeteshie and palm-wine production."
+    },
+    {
+     "name": "Esterification",
+     "formula": "CH₃COOH + C₂H₅OH ⇌ CH₃COOC₂H₅ + H₂O",
+     "note": "Conc H₂SO₄ catalyst; warm. The product is ethyl ethanoate."
+    },
+    {
+     "name": "Alcohol with sodium",
+     "formula": "2C₂H₅OH + 2Na → 2C₂H₅ONa + H₂",
+     "note": "Effervescence with any –OH compound. The product is sodium ethoxide."
+    },
+    {
+     "name": "Dehydration of ethanol",
+     "formula": "C₂H₅OH → C₂H₄ + H₂O",
+     "note": "Excess conc H₂SO₄ at about 170 °C, or hot Al₂O₃."
+    },
+    {
+     "name": "Acid with carbonate",
+     "formula": "2CH₃COOH + Na₂CO₃ → 2CH₃COONa + H₂O + CO₂",
+     "note": "Effervescence with Na₂CO₃ or NaHCO₃ is the test for –COOH."
+    },
+    {
+     "name": "Saponification",
+     "formula": "CH₃COOC₂H₅ + NaOH → CH₃COONa + C₂H₅OH",
+     "note": "Alkaline ester hydrolysis is irreversible. With fats it gives soap."
+    },
+    {
+     "name": "Haloalkane reactions",
+     "formula": "R–X + OH⁻(aq) → R–OH + X⁻; CH₃CH₂Br + KOH(ethanolic) → CH₂=CH₂ + KBr + H₂O",
+     "note": "Aqueous gives substitution; alcoholic and hot gives elimination."
+    },
+    {
+     "name": "Amine as a base",
+     "formula": "CH₃NH₂ + HCl → CH₃NH₃⁺Cl⁻",
+     "note": "Gives methylammonium chloride."
+    },
+    {
+     "name": "Tollens' and Fehling's tests",
+     "formula": "Tollens' ([Ag(NH₃)₂]⁺): silver mirror; Fehling's/Benedict's (Cu²⁺): blue to brick-red Cu₂O",
+     "note": "Positive for aldehydes. Ketones are negative. Methanoic acid also gives a positive Tollens'."
+    },
+    {
+     "name": "Iodoform test",
+     "formula": "I₂ + NaOH (warm): yellow precipitate of CHI₃ (m.p. about 119 °C)",
+     "note": "Positive for CH₃CO– groups and CH₃CH(OH)– groups."
+    },
+    {
+     "name": "Other key tests",
+     "formula": "2,4-DNPH: orange precipitate (any C=O of aldehyde/ketone); neutral FeCl₃: violet (phenol); Lucas (ZnCl₂/HCl): cloudiness fast for 3°, slower for 2°, none quickly for 1° alcohol",
+     "note": "Know reagent, observation and the group detected."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Iodoform pattern spotting",
+     "rule": "Look for CH₃ attached to C=O or to CH(OH). Any such compound is positive.",
+     "example": "Positive: ethanol (the only positive primary alcohol), ethanal (the only positive aldehyde), propanone, butan-2-ol. Negative: methanol, propan-1-ol, pentan-3-one."
+    },
+    {
+     "name": "Three-reagent elimination grid",
+     "rule": "NaHCO₃ fizz means COOH. Dissolves in NaOH but no NaHCO₃ fizz means phenol. Fizzes only with Na means alcohol. No reaction with Na means ether, ester or ketone.",
+     "example": "An unknown fizzes with Na, does not dissolve in NaOH and does not react with NaHCO₃: it is an alcohol."
+    },
+    {
+     "name": "Hydrogen from –OH count",
+     "rule": "Each –OH group gives ½ H₂ with Na; 1 mol of gas = 22.4 dm³ at STP.",
+     "example": "1 mol ethane-1,2-diol (2 OH) gives 1 mol H₂ = 22.4 dm³. 1 mol glycerol (3 OH) gives 1.5 mol = 33.6 dm³."
+    },
+    {
+     "name": "Ester molar mass",
+     "rule": "Mr(ester) = Mr(acid) + Mr(alcohol) − 18.",
+     "example": "Ethyl ethanoate: 60 + 46 − 18 = 88. Methyl methanoate: 46 + 32 − 18 = 60."
+    },
+    {
+     "name": "Hydrolysis back-naming",
+     "rule": "Cut the ester name in two: the first word is the alcohol (-yl becomes -anol), the second the acid (-oate becomes -oic acid).",
+     "example": "Methyl propanoate hydrolyses to methanol + propanoic acid. Pentyl ethanoate (banana smell) gives pentan-1-ol + ethanoic acid."
+    },
+    {
+     "name": "Oxidation by counting H on the C–OH carbon",
+     "rule": "2 H on that carbon: can go to aldehyde, then acid. 1 H: to ketone. 0 H: no oxidation, dichromate stays orange.",
+     "example": "2-methylpropan-2-ol (no H on the C–OH carbon) leaves K₂Cr₂O₇ orange. Propan-2-ol (1 H) gives propanone."
+    }
+   ],
+   "traps": [
+    "Saying ketones give a silver mirror. Only aldehydes (and methanoic acid) reduce Tollens' reagent; both aldehydes and ketones give 2,4-DNPH.",
+    "Forgetting that the aldehyde must be distilled off as it forms. Heating under reflux oxidises it all the way to the acid.",
+    "Calling conc H₂SO₄ a reactant in esterification. It is a catalyst (and absorbs water to shift the equilibrium).",
+    "Mixing up aqueous KOH (substitution, gives alcohol) and ethanolic KOH (elimination, gives alkene).",
+    "Writing the ester name backwards: CH₃COOCH₃ is methyl ethanoate, not ethyl methanoate."
+   ],
+   "nsmqTips": [
+    "Test questions are answered as reagent + observation + inference, e.g. 'warm with Tollens': silver mirror, so aldehyde'. Give all three in one breath.",
+    "For 'which of these gives a yellow precipitate with I₂/NaOH?' scan only for CH₃CO– or CH₃CH(OH)–. Elimination is faster than drawing every structure.",
+    "Know smells of esters for riddles: pentyl ethanoate (banana), octyl ethanoate (orange), methyl salicylate (wintergreen), ethyl butanoate (pineapple)."
+   ]
+  },
+  {
+   "topic": "Polymers, biomolecules and industrial organic",
+   "strand": "Chemistry of Carbon Compounds",
+   "university": false,
+   "summary": "Addition and condensation polymers, natural macromolecules (carbohydrates, proteins, fats), soaps and detergents, and the petrochemical industry. NSMQ asks students to identify monomers, classify polymerisation types, do repeat-unit calculations and recall food tests.",
+   "keyIdeas": [
+    "Addition polymerisation joins unsaturated monomers (C=C) with no by-product. Condensation polymerisation joins bifunctional monomers with loss of a small molecule (usually H₂O or HCl).",
+    "Polyamides (nylon, proteins) contain –CO–NH– links. Polyesters (Terylene/PET, Dacron) contain –CO–O– links. These can be hydrolysed and are more biodegradable than addition polymers.",
+    "Thermoplastics (polyethene, PVC) soften on heating and can be remoulded. Thermosets (Bakelite, melamine) are cross-linked and char instead of melting.",
+    "Carbohydrates are Cₓ(H₂O)ᵧ: monosaccharides (glucose, fructose), disaccharides (sucrose, maltose, lactose) and polysaccharides (starch, glycogen, cellulose).",
+    "Proteins are polymers of α-amino acids (H₂N–CHR–COOH) linked by peptide bonds. Amino acids are amphoteric and exist as zwitterions.",
+    "Fats and oils are triesters of glycerol (propane-1,2,3-triol) with fatty acids. Oils are unsaturated (liquid); fats are mostly saturated (solid).",
+    "Soaps are sodium/potassium salts of long-chain fatty acids and form scum with Ca²⁺/Mg²⁺ in hard water. Soapless detergents (alkylbenzene sulphonates) do not.",
+    "Petrochemicals: fractional distillation of crude oil (Tema Oil Refinery in Ghana), cracking and reforming provide ethene, propene and aromatics as polymer feedstocks."
+   ],
+   "formulas": [
+    {
+     "name": "Polyethene",
+     "formula": "n CH₂=CH₂ → –[CH₂–CH₂]ₙ–",
+     "note": "Addition polymer. LDPE (branched) or HDPE (Ziegler–Natta catalyst, linear)."
+    },
+    {
+     "name": "Common addition monomers",
+     "formula": "PVC: CH₂=CHCl (chloroethene); PTFE: CF₂=CF₂; polystyrene: CH₂=CHC₆H₅ (phenylethene); polypropene: CH₂=CHCH₃; Perspex: CH₂=C(CH₃)COOCH₃",
+     "note": "Repeat unit = monomer with C=C opened to C–C."
+    },
+    {
+     "name": "Nylon-6,6",
+     "formula": "n H₂N(CH₂)₆NH₂ + n HOOC(CH₂)₄COOH → –[NH(CH₂)₆NH–CO(CH₂)₄CO]ₙ– + (2n − 1)H₂O",
+     "note": "Hexane-1,6-diamine + hexanedioic acid. Condensation; amide links."
+    },
+    {
+     "name": "Terylene (PET)",
+     "formula": "Benzene-1,4-dicarboxylic acid + ethane-1,2-diol → polyester + H₂O",
+     "note": "Condensation; ester links. Used for fabrics and bottles."
+    },
+    {
+     "name": "Natural rubber",
+     "formula": "Poly(2-methylbuta-1,3-diene), monomer CH₂=C(CH₃)–CH=CH₂ (isoprene)",
+     "note": "Vulcanisation with sulphur forms S–S cross-links, which make it harder and more elastic."
+    },
+    {
+     "name": "Disaccharide hydrolysis",
+     "formula": "C₁₂H₂₂O₁₁ + H₂O → C₆H₁₂O₆ + C₆H₁₂O₆",
+     "note": "Sucrose → glucose + fructose; maltose → 2 glucose; lactose → glucose + galactose."
+    },
+    {
+     "name": "Polysaccharides",
+     "formula": "Starch and glycogen: α-glucose polymers; cellulose: β-glucose polymer (β-1,4 links)",
+     "note": "Humans cannot digest cellulose (no cellulase)."
+    },
+    {
+     "name": "Saponification of fat",
+     "formula": "Fat (triglyceride) + 3NaOH → glycerol + 3RCOO⁻Na⁺ (soap)",
+     "note": "Boil fat or oil with NaOH, then salt out the soap with NaCl."
+    },
+    {
+     "name": "Degree of polymerisation",
+     "formula": "n = Mr(polymer) / Mr(repeat unit)",
+     "note": "For addition polymers, Mr(repeat unit) = Mr(monomer)."
+    },
+    {
+     "name": "Food tests",
+     "formula": "Starch: iodine, blue-black; reducing sugar: Benedict's/Fehling's, brick-red; protein: biuret (NaOH + CuSO₄), violet; fat: ethanol emulsion, cloudy white (or translucent grease spot)",
+     "note": "Sucrose is non-reducing: boil with dilute HCl, neutralise, then do Benedict's."
+    },
+    {
+     "name": "Hardening of oils",
+     "formula": "–CH=CH– + H₂ → –CH₂–CH₂– (Ni, about 150 °C)",
+     "note": "Converts vegetable oil to margarine."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Repeat unit by 'open the double bond'",
+     "rule": "Replace C=C by C–C, put the side groups on the chain, and add brackets with n. Mr(repeat unit) = Mr(monomer).",
+     "example": "Propene CH₂=CHCH₃ gives –[CH₂–CH(CH₃)]ₙ–, repeat Mr = 42. A polypropene of Mr 84 000 has n = 2000."
+    },
+    {
+     "name": "Degree of polymerisation by easy division",
+     "rule": "Divide by the monomer Mr using round numbers: ethene 28, chloroethene 62.5, styrene 104, tetrafluoroethene 100.",
+     "example": "Polyethene of Mr 28 000 gives n = 1000. PVC of Mr 125 000 gives n = 125 000/62.5 = 2000. PTFE of Mr 50 000 gives n = 500."
+    },
+    {
+     "name": "(n − 1) water rule",
+     "rule": "Linking n monomer units in a chain by condensation releases (n − 1) H₂O. Mass of chain = sum of monomers − 18(n − 1).",
+     "example": "Tripeptide from 3 glycine (Mr 75): 3×75 − 2×18 = 225 − 36 = 189. Sucrose: 180 + 180 − 18 = 342."
+    },
+    {
+     "name": "Nylon-x,y code",
+     "rule": "x = number of C atoms in the diamine, y = number of C atoms in the diacid.",
+     "example": "Nylon-6,10 is made from hexane-1,6-diamine (6 C) and decanedioic acid (10 C)."
+    },
+    {
+     "name": "Peptide sequence count",
+     "rule": "With n different amino acids each used once, the number of linear sequences is n!.",
+     "example": "Gly, Ala, Val each once: 3! = 6 tripeptides. Gly and Ala each once: 2 dipeptides (Gly-Ala and Ala-Gly)."
+    },
+    {
+     "name": "Addition or condensation at a glance",
+     "rule": "Monomer has C=C: addition. Two different functional groups on the monomers (–OH, –COOH, –NH₂, –COCl): condensation.",
+     "example": "Tetrafluoroethene gives PTFE by addition. Ethane-1,2-diol + benzene-1,4-dicarboxylic acid gives PET by condensation."
+    }
+   ],
+   "traps": [
+    "Calling sucrose a reducing sugar. It is non-reducing; glucose, fructose, maltose and lactose are reducing.",
+    "Saying addition polymerisation releases water. It releases nothing, so the mass of polymer equals the mass of monomer used.",
+    "Thinking soaps work well in hard water. They form insoluble scum with Ca²⁺ and Mg²⁺; soapless detergents do not.",
+    "Confusing starch and cellulose. Both are glucose polymers, but starch is α-linked (digestible) and cellulose β-linked (indigestible to humans).",
+    "Naming the nylon-6,6 diacid as hexanoic acid. It is hexanedioic acid (two COOH groups)."
+   ],
+   "nsmqTips": [
+    "'Name the monomer of X' questions are common. Have the five addition polymers and their monomers as a fixed list.",
+    "Food-test riddles: listen for the colour word. Blue-black means starch, brick-red means reducing sugar, violet/purple means protein, grease spot means fat.",
+    "Degree-of-polymerisation numbers are chosen to divide neatly. If your answer is not a round number, recheck the monomer Mr."
+   ]
+  },
+  {
+   "topic": "Reaction mechanisms and spectroscopy",
+   "strand": "Chemistry of Carbon Compounds",
+   "university": true,
+   "summary": "How organic reactions happen step by step, shown with curly arrows: free-radical, nucleophilic substitution (SN1, SN2), elimination, electrophilic addition and substitution, and nucleophilic addition. It also covers how IR, NMR, mass spectrometry and UV–visible spectroscopy identify structures. NSMQ uses the basic mechanism ideas, and first-year university courses add rate laws, stereochemistry and spectral interpretation.",
+   "keyIdeas": [
+    "Homolytic fission gives radicals (one electron each); heterolytic fission gives ions. A curly arrow shows the movement of an electron pair, from electron-rich to electron-poor.",
+    "Nucleophiles donate an electron pair (OH⁻, CN⁻, NH₃, H₂O); electrophiles accept one (H⁺, NO₂⁺, Br^δ+, carbocations).",
+    "SN2: one step, backside attack, rate = k[RX][Nu], inversion of configuration. Favoured by methyl and primary substrates and polar aprotic solvents.",
+    "SN1: two steps through a carbocation, rate = k[RX], racemisation. Favoured by tertiary substrates and polar protic solvents.",
+    "Carbocation stability: 3° > 2° > 1° > methyl (alkyl groups donate electron density by induction and hyperconjugation). This explains Markovnikov addition and SN1 preference.",
+    "Electrophilic aromatic substitution: the electrophile attacks the π ring to give an arenium (Wheland) intermediate, then H⁺ is lost so aromaticity is restored.",
+    "Carbonyls undergo nucleophilic addition (e.g. HCN/CN⁻ gives a cyanohydrin), because the C of C=O is δ+.",
+    "IR identifies functional groups by bond vibrations. ¹H NMR gives H environments (number of signals), their type (chemical shift), relative numbers (integration) and neighbours (splitting). MS gives Mr and fragments."
+   ],
+   "formulas": [
+    {
+     "name": "Rate laws",
+     "formula": "SN2: rate = k[RX][Nu⁻]; SN1: rate = k[RX]",
+     "note": "Second order vs first order overall. E2 and E1 follow the same pattern."
+    },
+    {
+     "name": "Nitronium ion formation",
+     "formula": "HNO₃ + 2H₂SO₄ → NO₂⁺ + H₃O⁺ + 2HSO₄⁻",
+     "note": "NO₂⁺ is the electrophile in the nitration of benzene."
+    },
+    {
+     "name": "Halogen carrier",
+     "formula": "Br₂ + FeBr₃ → Br⁺[FeBr₄]⁻",
+     "note": "Generates the electrophile for aromatic bromination. AlCl₃ plays the same role in Friedel–Crafts reactions."
+    },
+    {
+     "name": "Beer–Lambert law",
+     "formula": "A = εcl",
+     "note": "A = absorbance (no unit), ε = molar absorptivity (dm³ mol⁻¹ cm⁻¹), c in mol dm⁻³, l = path length in cm."
+    },
+    {
+     "name": "Photon energy and wavenumber",
+     "formula": "E = hν = hc/λ = hcν̃, with ν̃ = 1/λ",
+     "note": "IR uses wavenumber in cm⁻¹. Higher wavenumber means a stiffer bond or lighter atoms."
+    },
+    {
+     "name": "Key IR absorptions (cm⁻¹)",
+     "formula": "O–H alcohol 3200–3550 (broad); O–H acid 2500–3300 (very broad); N–H 3300–3500; C–H 2850–3100; C≡N about 2250; C=O 1680–1750 (strong); C=C 1620–1680",
+     "note": "The region below 1500 cm⁻¹ is the fingerprint region."
+    },
+    {
+     "name": "¹H NMR chemical shifts (δ, ppm)",
+     "formula": "R–CH 0.9–1.7; H–C–C=O 2.0–2.6; H–C–O 3.3–4.3; alkene 4.5–6.5; aromatic 6.5–8.0; aldehyde 9–10; COOH 10–12",
+     "note": "Relative to TMS (δ = 0). Electronegative neighbours shift signals downfield (higher δ)."
+    },
+    {
+     "name": "n + 1 rule",
+     "formula": "Signal splits into n + 1 peaks, where n = equivalent H on adjacent carbons",
+     "note": "Peak intensities follow Pascal's triangle: doublet 1:1, triplet 1:2:1, quartet 1:3:3:1."
+    },
+    {
+     "name": "Carbon count from M+1 peak",
+     "formula": "Number of C ≈ [I(M+1) / I(M)] × 100 / 1.1",
+     "note": "¹³C is about 1.1% of natural carbon."
+    },
+    {
+     "name": "Halogen isotope patterns",
+     "formula": "One Cl: M : M+2 = 3 : 1; one Br: M : M+2 = 1 : 1",
+     "note": "From ³⁵Cl:³⁷Cl ≈ 3:1 and ⁷⁹Br:⁸¹Br ≈ 1:1."
+    },
+    {
+     "name": "Common MS fragments (m/z)",
+     "formula": "15 CH₃⁺; 29 C₂H₅⁺ or CHO⁺; 43 CH₃CO⁺ or C₃H₇⁺; 77 C₆H₅⁺; 91 C₇H₇⁺",
+     "note": "The base peak is the tallest peak; the molecular ion is the highest-m/z peak (except isotope peaks)."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Carbon count by dividing by 1.1",
+     "rule": "M+1 percentage ÷ 1.1 = number of carbons.",
+     "example": "M+1 is 4.4% of M: 4.4/1.1 = 4 carbons. M+1 is 6.6%: 6 carbons."
+    },
+    {
+     "name": "Halogen fingerprints",
+     "rule": "M, M+2 heights: 3:1 means one Cl; 1:1 means one Br; 9:6:1 (M, M+2, M+4) means two Cl; 1:2:1 means two Br.",
+     "example": "Peaks at m/z 78 and 80 in 3:1 ratio: one Cl. C₃H₇Cl has Mr 78 (with ³⁵Cl), so the compound is a chloropropane."
+    },
+    {
+     "name": "Ethyl and isopropyl signatures",
+     "rule": "Triplet (3H) + quartet (2H) means an ethyl group. Doublet (6H) + septet (1H) means an isopropyl group.",
+     "example": "Ethanol: CH₃ triplet, CH₂ quartet, OH singlet (3 signals, ratio 3:2:1)."
+    },
+    {
+     "name": "Count NMR signals by symmetry",
+     "rule": "Group H atoms that can be swapped by symmetry; each group is one signal.",
+     "example": "Propanone: 1 signal. Propan-2-ol: 3 (2 equivalent CH₃, CH, OH). Propan-1-ol: 4 (CH₃, CH₂, CH₂O, OH). Benzene: 1."
+    },
+    {
+     "name": "Nitrogen rule",
+     "rule": "An odd molecular-ion m/z means an odd number of N atoms (for C, H, O, N, halogen compounds).",
+     "example": "M⁺ at m/z 59 suggests one N: C₃H₉N (36 + 9 + 14 = 59), e.g. propylamine. M⁺ at 60 with no N could be propanol or ethanoic acid."
+    },
+    {
+     "name": "Mechanism from rate data",
+     "rule": "If doubling [Nu⁻] doubles the rate, it is SN2. If the rate does not change, it is SN1.",
+     "example": "(CH₃)₃CBr hydrolysis: doubling [OH⁻] leaves the rate unchanged, so SN1 through the stable tertiary carbocation."
+    }
+   ],
+   "traps": [
+    "Drawing a curly arrow from an atom's nucleus or from a positive centre. Arrows start at a lone pair or a bond, never at a positive charge.",
+    "Saying SN1 at a chiral centre gives inversion. SN2 gives inversion; SN1 gives (mostly) racemisation through a planar carbocation.",
+    "Taking the base peak to be the molecular ion. M⁺ is the highest-m/z (non-isotope) peak and may be small.",
+    "Splitting NMR signals by the O–H proton or by equivalent protons. Under normal conditions OH is a singlet, and equivalent H do not split each other.",
+    "Reading any absorption near 3300 cm⁻¹ as an alcohol. Check for the very broad acid O–H (2500–3300) paired with C=O at about 1710."
+   ],
+   "nsmqTips": [
+    "Mechanism questions in NSMQ are usually naming: 'free-radical substitution', 'electrophilic addition', 'nucleophilic substitution'. Match reactant type to mechanism: alkane + UV gives radical; alkene gives electrophilic addition; haloalkane + OH⁻ gives nucleophilic substitution; benzene gives electrophilic substitution.",
+    "For spectra, read the IR for the functional group first, then use MS for Mr, then NMR for the skeleton. That order narrows choices fastest.",
+    "Remember the electrophile names: NO₂⁺ nitronium, CH₃CO⁺ acylium, Br⁺ via FeBr₃."
+   ]
+  },
+  {
+   "topic": "Nuclear and environmental chemistry",
+   "strand": "Physical Chemistry",
+   "university": false,
+   "summary": "Radioactivity (α, β and γ decay, half-life, nuclear equations, fission and fusion) and the chemistry of the environment: air pollution, acid rain, the greenhouse effect, ozone depletion and water quality. NSMQ asks quick half-life arithmetic, decay-series counting and the chemistry behind current environmental issues such as galamsey mercury pollution.",
+   "keyIdeas": [
+    "α particle = ⁴₂He nucleus (A −4, Z −2). β⁻ particle = electron from the nucleus as n → p (A same, Z +1). γ = high-energy photon (no change in A or Z).",
+    "Penetration: α is stopped by paper, β by a few mm of aluminium, γ is only reduced by thick lead or concrete. Ionising power is the reverse order.",
+    "Half-life is the time for half the nuclei to decay. It is constant for a nuclide and does not depend on temperature, pressure, amount or chemical form.",
+    "Fission splits heavy nuclei (²³⁵U) with release of neutrons and energy (chain reaction); fusion joins light nuclei (H isotopes) and powers the Sun. Both release energy from mass defect. Ghana's research reactor GHARR-1 is at Kwabenya.",
+    "Uses: ¹⁴C dating, ⁶⁰Co radiotherapy and sterilisation, ¹³¹I thyroid treatment, ²⁴¹Am smoke detectors, tracers.",
+    "Acid rain comes from SO₂ (burning fossil fuels, smelting) and NOx (vehicle engines). It corrodes metals and limestone, harms plants and acidifies lakes.",
+    "Stratospheric ozone absorbs UV and is destroyed catalytically by Cl radicals from CFCs. The greenhouse effect (CO₂, CH₄, N₂O, H₂O, CFCs absorbing IR) is a different problem.",
+    "Water pollutants include heavy metals (Hg from galamsey gold amalgamation, Pb, Cd), excess nitrates and phosphates (eutrophication) and organic waste (raises BOD)."
+   ],
+   "formulas": [
+    {
+     "name": "Alpha decay",
+     "formula": "²³⁸₉₂U → ²³⁴₉₀Th + ⁴₂He",
+     "note": "Mass number falls by 4, atomic number by 2."
+    },
+    {
+     "name": "Beta-minus decay",
+     "formula": "¹⁴₆C → ¹⁴₇N + ⁰₋₁e (+ antineutrino)",
+     "note": "A neutron becomes a proton. β⁺ (positron) decay lowers Z by 1 instead."
+    },
+    {
+     "name": "Radioactive decay law",
+     "formula": "N = N₀(½)^(t/t½)",
+     "note": "N = nuclei (or mass, or activity) remaining after time t."
+    },
+    {
+     "name": "Decay constant and activity",
+     "formula": "λ = ln2 / t½ ≈ 0.693 / t½; A = λN",
+     "note": "A in becquerels (Bq = decays per second) when λ is in s⁻¹."
+    },
+    {
+     "name": "Counting α and β in a series",
+     "formula": "Number of α = ΔA / 4; number of β⁻ = 2(number of α) − ΔZ",
+     "note": "ΔA and ΔZ are the drops in mass and atomic number from parent to final product."
+    },
+    {
+     "name": "Mass–energy",
+     "formula": "E = Δmc²; 1 u ≡ 931.5 MeV",
+     "note": "Δm = mass defect = (mass of separate nucleons) − (mass of nucleus)."
+    },
+    {
+     "name": "Fission example",
+     "formula": "²³⁵₉₂U + ¹₀n → ¹⁴¹₅₆Ba + ⁹²₃₆Kr + 3¹₀n",
+     "note": "The released neutrons sustain the chain reaction. Moderators (graphite, water) slow neutrons; control rods (B, Cd) absorb them."
+    },
+    {
+     "name": "Acid rain chemistry",
+     "formula": "SO₂ + H₂O → H₂SO₃; 2SO₂ + O₂ + 2H₂O → 2H₂SO₄; 4NO₂ + O₂ + 2H₂O → 4HNO₃",
+     "note": "Unpolluted rain has pH ≈ 5.6 from dissolved CO₂; acid rain is below that."
+    },
+    {
+     "name": "Ozone depletion by CFCs",
+     "formula": "CFCl₃ → CFCl₂• + Cl• (UV); Cl• + O₃ → ClO• + O₂; ClO• + O → Cl• + O₂",
+     "note": "Cl• is regenerated, so one Cl atom can destroy thousands of O₃ molecules."
+    },
+    {
+     "name": "Water hardness",
+     "formula": "Temporary: Ca(HCO₃)₂ → CaCO₃ + H₂O + CO₂ (boiling); permanent: CaSO₄ + Na₂CO₃ → CaCO₃ + Na₂SO₄",
+     "note": "Temporary hardness is removed by boiling; permanent needs washing soda, ion exchange or distillation."
+    },
+    {
+     "name": "Carbon-14 half-life",
+     "formula": "t½(¹⁴C) = 5730 years",
+     "note": "Used to date once-living material up to about 50 000 years old."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "α first, then β",
+     "rule": "Get α from the drop in A (÷ 4), see how far Z would fall, and make up the difference with β⁻.",
+     "example": "²³⁸₉₂U → ²⁰⁶₈₂Pb: ΔA = 32 gives 8α, which would take Z to 92 − 16 = 76. Actual Z is 82, so 6β⁻ (check: 2×8 − 10 = 6)."
+    },
+    {
+     "name": "Halving chain",
+     "rule": "Count half-lives n = t/t½; remaining = start ÷ 2ⁿ; decayed fraction = 1 − 1/2ⁿ.",
+     "example": "80 g with t½ = 5 days, after 20 days: n = 4, so 80 → 40 → 20 → 10 → 5 g left; 15/16 has decayed."
+    },
+    {
+     "name": "Fraction to age",
+     "rule": "Recognise 1/2, 1/4, 1/8, 1/16 as 1, 2, 3, 4 half-lives.",
+     "example": "Wood with 25% of the original ¹⁴C: 2 half-lives = 2 × 5730 = 11 460 years. With 12.5% left: 3 half-lives = 17 190 years."
+    },
+    {
+     "name": "Balance tops and bottoms",
+     "rule": "Sum of mass numbers and sum of atomic numbers must match on both sides. Find the missing particle by subtraction.",
+     "example": "²³⁵U + n → ¹⁴¹Ba + ⁹²Kr + x n: 236 = 141 + 92 + x, so x = 3. Check Z: 92 = 56 + 36."
+    },
+    {
+     "name": "Mass defect to MeV",
+     "rule": "Multiply the mass defect in u by about 930 (931.5).",
+     "example": "Mass defect 0.030 u gives 0.030 × 931.5 ≈ 28 MeV, which is about the binding energy of ⁴He."
+    },
+    {
+     "name": "Which decay? Use the stability belt",
+     "rule": "Too many neutrons (above the belt): β⁻. Too few neutrons: β⁺ or electron capture. Z > 83: usually α.",
+     "example": "¹⁴C (8 n, 6 p) is neutron-rich, so it decays by β⁻ to ¹⁴N. ²²⁶Ra (Z = 88) decays by α to ²²²Rn."
+    }
+   ],
+   "traps": [
+    "Thinking heating or compressing a sample changes its half-life. Radioactive decay is unaffected by physical and chemical conditions.",
+    "Saying the β⁻ electron comes from the electron shells. It is created in the nucleus when a neutron turns into a proton.",
+    "Treating all rain below pH 7 as acid rain. Normal rain is about pH 5.6 because of dissolved CO₂.",
+    "Confusing ozone depletion (CFCs, UV getting through) with global warming (greenhouse gases trapping IR), or calling ground-level ozone protective (it is a pollutant).",
+    "Forgetting that γ emission changes neither mass number nor atomic number. It often follows α or β decay."
+   ],
+   "nsmqTips": [
+    "Half-life questions are built for mental halving. Count the halvings on your fingers and do not reach for logarithms unless t/t½ is not a whole number.",
+    "Decay-series questions ('how many α and β particles?') come up often. Answer α from ΔA/4 first; the β count follows in one subtraction.",
+    "Environmental riddles often use Ghanaian context: galamsey means mercury (Hg) pollution and turbid rivers; burning e-waste at Agbogbloshie means lead and dioxin pollution."
+   ]
+  },
+  {
+   "topic": "Laboratory practice and qualitative analysis",
+   "strand": "Physical Chemistry",
+   "university": false,
+   "summary": "Safe and accurate laboratory technique (titration, separation methods, handling apparatus), plus systematic tests to identify cations, anions and gases. The WASSCE practical and NSMQ both reward knowing exact reagents, observations and colours.",
+   "keyIdeas": [
+    "Rinse the burette with the solution it will hold and the pipette with the solution it will deliver. Rinse the conical flask with distilled water only.",
+    "Read the burette at eye level at the bottom of the meniscus (top of the meniscus for dark solutions such as KMnO₄). Record readings to 2 decimal places (±0.05 cm³). Concordant titres agree within about 0.10 cm³.",
+    "Choose the indicator by the strength of the acid and base. Strong acid–weak base: methyl orange. Weak acid–strong base: phenolphthalein. Weak–weak: no simple indicator works.",
+    "Separation: filtration (insoluble solid), evaporation/crystallisation (dissolved solid), simple distillation (solvent from solution), fractional distillation (miscible liquids), separating funnel (immiscible liquids), sublimation (NH₄Cl, I₂), chromatography (dyes, pigments).",
+    "Cations are identified by the colour of their hydroxide precipitates with NaOH(aq) and NH₃(aq), and whether the precipitate dissolves in excess. Flame tests give metal-ion colours.",
+    "Anions: halides with acidified AgNO₃, sulphate with acidified BaCl₂, carbonate with dilute acid (CO₂), nitrate with the brown-ring test or Devarda's alloy.",
+    "Safety: add acid to water, never water to concentrated acid. Use a fume cupboard for toxic gases (Cl₂, SO₂, NO₂, H₂S). Point test tubes away from people when heating."
+   ],
+   "formulas": [
+    {
+     "name": "Titration relation",
+     "formula": "CₐVₐ / (C_bV_b) = nₐ / n_b",
+     "note": "nₐ and n_b are the stoichiometric coefficients of acid and base in the balanced equation."
+    },
+    {
+     "name": "Mass concentration",
+     "formula": "Concentration (g dm⁻³) = concentration (mol dm⁻³) × M",
+     "note": "M = molar mass in g mol⁻¹."
+    },
+    {
+     "name": "Percentage error",
+     "formula": "% error = (absolute uncertainty / measured value) × 100",
+     "note": "A titre from two burette readings has an uncertainty of ±0.10 cm³."
+    },
+    {
+     "name": "Rf value",
+     "formula": "Rf = distance moved by spot / distance moved by solvent front",
+     "note": "Always between 0 and 1; measured from the baseline."
+    },
+    {
+     "name": "Hydroxide precipitates with NaOH(aq)",
+     "formula": "Cu²⁺ blue; Fe²⁺ dirty green (browns in air); Fe³⁺ reddish-brown; Zn²⁺, Al³⁺, Pb²⁺ white, soluble in excess; Ca²⁺, Mg²⁺ white, insoluble in excess; NH₄⁺ no precipitate, NH₃ on warming",
+     "note": "Add NaOH dropwise, then in excess."
+    },
+    {
+     "name": "Precipitates with NH₃(aq)",
+     "formula": "Cu²⁺ pale blue precipitate, dissolves in excess to deep blue [Cu(NH₃)₄]²⁺; Zn²⁺ white, dissolves in excess ([Zn(NH₃)₄]²⁺); Al³⁺ and Pb²⁺ white, insoluble in excess",
+     "note": "The key way to tell Zn²⁺ from Al³⁺ and Pb²⁺."
+    },
+    {
+     "name": "Halide test",
+     "formula": "Ag⁺ + Cl⁻ → AgCl (white); AgBr (cream); AgI (yellow)",
+     "note": "Acidify with dilute HNO₃ first. AgCl dissolves in dilute NH₃, AgBr in concentrated NH₃, AgI in neither."
+    },
+    {
+     "name": "Sulphate test",
+     "formula": "Ba²⁺ + SO₄²⁻ → BaSO₄ (white, insoluble in dilute HCl)",
+     "note": "Acidify with dilute HCl or HNO₃ first to remove carbonate and sulphite."
+    },
+    {
+     "name": "Nitrate tests",
+     "formula": "Brown ring (FeSO₄ + conc H₂SO₄ down the side); or warm with NaOH + Devarda's alloy (Al) to give NH₃",
+     "note": "The brown ring is [Fe(H₂O)₅NO]²⁺ at the junction of the layers."
+    },
+    {
+     "name": "Flame colours",
+     "formula": "Li crimson; Na golden yellow; K lilac; Ca brick red; Sr crimson red; Ba apple green; Cu blue-green",
+     "note": "Use a clean nichrome or platinum wire dipped in conc HCl."
+    },
+    {
+     "name": "Specific iron tests",
+     "formula": "Fe³⁺ + KSCN: blood-red; Fe²⁺ + K₃[Fe(CN)₆]: dark blue (Turnbull's blue)",
+     "note": "Confirmatory tests beyond NaOH."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "ZAP the amphoterics",
+     "rule": "Zn, Al and Pb hydroxides dissolve in excess NaOH. Then use NH₃: only Zn's precipitate dissolves in excess NH₃.",
+     "example": "A white precipitate with NaOH dissolves in excess NaOH, and with NH₃ the white precipitate also dissolves in excess: Zn²⁺."
+    },
+    {
+     "name": "One-line titration arithmetic",
+     "rule": "Cₐ = C_b × V_b × nₐ / (n_b × Vₐ). Keep volumes in cm³ because they cancel.",
+     "example": "20.0 cm³ H₂SO₄ neutralises 25.0 cm³ of 0.100 mol dm⁻³ NaOH (ratio 1:2): Cₐ = 0.100 × 25.0 × 1 / (2 × 20.0) = 2.5/40 = 0.0625 mol dm⁻³."
+    },
+    {
+     "name": "Indicator follows the strong partner",
+     "rule": "Phenolphthalein (alkaline range) when the base is strong; methyl orange (acidic range) when the acid is strong; either when both are strong.",
+     "example": "Ethanoic acid vs NaOH: phenolphthalein. HCl vs NH₃(aq): methyl orange. HCl vs NaOH: either."
+    },
+    {
+     "name": "Silver halide colour ladder",
+     "rule": "Down Group 17 the precipitate darkens (white, cream, yellow) and becomes less soluble in NH₃ (dilute, concentrated, insoluble).",
+     "example": "A cream precipitate that dissolves only in concentrated NH₃ means Br⁻."
+    },
+    {
+     "name": "Rf in your head",
+     "rule": "Rf = spot ÷ front. Turn it into a fraction you know.",
+     "example": "Spot at 3.0 cm, front at 7.5 cm: 3.0/7.5 = 2/5 = 0.40. A spot with Rf 0.6 and front 8.0 cm sits at 4.8 cm."
+    },
+    {
+     "name": "Iron by colour",
+     "rule": "Fe²⁺ is green (fresh); Fe³⁺ is rust-coloured. A green precipitate that browns on standing shows Fe²⁺ oxidising to Fe³⁺.",
+     "example": "NaOH gives a dirty green precipitate turning brown at the surface: Fe²⁺. An immediate reddish-brown precipitate: Fe³⁺."
+    }
+   ],
+   "traps": [
+    "Acidifying with HCl before the AgNO₃ halide test: it adds Cl⁻ and always gives a white precipitate. Use dilute HNO₃.",
+    "Adding an indicator to KMnO₄ titrations. KMnO₄ is self-indicating (colourless to permanent pale pink). Acidify with dilute H₂SO₄, not HCl, which KMnO₄ oxidises.",
+    "Rinsing the conical flask with the solution to be titrated. This adds extra moles; rinse it with distilled water only.",
+    "Mixing up Pb²⁺ and Al³⁺. Both give white precipitates soluble in excess NaOH and insoluble in excess NH₃; distinguish with KI (yellow PbI₂) or dilute HCl (white PbCl₂).",
+    "Reading the burette from above or below eye level (parallax), or recording to only one decimal place."
+   ],
+   "nsmqTips": [
+    "Qualitative-analysis riddles give a chain of observations. Lock the cation from NaOH/NH₃ behaviour, then the anion from the silver or barium test, and name the salt.",
+    "Flame-test colour questions are rapid-fire. Say 'lilac' for K and 'apple green' for Ba exactly; vague colours may not be accepted.",
+    "For titration calculations, write the mole ratio first and use the one-line formula. NSMQ numbers are chosen to give clean decimals like 0.0625 or 0.125."
+   ]
+  }
+ ]
+}

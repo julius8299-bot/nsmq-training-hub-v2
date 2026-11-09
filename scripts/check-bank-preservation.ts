@@ -1,10 +1,10 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { appendFileSync, copyFileSync, mkdirSync, mkdtempSync, writeFileSync } from "node:fs";
+import { appendFileSync, copyFileSync, mkdirSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { spawnSync } from "node:child_process";
 import { DatabaseSync, type SQLInputValue } from "node:sqlite";
-import { PrismaClient } from "@prisma/client";
+import { createPrismaClient } from "../lib/prisma-factory";
 import { mathematicsQuestions } from "../prisma/seed-data/mathematics";
 import { physicsQuestions } from "../prisma/seed-data/physics";
 import { chemistryQuestions } from "../prisma/seed-data/chemistry";
@@ -13,14 +13,12 @@ import { supplementalPatternQuestions } from "../prisma/seed-data/supplemental-p
 import { advancedFinalQuestions } from "../prisma/seed-data/advanced-final-questions";
 import { validateQuestions } from "../prisma/seed-data/question-factory";
 import { seedDatabase } from "../prisma/seed";
+import { importCatalog } from "../lib/questions/catalog-import";
 
 const baseline = "b8df959c6da9a42479da5a092900fe7a3e11358d";
-const preservedPaths = [
-  "prisma/seed-data", "app/page.tsx", "app/icon.tsx", "app/gallery",
-  "components/site-header.tsx", "lib/gallery-data.ts", "app/question-bank",
-  "app/practice", "app/full-contest", "app/contest", "app/speed-race",
-  "app/potd", "app/problem-of-the-day", "app/tf", "app/true-false", "app/riddles",
-];
+// Byte-for-byte frozen: the question catalog source, the gallery and the browser icon.
+// The round pages were rebuilt in V3 (answers hidden, server timing), so their branding is checked by content below.
+const preservedPaths = ["prisma/seed-data", "app/icon.tsx", "app/gallery", "lib/gallery-data.ts"];
 function git(args: string[]) {
   const result = spawnSync("git", args, { encoding: "utf8", windowsHide: true });
   assert.equal(result.status, 0, result.stderr || result.stdout);
@@ -35,7 +33,19 @@ for (const line of assetLines) {
 }
 const assetPaths = git(["ls-files", "--", "public"]).trim().split("\n");
 assert.equal(new Set(assetPaths.map((path) => path.toLowerCase())).size, assetPaths.length, "Case-colliding public assets cannot be served consistently on Windows.");
-console.log("PASS upstream branding, gallery, five-round pages, filters and catalog source unchanged");
+const read = (path: string) => readFileSync(path, "utf8");
+const branding: [string, RegExp][] = [
+  ["app/page.tsx", /\/brand\/ghanata-shs-logo\.jpg/], ["app/page.tsx", /Ghanata SHS/], ["app/page.tsx", /Carpe Diem/],
+  ["app/page.tsx", /GalleryCarousel/], ["app/page.tsx", /TrophySpotlight/], ["app/page.tsx", /ghanata-journey\.png/],
+  ["components/site-header.tsx", /\/brand\/nsmq-logo\.png/], ["components/site-header.tsx", /NSMQ Training Hub/],
+  ["components/auth-form.tsx", /Ghanata SHS Quiz Team/],
+];
+for (const [path, pattern] of branding) assert.match(read(path), pattern, "Branding missing from " + path);
+for (const page of ["app/practice/page.tsx", "app/contest/page.tsx", "app/speed-race/page.tsx", "app/problem-of-the-day/page.tsx", "app/true-false/page.tsx", "app/riddles/page.tsx", "app/question-bank/page.tsx"]) {
+  assert.ok(read(page).length > 0, page + " missing");
+}
+for (const alias of ["app/full-contest/page.tsx", "app/potd/page.tsx", "app/tf/page.tsx"]) assert.match(read(alias), /export \{ default \}/, alias);
+console.log("PASS Ghanata branding, gallery images and mappings, all five round pages and catalog source preserved");
 
 mkdirSync("work", { recursive: true });
 const folder = mkdtempSync(resolve("work", "preservation-test-"));
@@ -112,12 +122,15 @@ copyFileSync(legacyPath, upgradedPath);
 prisma(["db", "push", "--skip-generate"]);
 
 async function main() {
-  const db = new PrismaClient({ datasourceUrl: databaseUrl });
+  const db = createPrismaClient(databaseUrl);
   const previousFactoryOptIn = process.env.IMPORT_LEGACY_QUESTION_FACTORY;
   process.env.IMPORT_LEGACY_QUESTION_FACTORY = "false";
   try {
     await seedDatabase(db);
     await seedDatabase(db);
+    // The hosted-build import recognises every existing legacy row (including repeated items) and adds nothing.
+    const catalog = await importCatalog(db, questions, { reviewStatus: "LEGACY_UNREVIEWED", sourceName: "check" });
+    assert.deepEqual(catalog, { inserted: 0, skipped: 4226 });
     assert.equal(await db.question.count(), 4226);
     assert.equal(await db.question.count({ where: { isGhanaContext: true } }), 1001);
     assert.equal(await db.question.count({ where: { isGhanaContext: true, roundType: "RIDDLE" } }), 161);

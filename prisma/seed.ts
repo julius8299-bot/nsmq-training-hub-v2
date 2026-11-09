@@ -1,10 +1,11 @@
-import { PrismaClient } from "@prisma/client";
+import type { PrismaClient } from "@prisma/client";
+import { createPrismaClient } from "../lib/prisma-factory";
 import { pathToFileURL } from "node:url";
 import { ensureRoles } from "../lib/auth/service";
 import { importSeedQuestions } from "../lib/questions/seed-import";
 
 export async function seedDatabase(client?: PrismaClient) {
-  const database = client ?? new PrismaClient();
+  const database = client ?? createPrismaClient();
   try {
     await ensureRoles(database);
     // Explicit opt-in only: legacy factories are unreviewed and are never run at startup.

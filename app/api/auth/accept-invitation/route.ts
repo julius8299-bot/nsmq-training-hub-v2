@@ -10,7 +10,7 @@ export async function POST(request: NextRequest) {
     assertSameOrigin(request);
     const body = z.object({
       token: z.string().regex(/^[A-Za-z0-9_-]{43}$/),
-      email: emailSchema, name: z.string().trim().min(1).max(100), password: passwordSchema,
+      email: emailSchema, name: z.string().trim().max(100).optional(), password: passwordSchema,
     }).strict().parse(await readJsonRequest(request, 8192));
     await acceptInvitation(prisma, body);
     return NextResponse.json({ ok: true }, { status: 201 });

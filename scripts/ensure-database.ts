@@ -1,6 +1,6 @@
-import { PrismaClient } from "@prisma/client";
+import { createPrismaClient } from "../lib/prisma-factory";
 import { ensureRoles } from "../lib/auth/service";
-const prisma = new PrismaClient();
+const prisma = createPrismaClient();
 async function main() {
   await ensureRoles(prisma);
   console.log("Database ready. Existing training records retained.");

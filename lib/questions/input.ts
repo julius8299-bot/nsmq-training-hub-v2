@@ -23,7 +23,9 @@ export const questionInput = z.object({
   tags: arrayText.default("[]"), ghanaContext: boolean, isGhanaContext: boolean,
   isPastQuestion: boolean, isPrivateOnly: boolean,
   examinerFocus: z.string().max(10_000).nullish(), markingScheme: z.string().max(30_000).nullish(),
+  reviewerNote: z.string().max(10_000).nullish(),
+  preamble: z.string().max(10_000).nullish(),
   riddleClues: z.array(z.object({
-    clueNumber: z.number().int().min(1).max(5), clueText: text, points: z.number().optional(),
+    clueNumber: z.number().int().min(1).max(5).optional(), clueText: z.string().max(5000), points: z.number().optional(),
   })).max(5).optional(),
 });

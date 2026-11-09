@@ -1,0 +1,2650 @@
+{
+ "subject": "MATHEMATICS",
+ "topics": [
+  {
+   "topic": "Indices, surds and logarithms",
+   "strand": "Algebra",
+   "university": false,
+   "summary": "Indices, surds and logarithms are three views of the same idea: powers, roots and the exponents that undo them. They underpin almost every algebra round in NSMQ, where questions ask you to simplify an expression or solve an exponential equation in seconds.",
+   "keyIdeas": [
+    "A logarithm is an exponent: logₐx = y means aʸ = x, with a > 0, a ≠ 1 and x > 0.",
+    "a⁰ = 1 for any a ≠ 0, and a negative index means a reciprocal: a⁻ⁿ = 1/aⁿ.",
+    "A fractional index a^(m/n) means the nth root raised to the power m.",
+    "A surd is an irrational root such as √2; simplify by taking out square factors: √72 = √36 × √2 = 6√2.",
+    "Rationalise a denominator by multiplying by its conjugate: (√a + √b)(√a − √b) = a − b.",
+    "To solve an exponential equation, write both sides with the same base or take logs of both sides.",
+    "log means base 10 and ln means base e unless a base is written."
+   ],
+   "formulas": [
+    {
+     "name": "Product and quotient of powers",
+     "formula": "aᵐ × aⁿ = aᵐ⁺ⁿ ;  aᵐ ÷ aⁿ = aᵐ⁻ⁿ",
+     "note": "Same base only; add or subtract the indices."
+    },
+    {
+     "name": "Power of a power",
+     "formula": "(aᵐ)ⁿ = aᵐⁿ ;  (ab)ⁿ = aⁿbⁿ",
+     "note": "Multiply indices; the power spreads over a product, not a sum."
+    },
+    {
+     "name": "Zero and negative index",
+     "formula": "a⁰ = 1 ;  a⁻ⁿ = 1/aⁿ",
+     "note": "a ≠ 0."
+    },
+    {
+     "name": "Fractional index",
+     "formula": "a^(m/n) = (ⁿ√a)ᵐ = ⁿ√(aᵐ)",
+     "note": "Take the root first to keep numbers small: 32^(3/5) = 2³ = 8."
+    },
+    {
+     "name": "Rationalising a binomial surd",
+     "formula": "1/(√a + √b) = (√a − √b)/(a − b)",
+     "note": "Multiply top and bottom by the conjugate."
+    },
+    {
+     "name": "Nested square root",
+     "formula": "√(a + 2√b) = √x + √y, where x + y = a and xy = b",
+     "note": "Find two numbers with sum a and product b; for a − 2√b use √x − √y with x > y."
+    },
+    {
+     "name": "Laws of logarithms",
+     "formula": "logₐ(xy) = logₐx + logₐy ;  logₐ(x/y) = logₐx − logₐy ;  logₐ(xⁿ) = n logₐx",
+     "note": "Valid for x, y > 0."
+    },
+    {
+     "name": "Special values",
+     "formula": "logₐa = 1 ;  logₐ1 = 0 ;  a^(logₐx) = x",
+     "note": "A power and a log of the same base cancel."
+    },
+    {
+     "name": "Change of base",
+     "formula": "logₐx = logₘx / logₘa",
+     "note": "m is any convenient base, usually 10 or e."
+    },
+    {
+     "name": "Reciprocal rule",
+     "formula": "logₐx = 1 / logₓa",
+     "note": "Follows from change of base; useful when bases and arguments swap."
+    },
+    {
+     "name": "Number of digits",
+     "formula": "Number of digits of N = ⌊log N⌋ + 1",
+     "note": "For a positive integer N, using base-10 log."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Telescoping log chain",
+     "rule": "In logₐm × logₘn × logₙp each argument cancels the next base, leaving logₐp.",
+     "example": "log₂3 × log₃4 × log₄8 = log₂8 = 3."
+    },
+    {
+     "name": "Know your power tables",
+     "rule": "Memorise powers of 2 to 2¹⁰ = 1024, of 3 to 3⁶ = 729 and of 5 to 5⁵ = 3125, then rewrite every number as a prime power.",
+     "example": "27^(−2/3): 27 = 3³, so 3⁻² = 1/9. And 4ˣ = 32 means 2²ˣ = 2⁵, so x = 5/2."
+    },
+    {
+     "name": "Nested surd by sum–product",
+     "rule": "Write the inner surd as 2√b, then find two numbers adding to a and multiplying to b.",
+     "example": "√(7 + 4√3) = √(7 + 2√12): numbers with sum 7 and product 12 are 4 and 3, so the answer is 2 + √3. Check: (2 + √3)² = 7 + 4√3."
+    },
+    {
+     "name": "log 2 and log 3 anchors",
+     "rule": "Remember log 2 ≈ 0.3010 and log 3 ≈ 0.4771; build other logs from them (log 5 = 1 − log 2).",
+     "example": "Digits in 2¹⁰⁰: 100 × 0.30103 = 30.1, so ⌊30.1⌋ + 1 = 31 digits. log 6 = 0.3010 + 0.4771 = 0.7781."
+    },
+    {
+     "name": "Conjugate product on sight",
+     "rule": "(√a + √b)(√a − √b) is just a − b; never expand term by term.",
+     "example": "(√7 + √5)(√7 − √5) = 7 − 5 = 2, so 1/(√7 + √5) = (√7 − √5)/2."
+    }
+   ],
+   "traps": [
+    "Writing log(a + b) = log a + log b; the product rule works only for log(ab).",
+    "Writing √(a + b) = √a + √b; √(9 + 16) = 5, not 7.",
+    "Confusing −3² = −9 with (−3)² = 9 when a negative base is not in brackets.",
+    "Forgetting to check answers of log equations: any solution that makes a log argument zero or negative must be rejected.",
+    "Adding indices of different bases: 2³ × 3² is not 6⁵."
+   ],
+   "nsmqTips": [
+    "Questions often say 'simplify without a calculator'; convert every number to a prime power first.",
+    "For 'solve 2ˣ = 7' questions where no exact answer exists, give x = log 7 / log 2 and a decimal only if asked.",
+    "Say the final surd in simplest form with a rational denominator; quizmasters may not accept 1/√2 when √2/2 is expected."
+   ]
+  },
+  {
+   "topic": "Polynomials and factor theorem",
+   "strand": "Algebra",
+   "university": false,
+   "summary": "A polynomial is a sum of whole-number powers of x with constant coefficients. The remainder and factor theorems let you find remainders and factors without long division, a classic fast NSMQ question.",
+   "keyIdeas": [
+    "Division identity: f(x) = (divisor) × Q(x) + R(x), where the degree of R is less than the degree of the divisor.",
+    "Remainder theorem: dividing f(x) by (x − a) leaves remainder f(a).",
+    "Factor theorem: (x − a) is a factor of f(x) exactly when f(a) = 0.",
+    "For a divisor (ax − b), substitute x = b/a.",
+    "Dividing by a quadratic leaves a remainder of the form px + q.",
+    "Sum and product of roots come straight from the coefficients, without solving.",
+    "A polynomial of degree n has at most n real roots."
+   ],
+   "formulas": [
+    {
+     "name": "Remainder theorem",
+     "formula": "Remainder of f(x) ÷ (x − a) = f(a)",
+     "note": "For (x + a) substitute x = −a."
+    },
+    {
+     "name": "Linear divisor ax − b",
+     "formula": "Remainder of f(x) ÷ (ax − b) = f(b/a)",
+     "note": "Set the divisor to zero and substitute."
+    },
+    {
+     "name": "Factor theorem",
+     "formula": "f(a) = 0 ⇔ (x − a) is a factor",
+     "note": "Used to test candidate roots and find unknown coefficients."
+    },
+    {
+     "name": "Quadratic roots",
+     "formula": "α + β = −b/a ;  αβ = c/a",
+     "note": "For ax² + bx + c = 0."
+    },
+    {
+     "name": "Cubic roots",
+     "formula": "α + β + γ = −b/a ;  αβ + βγ + γα = c/a ;  αβγ = −d/a",
+     "note": "For ax³ + bx² + cx + d = 0."
+    },
+    {
+     "name": "Symmetric expressions",
+     "formula": "α² + β² = (α + β)² − 2αβ ;  α³ + β³ = (α + β)³ − 3αβ(α + β)",
+     "note": "Build any symmetric function from sum and product."
+    },
+    {
+     "name": "Difference of roots",
+     "formula": "(α − β)² = (α + β)² − 4αβ",
+     "note": "Gives |α − β| = √(b² − 4ac)/|a|."
+    },
+    {
+     "name": "Sum and difference of cubes",
+     "formula": "a³ + b³ = (a + b)(a² − ab + b²) ;  a³ − b³ = (a − b)(a² + ab + b²)",
+     "note": "Standard factorisations."
+    },
+    {
+     "name": "Rational root test",
+     "formula": "Any rational root p/q has p dividing the constant term and q dividing the leading coefficient",
+     "note": "Narrows down which values to try."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Coefficient sum = f(1)",
+     "rule": "If the coefficients add to zero, x = 1 is a root and (x − 1) is a factor.",
+     "example": "2x³ − 3x² − 5x + 6: 2 − 3 − 5 + 6 = 0, so (x − 1) is a factor; the rest is 2x² − x − 6 = (2x + 3)(x − 2)."
+    },
+    {
+     "name": "Alternating sum = f(−1)",
+     "rule": "If the even-power coefficients add to the same as the odd-power coefficients, x = −1 is a root.",
+     "example": "x³ + 2x² − x − 2: even powers 2 + (−2) = 0, odd powers 1 + (−1) = 0, so (x + 1) is a factor."
+    },
+    {
+     "name": "Synthetic division",
+     "rule": "Write the coefficients, bring down the first, multiply by a and add along the row; the last number is the remainder.",
+     "example": "x³ − 6x² + 11x − 6 ÷ (x − 1): 1, −6, 11, −6 → 1, −5, 6, 0. Quotient x² − 5x + 6 = (x − 2)(x − 3)."
+    },
+    {
+     "name": "Quadratic divisor by its roots",
+     "rule": "To divide by (x − a)(x − b), write remainder px + q and substitute x = a and x = b.",
+     "example": "x⁵ ÷ (x² − 1): p + q = 1 and −p + q = −1 give p = 1, q = 0, so the remainder is x."
+    },
+    {
+     "name": "Symmetric function without solving",
+     "rule": "Get α + β and αβ from the coefficients, then use an identity.",
+     "example": "Roots of x² − 5x + 3 = 0: α + β = 5, αβ = 3, so α² + β² = 25 − 6 = 19."
+    }
+   ],
+   "traps": [
+    "Sign error: (x + 2) is a factor means f(−2) = 0, not f(2) = 0.",
+    "For a divisor like (2x − 1) substituting x = 2 instead of x = 1/2.",
+    "Leaving out zero coefficients in synthetic division: x³ − 7x + 6 must be written 1, 0, −7, 6.",
+    "Taking the product of roots of a cubic as d/a; it is −d/a.",
+    "Giving a constant remainder when dividing by a quadratic; it can be linear."
+   ],
+   "nsmqTips": [
+    "Try x = 1 and x = −1 first; most quiz polynomials are built to factor with small integers.",
+    "When asked for an unknown coefficient, one substitution gives one linear equation; two factors give two equations.",
+    "Questions like 'find α² + β²' never need the roots themselves; quote sum and product aloud, then combine."
+   ]
+  },
+  {
+   "topic": "Equations and inequalities",
+   "strand": "Algebra",
+   "university": false,
+   "summary": "This topic covers solving linear, quadratic and simultaneous equations and finding the ranges of x that satisfy inequalities. NSMQ asks for roots, conditions on the discriminant, and solution intervals that must be stated quickly and precisely.",
+   "keyIdeas": [
+    "The discriminant b² − 4ac decides the roots: positive gives two real roots, zero gives one repeated root, negative gives no real roots.",
+    "A quadratic with roots α and β is x² − (α + β)x + αβ = 0.",
+    "Multiplying or dividing an inequality by a negative number reverses the sign.",
+    "For (x − α)(x − β) with α < β: the expression is negative between the roots and positive outside them.",
+    "Completing the square gives the turning point and the minimum or maximum value.",
+    "Squaring both sides can create false roots; always check in the original equation.",
+    "Two linear equations have a unique solution when their gradients differ."
+   ],
+   "formulas": [
+    {
+     "name": "Quadratic formula",
+     "formula": "x = [−b ± √(b² − 4ac)] / 2a",
+     "note": "For ax² + bx + c = 0, a ≠ 0."
+    },
+    {
+     "name": "Discriminant",
+     "formula": "D = b² − 4ac",
+     "note": "D > 0: two real roots; D = 0: equal roots; D < 0: no real roots; D a perfect square (rational coefficients): rational roots."
+    },
+    {
+     "name": "Completed square",
+     "formula": "ax² + bx + c = a(x + b/2a)² + (4ac − b²)/4a",
+     "note": "Turning point at x = −b/2a."
+    },
+    {
+     "name": "Extreme value",
+     "formula": "Min (a > 0) or max (a < 0) of ax² + bx + c = (4ac − b²)/4a",
+     "note": "Occurs at x = −b/2a."
+    },
+    {
+     "name": "Quadratic from roots",
+     "formula": "x² − (sum)x + (product) = 0",
+     "note": "Multiply through to clear fractions."
+    },
+    {
+     "name": "Modulus inequalities",
+     "formula": "|x − a| < b ⇔ a − b < x < a + b ;  |x − a| > b ⇔ x < a − b or x > a + b",
+     "note": "b > 0."
+    },
+    {
+     "name": "Quadratic inequality",
+     "formula": "(x − α)(x − β) < 0 ⇔ α < x < β ;  (x − α)(x − β) > 0 ⇔ x < α or x > β",
+     "note": "α < β and the x² coefficient is positive."
+    },
+    {
+     "name": "Unique solution of a linear system",
+     "formula": "a₁x + b₁y = c₁ and a₂x + b₂y = c₂ have one solution if a₁b₂ − a₂b₁ ≠ 0",
+     "note": "If it is zero the lines are parallel (no solution) or the same line (infinitely many)."
+    },
+    {
+     "name": "AM–GM inequality",
+     "formula": "(a + b)/2 ≥ √(ab) for a, b ≥ 0",
+     "note": "Equality when a = b; gives maximum products and minimum sums."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "a + b + c = 0",
+     "rule": "If the coefficients add to zero, the roots are 1 and c/a. If a − b + c = 0, the roots are −1 and −c/a.",
+     "example": "3x² − 8x + 5 = 0: 3 − 8 + 5 = 0, so x = 1 or x = 5/3."
+    },
+    {
+     "name": "Sum–product factoring",
+     "rule": "For x² − Sx + P, find two numbers adding to S and multiplying to P.",
+     "example": "x² − 13x + 42: 6 + 7 = 13 and 6 × 7 = 42, so x = 6 or 7."
+    },
+    {
+     "name": "Reciprocal roots",
+     "rule": "Reverse the coefficients: cx² + bx + a = 0 has roots 1/α and 1/β.",
+     "example": "2x² − 7x + 3 = 0 has roots 3 and 1/2, so 3x² − 7x + 2 = 0 has roots 1/3 and 2."
+    },
+    {
+     "name": "Symmetric simultaneous equations",
+     "rule": "If x + y = S and xy = P, then x and y are the roots of t² − St + P = 0.",
+     "example": "x + y = 7, xy = 12: t² − 7t + 12 = 0 gives (x, y) = (3, 4) or (4, 3)."
+    },
+    {
+     "name": "Test one point",
+     "rule": "After finding the critical values, test x = 0 (or any easy value) to see which region works.",
+     "example": "(x − 2)(x + 3) ≤ 0: at x = 0 the value is −6 ≤ 0, so the middle region works: −3 ≤ x ≤ 2."
+    },
+    {
+     "name": "Fixed sum, maximum product",
+     "rule": "With x + y fixed, xy is greatest when x = y.",
+     "example": "x + y = 20: maximum xy = 10 × 10 = 100. A 40 m fence encloses at most a 10 m × 10 m = 100 m² rectangle."
+    }
+   ],
+   "traps": [
+    "Dividing both sides by x and losing the root x = 0: x² = 3x gives x = 0 or x = 3.",
+    "Forgetting to reverse the inequality sign when multiplying by a negative: −2x > 6 gives x < −3.",
+    "Not checking squared equations: √(x + 2) = x gives x = 2 or −1, but x = −1 fails because √1 ≠ −1.",
+    "Using b instead of −b in the quadratic formula when b is negative.",
+    "Writing 'x > −3 and x < 2' when the answer is the union of two outer regions."
+   ],
+   "nsmqTips": [
+    "State inequality answers in full: say 'x is between −3 and 2 inclusive', not just the two numbers.",
+    "For 'find k so the equation has equal roots', set b² − 4ac = 0 at once; for 'real roots' use ≥ 0.",
+    "Spot a + b + c = 0 before reaching for the formula; quiz setters use it often."
+   ]
+  },
+  {
+   "topic": "Partial fractions and rational expressions",
+   "strand": "Algebra",
+   "university": false,
+   "summary": "Partial fractions split one rational expression into a sum of simpler fractions. The method is needed for integration, series summation and binomial expansions, and NSMQ often asks for a single coefficient that can be found almost instantly.",
+   "keyIdeas": [
+    "A rational expression is proper when the numerator has a lower degree than the denominator; divide first if it is improper.",
+    "Each distinct linear factor (x − a) gives a term A/(x − a).",
+    "A repeated factor (x − a)² gives two terms: A/(x − a) + B/(x − a)².",
+    "An irreducible quadratic factor (x² + k, k > 0) gives (Bx + C)/(x² + k).",
+    "The cover-up rule gives the coefficient of a non-repeated linear factor at once.",
+    "Coefficients can be found by substituting convenient x values or by comparing coefficients.",
+    "Fractions such as 1/(r(r + 1)) split into differences, so sums telescope."
+   ],
+   "formulas": [
+    {
+     "name": "Distinct linear factors",
+     "formula": "(px + q)/((x − a)(x − b)) = A/(x − a) + B/(x − b)",
+     "note": "a ≠ b."
+    },
+    {
+     "name": "Repeated linear factor",
+     "formula": "(px + q)/(x − a)² = A/(x − a) + B/(x − a)²",
+     "note": "Every power up to the highest must appear."
+    },
+    {
+     "name": "Quadratic factor",
+     "formula": "f(x)/((x − a)(x² + k)) = A/(x − a) + (Bx + C)/(x² + k)",
+     "note": "The quadratic's numerator is linear, not constant."
+    },
+    {
+     "name": "Improper fraction",
+     "formula": "If deg(numerator) ≥ deg(denominator): fraction = polynomial quotient + proper remainder fraction",
+     "note": "Divide first, then split the remainder."
+    },
+    {
+     "name": "Cover-up rule",
+     "formula": "Coefficient of 1/(x − a) = rest of the expression evaluated at x = a",
+     "note": "Only for a non-repeated linear factor, or the highest power of a repeated one."
+    },
+    {
+     "name": "Difference of two linear factors",
+     "formula": "1/((x − a)(x − b)) = [1/(a − b)] × [1/(x − a) − 1/(x − b)]",
+     "note": "Instant split for a constant numerator."
+    },
+    {
+     "name": "Consecutive product",
+     "formula": "1/(n(n + 1)) = 1/n − 1/(n + 1)",
+     "note": "The basis of telescoping sums."
+    },
+    {
+     "name": "Telescoping sum",
+     "formula": "Σ 1/(r(r + 1)) from r = 1 to n = 1 − 1/(n + 1) = n/(n + 1)",
+     "note": "All middle terms cancel."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Cover-up",
+     "rule": "Cover the factor (x − a), substitute x = a into what is left.",
+     "example": "(5x + 1)/((x − 1)(x + 2)): at x = 1, 6/3 = 2; at x = −2, (−9)/(−3) = 3. Answer 2/(x − 1) + 3/(x + 2)."
+    },
+    {
+     "name": "Check with x = 0",
+     "rule": "Substitute x = 0 into both sides to confirm the answer.",
+     "example": "For the example above: left side 1/(−2) = −0.5; right side 2/(−1) + 3/2 = −2 + 1.5 = −0.5. Correct."
+    },
+    {
+     "name": "Rewrite in powers of the repeated factor",
+     "rule": "For a linear numerator over (x − a)², write the numerator as k(x − a) + c.",
+     "example": "(x + 3)/(x − 1)²: x + 3 = (x − 1) + 4, so the answer is 1/(x − 1) + 4/(x − 1)²."
+    },
+    {
+     "name": "Large-x limit for the missing coefficient",
+     "rule": "Multiply by x and let x grow large: leading terms give a relation between coefficients.",
+     "example": "(2x² + x + 3)/((x + 1)(x² + 1)): cover-up gives A = 4/2 = 2; large x gives 2 = A + B, so B = 0; x = 0 gives 3 = A + C, so C = 1. Answer 2/(x + 1) + 1/(x² + 1)."
+    },
+    {
+     "name": "Telescoping on sight",
+     "rule": "Σ 1/(r(r + 1)) up to n is n/(n + 1).",
+     "example": "1/(1×2) + 1/(2×3) + … + 1/(99×100) = 99/100."
+    },
+    {
+     "name": "Constant-numerator split",
+     "rule": "For 1/((x − a)(x − b)), multiply the difference of the two simple fractions by 1/(a − b).",
+     "example": "1/((x − 2)(x − 5)) = (1/3)[1/(x − 5) − 1/(x − 2)]."
+    }
+   ],
+   "traps": [
+    "Splitting an improper fraction without dividing first.",
+    "Writing only B/(x − a)² for a repeated factor and missing A/(x − a).",
+    "Putting a constant over an irreducible quadratic instead of Bx + C.",
+    "Using cover-up for the lower-power term of a repeated factor; it only gives the top-power coefficient.",
+    "Sign slips when substituting a negative root such as x = −2."
+   ],
+   "nsmqTips": [
+    "Quiz questions often ask for one coefficient only; use cover-up and answer in seconds.",
+    "Confirm your answer by substituting x = 0 in your head before you speak.",
+    "Sums like 1/(1×3) + 1/(3×5) + … are telescoping in disguise: 1/((2r − 1)(2r + 1)) = ½[1/(2r − 1) − 1/(2r + 1)]."
+   ]
+  },
+  {
+   "topic": "Sequences and series",
+   "strand": "Algebra",
+   "university": false,
+   "summary": "Sequences are ordered lists of numbers and series are their sums, mainly arithmetic progressions (AP) and geometric progressions (GP). NSMQ loves nth-term and sum questions that reward pattern spotting over long formulas.",
+   "keyIdeas": [
+    "In an AP each term adds a common difference d; in a GP each term is multiplied by a common ratio r.",
+    "Three numbers a, b, c are in AP when 2b = a + c and in GP when b² = ac.",
+    "The sum of an AP equals the number of terms times the average of the first and last terms.",
+    "An infinite GP converges only when |r| < 1.",
+    "Any term can be found from the sums: aₙ = Sₙ − Sₙ₋₁.",
+    "Recurring decimals are infinite GPs and can be written as fractions.",
+    "Standard sums: Σr, Σr² and Σr³ have closed forms."
+   ],
+   "formulas": [
+    {
+     "name": "nth term of an AP",
+     "formula": "aₙ = a + (n − 1)d",
+     "note": "a is the first term, d the common difference."
+    },
+    {
+     "name": "Sum of an AP",
+     "formula": "Sₙ = n/2 [2a + (n − 1)d] = n/2 (a + l)",
+     "note": "l is the last term."
+    },
+    {
+     "name": "nth term of a GP",
+     "formula": "aₙ = arⁿ⁻¹",
+     "note": "r is the common ratio."
+    },
+    {
+     "name": "Sum of a GP",
+     "formula": "Sₙ = a(rⁿ − 1)/(r − 1) = a(1 − rⁿ)/(1 − r)",
+     "note": "r ≠ 1; use the second form when |r| < 1."
+    },
+    {
+     "name": "Sum to infinity",
+     "formula": "S∞ = a/(1 − r)",
+     "note": "Only when |r| < 1."
+    },
+    {
+     "name": "Arithmetic and geometric means",
+     "formula": "AM = (a + b)/2 ;  GM = √(ab)",
+     "note": "AM ≥ GM for positive a, b."
+    },
+    {
+     "name": "Term from sums",
+     "formula": "aₙ = Sₙ − Sₙ₋₁ ;  a₁ = S₁",
+     "note": "Works for any sequence."
+    },
+    {
+     "name": "Sum of first n integers",
+     "formula": "Σr = n(n + 1)/2",
+     "note": "r from 1 to n."
+    },
+    {
+     "name": "Sum of squares",
+     "formula": "Σr² = n(n + 1)(2n + 1)/6",
+     "note": "r from 1 to n."
+    },
+    {
+     "name": "Sum of cubes",
+     "formula": "Σr³ = [n(n + 1)/2]²",
+     "note": "The square of the sum of the first n integers."
+    },
+    {
+     "name": "Sum of first n odd numbers",
+     "formula": "1 + 3 + 5 + … + (2n − 1) = n²",
+     "note": "Quick check: 1 + 3 + 5 = 9."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Odd number of terms",
+     "rule": "Sum = n × middle term",
+     "example": "a = 23, d = 6, n = 17: middle = a₉ = 23 + 8 × 6 = 71, so S = 17 × 71 = 1207."
+    },
+    {
+     "name": "Pair from the ends",
+     "rule": "Number of terms × average of first and last.",
+     "example": "Multiples of 3 from 3 to 99: 33 terms, average (3 + 99)/2 = 51, sum = 33 × 51 = 1683."
+    },
+    {
+     "name": "Recurring decimal",
+     "rule": "A block of k repeating digits after the point equals the block over k nines.",
+     "example": "0.272727… = 27/99 = 3/11."
+    },
+    {
+     "name": "Read the AP from Sₙ",
+     "rule": "If Sₙ = pn² + qn, then d = 2p and a = p + q.",
+     "example": "Sₙ = 3n² + 2n: d = 6, a = 5, so aₙ = 6n − 1. Check: S₂ = 16 = 5 + 11."
+    },
+    {
+     "name": "Cubes are a square",
+     "rule": "1³ + 2³ + … + n³ = (1 + 2 + … + n)².",
+     "example": "1³ + … + 10³ = 55² = 3025."
+    },
+    {
+     "name": "Symmetric unknowns",
+     "rule": "Take three AP terms as a − d, a, a + d (GP: a/r, a, ar) so the sum or product simplifies.",
+     "example": "AP with sum 24 and product 440: 3a = 24 gives a = 8; 8(64 − d²) = 440 gives d² = 9, so the terms are 5, 8, 11."
+    }
+   ],
+   "traps": [
+    "Miscounting terms: 5, 10, …, 50 has 10 terms, not 9; use n = (last − first)/d + 1.",
+    "Using S∞ when |r| ≥ 1; the series then has no finite sum.",
+    "Writing aₙ = a + nd or arⁿ instead of using n − 1.",
+    "Confusing the nth term with the sum of n terms.",
+    "Losing the sign when r is negative: the terms alternate in sign."
+   ],
+   "nsmqTips": [
+    "Before using Sₙ, check if the number of terms is odd; the middle-term trick is faster.",
+    "For 'insert k means between a and b', the total number of terms is k + 2.",
+    "Say infinite GP answers as fractions; 0.333… = 1/3 is expected over a decimal."
+   ]
+  },
+  {
+   "topic": "Binomial theorem",
+   "strand": "Algebra",
+   "university": false,
+   "summary": "The binomial theorem expands (a + b)ⁿ without multiplying out brackets, using combinations as coefficients. NSMQ asks for specific coefficients, terms independent of x, and quick approximations such as (1.02)⁵.",
+   "keyIdeas": [
+    "The coefficients of (a + b)ⁿ are the numbers in row n of Pascal's triangle, ⁿC₀ to ⁿCₙ.",
+    "There are n + 1 terms, and the powers of a fall from n to 0 while powers of b rise from 0 to n.",
+    "The (r + 1)th term is ⁿCᵣ aⁿ⁻ʳ bʳ.",
+    "Coefficients are symmetric: ⁿCᵣ = ⁿCₙ₋ᵣ.",
+    "Substituting x = 1 gives the sum of the coefficients.",
+    "For negative or fractional n the expansion is infinite and valid only for |x| < 1 in (1 + x)ⁿ.",
+    "For small x, (1 + x)ⁿ ≈ 1 + nx."
+   ],
+   "formulas": [
+    {
+     "name": "Binomial expansion",
+     "formula": "(a + b)ⁿ = Σ ⁿCᵣ aⁿ⁻ʳ bʳ, r = 0 to n",
+     "note": "n a positive integer."
+    },
+    {
+     "name": "General term",
+     "formula": "Tᵣ₊₁ = ⁿCᵣ aⁿ⁻ʳ bʳ",
+     "note": "Term number is r + 1."
+    },
+    {
+     "name": "Combination",
+     "formula": "ⁿCᵣ = n! / [r!(n − r)!]",
+     "note": "Number of ways to choose r from n."
+    },
+    {
+     "name": "Symmetry",
+     "formula": "ⁿCᵣ = ⁿCₙ₋ᵣ",
+     "note": "¹⁰C₈ = ¹⁰C₂ = 45."
+    },
+    {
+     "name": "Pascal's rule",
+     "formula": "ⁿCᵣ + ⁿCᵣ₊₁ = ⁿ⁺¹Cᵣ₊₁",
+     "note": "Each entry is the sum of the two above it."
+    },
+    {
+     "name": "Sum of coefficients",
+     "formula": "ⁿC₀ + ⁿC₁ + … + ⁿCₙ = 2ⁿ",
+     "note": "Put a = b = 1."
+    },
+    {
+     "name": "Middle term",
+     "formula": "n even: one middle term, the (n/2 + 1)th ;  n odd: two middle terms",
+     "note": "The middle coefficient is the largest."
+    },
+    {
+     "name": "General binomial series",
+     "formula": "(1 + x)ⁿ = 1 + nx + n(n − 1)x²/2! + n(n − 1)(n − 2)x³/3! + …",
+     "note": "Any rational n; valid for |x| < 1."
+    },
+    {
+     "name": "Linear approximation",
+     "formula": "(1 + x)ⁿ ≈ 1 + nx",
+     "note": "x small; add the x² term for more accuracy."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Term independent of x",
+     "rule": "Write the power of x in the general term, set it to zero, solve for r.",
+     "example": "(x² + 1/x)⁶: power is 2(6 − r) − r = 12 − 3r = 0, so r = 4 and the term is ⁶C₄ = 15."
+    },
+    {
+     "name": "Pick the coefficient directly",
+     "rule": "Coefficient of xʳ in (1 + kx)ⁿ is ⁿCᵣ kʳ.",
+     "example": "x³ in (1 + 2x)⁵: ⁵C₃ × 2³ = 10 × 8 = 80."
+    },
+    {
+     "name": "Sum of coefficients by x = 1",
+     "rule": "Substitute x = 1 into the bracket.",
+     "example": "Sum of coefficients of (3x − 2)⁷ is (3 − 2)⁷ = 1."
+    },
+    {
+     "name": "Small-x approximation",
+     "rule": "Use 1 + nx + n(n − 1)x²/2 and drop the rest.",
+     "example": "(1.02)⁵ ≈ 1 + 5(0.02) + 10(0.0004) = 1.104 (true value 1.10408)."
+    },
+    {
+     "name": "Square roots near 1",
+     "rule": "√(1 + x) ≈ 1 + x/2 − x²/8.",
+     "example": "√1.04 ≈ 1 + 0.02 − 0.0002 = 1.0198 (true value 1.01980)."
+    },
+    {
+     "name": "Powers of 11 show Pascal rows",
+     "rule": "Rows 0 to 4 of Pascal's triangle are the digits of 11⁰ to 11⁴.",
+     "example": "11⁴ = 14641, so (a + b)⁴ has coefficients 1, 4, 6, 4, 1."
+    }
+   ],
+   "traps": [
+    "Forgetting to raise the constant in the second term to the power r, or dropping its sign: in (x − 2)⁵ the x³ term is ⁵C₂ × (−2)² x³ = 40x³.",
+    "Off-by-one: the 5th term uses r = 4.",
+    "Expanding (4 + x)^(1/2) without first writing it as 2(1 + x/4)^(1/2); the series needs the form (1 + small).",
+    "Giving the term (80x³) when the coefficient (80) was asked, or the reverse.",
+    "Using an infinite expansion outside its range of validity |x| < 1."
+   ],
+   "nsmqTips": [
+    "Say the general term aloud first; the rest is one line of arithmetic.",
+    "For approximations, state how many terms you used and round only at the end.",
+    "Memorise small combinations: ⁵C₂ = 10, ⁶C₃ = 20, ⁷C₃ = 35, ⁸C₄ = 70, ¹⁰C₃ = 120."
+   ]
+  },
+  {
+   "topic": "Functions, mappings and inverses",
+   "strand": "Algebra",
+   "university": false,
+   "summary": "A function assigns exactly one output to each input; composites chain functions and inverses undo them. NSMQ questions test composite values, inverse formulas and domain or range restrictions, often with rational functions.",
+   "keyIdeas": [
+    "A mapping is a function if every element of the domain has exactly one image.",
+    "A function has an inverse only if it is one-to-one on its domain.",
+    "fg(x) means f(g(x)): apply g first, then f.",
+    "The graph of f⁻¹ is the reflection of the graph of f in the line y = x.",
+    "Domain of f⁻¹ = range of f, and range of f⁻¹ = domain of f.",
+    "Even functions satisfy f(−x) = f(x) (symmetric about the y-axis); odd functions satisfy f(−x) = −f(x) (symmetric about the origin).",
+    "Exclude values that make a denominator zero, a square root negative or a log argument non-positive."
+   ],
+   "formulas": [
+    {
+     "name": "Composite function",
+     "formula": "(f∘g)(x) = f(g(x))",
+     "note": "In general f∘g ≠ g∘f."
+    },
+    {
+     "name": "Inverse property",
+     "formula": "f(f⁻¹(x)) = f⁻¹(f(x)) = x",
+     "note": "To find f⁻¹, write y = f(x), swap x and y, solve for y."
+    },
+    {
+     "name": "Inverse of a linear function",
+     "formula": "f(x) = ax + b ⇒ f⁻¹(x) = (x − b)/a",
+     "note": "a ≠ 0."
+    },
+    {
+     "name": "Inverse of a rational linear function",
+     "formula": "f(x) = (ax + b)/(cx + d) ⇒ f⁻¹(x) = (dx − b)/(−cx + a)",
+     "note": "Swap a and d, change the signs of b and c."
+    },
+    {
+     "name": "Excluded values",
+     "formula": "f(x) = (ax + b)/(cx + d): x ≠ −d/c and f(x) ≠ a/c",
+     "note": "c ≠ 0; a/c is the horizontal asymptote."
+    },
+    {
+     "name": "Inverse of a composite",
+     "formula": "(f∘g)⁻¹ = g⁻¹∘f⁻¹",
+     "note": "Undo in reverse order."
+    },
+    {
+     "name": "Even and odd tests",
+     "formula": "Even: f(−x) = f(x) ;  Odd: f(−x) = −f(x)",
+     "note": "x² and cos x are even; x³ and sin x are odd."
+    },
+    {
+     "name": "Counting functions",
+     "formula": "From a set of m elements to a set of n elements: nᵐ functions ;  n!/(n − m)! one-to-one functions",
+     "note": "One-to-one count needs m ≤ n."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Rational inverse by swap-and-negate",
+     "rule": "For (ax + b)/(cx + d), swap a and d and negate b and c.",
+     "example": "f(x) = (2x + 3)/(x − 4): f⁻¹(x) = (−4x − 3)/(−x + 2) = (4x + 3)/(x − 2)."
+    },
+    {
+     "name": "Inverse value without the inverse",
+     "rule": "To find f⁻¹(k), solve f(x) = k.",
+     "example": "f(x) = 3x + 5, f⁻¹(17): 3x + 5 = 17, so x = 4."
+    },
+    {
+     "name": "Range from the leading coefficients",
+     "rule": "(ax + b)/(cx + d) can never equal a/c.",
+     "example": "f(x) = (2x + 3)/(x − 4): domain x ≠ 4, range y ≠ 2."
+    },
+    {
+     "name": "Self-inverse pattern",
+     "rule": "(ax + b)/(cx − a) is its own inverse, because swapping a and −a gives it back.",
+     "example": "f(x) = (3x + 1)/(2x − 3) satisfies f⁻¹ = f, so f(f(5)) = 5 without any working."
+    },
+    {
+     "name": "Inside-out composites",
+     "rule": "Evaluate the inner function at the number first; never build the general formula if a value is asked.",
+     "example": "f(x) = x², g(x) = x + 3: f(g(2)) = f(5) = 25, while g(f(2)) = g(4) = 7."
+    },
+    {
+     "name": "Count functions by choices",
+     "rule": "Each of m inputs independently picks one of n outputs.",
+     "example": "From {a, b, c} to {0, 1}: 2³ = 8 functions; none is one-to-one because 3 > 2."
+    }
+   ],
+   "traps": [
+    "Treating f⁻¹(x) as 1/f(x).",
+    "Applying functions in the wrong order: fg(x) means do g first.",
+    "Stating an inverse of x² without restricting the domain to x ≥ 0 (or x ≤ 0).",
+    "Forgetting the excluded value in the range of a rational function.",
+    "Calling a one-to-many relation a function."
+   ],
+   "nsmqTips": [
+    "If only one value of a composite or inverse is asked, work with numbers, not formulas.",
+    "Memorise the swap-and-negate inverse; rational functions appear often.",
+    "When asked for a domain, say the excluded value clearly: 'all real x except 4'."
+   ]
+  },
+  {
+   "topic": "Sets, logic and binary operations",
+   "strand": "Algebra",
+   "university": false,
+   "summary": "Sets organise objects into collections, logic studies how statements combine, and binary operations define new ways of combining two numbers. NSMQ uses Venn-diagram counts, truth values of implications, and identity and inverse elements of a defined operation.",
+   "keyIdeas": [
+    "A set with n elements has 2ⁿ subsets, including the empty set and the set itself.",
+    "The empty set is a subset of every set.",
+    "De Morgan's laws turn the complement of a union into the intersection of complements, and the reverse.",
+    "An implication p → q is false only when p is true and q is false.",
+    "An implication is equivalent to its contrapositive, not to its converse or inverse.",
+    "A binary operation ∗ is commutative if a∗b = b∗a and associative if (a∗b)∗c = a∗(b∗c).",
+    "The identity e satisfies a∗e = e∗a = a; the inverse a⁻¹ satisfies a∗a⁻¹ = a⁻¹∗a = e."
+   ],
+   "formulas": [
+    {
+     "name": "Union of two sets",
+     "formula": "n(A ∪ B) = n(A) + n(B) − n(A ∩ B)",
+     "note": "Subtract the overlap counted twice."
+    },
+    {
+     "name": "Union of three sets",
+     "formula": "n(A ∪ B ∪ C) = n(A) + n(B) + n(C) − n(A ∩ B) − n(B ∩ C) − n(A ∩ C) + n(A ∩ B ∩ C)",
+     "note": "Inclusion–exclusion."
+    },
+    {
+     "name": "Complement",
+     "formula": "n(A′) = n(U) − n(A)",
+     "note": "U is the universal set."
+    },
+    {
+     "name": "Subsets",
+     "formula": "Subsets = 2ⁿ ;  proper subsets = 2ⁿ − 1",
+     "note": "n is the number of elements."
+    },
+    {
+     "name": "De Morgan's laws (sets)",
+     "formula": "(A ∪ B)′ = A′ ∩ B′ ;  (A ∩ B)′ = A′ ∪ B′",
+     "note": "Same pattern as logic."
+    },
+    {
+     "name": "De Morgan's laws (logic)",
+     "formula": "¬(p ∧ q) ≡ ¬p ∨ ¬q ;  ¬(p ∨ q) ≡ ¬p ∧ ¬q",
+     "note": "∧ is 'and', ∨ is 'or', ¬ is 'not'."
+    },
+    {
+     "name": "Implication and contrapositive",
+     "formula": "p → q ≡ ¬q → ¬p ≡ ¬p ∨ q",
+     "note": "Converse q → p and inverse ¬p → ¬q are equivalent to each other, not to p → q."
+    },
+    {
+     "name": "Truth table size",
+     "formula": "Rows = 2ⁿ",
+     "note": "n is the number of simple statements."
+    },
+    {
+     "name": "Identity element",
+     "formula": "a∗e = e∗a = a for all a",
+     "note": "Must hold on both sides."
+    },
+    {
+     "name": "Inverse element",
+     "formula": "a∗a⁻¹ = a⁻¹∗a = e",
+     "note": "Find e first."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Additive operation a∗b = a + b + k",
+     "rule": "Identity e = −k; inverse of a is −a − 2k.",
+     "example": "a∗b = a + b − 3: e = 3, inverse of 5 is −5 + 6 = 1. Check: 5∗1 = 5 + 1 − 3 = 3."
+    },
+    {
+     "name": "Operation a∗b = a + b + kab",
+     "rule": "Identity e = 0; inverse of a is −a/(1 + ka).",
+     "example": "a∗b = a + b + 2ab: inverse of 3 is −3/7. Check: 3 − 3/7 − 18/7 = 3 − 3 = 0."
+    },
+    {
+     "name": "Neither from the union",
+     "rule": "Neither = total − [n(A) + n(B) − both].",
+     "example": "50 students, 30 take A, 25 take B, 12 take both: union = 43, so neither = 7."
+    },
+    {
+     "name": "Exactly one of two",
+     "rule": "Exactly one = n(A) + n(B) − 2 n(A ∩ B).",
+     "example": "With the numbers above: 30 + 25 − 24 = 31 (also 43 − 12)."
+    },
+    {
+     "name": "Symmetry means commutative",
+     "rule": "If swapping a and b leaves the formula unchanged, the operation is commutative.",
+     "example": "a∗b = a² + b² − ab is symmetric, so commutative; a∗b = a − 2b is not, since 1∗2 = −3 but 2∗1 = 0."
+    },
+    {
+     "name": "Contrapositive flip",
+     "rule": "Negate both parts and reverse the arrow.",
+     "example": "'If a number is divisible by 4, it is even' is equivalent to 'If a number is not even, it is not divisible by 4'."
+    }
+   ],
+   "traps": [
+    "Subtracting the intersection twice when computing a union.",
+    "Treating the converse as equivalent to the original statement.",
+    "Checking the identity on one side only; a∗e = a and e∗a = a are both required.",
+    "Thinking one example proves associativity; examples only disprove it.",
+    "Forgetting the empty set and the set itself when counting subsets."
+   ],
+   "nsmqTips": [
+    "For Venn questions, start filling the diagram from the innermost overlap outward.",
+    "For binary operations, find the identity first and say it aloud; inverses follow in one step.",
+    "In logic riddles, an implication with a false hypothesis is automatically true."
+   ]
+  },
+  {
+   "topic": "Number theory and modular arithmetic",
+   "strand": "Number",
+   "university": false,
+   "summary": "Number theory studies whole numbers: primes, divisibility, HCF and LCM, number bases and remainders. Modular arithmetic gives remainders of huge powers quickly, a favourite NSMQ 'riddle' and speed-race question.",
+   "keyIdeas": [
+    "Every integer greater than 1 factors uniquely into primes; 1 is not a prime.",
+    "a ≡ b (mod n) means a and b leave the same remainder when divided by n.",
+    "Congruences can be added, subtracted, multiplied and raised to powers.",
+    "Last digits of powers repeat in cycles of length 1, 2 or 4.",
+    "HCF × LCM = product of the two numbers.",
+    "The Euclidean algorithm finds the HCF by repeated remainders.",
+    "A number in base b uses digits 0 to b − 1, and the place values are powers of b."
+   ],
+   "formulas": [
+    {
+     "name": "HCF and LCM",
+     "formula": "HCF(a, b) × LCM(a, b) = a × b",
+     "note": "Two numbers only."
+    },
+    {
+     "name": "Number of divisors",
+     "formula": "N = pᵃ qᵇ rᶜ ⇒ number of divisors = (a + 1)(b + 1)(c + 1)",
+     "note": "p, q, r distinct primes."
+    },
+    {
+     "name": "Sum of divisors",
+     "formula": "N = pᵃ qᵇ ⇒ σ(N) = (1 + p + … + pᵃ)(1 + q + … + qᵇ)",
+     "note": "Includes 1 and N."
+    },
+    {
+     "name": "Euclidean algorithm",
+     "formula": "HCF(a, b) = HCF(b, a mod b)",
+     "note": "Repeat until the remainder is 0; the last non-zero remainder is the HCF."
+    },
+    {
+     "name": "Congruence",
+     "formula": "a ≡ b (mod n) ⇔ n divides (a − b)",
+     "note": "Remainders are taken from 0 to n − 1."
+    },
+    {
+     "name": "Fermat's little theorem",
+     "formula": "aᵖ⁻¹ ≡ 1 (mod p)",
+     "note": "p prime and p does not divide a."
+    },
+    {
+     "name": "Base conversion",
+     "formula": "(dₖ…d₁d₀) in base b = dₖbᵏ + … + d₁b + d₀",
+     "note": "(1011) in base 2 = 8 + 0 + 2 + 1 = 11."
+    },
+    {
+     "name": "Divisibility rules",
+     "formula": "3 or 9: digit sum divisible by 3 or 9 ;  11: alternating digit sum divisible by 11 ;  4: last two digits ;  8: last three digits",
+     "note": "A number is divisible by 6 if divisible by 2 and 3."
+    },
+    {
+     "name": "Trailing zeros of n!",
+     "formula": "⌊n/5⌋ + ⌊n/25⌋ + ⌊n/125⌋ + …",
+     "note": "Counts factors of 5."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Last-digit cycles",
+     "rule": "Find the cycle of last digits and reduce the exponent mod the cycle length (use the 4th term when the remainder is 0).",
+     "example": "7²⁰²⁶: 7, 9, 3, 1 repeats; 2026 = 4 × 506 + 2, so the last digit is 9."
+    },
+    {
+     "name": "Find a power that is 1",
+     "rule": "Look for a small power ≡ 1, then split the exponent.",
+     "example": "2¹⁰⁰ mod 7: 2³ = 8 ≡ 1, and 100 = 3 × 33 + 1, so the remainder is 2."
+    },
+    {
+     "name": "Use −1",
+     "rule": "If a ≡ −1 (mod n), then even powers give 1 and odd powers give −1.",
+     "example": "2¹⁰⁰ mod 3: 2 ≡ −1, so (−1)¹⁰⁰ = 1. And 10⁹⁹ mod 11: 10 ≡ −1, so the remainder is −1 ≡ 10."
+    },
+    {
+     "name": "Digit sum gives mod 9",
+     "rule": "A number has the same remainder mod 9 as its digit sum.",
+     "example": "123456: 1 + 2 + 3 + 4 + 5 + 6 = 21 → 2 + 1 = 3, so the remainder on division by 9 is 3."
+    },
+    {
+     "name": "Divisor count from prime powers",
+     "rule": "Add 1 to each exponent and multiply.",
+     "example": "360 = 2³ × 3² × 5: (3 + 1)(2 + 1)(1 + 1) = 24 divisors."
+    },
+    {
+     "name": "Euclid by subtraction",
+     "rule": "Replace the larger number with its remainder until one divides the other.",
+     "example": "HCF(391, 299): 391 − 299 = 92; 299 = 3 × 92 + 23; 92 = 4 × 23, so HCF = 23."
+    }
+   ],
+   "traps": [
+    "Applying HCF × LCM = product to three numbers; it holds only for two.",
+    "Calling 1 a prime, or forgetting that 2 is the only even prime.",
+    "Giving negative remainders: −7 mod 5 is 3, not −2.",
+    "Using the 0th cycle position: when the exponent is a multiple of 4, take the 4th last digit (for 7, that is 1).",
+    "Writing digits that are not allowed in a base, such as 8 in base 8."
+   ],
+   "nsmqTips": [
+    "For remainders of large powers, look for a power equal to 1 or −1; this almost always exists.",
+    "Factor numbers into primes at once; divisor counts, HCF and LCM all follow.",
+    "In base problems, convert to base 10, do the arithmetic, then convert back, unless the numbers are tiny."
+   ]
+  },
+  {
+   "topic": "Matrices and determinants",
+   "strand": "Number",
+   "university": false,
+   "summary": "A matrix is a rectangular array of numbers that represents systems of equations and linear transformations. NSMQ asks for determinants, inverses, products and conditions for a matrix to be singular, usually with 2×2 or 3×3 matrices.",
+   "keyIdeas": [
+    "Matrices can be multiplied only when the number of columns of the first equals the number of rows of the second.",
+    "Matrix multiplication is not commutative: AB ≠ BA in general.",
+    "A square matrix is singular (has no inverse) exactly when its determinant is zero.",
+    "The determinant of a triangular matrix is the product of its diagonal entries.",
+    "Swapping two rows changes the sign of the determinant; a row of zeros or two proportional rows give zero.",
+    "|det A| is the area (2×2) or volume (3×3) scale factor of the transformation A.",
+    "A system AX = B has a unique solution X = A⁻¹B when det A ≠ 0."
+   ],
+   "formulas": [
+    {
+     "name": "Notation",
+     "formula": "(a b; c d) means the 2×2 matrix with first row a, b and second row c, d",
+     "note": "Semicolons separate rows."
+    },
+    {
+     "name": "2×2 determinant",
+     "formula": "det (a b; c d) = ad − bc",
+     "note": "Leading diagonal product minus the other diagonal."
+    },
+    {
+     "name": "2×2 inverse",
+     "formula": "(a b; c d)⁻¹ = [1/(ad − bc)] (d −b; −c a)",
+     "note": "Exists only if ad − bc ≠ 0."
+    },
+    {
+     "name": "3×3 determinant (first row)",
+     "formula": "det = a₁₁(a₂₂a₃₃ − a₂₃a₃₂) − a₁₂(a₂₁a₃₃ − a₂₃a₃₁) + a₁₃(a₂₁a₃₂ − a₂₂a₃₁)",
+     "note": "Cofactor signs follow + − +."
+    },
+    {
+     "name": "Product dimensions",
+     "formula": "(m × n)(n × p) gives m × p",
+     "note": "Inner sizes must match."
+    },
+    {
+     "name": "Determinant of a product",
+     "formula": "det(AB) = det A × det B",
+     "note": "Also det(A⁻¹) = 1/det A."
+    },
+    {
+     "name": "Scalar multiple",
+     "formula": "det(kA) = kⁿ det A",
+     "note": "A is n × n."
+    },
+    {
+     "name": "Transpose and inverse rules",
+     "formula": "(AB)ᵀ = BᵀAᵀ ;  (AB)⁻¹ = B⁻¹A⁻¹ ;  det(Aᵀ) = det A",
+     "note": "Order reverses."
+    },
+    {
+     "name": "Triangle area",
+     "formula": "Area = ½ |det (x₁ y₁ 1; x₂ y₂ 1; x₃ y₃ 1)|",
+     "note": "Zero area means the points are collinear."
+    },
+    {
+     "name": "2×2 eigenvalues",
+     "formula": "λ² − (trace A)λ + det A = 0",
+     "note": "λ₁ + λ₂ = trace, λ₁λ₂ = det."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "2×2 inverse in one move",
+     "rule": "Swap the diagonal entries, negate the off-diagonal entries, divide by the determinant.",
+     "example": "A = (3 2; 5 4): det = 12 − 10 = 2, A⁻¹ = ½(4 −2; −5 3) = (2 −1; −2.5 1.5)."
+    },
+    {
+     "name": "Triangular matrix",
+     "rule": "Multiply the diagonal entries.",
+     "example": "det (2 7 −1; 0 3 5; 0 0 4) = 2 × 3 × 4 = 24."
+    },
+    {
+     "name": "Spot a zero determinant",
+     "rule": "Look for a zero row, two equal rows or two proportional rows.",
+     "example": "(1 2 3; 2 4 6; 7 8 9): row 2 = 2 × row 1, so det = 0."
+    },
+    {
+     "name": "Rule of Sarrus",
+     "rule": "For 3×3: sum of the three down-right diagonal products minus the three up-right diagonal products.",
+     "example": "(1 2 3; 0 1 4; 5 6 0): down 0 + 40 + 0 = 40, up 15 + 24 + 0 = 39, det = 1."
+    },
+    {
+     "name": "Scaling the determinant",
+     "rule": "Each row scaled by k multiplies det by k, so the whole n × n matrix gives kⁿ.",
+     "example": "A is 3×3 with det A = 5: det(2A) = 2³ × 5 = 40."
+    },
+    {
+     "name": "Eigenvalues from trace and determinant",
+     "rule": "Find two numbers with sum = trace and product = det.",
+     "example": "(4 1; 2 3): trace 7, det 12 − 2 = 10, so λ = 2 and 5."
+    }
+   ],
+   "traps": [
+    "Assuming AB = BA.",
+    "Multiplying by the determinant instead of dividing when forming an inverse.",
+    "Writing det(kA) = k det A for an n × n matrix.",
+    "Forgetting the minus sign on the middle cofactor in a 3×3 expansion.",
+    "Thinking det(A + B) = det A + det B."
+   ],
+   "nsmqTips": [
+    "Check the determinant first; if it is zero the answer to 'find the inverse' is 'it does not exist'.",
+    "Expand a 3×3 determinant along the row or column with the most zeros.",
+    "For 'find k so the matrix is singular', set det = 0 and solve."
+   ]
+  },
+  {
+   "topic": "Complex numbers",
+   "strand": "Number",
+   "university": true,
+   "summary": "Complex numbers a + bi extend the reals so that every polynomial has roots, using i² = −1. At university level they are handled in polar and exponential form with De Moivre's theorem and roots of unity, all frequent NSMQ riddle material.",
+   "keyIdeas": [
+    "i² = −1, and powers of i repeat in the cycle i, −1, −i, 1.",
+    "A complex number a + bi is the point (a, b) on the Argand diagram.",
+    "The modulus |z| is the distance from the origin; the argument is the angle from the positive real axis, usually taken in (−π, π].",
+    "Multiplying complex numbers multiplies moduli and adds arguments.",
+    "Non-real roots of polynomials with real coefficients come in conjugate pairs.",
+    "The n nth roots of a complex number are equally spaced on a circle, 2π/n apart.",
+    "Euler's formula links exponentials and trigonometry: e^(iθ) = cos θ + i sin θ."
+   ],
+   "formulas": [
+    {
+     "name": "Modulus",
+     "formula": "|a + bi| = √(a² + b²)",
+     "note": "Distance from the origin."
+    },
+    {
+     "name": "Conjugate",
+     "formula": "z̄ = a − bi ;  z z̄ = |z|² = a² + b²",
+     "note": "Use the conjugate of the denominator to divide."
+    },
+    {
+     "name": "Division",
+     "formula": "(a + bi)/(c + di) = (a + bi)(c − di)/(c² + d²)",
+     "note": "Real denominator after multiplying."
+    },
+    {
+     "name": "Polar and exponential form",
+     "formula": "z = r(cos θ + i sin θ) = re^(iθ)",
+     "note": "r = |z|, θ = arg z; tan θ = b/a with the quadrant checked."
+    },
+    {
+     "name": "Products and quotients",
+     "formula": "|z₁z₂| = |z₁||z₂| ;  arg(z₁z₂) = arg z₁ + arg z₂ ;  |z₁/z₂| = |z₁|/|z₂| ;  arg(z₁/z₂) = arg z₁ − arg z₂",
+     "note": "Arguments may need adjusting by 2π."
+    },
+    {
+     "name": "De Moivre's theorem",
+     "formula": "(cos θ + i sin θ)ⁿ = cos nθ + i sin nθ",
+     "note": "So (re^(iθ))ⁿ = rⁿe^(inθ)."
+    },
+    {
+     "name": "nth roots",
+     "formula": "z^(1/n) = r^(1/n) [cos((θ + 2kπ)/n) + i sin((θ + 2kπ)/n)], k = 0, 1, …, n − 1",
+     "note": "Exactly n distinct roots."
+    },
+    {
+     "name": "Cube roots of unity",
+     "formula": "1, ω, ω² with ω = e^(2πi/3) = −½ + (√3/2)i ;  1 + ω + ω² = 0 ;  ω³ = 1",
+     "note": "The nth roots of unity always sum to 0 for n ≥ 2."
+    },
+    {
+     "name": "Euler's identity",
+     "formula": "e^(iπ) + 1 = 0",
+     "note": "θ = π in Euler's formula."
+    },
+    {
+     "name": "Circle in the Argand plane",
+     "formula": "|z − z₀| = r",
+     "note": "Circle with centre z₀ and radius r."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Powers of i",
+     "rule": "Reduce the exponent mod 4: remainder 0, 1, 2, 3 gives 1, i, −1, −i.",
+     "example": "i²⁰²⁷: 2027 = 4 × 506 + 3, so i²⁰²⁷ = −i."
+    },
+    {
+     "name": "(1 + i)² = 2i",
+     "rule": "Square (1 + i) first, then raise 2i to the remaining power.",
+     "example": "(1 + i)⁸ = (2i)⁴ = 16 i⁴ = 16; (1 + i)¹⁰ = (2i)⁵ = 32i."
+    },
+    {
+     "name": "Square root by modulus",
+     "rule": "For √(a + bi) = x + yi use x² − y² = a and x² + y² = |a + bi|, then the sign of b fixes the sign pairing.",
+     "example": "√(3 + 4i): |z| = 5, so x² = 4, y² = 1; b > 0 so ±(2 + i). Check: (2 + i)² = 3 + 4i."
+    },
+    {
+     "name": "Modulus of a quotient",
+     "rule": "Divide the moduli instead of dividing the numbers.",
+     "example": "|(3 + 4i)/(5 − 12i)| = 5/13."
+    },
+    {
+     "name": "Quadratic from a complex root",
+     "rule": "For root p + qi of a real quadratic: x² − 2px + (p² + q²) = 0.",
+     "example": "Root 2 + 3i: x² − 4x + 13 = 0."
+    },
+    {
+     "name": "Reduce powers of ω mod 3",
+     "rule": "ω³ = 1, so only the exponent mod 3 matters; then use 1 + ω + ω² = 0.",
+     "example": "1 + ω¹⁰⁰ + ω²⁰⁰ = 1 + ω + ω² = 0, since 100 ≡ 1 and 200 ≡ 2 (mod 3)."
+    }
+   ],
+   "traps": [
+    "Taking the argument of −1 − i as π/4 from tan θ = 1; it lies in the third quadrant, so arg = −3π/4.",
+    "Writing |a + bi| = a + b instead of √(a² + b²).",
+    "Using √(−4) × √(−9) = √36 = 6; the correct value is 2i × 3i = −6.",
+    "Assuming conjugate roots when the polynomial has non-real coefficients.",
+    "Applying De Moivre without first writing z in polar form, or forgetting to raise the modulus to the power n."
+   ],
+   "nsmqTips": [
+    "For large powers, change to polar form at once: (1 + i) = √2 e^(iπ/4) is the most common case.",
+    "State arguments in radians unless degrees are asked, and give the principal value.",
+    "For 'find the nth roots', say the first root and the spacing 2π/n; the rest follow."
+   ]
+  },
+  {
+   "topic": "Coordinate geometry and straight lines",
+   "strand": "Geometry",
+   "university": false,
+   "summary": "Coordinate geometry describes points and lines with numbers, so distances, gradients and areas become algebra. NSMQ asks for equations of lines, perpendicular distances and areas of triangles that can be done in a few lines of mental work.",
+   "keyIdeas": [
+    "The gradient is rise over run and equals tan θ, where θ is the angle the line makes with the positive x-axis.",
+    "Parallel lines have equal gradients; perpendicular lines have gradients whose product is −1.",
+    "A vertical line x = k has undefined gradient; a horizontal line y = k has gradient 0.",
+    "The line ax + by + c = 0 has gradient −a/b and y-intercept −c/b.",
+    "Three points are collinear if the triangle they form has zero area.",
+    "The perpendicular from a point to a line gives the shortest distance.",
+    "The centroid of a triangle is the average of its vertices."
+   ],
+   "formulas": [
+    {
+     "name": "Distance",
+     "formula": "d = √[(x₂ − x₁)² + (y₂ − y₁)²]",
+     "note": "Between (x₁, y₁) and (x₂, y₂)."
+    },
+    {
+     "name": "Midpoint",
+     "formula": "M = ((x₁ + x₂)/2, (y₁ + y₂)/2)",
+     "note": "Average the coordinates."
+    },
+    {
+     "name": "Internal division",
+     "formula": "P = ((mx₂ + nx₁)/(m + n), (my₂ + ny₁)/(m + n))",
+     "note": "P divides AB in the ratio m : n from A(x₁, y₁) to B(x₂, y₂)."
+    },
+    {
+     "name": "Gradient",
+     "formula": "m = (y₂ − y₁)/(x₂ − x₁) = tan θ",
+     "note": "x₁ ≠ x₂."
+    },
+    {
+     "name": "Point–gradient form",
+     "formula": "y − y₁ = m(x − x₁)",
+     "note": "Line through (x₁, y₁) with gradient m."
+    },
+    {
+     "name": "Intercept form",
+     "formula": "x/a + y/b = 1",
+     "note": "x-intercept a, y-intercept b."
+    },
+    {
+     "name": "Parallel and perpendicular",
+     "formula": "Parallel: m₁ = m₂ ;  perpendicular: m₁m₂ = −1",
+     "note": "Perpendicular gradient is −1/m."
+    },
+    {
+     "name": "Point-to-line distance",
+     "formula": "d = |ax₀ + by₀ + c| / √(a² + b²)",
+     "note": "From (x₀, y₀) to ax + by + c = 0."
+    },
+    {
+     "name": "Distance between parallel lines",
+     "formula": "d = |c₁ − c₂| / √(a² + b²)",
+     "note": "For ax + by + c₁ = 0 and ax + by + c₂ = 0."
+    },
+    {
+     "name": "Angle between two lines",
+     "formula": "tan θ = |(m₁ − m₂)/(1 + m₁m₂)|",
+     "note": "Gives the acute angle; if m₁m₂ = −1 the lines are perpendicular."
+    },
+    {
+     "name": "Triangle area",
+     "formula": "A = ½ |x₁(y₂ − y₃) + x₂(y₃ − y₁) + x₃(y₁ − y₂)|",
+     "note": "Zero means collinear."
+    },
+    {
+     "name": "Centroid",
+     "formula": "G = ((x₁ + x₂ + x₃)/3, (y₁ + y₂ + y₃)/3)",
+     "note": "Meeting point of the medians."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Perpendicular line by swapping coefficients",
+     "rule": "A line perpendicular to ax + by = c is bx − ay = k; put in the point to find k.",
+     "example": "Perpendicular to 3x + 4y = 7 through (1, 2): 4x − 3y = 4 − 6, so 4x − 3y = −2."
+    },
+    {
+     "name": "Parallel line by keeping coefficients",
+     "rule": "A line parallel to ax + by = c is ax + by = k; put in the point to find k.",
+     "example": "Parallel to 2x − 5y = 1 through (3, −1): 2(3) − 5(−1) = 11, so 2x − 5y = 11."
+    },
+    {
+     "name": "Pythagorean triples in distances",
+     "rule": "Divide the differences by a common factor and look for 3-4-5, 5-12-13 or 8-15-17.",
+     "example": "(1, 2) to (7, 10): differences 6 and 8 = 2 × (3, 4), so distance = 2 × 5 = 10."
+    },
+    {
+     "name": "Intercepts at a glance",
+     "rule": "For ax + by = c, the intercepts are c/a and c/b; the triangle with the axes has area ½ × |c/a| × |c/b|.",
+     "example": "3x + 4y = 12: intercepts 4 and 3, area 6, and the segment between them has length 5."
+    },
+    {
+     "name": "Shoelace area",
+     "rule": "Use the triangle-area formula as a single line of arithmetic.",
+     "example": "(1, 1), (4, 2), (2, 5): ½|1(2 − 5) + 4(5 − 1) + 2(1 − 2)| = ½|−3 + 16 − 2| = 5.5."
+    },
+    {
+     "name": "Collinearity by ratios",
+     "rule": "Points are collinear if the gradient between each pair is the same.",
+     "example": "(1, 2), (3, 6), (5, 10): each gradient is 2, so they lie on y = 2x."
+    }
+   ],
+   "traps": [
+    "Taking the perpendicular gradient as 1/m or −m instead of −1/m.",
+    "Mixing x₁ and x₂ in the section formula: the ratio number m multiplies the far point B.",
+    "Dropping the absolute value in the point-to-line distance and giving a negative length.",
+    "Reading the gradient of ax + by + c = 0 as a or −b/a; it is −a/b.",
+    "Treating a vertical line as having gradient 0."
+   ],
+   "nsmqTips": [
+    "Keep lines in the form ax + by = c; parallel and perpendicular lines then come from coefficient tricks.",
+    "Before using the distance formula, look for a Pythagorean triple in the differences.",
+    "Say equations in a clean integer form such as 4x − 3y + 2 = 0 unless another form is asked."
+   ]
+  },
+  {
+   "topic": "Circles and conic sections",
+   "strand": "Geometry",
+   "university": false,
+   "summary": "This topic covers the equation of a circle and the three other conics (parabola, ellipse, hyperbola), which you get by slicing a cone at different angles. NSMQ riddles and speed rounds often ask for a centre, radius, focus, eccentricity or tangent length straight from an equation, so you need to read these off at a glance.",
+   "keyIdeas": [
+    "A second-degree equation is a circle only if the x² and y² coefficients are equal and there is no xy term.",
+    "Divide through by the x² coefficient before reading off the centre and radius.",
+    "Eccentricity e sorts the conics: e = 0 circle, 0 < e < 1 ellipse, e = 1 parabola, e > 1 hyperbola.",
+    "The radius to the point of contact is perpendicular to the tangent there.",
+    "The perpendicular from the centre to a chord cuts the chord in half.",
+    "An angle in a semicircle is 90°, and angles in the same segment are equal.",
+    "Opposite angles of a cyclic quadrilateral add up to 180°.",
+    "For an ellipse c² = a² − b²; for a hyperbola c² = a² + b²."
+   ],
+   "formulas": [
+    {
+     "name": "Circle, centre–radius form",
+     "formula": "(x − a)² + (y − b)² = r²",
+     "note": "Centre (a, b), radius r."
+    },
+    {
+     "name": "Circle, general form",
+     "formula": "x² + y² + 2gx + 2fy + c = 0, centre (−g, −f), r = √(g² + f² − c)",
+     "note": "Only valid once the x² and y² coefficients are both 1. A real circle needs g² + f² − c > 0."
+    },
+    {
+     "name": "Tangent to x² + y² = r² at (x₁, y₁)",
+     "formula": "x x₁ + y y₁ = r²",
+     "note": "Replace x² by x x₁ and y² by y y₁. For the general form: x x₁ + y y₁ + g(x + x₁) + f(y + y₁) + c = 0."
+    },
+    {
+     "name": "Length of tangent from external point (x₁, y₁)",
+     "formula": "L = √(x₁² + y₁² + 2gx₁ + 2fy₁ + c)",
+     "note": "Substitute the point into the left side of the general equation (coefficients of x² and y² equal to 1)."
+    },
+    {
+     "name": "Chord length",
+     "formula": "Chord = 2√(r² − d²)",
+     "note": "d is the perpendicular distance from the centre to the chord."
+    },
+    {
+     "name": "Arc length and sector area",
+     "formula": "s = rθ, A = ½ r²θ",
+     "note": "θ in radians. In degrees: s = (θ/360) × 2πr, A = (θ/360) × πr²."
+    },
+    {
+     "name": "Parabola",
+     "formula": "y² = 4ax: focus (a, 0), directrix x = −a, latus rectum length 4a",
+     "note": "For x² = 4ay the focus is (0, a) and the directrix is y = −a."
+    },
+    {
+     "name": "Ellipse",
+     "formula": "x²/a² + y²/b² = 1 (a > b): c² = a² − b², e = c/a, foci (±c, 0)",
+     "note": "Vertices (±a, 0), area πab, directrices x = ±a/e."
+    },
+    {
+     "name": "Hyperbola",
+     "formula": "x²/a² − y²/b² = 1: c² = a² + b², e = c/a, foci (±c, 0), asymptotes y = ±(b/a)x",
+     "note": "e > 1. The rectangular hyperbola xy = c² has e = √2."
+    },
+    {
+     "name": "Distance from point to line",
+     "formula": "d = |ax₁ + by₁ + c| / √(a² + b²)",
+     "note": "Use it to test tangency: the line touches the circle when d = r."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Centre by halving and negating",
+     "rule": "In x² + y² + Dx + Ey + F = 0 the centre is (−D/2, −E/2) and r² = (D/2)² + (E/2)² − F.",
+     "example": "x² + y² − 6x + 8y − 11 = 0: centre (3, −4), r² = 9 + 16 + 11 = 36, so r = 6."
+    },
+    {
+     "name": "Plug in the point",
+     "rule": "Substitute the point into the left side of the circle equation (in = 0 form). Negative means inside, zero means on, positive means outside. If it is positive, its square root is the tangent length.",
+     "example": "Point (5, 4) and x² + y² − 2x − 4y − 4 = 0: 25 + 16 − 10 − 16 − 4 = 11 > 0, so the point is outside and the tangent length is √11."
+    },
+    {
+     "name": "Chord by Pythagorean triple",
+     "rule": "The half-chord, the distance d and the radius r form a right triangle. Look for 3-4-5, 5-12-13 or 8-15-17.",
+     "example": "r = 13 and the chord is 5 from the centre: the half-chord is 12, so the chord is 24."
+    },
+    {
+     "name": "Ellipse foci by triple",
+     "rule": "c = √(a² − b²), which is often a triple. Then e = c/a.",
+     "example": "x²/25 + y²/16 = 1: a = 5, b = 4, so c = 3, the foci are (±3, 0) and e = 3/5."
+    },
+    {
+     "name": "Parabola focus from 4a",
+     "rule": "Divide the coefficient of x (or y) by 4 to get a.",
+     "example": "y² = 12x: 4a = 12, a = 3, so the focus is (3, 0) and the directrix is x = −3. x² = 8y: a = 2, so the focus is (0, 2)."
+    },
+    {
+     "name": "Hyperbola focus by triple",
+     "rule": "c = √(a² + b²), which is again often a triple.",
+     "example": "x²/9 − y²/16 = 1: c = 5, so the foci are (±5, 0), e = 5/3 and the asymptotes are y = ±(4/3)x."
+    }
+   ],
+   "traps": [
+    "Reading the centre of 2x² + 2y² − 8x + 4y − 1 = 0 without first dividing by 2. The correct centre is (2, −1).",
+    "Getting the sign of the centre wrong: (x + 3)² means a = −3, not +3.",
+    "Using c² = a² − b² for a hyperbola, or c² = a² + b² for an ellipse.",
+    "Putting θ in degrees into s = rθ.",
+    "Giving r² when the question asks for r, or the reverse."
+   ],
+   "nsmqTips": [
+    "Questions are often a bare equation followed by 'find the radius' or 'find the eccentricity'. Halve, negate and square in your head, and say only the final number.",
+    "For tangency questions, compare the distance from the centre to the line with r instead of solving simultaneous equations.",
+    "Memorise the eccentricity ranges. True/false and riddle clues often use 'e = 1'."
+   ]
+  },
+  {
+   "topic": "Plane geometry, polygons and solids",
+   "strand": "Geometry",
+   "university": false,
+   "summary": "This topic covers angle facts, triangle and polygon properties, and the areas, surface areas and volumes of standard solids. It turns up across NSMQ rounds as quick-fire questions on polygon angles, Euler's formula and scale factors, all of which reward knowing standard results.",
+   "keyIdeas": [
+    "The exterior angles of any convex polygon add up to 360°.",
+    "In a regular polygon, each interior angle plus each exterior angle equals 180°.",
+    "An exterior angle of a triangle equals the sum of the two opposite interior angles.",
+    "Congruence tests: SSS, SAS, ASA (or AAS) and RHS. Similarity: AAA, sides in proportion, or SAS with the included sides in proportion.",
+    "If lengths scale by k, areas scale by k² and volumes by k³.",
+    "Euler's formula V − E + F = 2 holds for every convex polyhedron.",
+    "The five Platonic solids have 4, 6, 8, 12 and 20 faces.",
+    "The midpoint theorem: the segment joining the midpoints of two sides is parallel to the third side and half its length."
+   ],
+   "formulas": [
+    {
+     "name": "Interior angle sum",
+     "formula": "S = (n − 2) × 180°",
+     "note": "n is the number of sides."
+    },
+    {
+     "name": "Each exterior angle (regular polygon)",
+     "formula": "Exterior = 360°/n, interior = 180° − 360°/n",
+     "note": "Rearranged: n = 360°/exterior angle."
+    },
+    {
+     "name": "Number of diagonals",
+     "formula": "D = n(n − 3)/2",
+     "note": "Each vertex joins to n − 3 others, and each diagonal is counted twice."
+    },
+    {
+     "name": "Triangle area (two sides and the included angle)",
+     "formula": "A = ½ ab sin C",
+     "note": "C is the angle between sides a and b."
+    },
+    {
+     "name": "Heron's formula",
+     "formula": "A = √[s(s − a)(s − b)(s − c)], s = (a + b + c)/2",
+     "note": "Use when all three sides are known."
+    },
+    {
+     "name": "Equilateral triangle and regular hexagon",
+     "formula": "Triangle A = (√3/4)s², hexagon A = (3√3/2)s²",
+     "note": "A regular hexagon is six equilateral triangles."
+    },
+    {
+     "name": "Euler's polyhedron formula",
+     "formula": "V − E + F = 2",
+     "note": "V = vertices, E = edges, F = faces."
+    },
+    {
+     "name": "Cylinder",
+     "formula": "V = πr²h, curved SA = 2πrh, total SA = 2πr(r + h)",
+     "note": "Closed cylinder."
+    },
+    {
+     "name": "Cone",
+     "formula": "V = ⅓πr²h, curved SA = πrl, l = √(r² + h²)",
+     "note": "l is the slant height and h the vertical height."
+    },
+    {
+     "name": "Sphere and hemisphere",
+     "formula": "Sphere V = (4/3)πr³, SA = 4πr². Solid hemisphere total SA = 3πr²",
+     "note": "Hemisphere volume = (2/3)πr³."
+    },
+    {
+     "name": "Pyramid",
+     "formula": "V = ⅓ × base area × height",
+     "note": "Holds for any pyramid or cone."
+    },
+    {
+     "name": "Trapezium area",
+     "formula": "A = ½(a + b)h",
+     "note": "a and b are the parallel sides."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Sides from the interior angle",
+     "rule": "Exterior = 180° − interior, then n = 360/exterior.",
+     "example": "Each interior angle is 156°: exterior = 24°, so n = 360/24 = 15 sides."
+    },
+    {
+     "name": "Heron with nice triangles",
+     "rule": "Memorise the 13-14-15 triangle (area 84) and the 5-5-6 triangle (area 12). Scaling the sides by k scales the area by k².",
+     "example": "13, 14, 15: s = 21, A = √(21 × 8 × 7 × 6) = √7056 = 84. So 26, 28, 30 has area 84 × 4 = 336."
+    },
+    {
+     "name": "Scale-factor chain",
+     "rule": "Take the square root of an area ratio or the cube root of a volume ratio to get the length ratio, then raise it to the power you need.",
+     "example": "Similar solids with volumes 27 : 64: the length ratio is 3 : 4, so the surface area ratio is 9 : 16."
+    },
+    {
+     "name": "Edges from Euler",
+     "rule": "E = V + F − 2.",
+     "example": "A solid with 12 faces and 20 vertices has E = 20 + 12 − 2 = 30 edges (the dodecahedron)."
+    },
+    {
+     "name": "Diagonal count",
+     "rule": "n(n − 3)/2. Know a few: pentagon 5, hexagon 9, octagon 20, decagon 35.",
+     "example": "Decagon: 10 × 7/2 = 35 diagonals."
+    },
+    {
+     "name": "Sphere where V equals SA",
+     "rule": "V/SA = r/3, so the volume and surface area are numerically equal when r = 3.",
+     "example": "A sphere with SA = 36π has r = 3, so V = (4/3)π × 27 = 36π, the same number."
+    }
+   ],
+   "traps": [
+    "Using the slant height l instead of the vertical height h in the cone volume.",
+    "Giving the curved surface area when the question asks for the total surface area (or the reverse).",
+    "Scaling the area by k instead of k² when lengths are scaled by k.",
+    "Using 360°/n for the interior angle. That gives the exterior angle.",
+    "Treating a hemisphere's total surface area as 2πr² and forgetting the flat circular face."
+   ],
+   "nsmqTips": [
+    "Polygon riddles often give the ratio of interior to exterior angle. If the ratio is k : 1, then n = 2(k + 1). For example, 4 : 1 gives n = 10.",
+    "Know the V, E, F values of the Platonic solids: tetrahedron 4, 6, 4; cube 8, 12, 6; octahedron 6, 12, 8; dodecahedron 20, 30, 12; icosahedron 12, 30, 20.",
+    "Leave answers in terms of π unless the question asks for a decimal. It saves time and avoids rounding errors."
+   ]
+  },
+  {
+   "topic": "Trigonometry",
+   "strand": "Geometry",
+   "university": false,
+   "summary": "Trigonometry links angles to side ratios and covers identities, the sine and cosine rules, and trigonometric equations. It is one of the most heavily tested NSMQ maths areas, especially exact values, maximum and minimum values, and proving identities quickly.",
+   "keyIdeas": [
+    "CAST tells you which ratios are positive: all in the 1st quadrant, sin in the 2nd, tan in the 3rd, cos in the 4th.",
+    "Exact values: sin 30° = 1/2, sin 45° = √2/2, sin 60° = √3/2, tan 45° = 1, tan 60° = √3.",
+    "Complementary angles: sin θ = cos(90° − θ).",
+    "Radian conversion: π rad = 180°, so 1 rad ≈ 57.3°.",
+    "The range of a sin θ + b cos θ is from −√(a² + b²) to +√(a² + b²).",
+    "The sine rule has an ambiguous case (SSA): there can be two possible triangles.",
+    "The period of sin kx and cos kx is 360°/k; the period of tan kx is 180°/k."
+   ],
+   "formulas": [
+    {
+     "name": "Pythagorean identities",
+     "formula": "sin²θ + cos²θ = 1, 1 + tan²θ = sec²θ, 1 + cot²θ = cosec²θ",
+     "note": "Divide the first by cos²θ or sin²θ to get the other two."
+    },
+    {
+     "name": "Compound angles (sine)",
+     "formula": "sin(A ± B) = sin A cos B ± cos A sin B",
+     "note": "The sign matches the sign in the bracket."
+    },
+    {
+     "name": "Compound angles (cosine)",
+     "formula": "cos(A ± B) = cos A cos B ∓ sin A sin B",
+     "note": "The sign flips."
+    },
+    {
+     "name": "Compound angles (tangent)",
+     "formula": "tan(A ± B) = (tan A ± tan B)/(1 ∓ tan A tan B)",
+     "note": "Undefined when the denominator is 0."
+    },
+    {
+     "name": "Double angle",
+     "formula": "sin 2A = 2 sin A cos A; cos 2A = cos²A − sin²A = 2cos²A − 1 = 1 − 2sin²A; tan 2A = 2tan A/(1 − tan²A)",
+     "note": "Pick the form of cos 2A that leaves only one ratio."
+    },
+    {
+     "name": "Sine rule",
+     "formula": "a/sin A = b/sin B = c/sin C = 2R",
+     "note": "R is the circumradius. Use it with two angles and a side, or two sides and a non-included angle."
+    },
+    {
+     "name": "Cosine rule",
+     "formula": "a² = b² + c² − 2bc cos A",
+     "note": "Use it with three sides, or two sides and the included angle."
+    },
+    {
+     "name": "Harmonic form",
+     "formula": "a sin θ + b cos θ = R sin(θ + α), R = √(a² + b²), tan α = b/a",
+     "note": "Maximum R, minimum −R."
+    },
+    {
+     "name": "General solutions",
+     "formula": "sin θ = sin α → θ = nπ + (−1)ⁿα; cos θ = cos α → θ = 2nπ ± α; tan θ = tan α → θ = nπ + α",
+     "note": "n is any integer, θ in radians."
+    },
+    {
+     "name": "Sum to product",
+     "formula": "sin A + sin B = 2 sin[(A + B)/2] cos[(A − B)/2]; cos A + cos B = 2 cos[(A + B)/2] cos[(A − B)/2]",
+     "note": "Useful for solving equations such as sin 3x + sin x = 0."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Square-root pattern for exact sines",
+     "rule": "sin 0°, 30°, 45°, 60°, 90° = √0/2, √1/2, √2/2, √3/2, √4/2. Cosine is the same list in reverse. Fix the sign with CAST.",
+     "example": "sin 240°: reference angle 60°, third quadrant (only tan positive), so sin 240° = −√3/2."
+    },
+    {
+     "name": "Max and min by triple",
+     "rule": "The maximum of a sin θ + b cos θ is √(a² + b²). Spot the 3-4-5 or 5-12-13 triple.",
+     "example": "The maximum of 7 − (3 sin θ + 4 cos θ) is 7 − (−5) = 12, and the minimum is 7 − 5 = 2."
+    },
+    {
+     "name": "Ratios from a triple",
+     "rule": "Given one ratio of an acute angle, draw the triple triangle to read off the others.",
+     "example": "sin θ = 5/13 with θ acute: cos θ = 12/13 and tan θ = 5/12. If θ is obtuse, cos θ = −12/13."
+    },
+    {
+     "name": "Cosine rule at 60° and 120°",
+     "rule": "At 60°: c² = a² + b² − ab. At 120°: c² = a² + b² + ab.",
+     "example": "Sides 5 and 8 with 60° between them: c² = 25 + 64 − 40 = 49, so c = 7. Sides 3 and 5 with 120° between them: c² = 9 + 25 + 15 = 49, so c = 7."
+    },
+    {
+     "name": "15° and 75° values",
+     "rule": "sin 15° = cos 75° = (√6 − √2)/4 and cos 15° = sin 75° = (√6 + √2)/4. tan 15° = 2 − √3 and tan 75° = 2 + √3.",
+     "example": "sin(45° − 30°) = (√2/2)(√3/2) − (√2/2)(1/2) = (√6 − √2)/4."
+    },
+    {
+     "name": "Period and amplitude at sight",
+     "rule": "For y = A sin(kx) + D, the amplitude is |A|, the period is 360°/k, and the range is D − |A| to D + |A|.",
+     "example": "y = 3 sin 4x + 1: amplitude 3, period 90°, range −2 to 4."
+    }
+   ],
+   "traps": [
+    "Leaving the calculator in degree mode when the question uses radians (or the reverse).",
+    "Writing sin(A + B) = sin A + sin B.",
+    "Dividing both sides by cos θ (or sin θ) and losing the solutions where it equals 0. Factorise instead.",
+    "Missing the second triangle in the ambiguous SSA case of the sine rule.",
+    "Confusing sin²θ, which is (sin θ)², with sin(θ²)."
+   ],
+   "nsmqTips": [
+    "Simplify before you compute. For example, sin²20° + sin²70° = sin²20° + cos²20° = 1 straight away.",
+    "Many 'find the value' questions are standard identities in disguise. Look for complementary angles, double angles or the Pythagorean identities.",
+    "For maximum and minimum questions, give both the extreme value and the angle where it occurs if asked."
+   ]
+  },
+  {
+   "topic": "Vectors",
+   "strand": "Geometry",
+   "university": false,
+   "summary": "Vectors carry both magnitude and direction. This topic covers their algebra in 2D and 3D: magnitude, unit vectors, dot and cross products, and the section formula. NSMQ asks for quick magnitudes, perpendicularity conditions and areas, which are much faster with the shortcuts below.",
+   "keyIdeas": [
+    "The displacement from A to B is AB = b − a, where a and b are position vectors.",
+    "Two vectors are perpendicular exactly when their dot product is 0.",
+    "Two vectors are parallel when one is a scalar multiple of the other; then their cross product is 0.",
+    "The dot product gives a scalar and the cross product gives a vector perpendicular to both.",
+    "a × b = −(b × a): the cross product is not commutative.",
+    "i × j = k, j × k = i, k × i = j. Going the other way round gives a minus sign.",
+    "|a × b| is the area of the parallelogram formed by a and b."
+   ],
+   "formulas": [
+    {
+     "name": "Magnitude",
+     "formula": "|a| = √(x² + y² + z²)",
+     "note": "For a = xi + yj + zk."
+    },
+    {
+     "name": "Unit vector",
+     "formula": "â = a/|a|",
+     "note": "Same direction as a, length 1."
+    },
+    {
+     "name": "Dot product",
+     "formula": "a·b = |a||b| cos θ = a₁b₁ + a₂b₂ + a₃b₃",
+     "note": "Gives the angle between vectors: cos θ = a·b/(|a||b|)."
+    },
+    {
+     "name": "Cross product",
+     "formula": "a × b = (a₂b₃ − a₃b₂)i + (a₃b₁ − a₁b₃)j + (a₁b₂ − a₂b₁)k, |a × b| = |a||b| sin θ",
+     "note": "Works best as a 3 × 3 determinant with i, j, k in the top row."
+    },
+    {
+     "name": "Section formula (internal)",
+     "formula": "r = (n a + m b)/(m + n)",
+     "note": "P divides AB in the ratio m : n. Note the cross-over: a is multiplied by n, the far part of the ratio."
+    },
+    {
+     "name": "Midpoint and centroid",
+     "formula": "Midpoint = (a + b)/2, centroid = (a + b + c)/3",
+     "note": "Average the components."
+    },
+    {
+     "name": "Scalar projection",
+     "formula": "Projection of a onto b = a·b/|b|",
+     "note": "Vector projection = (a·b/|b|²) b."
+    },
+    {
+     "name": "Triangle area",
+     "formula": "Area = ½|AB × AC|; in 2D, ½|x₁y₂ − x₂y₁|",
+     "note": "For sides AB = (x₁, y₁) and AC = (x₂, y₂)."
+    },
+    {
+     "name": "Vector equation of a line",
+     "formula": "r = a + λd",
+     "note": "a is a point on the line and d its direction vector."
+    },
+    {
+     "name": "Scalar triple product",
+     "formula": "Volume of parallelepiped = |a·(b × c)|",
+     "note": "Zero means a, b and c lie in one plane."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Pythagorean quadruples",
+     "rule": "Memorise whole-number lengths: (1, 2, 2) → 3, (2, 3, 6) → 7, (1, 4, 8) → 9, (2, 6, 9) → 11, (4, 4, 7) → 9.",
+     "example": "|2i − 3j + 6k| = √(4 + 9 + 36) = 7, so the unit vector is (2i − 3j + 6k)/7."
+    },
+    {
+     "name": "Solve for k with the dot product",
+     "rule": "Set the dot product to 0 and solve the linear equation.",
+     "example": "(2, k, 3) perpendicular to (4, −2, 1): 8 − 2k + 3 = 0, so k = 5.5."
+    },
+    {
+     "name": "Centroid by averaging",
+     "rule": "Add the x-components and divide by 3, then do the same for y.",
+     "example": "A(1, 2), B(5, −4), C(3, 8): centroid = (9/3, 6/3) = (3, 2)."
+    },
+    {
+     "name": "2D area by cross-multiplication",
+     "rule": "Area = ½|x₁y₂ − x₂y₁| for two side vectors from the same vertex.",
+     "example": "Sides (3, 1) and (1, 4): area = ½|12 − 1| = 5.5 square units."
+    },
+    {
+     "name": "Collinearity by ratio",
+     "rule": "Check whether AC is a multiple of AB, component by component.",
+     "example": "A(1, 1), B(3, 5), C(6, 11): AB = (2, 4) and AC = (5, 10) = 2.5 AB, so the points are collinear."
+    },
+    {
+     "name": "Cyclic order for unit vectors",
+     "rule": "Read i → j → k → i round a circle. Going forwards is +, going backwards is −. Any vector crossed with itself gives 0.",
+     "example": "j × i = −k, k × j = −i, (i × j) × k = k × k = 0."
+    }
+   ],
+   "traps": [
+    "Writing AB = a − b instead of b − a.",
+    "Giving a vector answer for a dot product, or a scalar answer for a cross product.",
+    "Swapping the weights in the section formula. For ratio m : n, a is multiplied by n.",
+    "Measuring the angle between vectors placed head-to-tail. Both vectors must start from the same point.",
+    "Forgetting the minus sign on the j component when expanding the cross-product determinant."
+   ],
+   "nsmqTips": [
+    "Questions often give two vectors with a parameter and ask when they are perpendicular or parallel. Set up one equation and solve it in one line.",
+    "Check whether the numbers form a Pythagorean quadruple before you start on a square root.",
+    "For 'find the unit vector', say the components over the magnitude clearly, e.g. '(3i + 4j)/5'."
+   ]
+  },
+  {
+   "topic": "Differentiation and its applications",
+   "strand": "Calculus",
+   "university": false,
+   "summary": "Differentiation measures the instantaneous rate of change: gradients, velocities and turning points. In NSMQ you must differentiate standard functions in seconds and apply the result to tangents, maximum and minimum problems, and connected rates of change.",
+   "keyIdeas": [
+    "dy/dx is the gradient of the tangent at a point.",
+    "At a stationary point dy/dx = 0. If d²y/dx² > 0 it is a minimum, and if d²y/dx² < 0 it is a maximum.",
+    "If d²y/dx² = 0 the test fails. Check the sign of dy/dx on either side.",
+    "The gradients of a tangent and the normal at the same point multiply to −1.",
+    "Velocity v = ds/dt and acceleration a = dv/dt = d²s/dt².",
+    "A function is increasing where f'(x) > 0 and decreasing where f'(x) < 0.",
+    "Connected rates of change link through the chain rule: dy/dt = (dy/dx)(dx/dt)."
+   ],
+   "formulas": [
+    {
+     "name": "Power rule",
+     "formula": "d/dx (xⁿ) = n xⁿ⁻¹",
+     "note": "Works for any real n, e.g. d/dx √x = 1/(2√x)."
+    },
+    {
+     "name": "Product rule",
+     "formula": "d/dx (uv) = u'v + uv'",
+     "note": "For a product of two functions."
+    },
+    {
+     "name": "Quotient rule",
+     "formula": "d/dx (u/v) = (u'v − uv')/v²",
+     "note": "The order of the numerator matters."
+    },
+    {
+     "name": "Chain rule",
+     "formula": "dy/dx = (dy/du)(du/dx)",
+     "note": "For composite functions: differentiate the outside, then multiply by the derivative of the inside."
+    },
+    {
+     "name": "Trigonometric derivatives",
+     "formula": "d/dx sin x = cos x, d/dx cos x = −sin x, d/dx tan x = sec²x",
+     "note": "x in radians."
+    },
+    {
+     "name": "Exponential and logarithm",
+     "formula": "d/dx eˣ = eˣ, d/dx ln x = 1/x, d/dx aˣ = aˣ ln a",
+     "note": "Also d/dx ln f(x) = f'(x)/f(x)."
+    },
+    {
+     "name": "Equation of tangent",
+     "formula": "y − y₁ = m(x − x₁), m = f'(x₁)",
+     "note": "The normal has gradient −1/m."
+    },
+    {
+     "name": "Small changes",
+     "formula": "δy ≈ (dy/dx) δx",
+     "note": "Percentage error in xⁿ ≈ n × percentage error in x."
+    },
+    {
+     "name": "Connected rates",
+     "formula": "dA/dt = (dA/dr)(dr/dt)",
+     "note": "For example, a circle: dA/dt = 2πr dr/dt. A sphere: dV/dt = 4πr² dr/dt."
+    },
+    {
+     "name": "First principles",
+     "formula": "f'(x) = lim (h → 0) [f(x + h) − f(x)]/h",
+     "note": "The definition of the derivative."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Vertex of a quadratic",
+     "rule": "The turning point of ax² + bx + c is at x = −b/(2a). It is a minimum if a > 0 and a maximum if a < 0.",
+     "example": "y = 2x² − 12x + 5: x = 3, y = 18 − 36 + 5 = −13, so the minimum is (3, −13)."
+    },
+    {
+     "name": "Bracket power in one line",
+     "rule": "d/dx [f(x)]ⁿ = n[f(x)]ⁿ⁻¹ f'(x).",
+     "example": "d/dx (3x² + 1)⁵ = 5(3x² + 1)⁴ × 6x = 30x(3x² + 1)⁴."
+    },
+    {
+     "name": "Log of a function",
+     "rule": "d/dx ln f(x) = f'(x)/f(x): the derivative of the inside over the inside.",
+     "example": "d/dx ln(x² + 5x) = (2x + 5)/(x² + 5x). And d/dx ln(7x) = 1/x, because the 7 cancels."
+    },
+    {
+     "name": "Linear inside pops out",
+     "rule": "If the inside is kx + c, just multiply by k.",
+     "example": "d/dx sin 5x = 5 cos 5x, d/dx e^(3x) = 3e^(3x), d/dx (2x − 1)⁴ = 8(2x − 1)³."
+    },
+    {
+     "name": "Percentage error by the power",
+     "rule": "If y = kxⁿ, then a p% error in x gives about an n·p% error in y.",
+     "example": "The radius of a sphere is measured with a 2% error, so the volume (∝ r³) has about a 6% error."
+    },
+    {
+     "name": "Fixed sum gives maximum product at the halves",
+     "rule": "If x + y = S, then xy is largest when x = y = S/2. A fixed perimeter gives the largest rectangle as a square.",
+     "example": "Two numbers summing to 30 have maximum product 15 × 15 = 225. A 40 m fence encloses at most 10 × 10 = 100 m²."
+    }
+   ],
+   "traps": [
+    "Writing the quotient rule numerator as uv' − u'v, which gives the sign the wrong way round.",
+    "Forgetting to multiply by the derivative of the inside in the chain rule.",
+    "Assuming f''(x) = 0 always means a point of inflection.",
+    "Splitting ln(a + b) into ln a + ln b. Only ln(ab) splits like that.",
+    "Using the tangent gradient for the normal instead of −1/m."
+   ],
+   "nsmqTips": [
+    "Questions often ask for the gradient at a point. Differentiate in your head, substitute, and say only the number.",
+    "For maximum and minimum word problems, write the quantity as a function of one variable first. Then look for symmetry, such as squares or equal parts.",
+    "With rates of change, give units, e.g. cm²/s. Quizmasters may ask."
+   ]
+  },
+  {
+   "topic": "Integration and its applications",
+   "strand": "Calculus",
+   "university": false,
+   "summary": "Integration reverses differentiation. Applied as a definite integral, it gives areas, volumes of revolution, and displacement from velocity. NSMQ tests quick antiderivatives, symmetry arguments and standard area results.",
+   "keyIdeas": [
+    "An indefinite integral always needs + C.",
+    "A definite integral counts area below the x-axis as negative. To find total area, split the integral at the roots.",
+    "∫ₐᵇ f(x) dx = −∫ᵦᵃ f(x) dx, and ∫ₐᵃ f(x) dx = 0.",
+    "For an odd function, ∫₋ₐᵃ f(x) dx = 0. For an even function it equals 2∫₀ᵃ f(x) dx.",
+    "Displacement = ∫ v dt and velocity = ∫ a dt.",
+    "When you substitute in a definite integral, change the limits as well."
+   ],
+   "formulas": [
+    {
+     "name": "Power rule",
+     "formula": "∫ xⁿ dx = xⁿ⁺¹/(n + 1) + C, n ≠ −1",
+     "note": "For n = −1 use the log rule."
+    },
+    {
+     "name": "Reciprocal",
+     "formula": "∫ 1/x dx = ln|x| + C",
+     "note": "Keep the modulus."
+    },
+    {
+     "name": "Exponential",
+     "formula": "∫ e^(kx) dx = e^(kx)/k + C",
+     "note": "Divide by the coefficient of x."
+    },
+    {
+     "name": "Trigonometric",
+     "formula": "∫ sin kx dx = −cos kx/k + C, ∫ cos kx dx = sin kx/k + C, ∫ sec²x dx = tan x + C",
+     "note": "x in radians."
+    },
+    {
+     "name": "Linear inside",
+     "formula": "∫ (ax + b)ⁿ dx = (ax + b)ⁿ⁺¹/[a(n + 1)] + C",
+     "note": "n ≠ −1."
+    },
+    {
+     "name": "Log pattern",
+     "formula": "∫ f'(x)/f(x) dx = ln|f(x)| + C",
+     "note": "Use when the numerator is the derivative of the denominator, or a constant multiple of it."
+    },
+    {
+     "name": "Integration by parts",
+     "formula": "∫ u dv = uv − ∫ v du",
+     "note": "Choose u by LIATE: Log, Inverse trig, Algebraic, Trig, Exponential."
+    },
+    {
+     "name": "Area under and between curves",
+     "formula": "A = ∫ₐᵇ y dx; between curves A = ∫ₐᵇ (f − g) dx with f on top",
+     "note": "Split the integral at points where the curves cross."
+    },
+    {
+     "name": "Volume of revolution",
+     "formula": "About the x-axis V = π ∫ₐᵇ y² dx; about the y-axis V = π ∫ x² dy",
+     "note": "Don't forget π."
+    },
+    {
+     "name": "Mean value of a function",
+     "formula": "f̄ = [1/(b − a)] ∫ₐᵇ f(x) dx",
+     "note": "The average height of the curve over the interval."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Parabola segment area",
+     "rule": "The area between y = ax² + bx + c and a straight line (or the x-axis) crossing it at x = α and x = β is |a|(β − α)³/6.",
+     "example": "y = x(4 − x) and the x-axis: a = −1, roots 0 and 4, so the area is 4³/6 = 64/6 = 32/3. Check: ∫₀⁴ (4x − x²) dx = 32 − 64/3 = 32/3."
+    },
+    {
+     "name": "Odd function vanishes",
+     "rule": "Over limits −a to a, odd powers integrate to 0. Even powers give twice the integral from 0 to a.",
+     "example": "∫₋₂² (x³ + 5x + x²) dx = 0 + 0 + 2 × (8/3) = 16/3."
+    },
+    {
+     "name": "Spot derivative over function",
+     "rule": "If the numerator is a multiple of the derivative of the denominator, the answer is a log.",
+     "example": "∫ 2x/(x² + 1) dx = ln(x² + 1) + C. ∫ x/(x² + 1) dx = ½ ln(x² + 1) + C."
+    },
+    {
+     "name": "Reverse chain for a linear inside",
+     "rule": "Raise the power by one, then divide by the new power and by the coefficient of x.",
+     "example": "∫ (2x + 3)⁴ dx = (2x + 3)⁵/(5 × 2) + C = (2x + 3)⁵/10 + C."
+    },
+    {
+     "name": "Standard sine areas",
+     "rule": "∫₀^(π/2) sin x dx = 1 and ∫₀^π sin x dx = 2. The same holds for cos x over a matching quarter or half wave.",
+     "example": "The area under one arch of y = 3 sin x is 3 × 2 = 6."
+    },
+    {
+     "name": "x times eˣ pattern",
+     "rule": "∫ x eˣ dx = (x − 1)eˣ + C. More generally, ∫ x e^(kx) dx = e^(kx)(x/k − 1/k²) + C.",
+     "example": "∫₀¹ x eˣ dx = [(x − 1)eˣ]₀¹ = 0 − (−1) = 1."
+    }
+   ],
+   "traps": [
+    "Leaving out + C on an indefinite integral.",
+    "Using the power rule for x⁻¹, which would mean dividing by zero.",
+    "Forgetting to divide by k when integrating e^(kx), sin kx or cos kx.",
+    "Integrating straight across a root and letting the negative area cancel the positive area.",
+    "Leaving π out of volume-of-revolution answers, or squaring y incorrectly."
+   ],
+   "nsmqTips": [
+    "Check for symmetry before you integrate. Odd integrands over symmetric limits give 0 instantly.",
+    "For the area between a parabola and a line, find the roots and use |a|(β − α)³/6. It takes seconds.",
+    "Check your antiderivative by differentiating it in your head before you answer."
+   ]
+  },
+  {
+   "topic": "Limits and continuity",
+   "strand": "Calculus",
+   "university": true,
+   "summary": "A limit describes the value a function approaches. Continuity means there are no breaks, jumps or holes. This is first-year university analysis, and NSMQ uses it as tough riddles and problems built on standard limits, L'Hôpital's rule and continuity conditions.",
+   "keyIdeas": [
+    "lim (x → a) f(x) exists only if the left-hand and right-hand limits exist and are equal.",
+    "f is continuous at a when f(a) is defined and lim (x → a) f(x) = f(a).",
+    "The indeterminate forms are 0/0, ∞/∞, 0 × ∞, ∞ − ∞, 1^∞, 0⁰ and ∞⁰.",
+    "Polynomials, eˣ, sin x and cos x are continuous everywhere. Rational functions are continuous except where the denominator is 0.",
+    "Differentiable implies continuous, but not the other way round: |x| is continuous at 0 but not differentiable there.",
+    "Intermediate value theorem: a continuous f on [a, b] takes every value between f(a) and f(b).",
+    "Squeeze theorem: if g ≤ f ≤ h and g and h have the same limit L, then f has limit L."
+   ],
+   "formulas": [
+    {
+     "name": "Fundamental trigonometric limit",
+     "formula": "lim (x → 0) sin x / x = 1",
+     "note": "x in radians. Also lim tan x / x = 1."
+    },
+    {
+     "name": "Cosine limit",
+     "formula": "lim (x → 0) (1 − cos x)/x² = 1/2",
+     "note": "Comes from 1 − cos x ≈ x²/2."
+    },
+    {
+     "name": "Definition of e",
+     "formula": "lim (n → ∞) (1 + 1/n)ⁿ = e; lim (n → ∞) (1 + k/n)ⁿ = eᵏ",
+     "note": "The standard 1^∞ form."
+    },
+    {
+     "name": "Exponential and log limits",
+     "formula": "lim (x → 0) (eˣ − 1)/x = 1; lim (x → 0) ln(1 + x)/x = 1; lim (x → 0) (aˣ − 1)/x = ln a",
+     "note": "Small-x approximations."
+    },
+    {
+     "name": "Power difference",
+     "formula": "lim (x → a) (xⁿ − aⁿ)/(x − a) = n aⁿ⁻¹",
+     "note": "This is the derivative of xⁿ at a."
+    },
+    {
+     "name": "L'Hôpital's rule",
+     "formula": "If f/g → 0/0 or ∞/∞, then lim f/g = lim f'/g'",
+     "note": "Differentiate the top and bottom separately, not with the quotient rule. Repeat if still indeterminate."
+    },
+    {
+     "name": "Rational function at infinity",
+     "formula": "lim (x → ∞) P(x)/Q(x) = ratio of leading coefficients if the degrees are equal; 0 if deg P < deg Q; ±∞ if deg P > deg Q",
+     "note": "Compare degrees first."
+    },
+    {
+     "name": "Continuity condition",
+     "formula": "lim (x → a⁻) f = lim (x → a⁺) f = f(a)",
+     "note": "Use it to find unknown constants in piecewise functions."
+    },
+    {
+     "name": "Growth hierarchy",
+     "formula": "As x → ∞: ln x ≪ xⁿ ≪ eˣ ≪ x!",
+     "note": "For example lim xⁿ/eˣ = 0 and lim ln x / x = 0."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Degree comparison",
+     "rule": "For x → ∞, keep only the highest powers on the top and bottom.",
+     "example": "lim (3x² + 5)/(7x² − x) = 3/7. lim (2x + 1)/(x² + 4) = 0."
+    },
+    {
+     "name": "Small-angle swap",
+     "rule": "As x → 0, replace sin(kx) and tan(kx) by kx.",
+     "example": "lim sin 5x / sin 2x = 5x/2x = 5/2. lim tan 3x / x = 3."
+    },
+    {
+     "name": "Power difference pattern",
+     "rule": "(xⁿ − aⁿ)/(x − a) → n aⁿ⁻¹.",
+     "example": "lim (x → 2) (x⁵ − 32)/(x − 2) = 5 × 2⁴ = 80."
+    },
+    {
+     "name": "1^∞ exponent product",
+     "rule": "(1 + a/n)^(bn) → e^(ab).",
+     "example": "lim (n → ∞) (1 + 3/n)^(2n) = e⁶."
+    },
+    {
+     "name": "Spot a hidden derivative",
+     "rule": "[f(a + h) − f(a)]/h is just f'(a), so skip the conjugate algebra.",
+     "example": "lim (x → 0) (√(x + 9) − 3)/x is the derivative of √t at t = 9, which is 1/(2 × 3) = 1/6."
+    },
+    {
+     "name": "Match the pieces",
+     "rule": "For continuity at the join, set the two formulas equal at the boundary point.",
+     "example": "f(x) = kx + 1 for x < 2 and x² for x ≥ 2: continuity needs 2k + 1 = 4, so k = 3/2."
+    }
+   ],
+   "traps": [
+    "Applying L'Hôpital when the limit is not 0/0 or ∞/∞, which gives a wrong answer.",
+    "Using the quotient rule inside L'Hôpital instead of differentiating the numerator and denominator separately.",
+    "Using sin x / x → 1 with x in degrees. It only holds in radians.",
+    "Assuming 1^∞ = 1. It is indeterminate and often equals a power of e.",
+    "Ignoring one-sided behaviour, e.g. |x|/x has no limit at 0 because the two sides give −1 and +1."
+   ],
+   "nsmqTips": [
+    "First substitute directly. If you get a number, that is the answer. Only an indeterminate form needs the tricks.",
+    "Most quiz limits are one of about six standard forms: sin x/x, (1 + k/n)ⁿ, (xⁿ − aⁿ)/(x − a), (eˣ − 1)/x, degree comparison, or a hidden derivative. Identify which one first.",
+    "For piecewise continuity riddles, set up one equation at the boundary and solve it out loud."
+   ]
+  },
+  {
+   "topic": "Differential equations",
+   "strand": "Calculus",
+   "university": true,
+   "summary": "A differential equation relates a function to its derivatives. This topic covers first-order separable and linear equations, growth and decay models, and second-order constant-coefficient equations. It reaches university level and appears in NSMQ as recognition questions: identify the type, read off the solution, or check a proposed solution.",
+   "keyIdeas": [
+    "The order is the highest derivative present. The degree is the power of that highest derivative once the equation is free of radicals and fractions in the derivatives.",
+    "A general solution of an nth-order equation has n arbitrary constants.",
+    "Separable equations: put all the y terms with dy and all the x terms with dx, then integrate both sides.",
+    "dN/dt = kN gives exponential growth (k > 0) or decay (k < 0).",
+    "For ay'' + by' + cy = 0, try y = e^(mx). This gives the auxiliary equation am² + bm + c = 0.",
+    "For a non-homogeneous equation, general solution = complementary function + particular integral.",
+    "Initial or boundary conditions fix the arbitrary constants."
+   ],
+   "formulas": [
+    {
+     "name": "Separable equation",
+     "formula": "dy/dx = f(x)g(y) → ∫ dy/g(y) = ∫ f(x) dx",
+     "note": "Add the constant on one side straight after integrating."
+    },
+    {
+     "name": "Linear first-order",
+     "formula": "dy/dx + P(x)y = Q(x); IF = e^(∫P dx); y × IF = ∫ Q × IF dx",
+     "note": "IF stands for integrating factor. P is the coefficient of y once dy/dx has coefficient 1."
+    },
+    {
+     "name": "Exponential growth or decay",
+     "formula": "dN/dt = kN → N = N₀ e^(kt)",
+     "note": "Half-life (k < 0) or doubling time (k > 0) = ln 2/|k|."
+    },
+    {
+     "name": "Newton's law of cooling",
+     "formula": "dT/dt = −k(T − Tₛ) → T = Tₛ + (T₀ − Tₛ)e^(−kt)",
+     "note": "Tₛ is the surrounding temperature."
+    },
+    {
+     "name": "Second order, distinct real roots",
+     "formula": "m₁ ≠ m₂ real: y = A e^(m₁x) + B e^(m₂x)",
+     "note": "From am² + bm + c = 0 with b² − 4ac > 0."
+    },
+    {
+     "name": "Second order, repeated root",
+     "formula": "m₁ = m₂ = m: y = (A + Bx)e^(mx)",
+     "note": "b² − 4ac = 0."
+    },
+    {
+     "name": "Second order, complex roots",
+     "formula": "m = α ± iβ: y = e^(αx)(A cos βx + B sin βx)",
+     "note": "b² − 4ac < 0."
+    },
+    {
+     "name": "Simple harmonic motion",
+     "formula": "y'' + ω²y = 0 → y = A cos ωx + B sin ωx",
+     "note": "Period 2π/ω."
+    },
+    {
+     "name": "Logistic growth",
+     "formula": "dP/dt = rP(1 − P/K)",
+     "note": "P → K (the carrying capacity) as t → ∞. Growth is fastest at P = K/2."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Read roots by factor pairs",
+     "rule": "For y'' − sy' + py = 0, find two numbers with sum s and product p.",
+     "example": "y'' − 5y' + 6y = 0: roots 2 and 3, so y = Ae^(2x) + Be^(3x)."
+    },
+    {
+     "name": "Check a solution through the auxiliary equation",
+     "rule": "y = e^(mx) solves the equation exactly when m satisfies am² + bm + c = 0. Just substitute m.",
+     "example": "Is y = e^(−2x) a solution of y'' + y' − 2y = 0? m = −2: 4 − 2 − 2 = 0, so yes."
+    },
+    {
+     "name": "SHM at sight",
+     "rule": "y'' + ky = 0 with k > 0 means ω = √k and period 2π/√k.",
+     "example": "y'' + 9y = 0: ω = 3, y = A cos 3x + B sin 3x, period 2π/3."
+    },
+    {
+     "name": "Half-life with 0.693",
+     "rule": "t½ = 0.693/k, using ln 2 ≈ 0.693.",
+     "example": "Decay constant 0.1 per year gives t½ ≈ 6.93 years. After 3 half-lives, 1/8 remains."
+    },
+    {
+     "name": "Constant right-hand side",
+     "rule": "For ay'' + by' + cy = K with c ≠ 0, the particular integral is y = K/c.",
+     "example": "y'' + 3y' + 2y = 10: y_p = 10/2 = 5, so y = Ae^(−x) + Be^(−2x) + 5."
+    },
+    {
+     "name": "Limiting behaviour",
+     "rule": "As t → ∞, decaying exponentials vanish, leaving the steady state.",
+     "example": "Tea at 90 °C in a 30 °C room cools towards 30 °C. Logistic growth with K = 500 levels off at 500."
+    }
+   ],
+   "traps": [
+    "Adding the constant at the end after dividing or taking logs. ln y = x + C gives y = Ae^x, not e^x + C.",
+    "Forgetting to make the coefficient of dy/dx equal to 1 before finding P for the integrating factor.",
+    "Writing Ae^(mx) + Be^(mx) for a repeated root. The answer must be (A + Bx)e^(mx).",
+    "Leaving i in the final answer for complex roots instead of using cos and sin.",
+    "Confusing order with degree. (y')³ + y'' = 0 has order 2 and degree 1."
+   ],
+   "nsmqTips": [
+    "Many quiz items ask for the order, the degree or the number of arbitrary constants. Answer instantly from the highest derivative.",
+    "For second-order equations, say the auxiliary equation, its roots and then the solution. That is three short steps.",
+    "Verifying a proposed solution is faster than solving. Substitute and check whether you get zero."
+   ]
+  },
+  {
+   "topic": "Statistics",
+   "strand": "Data",
+   "university": false,
+   "summary": "Statistics summarises data with measures of centre (mean, median, mode) and spread (range, variance, standard deviation), alongside graphs and rank correlation. NSMQ tests quick calculations with small data sets and how statistics change when data are transformed.",
+   "keyIdeas": [
+    "Adding a constant to every value shifts the mean, median and mode but leaves the range, variance and SD unchanged.",
+    "Multiplying every value by k multiplies the mean and SD by |k| and the variance by k².",
+    "The median is the middle value of ordered data. With an even count, average the two middle values.",
+    "The mean is pulled towards outliers. The median resists them.",
+    "In a positively skewed distribution, typically mode < median < mean.",
+    "Use class boundaries, not class limits, for grouped data and histograms.",
+    "A histogram's bar area represents frequency, so frequency density = frequency/class width."
+   ],
+   "formulas": [
+    {
+     "name": "Mean",
+     "formula": "x̄ = Σx/n; grouped x̄ = Σfx/Σf",
+     "note": "Use class midpoints for grouped data."
+    },
+    {
+     "name": "Assumed mean",
+     "formula": "x̄ = A + Σfd/Σf, d = x − A",
+     "note": "Choose A near the centre to keep the numbers small."
+    },
+    {
+     "name": "Variance",
+     "formula": "σ² = Σ(x − x̄)²/n = Σx²/n − x̄²",
+     "note": "Population form, standard at SHS. The sample variance divides by n − 1."
+    },
+    {
+     "name": "Standard deviation",
+     "formula": "σ = √(Σf x²/Σf − x̄²)",
+     "note": "The square root of the variance."
+    },
+    {
+     "name": "Median position",
+     "formula": "Position = (n + 1)/2",
+     "note": "For ordered raw data."
+    },
+    {
+     "name": "Grouped median",
+     "formula": "Median = L + [(n/2 − F)/f] × c",
+     "note": "L = lower class boundary, F = cumulative frequency before the class, f = class frequency, c = class width."
+    },
+    {
+     "name": "Grouped mode",
+     "formula": "Mode = L + [d₁/(d₁ + d₂)] × c",
+     "note": "d₁ = modal frequency minus the previous class frequency, d₂ = modal frequency minus the next class frequency."
+    },
+    {
+     "name": "Coding",
+     "formula": "y = (x − a)/b → ȳ = (x̄ − a)/b, σ_y = σ_x/|b|",
+     "note": "Decode with x̄ = a + bȳ and σ_x = |b|σ_y."
+    },
+    {
+     "name": "Interquartile range",
+     "formula": "IQR = Q₃ − Q₁",
+     "note": "Semi-interquartile range = (Q₃ − Q₁)/2."
+    },
+    {
+     "name": "Spearman's rank correlation",
+     "formula": "ρ = 1 − 6Σd²/[n(n² − 1)]",
+     "note": "d is the difference in ranks. −1 ≤ ρ ≤ 1."
+    },
+    {
+     "name": "Pie chart sector",
+     "formula": "Angle = (f/Σf) × 360°",
+     "note": "Each sector is proportional to its frequency."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Transform rule",
+     "rule": "y = kx + c gives mean k x̄ + c and SD |k|σ. Adding c does not change the SD.",
+     "example": "Mean 12 and SD 3. Each value is doubled and then 5 is added: new mean 29, new SD 6, new variance 36."
+    },
+    {
+     "name": "Consecutive integers",
+     "rule": "The mean of an arithmetic sequence is (first + last)/2. The variance of 1, 2, …, n is (n² − 1)/12.",
+     "example": "1, 2, 3, 4, 5: mean 3, variance (25 − 1)/12 = 2. Check: squared deviations 4, 1, 0, 1, 4 sum to 10, and 10/5 = 2."
+    },
+    {
+     "name": "Missing value from the mean",
+     "rule": "Missing value = (mean × count) − sum of the known values.",
+     "example": "Five numbers have mean 8 and four of them are 6, 7, 9, 10: the fifth is 40 − 32 = 8."
+    },
+    {
+     "name": "Deviations that cancel",
+     "rule": "Pick a central A. If the deviations sum to 0, the mean is A.",
+     "example": "47, 52, 49, 55, 47 with A = 50: deviations −3, 2, −1, 5, −3 sum to 0, so the mean is 50."
+    },
+    {
+     "name": "SD of two values",
+     "rule": "For two values the population SD is half their difference.",
+     "example": "4 and 10: mean 7, each is 3 away, so σ = 3."
+    },
+    {
+     "name": "Degrees per item",
+     "rule": "Work out 360/total once, then multiply each frequency by it.",
+     "example": "72 students, so each student is 5°. 18 who like maths get 18 × 5 = 90°."
+    }
+   ],
+   "traps": [
+    "Finding the median without ordering the data first.",
+    "Mixing up variance and SD, or forgetting to take the square root.",
+    "Thinking that adding a constant changes the SD.",
+    "Using class limits instead of class boundaries in grouped formulas.",
+    "Dividing by n − 1 when the question expects the population formula (or the reverse). Check the convention."
+   ],
+   "nsmqTips": [
+    "Speed-round items use 3–6 numbers. Use an assumed mean or the symmetry of the data instead of adding everything up.",
+    "Transformation questions ('each score is increased by 5 and doubled') are common. Apply the operations in order to the mean, but only the scaling to the SD.",
+    "Say whether you are giving the variance or the SD so the answer is not misread."
+   ]
+  },
+  {
+   "topic": "Probability",
+   "strand": "Data",
+   "university": false,
+   "summary": "Probability measures how likely events are, using sample spaces, the addition and multiplication rules, conditional probability and the binomial distribution. NSMQ draws heavily on dice, coins, cards and bags of balls, so the standard counts and complement tricks are essential.",
+   "keyIdeas": [
+    "0 ≤ P(A) ≤ 1, and the probabilities of all outcomes in the sample space add up to 1.",
+    "Mutually exclusive events cannot both happen: P(A ∩ B) = 0.",
+    "Independent events do not affect each other: P(A ∩ B) = P(A)P(B).",
+    "Two events with non-zero probabilities cannot be both mutually exclusive and independent.",
+    "Without replacement, the denominator drops by 1 at each draw.",
+    "A standard deck has 52 cards: 4 suits of 13, 26 red, and 12 face cards (J, Q, K).",
+    "Two dice give 36 equally likely ordered outcomes; n coins give 2ⁿ outcomes."
+   ],
+   "formulas": [
+    {
+     "name": "Classical probability",
+     "formula": "P(A) = n(A)/n(S)",
+     "note": "Only valid when all outcomes are equally likely."
+    },
+    {
+     "name": "Complement",
+     "formula": "P(A') = 1 − P(A)",
+     "note": "Use for 'at least one' questions."
+    },
+    {
+     "name": "Addition rule",
+     "formula": "P(A ∪ B) = P(A) + P(B) − P(A ∩ B)",
+     "note": "For mutually exclusive events, drop the last term."
+    },
+    {
+     "name": "Multiplication rule (independent)",
+     "formula": "P(A ∩ B) = P(A) × P(B)",
+     "note": "This can also serve as a test for independence."
+    },
+    {
+     "name": "Conditional probability",
+     "formula": "P(A | B) = P(A ∩ B)/P(B)",
+     "note": "The probability of A given that B has occurred."
+    },
+    {
+     "name": "Bayes' theorem",
+     "formula": "P(A | B) = P(B | A)P(A)/P(B)",
+     "note": "Reverses the direction of a conditional probability."
+    },
+    {
+     "name": "Binomial probability",
+     "formula": "P(X = r) = ⁿCᵣ pʳ qⁿ⁻ʳ, q = 1 − p",
+     "note": "n independent trials, each with the same success probability p."
+    },
+    {
+     "name": "Binomial mean and variance",
+     "formula": "E(X) = np, Var(X) = npq",
+     "note": "SD = √(npq)."
+    },
+    {
+     "name": "Expected value",
+     "formula": "E(X) = Σ x P(X = x)",
+     "note": "The long-run average outcome."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "At least one = 1 − none",
+     "rule": "Work out the probability of no successes and subtract it from 1.",
+     "example": "At least one head in 3 coins: 1 − 1/8 = 7/8. At least one six in two dice throws: 1 − 25/36 = 11/36."
+    },
+    {
+     "name": "Two-dice sum count",
+     "rule": "The number of ways to roll a sum s (from 2 to 12) is 6 − |s − 7|.",
+     "example": "Sum 9: 6 − 2 = 4 ways, so P = 4/36 = 1/9. Sum 7: 6 ways, P = 1/6."
+    },
+    {
+     "name": "Chain the fractions without replacement",
+     "rule": "Multiply, reducing the top and bottom by 1 at each step.",
+     "example": "5 red and 3 blue balls, two red drawn: 5/8 × 4/7 = 20/56 = 5/14."
+    },
+    {
+     "name": "Card overlap",
+     "rule": "For 'A or B' with cards, add the counts and subtract the overlap before dividing by 52.",
+     "example": "King or heart: 4 + 13 − 1 = 16, so P = 16/52 = 4/13."
+    },
+    {
+     "name": "Odds to probability",
+     "rule": "Odds of a : b in favour give P = a/(a + b).",
+     "example": "Odds of 3 : 5 in favour give P = 3/8, and the probability against is 5/8."
+    },
+    {
+     "name": "Binomial mean and variance at sight",
+     "rule": "Mean = np and variance = np(1 − p).",
+     "example": "20 trials with p = 0.3: mean 6, variance 20 × 0.3 × 0.7 = 4.2."
+    }
+   ],
+   "traps": [
+    "Treating mutually exclusive as the same as independent.",
+    "Adding probabilities for 'A and B' when you should multiply, or multiplying for 'A or B' when you should add.",
+    "Forgetting to reduce the denominator when drawing without replacement.",
+    "Double-counting the overlap in 'or' questions.",
+    "Counting (2, 5) and (5, 2) as one outcome when listing the two-dice sample space."
+   ],
+   "nsmqTips": [
+    "For 'at least' and 'not all' questions, go straight to the complement.",
+    "Simplify the fraction before you speak. Quizmasters usually accept equivalent fractions, but a simplified answer is clearer.",
+    "Learn the deck counts (aces 4, face cards 12, red 26) and the two-dice table so you never have to list outcomes."
+   ]
+  },
+  {
+   "topic": "Permutations and combinations",
+   "strand": "Data",
+   "university": false,
+   "summary": "This topic is about systematic counting: arrangements where order matters (permutations) and selections where it does not (combinations), with restrictions, repeated items and circular layouts. NSMQ asks counting riddles that are quick with the right model and slow without it.",
+   "keyIdeas": [
+    "Multiplication principle: if a task has stages with m and n choices, there are m × n ways in total.",
+    "Use a permutation when order matters (arrangements, rankings, codes) and a combination when it does not (committees, hands, selections).",
+    "0! = 1, and ⁿP₀ = ⁿC₀ = 1.",
+    "ⁿPᵣ = r! × ⁿCᵣ.",
+    "Items that must be together: treat them as one block, then multiply by the internal arrangements.",
+    "'Not together' = total − together.",
+    "For 'at least' selections, use the complement or add the separate cases."
+   ],
+   "formulas": [
+    {
+     "name": "Factorial",
+     "formula": "n! = n × (n − 1) × … × 2 × 1, 0! = 1",
+     "note": "The number of arrangements of n distinct objects in a line."
+    },
+    {
+     "name": "Permutations",
+     "formula": "ⁿPᵣ = n!/(n − r)!",
+     "note": "Ordered arrangements of r objects taken from n."
+    },
+    {
+     "name": "Combinations",
+     "formula": "ⁿCᵣ = n!/[r!(n − r)!]",
+     "note": "Unordered selections of r objects from n."
+    },
+    {
+     "name": "Symmetry",
+     "formula": "ⁿCᵣ = ⁿCₙ₋ᵣ",
+     "note": "Choosing r to include is the same as choosing n − r to leave out."
+    },
+    {
+     "name": "Pascal's rule",
+     "formula": "ⁿCᵣ + ⁿCᵣ₋₁ = ⁿ⁺¹Cᵣ",
+     "note": "Builds Pascal's triangle."
+    },
+    {
+     "name": "Repeated objects",
+     "formula": "n!/(p! q! r! …)",
+     "note": "p, q, r, … are the counts of identical items."
+    },
+    {
+     "name": "Circular arrangements",
+     "formula": "(n − 1)!; if clockwise and anticlockwise count as the same (necklace), (n − 1)!/2",
+     "note": "Fix one person to remove rotations."
+    },
+    {
+     "name": "With repetition",
+     "formula": "nʳ",
+     "note": "r positions, each filled from n choices, e.g. PIN codes."
+    },
+    {
+     "name": "Subsets",
+     "formula": "Number of subsets = 2ⁿ, ⁿC₀ + ⁿC₁ + … + ⁿCₙ = 2ⁿ",
+     "note": "Non-empty subsets: 2ⁿ − 1."
+    },
+    {
+     "name": "Binomial general term",
+     "formula": "T₍ᵣ₊₁₎ = ⁿCᵣ aⁿ⁻ʳ bʳ in (a + b)ⁿ",
+     "note": "There are n + 1 terms."
+    },
+    {
+     "name": "Geometry counts",
+     "formula": "Lines through n points (no three collinear) = ⁿC₂, triangles = ⁿC₃, diagonals of an n-gon = ⁿC₂ − n",
+     "note": "Handshakes among n people = ⁿC₂."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Use symmetry to shrink r",
+     "rule": "Compute ⁿCᵣ with whichever of r and n − r is smaller.",
+     "example": "¹⁰C₈ = ¹⁰C₂ = 10 × 9/2 = 45. ¹²C₁₀ = ¹²C₂ = 66."
+    },
+    {
+     "name": "Handshake count",
+     "rule": "ⁿC₂ = n(n − 1)/2.",
+     "example": "12 people each shaking hands once: 12 × 11/2 = 66 handshakes."
+    },
+    {
+     "name": "Divide for repeats",
+     "rule": "Divide n! by the factorial of each repeated letter's count.",
+     "example": "LEVEL has 5 letters with L twice and E twice: 5!/(2! 2!) = 120/4 = 30."
+    },
+    {
+     "name": "Block then subtract",
+     "rule": "Together = (n − k + 1)! × k!. Not together = n! − together.",
+     "example": "5 people, 2 of whom must sit together: 4! × 2! = 48. Not together: 120 − 48 = 72."
+    },
+    {
+     "name": "At least one by complement",
+     "rule": "Total selections minus selections with none of the required type.",
+     "example": "Choosing 3 from 6 men and 4 women with at least one woman: ¹⁰C₃ − ⁶C₃ = 120 − 20 = 100."
+    },
+    {
+     "name": "Round table",
+     "rule": "Fix one seat, then arrange the remaining n − 1 people.",
+     "example": "6 people round a table: 5! = 120. 6 different beads on a necklace: 120/2 = 60."
+    }
+   ],
+   "traps": [
+    "Using a permutation for a committee, where order does not matter.",
+    "Forgetting to multiply by the internal arrangements of a block.",
+    "Using n! instead of (n − 1)! for circular arrangements.",
+    "Treating identical objects as distinct, which overcounts.",
+    "Adding the cases for 'at least one' but missing a case or counting one twice. The complement is safer."
+   ],
+   "nsmqTips": [
+    "Ask yourself first: does order matter? That one decision settles most quiz questions.",
+    "Memorise small values: 5! = 120, 6! = 720, 7! = 5040, ⁵C₂ = 10, ⁶C₃ = 20, ¹⁰C₃ = 120.",
+    "Word clues: 'arrange', 'rank' and 'codes' mean P. 'Select', 'choose', 'team' and 'hand' mean C."
+   ]
+  },
+  {
+   "topic": "Mechanics (kinematics, forces, statics)",
+   "strand": "Mechanics",
+   "university": false,
+   "summary": "Mechanics applies mathematics to motion and forces. It covers the equations of motion for uniform acceleration, Newton's laws, friction, projectiles, moments, and equilibrium of forces. NSMQ mechanics problems reward choosing the right equation of motion at once and spotting symmetric or standard results.",
+   "keyIdeas": [
+    "The equations of motion (suvat) only hold for constant acceleration.",
+    "Resultant force = mass × acceleration. In equilibrium the resultant force is zero.",
+    "Friction opposes the motion, or the tendency to move, and its maximum value is μR.",
+    "A projectile's horizontal velocity is constant. Vertically it accelerates at g downwards.",
+    "For a body in equilibrium, the forces balance in every direction and the moments about any point balance.",
+    "The weight of a uniform body acts at its centre: the midpoint of a uniform beam.",
+    "Momentum is conserved in collisions when no external impulse acts."
+   ],
+   "formulas": [
+    {
+     "name": "Equations of uniform acceleration",
+     "formula": "v = u + at; s = ut + ½at²; v² = u² + 2as; s = ½(u + v)t",
+     "note": "u = initial velocity, v = final velocity, a = acceleration, s = displacement, t = time."
+    },
+    {
+     "name": "Newton's second law",
+     "formula": "F = ma; weight W = mg",
+     "note": "F is the resultant force in N, m in kg, a in m/s². g ≈ 9.8 m/s² (10 if the question allows)."
+    },
+    {
+     "name": "Friction",
+     "formula": "F ≤ μR; limiting friction F = μR",
+     "note": "R is the normal reaction. On the point of sliding down a rough slope, tan θ = μ."
+    },
+    {
+     "name": "Inclined plane components",
+     "formula": "Along the slope mg sin θ; perpendicular to it mg cos θ",
+     "note": "On a smooth slope the acceleration is g sin θ."
+    },
+    {
+     "name": "Momentum and impulse",
+     "formula": "p = mv; impulse J = FΔt = mv − mu",
+     "note": "Conservation: m₁u₁ + m₂u₂ = m₁v₁ + m₂v₂."
+    },
+    {
+     "name": "Projectile results",
+     "formula": "Time of flight T = 2u sin θ/g; maximum height H = u² sin²θ/(2g); range R = u² sin 2θ/g",
+     "note": "Launched from level ground at angle θ to the horizontal."
+    },
+    {
+     "name": "Work, energy, power",
+     "formula": "W = Fs cos θ; KE = ½mv²; PE = mgh; P = Fv",
+     "note": "Units: joules (J) and watts (W)."
+    },
+    {
+     "name": "Resultant of two forces",
+     "formula": "R² = P² + Q² + 2PQ cos θ",
+     "note": "θ is the angle between the forces."
+    },
+    {
+     "name": "Lami's theorem",
+     "formula": "P/sin α = Q/sin β = R/sin γ",
+     "note": "For three forces in equilibrium. Each angle is the one opposite its force, i.e. between the other two forces."
+    },
+    {
+     "name": "Moments",
+     "formula": "Moment = F × perpendicular distance; in equilibrium Σ clockwise = Σ anticlockwise",
+     "note": "Take moments about a point where an unknown force acts to remove it."
+    },
+    {
+     "name": "Connected particles (Atwood machine)",
+     "formula": "a = (m₁ − m₂)g/(m₁ + m₂), T = 2m₁m₂g/(m₁ + m₂)",
+     "note": "Light string over a smooth pulley, m₁ > m₂."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Maximum range at 45°",
+     "rule": "The maximum range is u²/g. Complementary angles (θ and 90° − θ) give the same range.",
+     "example": "u = 20 m/s, g = 10 m/s²: maximum range = 400/10 = 40 m. Launches at 30° and 60° land at the same spot."
+    },
+    {
+     "name": "Odd-number rule for free fall",
+     "rule": "From rest, the distances covered in successive equal time intervals are in the ratio 1 : 3 : 5 : 7. With g = 10, the distance fallen is s = 5t².",
+     "example": "Distance in the 3rd second = 5 × 5 = 25 m. Check: s(3) − s(2) = 45 − 20 = 25 m."
+    },
+    {
+     "name": "Stopping distance",
+     "rule": "With v = 0: s = u²/(2a), where a is the size of the deceleration.",
+     "example": "u = 20 m/s braking at 4 m/s²: s = 400/8 = 50 m. Doubling the speed makes the stopping distance 4 times as long."
+    },
+    {
+     "name": "Two equal forces",
+     "rule": "Two forces of size F at angle θ have resultant 2F cos(θ/2), along the bisector.",
+     "example": "Two 10 N forces at 120°: R = 2 × 10 × cos 60° = 10 N. At 60°: R = 20 cos 30° = 10√3 N."
+    },
+    {
+     "name": "Atwood in one line",
+     "rule": "a = (difference in masses / total mass) × g. T = 2 × product / sum × g.",
+     "example": "5 kg and 3 kg, g = 10: a = 2/8 × 10 = 2.5 m/s², T = 2 × 15/8 × 10 = 37.5 N. Check on the 3 kg mass: 37.5 − 30 = 3 × 2.5."
+    },
+    {
+     "name": "Split a beam load by distance",
+     "rule": "A point load W on a beam supported at both ends goes to each support in proportion to its distance from the other support. A uniform beam's own weight splits equally.",
+     "example": "A 6 m uniform beam of weight 120 N carries a 60 N load 2 m from A. The load gives 40 N at A and 20 N at B; the weight gives 60 N to each. So R_A = 100 N and R_B = 80 N, which sum to 180 N."
+    }
+   ],
+   "traps": [
+    "Mixing up mass (kg) and weight (N). Weight = mg.",
+    "Forgetting to convert km/h to m/s by dividing by 3.6, e.g. 72 km/h = 20 m/s.",
+    "Swapping sin and cos when resolving on an incline. The component along the slope is mg sin θ.",
+    "Using suvat when the acceleration is not constant, e.g. a = 3t. Use calculus instead.",
+    "Getting the sign of g wrong: take one direction as positive and stay with it."
+   ],
+   "nsmqTips": [
+    "Write down the three known suvat quantities and the one you want. That picks the equation immediately.",
+    "Check whether the question says g = 9.8 or g = 10. Answers are often designed to come out exactly with one of them.",
+    "In statics, take moments about the point that removes the most unknowns. Often one line gives the answer."
+   ]
+  }
+ ]
+}

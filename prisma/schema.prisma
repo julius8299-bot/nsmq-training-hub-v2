@@ -1,5 +1,7 @@
 generator client {
-  provider = "prisma-client-js"
+  provider   = "prisma-client-js"
+  // Rust-free client: the same driver adapters run locally (SQLite) and on Vercel (PostgreSQL).
+  engineType = "client"
 }
 
 datasource db {
@@ -30,6 +32,8 @@ model User {
   reviews             QuestionReview[]
   reviewedVariants    QuestionVariant[]     @relation("VariantReviewer")
   uploadedDocuments   SourceDocument[]
+  draws               QuestionDraw[]
+  authoredQuestions   Question[]            @relation("QuestionAuthor")
 }
 
 model Question {
@@ -64,6 +68,8 @@ model Question {
   tags             String            @default("[]")
   examinerFocus    String?
   markingScheme    String?
+  /// Staff-only notes for reviewers (source problems, corrections). Never sent to students.
+  reviewerNote     String?
   riddleClues      RiddleClue[]
   attempts         Attempt[]
   createdAt        DateTime          @default(now())
@@ -83,6 +89,11 @@ model Question {
   baseVariants     QuestionVariant[] @relation("BaseQuestion")
   variantOf        QuestionVariant?  @relation("PublishedVariant")
   contestResponses ContestResponse[]
+  draws            QuestionDraw[]
+  createdById      String?
+  createdBy        User?             @relation("QuestionAuthor", fields: [createdById], references: [id], onDelete: Restrict)
+  // Proposed changes to a live question; the live version stays visible until a reviewer applies them.
+  pendingEditJson  String?
 
   @@index([subject, topic, roundType, difficulty])
   @@index([sourceType, repeatedPattern])
@@ -115,8 +126,28 @@ model Attempt {
   user             User     @relation(fields: [userId], references: [id], onDelete: Restrict)
   question         Question @relation(fields: [questionId], references: [id], onDelete: Restrict)
   createdAt        DateTime @default(now())
+  drawId           String?  @unique
+  lateSubmission   Boolean  @default(false)
+  // Revealed-without-answering and team-board attempts stay in history but not in personal accuracy.
+  countsTowardStats Boolean @default(true)
 
   @@index([userId, createdAt])
+}
+
+/// A question issued to one student. The server keeps the answer, clue count and start time.
+model QuestionDraw {
+  id               String    @id @default(cuid())
+  userId           String
+  user             User      @relation(fields: [userId], references: [id], onDelete: Restrict)
+  questionId       String
+  question         Question  @relation(fields: [questionId], references: [id], onDelete: Restrict)
+  mode             String
+  timeLimitSeconds Int?
+  cluesRevealed    Int       @default(0)
+  issuedAt         DateTime  @default(now())
+  answeredAt       DateTime?
+
+  @@index([userId, issuedAt])
 }
 
 model ContestSession {
@@ -174,6 +205,8 @@ model Invitation {
   acceptedAt   DateTime?
   revokedAt    DateTime?
   createdAt    DateTime  @default(now())
+  // INVITE creates an account; RESET sets a new password on an existing one.
+  purpose      String    @default("INVITE")
 
   @@index([email, expiresAt])
 }

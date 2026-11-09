@@ -1,0 +1,2400 @@
+{
+ "subject": "BIOLOGY",
+ "topics": [
+  {
+   "topic": "Branches of biology and scientific method",
+   "strand": "Exploring Biology in Society",
+   "university": false,
+   "summary": "Biology is split into branches named mostly from Greek and Latin roots, and every branch advances by the same scientific method: observe, question, hypothesise, test, conclude. NSMQ riddles and rapid-fire rounds often ask for the name of a branch, the steps of the method, or the type of variable in a described experiment.",
+   "keyIdeas": [
+    "The suffix -logy means 'study of'; the root in front tells you what is studied (cyto = cell, histo = tissue, myco = fungus).",
+    "The suffix -culture means rearing or cultivating for human use (apiculture = bees, sericulture = silkworms, pisciculture = fish).",
+    "A hypothesis is a testable, falsifiable explanation or prediction; it is supported or rejected by data, never 'proved'.",
+    "A theory is a broad, repeatedly tested explanation (cell theory, theory of evolution); a law describes a regular pattern without explaining it.",
+    "In a fair test only the independent variable is changed, the dependent variable is measured, and all other (controlled) variables are kept constant.",
+    "A control experiment is set up identically but without the factor under test, so any difference can be blamed on that factor.",
+    "Repeating trials and using larger samples increases reliability; accuracy is closeness to the true value, precision is closeness of repeats to each other.",
+    "Carl Linnaeus introduced binomial nomenclature: Genus (capital letter) + species (small letter), italicised in print or underlined separately when handwritten."
+   ],
+   "formulas": [
+    {
+     "name": "Steps of the scientific method",
+     "formula": "Observation → problem/question → hypothesis → experiment → results (data) → analysis → conclusion → (theory)",
+     "note": "If the results reject the hypothesis, a new hypothesis is formed and tested."
+    },
+    {
+     "name": "Types of variable",
+     "formula": "Independent = changed by the experimenter; Dependent = measured; Controlled = kept constant",
+     "note": "The independent variable goes on the x-axis, the dependent on the y-axis."
+    },
+    {
+     "name": "Mean of repeats",
+     "formula": "x̄ = Σx / n",
+     "note": "Exclude obvious anomalies before averaging; n is the number of valid readings."
+    },
+    {
+     "name": "Percentage change",
+     "formula": "% change = (final − initial) / initial × 100",
+     "note": "Used for growth, mass change in osmosis, population change. Negative means a decrease."
+    },
+    {
+     "name": "Taxonomic hierarchy",
+     "formula": "Domain → Kingdom → Phylum (Division in plants) → Class → Order → Family → Genus → Species",
+     "note": "Going down, organisms share more features; species is the basic unit of classification."
+    },
+    {
+     "name": "Binomial name",
+     "formula": "Genus species, e.g. Homo sapiens, Zea mays, Plasmodium falciparum",
+     "note": "Genus capitalised, species epithet lower case; the pair is italicised."
+    },
+    {
+     "name": "Branches named after organisms",
+     "formula": "Zoology = animals; Botany = plants; Mycology = fungi; Phycology (algology) = algae; Bacteriology = bacteria; Virology = viruses; Entomology = insects; Ichthyology = fish; Herpetology = reptiles and amphibians; Ornithology = birds; Mammalogy = mammals",
+     "note": "Microbiology covers bacteria, viruses, fungi and protists together."
+    },
+    {
+     "name": "Branches named after level or process",
+     "formula": "Cytology = cells; Histology = tissues; Anatomy = internal structure; Morphology = form; Physiology = functions; Genetics = heredity; Ecology = organisms and environment; Embryology = development of embryos; Palaeontology = fossils; Ethology = animal behaviour; Taxonomy = classification; Limnology = fresh waters",
+     "note": "Medical: haematology = blood, cardiology = heart, nephrology = kidneys, dermatology = skin, oncology = cancer, endocrinology = hormones."
+    },
+    {
+     "name": "Applied -culture branches",
+     "formula": "Apiculture = bees; Sericulture = silkworms; Pisciculture = fish farming; Aquaculture = aquatic organisms; Horticulture = garden crops, fruits, flowers; Floriculture = flowers; Silviculture = forest trees; Viticulture = grapes; Olericulture = vegetables",
+     "note": "Agriculture is the umbrella term; these are its specialisations."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Decode the root",
+     "rule": "Translate the Greek or Latin root and add -logy: ichthys = fish, ornis = bird, herpeton = creeping animal, entomon = insect, mykes = fungus, phykos = seaweed, haima = blood, onkos = mass/tumour.",
+     "example": "'The study of birds?' ornis = bird → ornithology. 'Study of tumours?' onkos → oncology. Done in under 5 s."
+    },
+    {
+     "name": "Hierarchy mnemonic",
+     "rule": "Dear King Philip Came Over For Good Soup = Domain, Kingdom, Phylum, Class, Order, Family, Genus, Species.",
+     "example": "'Which rank lies between Class and Family?' Came Over For → Order."
+    },
+    {
+     "name": "'Effect of X on Y' rule",
+     "rule": "In any title of the form 'the effect of X on Y', X is the independent variable and Y is the dependent variable; everything else mentioned must be controlled.",
+     "example": "'Effect of temperature on the rate of yeast respiration' → independent = temperature, dependent = rate of CO₂ release, controlled = glucose concentration, yeast mass, volume."
+    },
+    {
+     "name": "Latin root for -culture",
+     "rule": "apis = bee, sericum = silk, piscis = fish, silva = forest, vitis = vine, hortus = garden, flos/floris = flower, olus = vegetable.",
+     "example": "'Rearing of silkworms for silk?' sericum = silk → sericulture."
+    },
+    {
+     "name": "Percentage change by fractions",
+     "rule": "Write the change over the original as a simple fraction you know: 1/4 = 25%, 1/5 = 20%, 1/8 = 12.5%, 3/4 = 75%.",
+     "example": "Plant height goes from 40 cm to 50 cm: change 10/40 = 1/4 = 25% increase."
+    }
+   ],
+   "traps": [
+    "Saying a hypothesis was 'proved'; data only support or reject it.",
+    "Confusing entomology (insects) with etymology (word origins).",
+    "Writing the species name with a capital letter (Homo Sapiens is wrong) or forgetting to italicise/underline.",
+    "Mixing up a control experiment (whole set-up lacking the test factor) with controlled variables (factors kept the same).",
+    "Thinking herpetology covers only snakes; it covers all reptiles and amphibians."
+   ],
+   "nsmqTips": [
+    "Riddles often give clues like 'I study creatures that crawl... I include frogs too' — listen for the root organism and jump straight to the -logy word.",
+    "For experiment questions, name the variables using the 'effect of X on Y' rule first, then state the control.",
+    "When asked who did what: Linnaeus = binomial nomenclature, Robert Hooke = named cells (1665), Schleiden and Schwann = cell theory, Mendel = father of genetics, Darwin = natural selection.",
+    "Answer with the exact term (e.g. 'ichthyology'), not a description; quizmasters want the word."
+   ]
+  },
+  {
+   "topic": "Cell structure and organelles",
+   "strand": "Life in the Fundamental Unit",
+   "university": false,
+   "summary": "The cell is the basic unit of structure and function in living things, and each organelle has a specific job. NSMQ asks for organelle functions, plant versus animal and prokaryote versus eukaryote differences, and magnification calculations.",
+   "keyIdeas": [
+    "Cell theory: all organisms are made of one or more cells, the cell is the basic unit of life, and all cells arise from pre-existing cells.",
+    "Prokaryotes (bacteria, archaea) lack a nucleus and membrane-bound organelles; they have 70S ribosomes, a nucleoid, often plasmids, and a peptidoglycan (murein) wall in bacteria.",
+    "Eukaryotes have a nucleus, membrane-bound organelles and 80S cytoplasmic ribosomes.",
+    "Plant cells have a cellulose cell wall, a large permanent vacuole with tonoplast, and chloroplasts; animal cells have centrioles, small temporary vacuoles and store glycogen instead of starch.",
+    "Double-membrane structures: nucleus (nuclear envelope), mitochondrion, chloroplast. Mitochondria and chloroplasts contain their own circular DNA and 70S ribosomes (evidence for endosymbiosis).",
+    "Rough ER (with ribosomes) makes and transports proteins; smooth ER makes lipids and steroids; Golgi body modifies, packages and secretes; lysosomes contain hydrolytic enzymes.",
+    "The plasma membrane follows the fluid mosaic model: a phospholipid bilayer with proteins, cholesterol and glycoproteins; it is partially (selectively) permeable.",
+    "Light microscopes resolve about 0.2 µm; electron microscopes resolve below 1 nm, so ribosomes and membrane detail are seen only with the electron microscope."
+   ],
+   "formulas": [
+    {
+     "name": "Magnification",
+     "formula": "M = image size / actual size",
+     "note": "Both sizes must be in the same unit. Rearranged: actual size = image size / M."
+    },
+    {
+     "name": "Total magnification (light microscope)",
+     "formula": "Total M = eyepiece magnification × objective magnification",
+     "note": "×10 eyepiece with ×40 objective gives ×400."
+    },
+    {
+     "name": "Length units",
+     "formula": "1 m = 10³ mm = 10⁶ µm = 10⁹ nm; 1 mm = 1000 µm; 1 µm = 1000 nm",
+     "note": "Typical sizes: animal cell 10–30 µm, bacterium 1–5 µm, mitochondrion 1–10 µm long, ribosome ≈ 20–30 nm."
+    },
+    {
+     "name": "Resolution",
+     "formula": "Light microscope ≈ 0.2 µm (200 nm); transmission electron microscope ≈ 0.1–1 nm",
+     "note": "Resolution is the smallest separation at which two points are seen as separate; magnification without resolution only gives a bigger blur."
+    },
+    {
+     "name": "Surface area to volume of a cube",
+     "formula": "SA:V = 6L² / L³ = 6/L",
+     "note": "As size increases, SA:V falls; this limits cell size and explains why large organisms need transport systems."
+    },
+    {
+     "name": "Ribosome sizes",
+     "formula": "Prokaryotic 70S = 50S + 30S subunits; eukaryotic cytoplasmic 80S = 60S + 40S",
+     "note": "S (Svedberg) units measure sedimentation rate and are not additive."
+    },
+    {
+     "name": "Size from field of view",
+     "formula": "Size of one cell ≈ diameter of field of view / number of cells across it",
+     "note": "Field diameter is inversely proportional to magnification."
+    },
+    {
+     "name": "Cell wall materials",
+     "formula": "Plants = cellulose; Fungi = chitin; Bacteria = peptidoglycan (murein)",
+     "note": "Animal cells have no cell wall."
+    },
+    {
+     "name": "Organelle functions",
+     "formula": "Nucleus = control, contains DNA; Nucleolus = makes ribosomes (rRNA); Mitochondrion = aerobic respiration, ATP; Chloroplast = photosynthesis; Ribosome = protein synthesis; Lysosome = digestion, autolysis; Centriole = spindle formation in animal cells; Vacuole = storage, turgor",
+     "note": "Cytoskeleton (microtubules, microfilaments) gives shape and moves organelles."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Convert to the smaller unit first",
+     "rule": "Before dividing image by actual size, convert both to µm (multiply mm by 1000). Then the division is usually a round number.",
+     "example": "Image 5 mm, actual 50 µm: 5 mm = 5000 µm, so M = 5000/50 = ×100."
+    },
+    {
+     "name": "Cube SA:V in one step",
+     "rule": "For a cube of side L, SA:V = 6/L; no need to work out area and volume separately.",
+     "example": "Cube of side 2 cm: 6/2 = 3:1. Side 3 cm: 6/3 = 2:1. Side 6 cm: 1:1."
+    },
+    {
+     "name": "Field of view scales inversely",
+     "rule": "New field diameter = old diameter × (old magnification / new magnification).",
+     "example": "Field is 2 mm at ×100. At ×400 it is 2 × 100/400 = 0.5 mm. If 5 cells span it, each cell ≈ 0.5/5 = 0.1 mm = 100 µm."
+    },
+    {
+     "name": "Plant-or-animal elimination",
+     "rule": "Cell wall, large central vacuole or chloroplasts → plant. Centrioles or glycogen granules with no wall → animal. Mitochondria, ER, Golgi, ribosomes, nucleus → both, so they cannot decide.",
+     "example": "'A cell has mitochondria, centrioles and no wall' → animal cell."
+    },
+    {
+     "name": "The three with double membranes and DNA",
+     "rule": "Remember 'NMC': Nucleus, Mitochondrion, Chloroplast are the only double-membrane structures, and all three hold DNA.",
+     "example": "'Which organelle has a double membrane but no DNA?' None of the standard ones — reject options like lysosome or Golgi, which have a single membrane."
+    }
+   ],
+   "traps": [
+    "Forgetting to convert mm to µm before using M = I/A, which gives answers off by 1000.",
+    "Adding Svedberg units: 50S + 30S is 70S, not 80S.",
+    "Saying prokaryotes have no ribosomes; they have 70S ribosomes but no membrane-bound organelles.",
+    "Stating that mature red blood cells have a nucleus; mammalian RBCs lose the nucleus and mitochondria.",
+    "Calling the cell membrane fully permeable or confusing it with the freely permeable cell wall."
+   ],
+   "nsmqTips": [
+    "Riddle clues such as 'suicide bag' = lysosome, 'powerhouse' = mitochondrion, 'post office' = Golgi body, 'protein factory' = ribosome, 'brain of the cell' = nucleus.",
+    "For magnification calculations, say the answer with the × sign and no units (e.g. '×400').",
+    "Have the three cell wall materials ready: cellulose, chitin, peptidoglycan — they appear as quick-fire questions.",
+    "For 'who' questions: Robert Hooke (cork cells, 1665), Leeuwenhoek (first saw living microbes), Robert Brown (nucleus), Schleiden and Schwann (cell theory), Virchow (cells from cells)."
+   ]
+  },
+  {
+   "topic": "Movement of substances (diffusion, osmosis)",
+   "strand": "Life in the Fundamental Unit",
+   "university": false,
+   "summary": "Substances enter and leave cells by diffusion, osmosis, facilitated diffusion, active transport and bulk transport. NSMQ tests definitions, the effect of solutions on plant and animal cells, water potential arithmetic and factors that change diffusion rate.",
+   "keyIdeas": [
+    "Diffusion is the net movement of particles from a region of higher concentration to lower concentration down a gradient; it is passive and needs no membrane.",
+    "Osmosis is the net movement of water molecules from a region of higher water potential to lower water potential through a partially permeable membrane.",
+    "Facilitated diffusion uses channel or carrier proteins but is still passive (no ATP), down the gradient.",
+    "Active transport moves substances against their concentration gradient using carrier proteins and ATP from respiration (e.g. mineral ion uptake by root hairs, Na⁺/K⁺ pump).",
+    "Endocytosis (phagocytosis = solids, pinocytosis = liquids) and exocytosis move bulk materials in vesicles and need ATP.",
+    "In a hypotonic solution animal cells swell and burst (haemolysis in RBCs); plant cells become turgid but do not burst because of the cell wall.",
+    "In a hypertonic solution animal cells shrink (crenation); plant cells lose water and the protoplast pulls away from the wall (plasmolysis).",
+    "Pure water has the highest water potential, 0 kPa; adding solute makes water potential negative."
+   ],
+   "formulas": [
+    {
+     "name": "Fick's law (proportionality)",
+     "formula": "Rate of diffusion ∝ (surface area × concentration difference) / diffusion distance",
+     "note": "Explains adaptations: alveoli and villi have large area, thin walls and steep gradients."
+    },
+    {
+     "name": "Water potential of a plant cell",
+     "formula": "ψ = ψs + ψp",
+     "note": "ψs (solute potential) is zero or negative; ψp (pressure potential) is usually positive in a turgid cell. Units kPa or MPa."
+    },
+    {
+     "name": "Direction of osmosis",
+     "formula": "Water moves from higher ψ (less negative) → lower ψ (more negative)",
+     "note": "−200 kPa is higher than −600 kPa."
+    },
+    {
+     "name": "Solute potential (van 't Hoff)",
+     "formula": "ψs = −iCRT",
+     "note": "i = ionisation constant (1 for sucrose, ≈ 2 for NaCl), C in mol m⁻³, R = 8.31 J mol⁻¹ K⁻¹, T in K. 1 mol dm⁻³ sucrose at 298 K gives ψs ≈ −2.48 MPa."
+    },
+    {
+     "name": "Incipient plasmolysis",
+     "formula": "At incipient plasmolysis ψp = 0, so ψ = ψs",
+     "note": "Defined as the point where 50% of cells are plasmolysed; the external solution then has the same ψ as the cell sap."
+    },
+    {
+     "name": "Percentage change in mass",
+     "formula": "% change = (final mass − initial mass) / initial mass × 100",
+     "note": "Used in potato or yam cylinder experiments to find the isotonic concentration."
+    },
+    {
+     "name": "Graham's law (gases)",
+     "formula": "Rate of diffusion ∝ 1/√M",
+     "note": "M = molar mass. Lighter gases diffuse faster."
+    },
+    {
+     "name": "Tonicity terms",
+     "formula": "Hypotonic = lower solute, higher ψ than cell; Isotonic = equal ψ; Hypertonic = higher solute, lower ψ than cell",
+     "note": "Always state relative to the cell contents."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Water runs downhill to the more negative number",
+     "rule": "Compare ψ values as numbers on a line: water flows toward the more negative value.",
+     "example": "Cell A ψ = −300 kPa, cell B ψ = −500 kPa → water moves A → B, since −500 is more negative."
+    },
+    {
+     "name": "Add the two potentials",
+     "rule": "ψ = ψs + ψp: just add a negative and a positive number.",
+     "example": "ψs = −800 kPa, ψp = +300 kPa → ψ = −500 kPa."
+    },
+    {
+     "name": "Find the isotonic point by interpolation",
+     "rule": "On a graph of % mass change vs concentration, the isotonic concentration is where the line crosses 0%. Between two points, zero lies at a fraction (positive value)/(positive − negative) of the way across.",
+     "example": "+4% at 0.2 mol dm⁻³ and −2% at 0.4 mol dm⁻³: fraction = 4/6 = 2/3 of the 0.2 gap → 0.2 + 0.133 ≈ 0.33 mol dm⁻³."
+    },
+    {
+     "name": "Graham's law ratio by square root",
+     "rule": "Rate A / rate B = √(M_B / M_A); pick gases whose mass ratio is a perfect square.",
+     "example": "H₂ (2) vs O₂ (32): √(32/2) = √16 = 4, so hydrogen diffuses 4 times faster."
+    },
+    {
+     "name": "Multiply the Fick factors",
+     "rule": "Each factor scales rate directly (area, gradient) or inversely (thickness); multiply the scale factors.",
+     "example": "Double the surface area and halve the membrane thickness: rate × 2 × 2 = 4 times faster."
+    },
+    {
+     "name": "Plant cells never burst",
+     "rule": "In any 'what happens' question, plant cell in water → turgid; in strong solution → plasmolysed (flaccid). Animal cell in water → bursts; in strong solution → crenated.",
+     "example": "'RBC placed in distilled water?' → takes in water by osmosis and bursts (haemolysis)."
+    }
+   ],
+   "traps": [
+    "Defining osmosis without mentioning water or the partially permeable membrane.",
+    "Calling −600 kPa a 'higher' water potential than −200 kPa; more negative is lower.",
+    "Saying facilitated diffusion uses ATP; it is passive.",
+    "Saying plant cells burst in distilled water; the cell wall prevents bursting.",
+    "Forgetting that active transport stops if respiration is inhibited (e.g. by cyanide or lack of oxygen)."
+   ],
+   "nsmqTips": [
+    "Expect 'Which process needs energy: diffusion, osmosis or active transport?' — answer active transport and mention ATP from respiration.",
+    "For true/false rounds, watch the word 'net': diffusion and osmosis are net movements.",
+    "If asked for the isotonic concentration from data, look for the concentration where mass change is zero; interpolate if needed.",
+    "Give everyday examples fast: wilting of salted vegetables (plasmolysis), raisins swelling in water (osmosis), scent spreading in a room (diffusion)."
+   ]
+  },
+  {
+   "topic": "Cell division and the cell cycle",
+   "strand": "Life in the Fundamental Unit",
+   "university": false,
+   "summary": "Cells divide by mitosis for growth, repair and asexual reproduction, and by meiosis to make haploid gametes with genetic variation. NSMQ asks for the stage in which an event happens, chromosome and DNA counts, and calculations from cell counts.",
+   "keyIdeas": [
+    "The cell cycle is interphase (G1, S, G2) followed by mitosis (M phase) and cytokinesis; interphase takes most of the cycle (about 90%).",
+    "DNA replication happens in the S phase of interphase, not during prophase.",
+    "Mitosis stages: prophase (chromosomes condense, nuclear envelope breaks down, spindle forms), metaphase (chromosomes line up at the equator), anaphase (sister chromatids pulled to opposite poles), telophase (nuclear envelopes reform).",
+    "Mitosis gives two genetically identical diploid daughter cells; meiosis gives four genetically different haploid cells.",
+    "In prophase I of meiosis homologous chromosomes pair (synapsis, bivalents) and cross over at chiasmata.",
+    "Meiosis I separates homologous chromosomes (reduction division); meiosis II separates sister chromatids (like mitosis).",
+    "Variation in meiosis comes from crossing over and independent assortment of homologues in metaphase I; random fertilisation adds more.",
+    "Animal cells divide the cytoplasm by a cleavage furrow; plant cells form a cell plate from Golgi vesicles. Uncontrolled mitosis causes tumours (cancer)."
+   ],
+   "formulas": [
+    {
+     "name": "Mitosis vs meiosis outcome",
+     "formula": "Mitosis: 2n → 2 cells of 2n (identical). Meiosis: 2n → 4 cells of n (different)",
+     "note": "n = haploid number; humans 2n = 46, n = 23."
+    },
+    {
+     "name": "Cell cycle sequence",
+     "formula": "G1 → S → G2 → M (prophase, metaphase, anaphase, telophase) → cytokinesis",
+     "note": "G0 is a resting state for cells that stop dividing (e.g. most neurons)."
+    },
+    {
+     "name": "Mitotic index",
+     "formula": "Mitotic index = number of cells in mitosis / total number of cells observed",
+     "note": "Multiply by 100 for a percentage. A high index indicates rapid growth, e.g. root tip meristem or tumour tissue."
+    },
+    {
+     "name": "Duration of a stage",
+     "formula": "Time in stage = (cells in that stage / total cells) × total cycle time",
+     "note": "Assumes cells are dividing asynchronously and the sample is large."
+    },
+    {
+     "name": "Combinations from independent assortment",
+     "formula": "Number of chromosome combinations in gametes = 2ⁿ",
+     "note": "n = haploid number (number of homologous pairs). Ignores crossing over."
+    },
+    {
+     "name": "DNA content through the cycle",
+     "formula": "G1 = 2C; after S (G2, prophase) = 4C; after meiosis I = 2C; gamete = C",
+     "note": "C = DNA content of one haploid set."
+    },
+    {
+     "name": "Cells after repeated division",
+     "formula": "Number of cells after k divisions = 2ᵏ (from one cell)",
+     "note": "Assumes every cell divides each time."
+    },
+    {
+     "name": "Chromatid count",
+     "formula": "Chromatids = 2 × chromosomes from S phase until anaphase",
+     "note": "Count chromosomes by counting centromeres."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "IPMAT with meanings",
+     "rule": "Interphase, Prophase (Prepare), Metaphase (Middle), Anaphase (Apart), Telophase (Two nuclei).",
+     "example": "'Chromosomes align at the equator?' Middle → metaphase. 'Chromatids move to poles?' Apart → anaphase."
+    },
+    {
+     "name": "Fraction of cells = fraction of time",
+     "rule": "Divide cells in the stage by total cells, then multiply by cycle time; simplify the fraction first.",
+     "example": "20 of 400 cells are in metaphase, cycle 24 h: 20/400 = 1/20, so 24/20 = 1.2 h = 72 min."
+    },
+    {
+     "name": "2ⁿ with known powers",
+     "rule": "Use 2¹⁰ = 1024 ≈ 10³ to estimate large powers fast.",
+     "example": "Drosophila 2n = 8, so n = 4 and 2⁴ = 16 combinations. Humans n = 23: 2²³ = 2³ × 2²⁰ ≈ 8 × 10⁶ (exactly 8 388 608)."
+    },
+    {
+     "name": "Count centromeres, not arms",
+     "rule": "One centromere = one chromosome, whether it has one or two chromatids. In mitotic anaphase the chromosome number in the cell temporarily doubles.",
+     "example": "Human cell at metaphase of mitosis: 46 chromosomes, 92 chromatids. At anaphase: 92 chromosomes (46 moving to each pole)."
+    },
+    {
+     "name": "Roman numeral rule for meiosis",
+     "rule": "Event involving homologous PAIRS (pairing, crossing over, separation of homologues) → meiosis I. Event involving sister chromatids separating → meiosis II (or mitosis).",
+     "example": "'Chiasmata form in?' pairs → prophase I. 'Sister chromatids separate in meiosis?' → anaphase II."
+    }
+   ],
+   "traps": [
+    "Placing DNA replication in prophase instead of the S phase of interphase.",
+    "Saying crossing over occurs in prophase II; it occurs in prophase I.",
+    "Counting chromatids as chromosomes when reading diagrams.",
+    "Stating that meiosis II halves the chromosome number; the halving happens in meiosis I.",
+    "Saying plant cells form a cleavage furrow; they form a cell plate."
+   ],
+   "nsmqTips": [
+    "Quick-fire questions love 'In which phase...?' — answer with the phase name and, for meiosis, the numeral (e.g. 'anaphase I').",
+    "For chromosome-count questions, state n first, then apply the rule for the stage asked.",
+    "Know sites: mitosis in root and shoot tips (meristems), bone marrow, skin; meiosis in anthers, ovules, testes and ovaries.",
+    "Colchicine stops spindle formation and halts cells at metaphase — a favourite 'name the chemical' question."
+   ]
+  },
+  {
+   "topic": "Biomolecules and enzymes",
+   "strand": "Life in the Fundamental Unit",
+   "university": false,
+   "summary": "Carbohydrates, lipids, proteins and nucleic acids are the main molecules of life, built by condensation and broken by hydrolysis, and enzymes are protein catalysts that control the rate of these reactions. NSMQ asks for food tests, bond names, monomers and the effects of temperature, pH and inhibitors on enzymes.",
+   "keyIdeas": [
+    "Monomers join by condensation (water released) and polymers are broken by hydrolysis (water added).",
+    "Carbohydrates: monosaccharides (glucose, fructose, galactose), disaccharides (maltose = glucose + glucose, sucrose = glucose + fructose, lactose = glucose + galactose), polysaccharides (starch, glycogen, cellulose); bond = glycosidic bond.",
+    "Lipids: a triglyceride is glycerol + 3 fatty acids joined by ester bonds; lipids are not polymers.",
+    "Proteins are polymers of about 20 amino acids joined by peptide bonds; structure levels are primary, secondary (α-helix, β-sheet), tertiary and quaternary.",
+    "Enzymes lower the activation energy, are specific to their substrate (lock and key; induced fit) and are not used up.",
+    "Rate rises with temperature up to an optimum (about 37–40 °C for human enzymes); above it the active site changes shape and the enzyme is denatured. Low temperature only inactivates it.",
+    "Each enzyme has an optimum pH: pepsin ≈ 2, salivary amylase ≈ 7, pancreatic enzymes ≈ 8.",
+    "Competitive inhibitors compete for the active site; non-competitive inhibitors bind elsewhere and change the active site's shape."
+   ],
+   "formulas": [
+    {
+     "name": "Glucose",
+     "formula": "C₆H₁₂O₆, Mr = 180",
+     "note": "α-glucose forms starch and glycogen; β-glucose forms cellulose."
+    },
+    {
+     "name": "Condensation of two monosaccharides",
+     "formula": "C₆H₁₂O₆ + C₆H₁₂O₆ → C₁₂H₂₂O₁₁ + H₂O",
+     "note": "Makes a disaccharide (maltose, sucrose, lactose), Mr = 342."
+    },
+    {
+     "name": "Water lost when forming a chain",
+     "formula": "Joining n monomers into one chain releases (n − 1) H₂O",
+     "note": "Same rule for polysaccharides and polypeptides (n − 1 peptide bonds)."
+    },
+    {
+     "name": "Triglyceride formation",
+     "formula": "Glycerol + 3 fatty acids → triglyceride + 3 H₂O (3 ester bonds)",
+     "note": "Phospholipid: one fatty acid replaced by a phosphate group."
+    },
+    {
+     "name": "Amino acid general structure",
+     "formula": "H₂N–CH(R)–COOH",
+     "note": "Amino group, carboxyl group and variable R group on a central carbon. Peptide bond: –CO–NH–."
+    },
+    {
+     "name": "Energy value of food",
+     "formula": "Carbohydrate ≈ 17 kJ g⁻¹; Protein ≈ 17 kJ g⁻¹; Lipid ≈ 39 kJ g⁻¹",
+     "note": "Fat gives over twice the energy per gram."
+    },
+    {
+     "name": "Temperature coefficient",
+     "formula": "Q₁₀ = rate at (T + 10 °C) / rate at T",
+     "note": "About 2 for most enzyme reactions below the optimum."
+    },
+    {
+     "name": "Michaelis–Menten equation",
+     "formula": "v = Vmax[S] / (Km + [S])",
+     "note": "Km = substrate concentration at which v = Vmax/2; a low Km means high affinity."
+    },
+    {
+     "name": "Rate from time",
+     "formula": "Rate = 1 / time (or amount of product / time)",
+     "note": "E.g. time for starch to disappear in iodine tests."
+    },
+    {
+     "name": "Food tests",
+     "formula": "Starch: iodine, brown → blue-black. Reducing sugar: Benedict's + heat, blue → green/yellow/brick-red. Protein: biuret, blue → violet (purple). Lipid: ethanol emulsion → milky white; Sudan III → red layer. Vitamin C: DCPIP, blue → colourless",
+     "note": "Non-reducing sugar (sucrose): boil with dilute HCl, neutralise with NaHCO₃, then Benedict's."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Mass of an oligosaccharide",
+     "rule": "Mr = n × 180 − (n − 1) × 18 for n glucose units.",
+     "example": "3 glucose: 540 − 36 = 504, formula C₁₈H₃₂O₁₆ (C₁₈H₃₆O₁₈ minus 2 H₂O)."
+    },
+    {
+     "name": "Q₁₀ as powers of 2",
+     "rule": "For Q₁₀ = 2, each 10 °C rise below the optimum doubles the rate, so a rise of 10k °C multiplies the rate by 2ᵏ.",
+     "example": "Rate 5 units at 15 °C. At 35 °C (two 10 °C steps): 5 × 2² = 20 units."
+    },
+    {
+     "name": "Michaelis–Menten fractions",
+     "rule": "If [S] = k × Km then v = k/(k + 1) × Vmax.",
+     "example": "[S] = Km → v = ½ Vmax. [S] = 3Km → v = ¾ Vmax. [S] = 9Km → v = 0.9 Vmax."
+    },
+    {
+     "name": "Inhibitor fingerprint",
+     "rule": "Competitive: Vmax unchanged, Km increases, overcome by adding more substrate. Non-competitive: Vmax decreases, Km unchanged, not overcome by substrate.",
+     "example": "'Adding more substrate restores the rate' → competitive inhibitor (e.g. malonate inhibiting succinate dehydrogenase)."
+    },
+    {
+     "name": "Reducing sugar shortcut",
+     "rule": "All monosaccharides and the disaccharides maltose and lactose are reducing; sucrose is the classic non-reducing sugar.",
+     "example": "'Which gives a negative Benedict's test: glucose, maltose, sucrose, lactose?' → sucrose."
+    },
+    {
+     "name": "Disaccharide pairs mnemonic",
+     "rule": "'Mal-Glu-Glu, Sue-Glu-Fru, Lac-Glu-Gal': maltose = glucose + glucose, sucrose = glucose + fructose, lactose = glucose + galactose.",
+     "example": "'Hydrolysis of lactose gives?' → glucose and galactose."
+    }
+   ],
+   "traps": [
+    "Saying enzymes are 'killed' at high temperature; they are denatured (not alive).",
+    "Saying low temperature denatures enzymes; it only slows molecular movement.",
+    "Forgetting to heat Benedict's test, or using Benedict's on sucrose without hydrolysing first.",
+    "Calling lipids polymers; triglycerides are not made of repeating monomers.",
+    "Thinking enzymes are used up or change the end position of equilibrium; they only speed up reaching it."
+   ],
+   "nsmqTips": [
+    "Food test questions are usually 'reagent → colour'; answer with the final positive colour.",
+    "Name the bond quickly: glycosidic (carbohydrates), ester (lipids), peptide (proteins), phosphodiester (nucleic acids).",
+    "For graph-reading rounds, the optimum is the peak; the steep fall after it is denaturation.",
+    "Cofactor examples: Cl⁻ for salivary amylase, Zn²⁺ for carbonic anhydrase; coenzymes such as NAD and FAD come from B vitamins."
+   ]
+  },
+  {
+   "topic": "Molecular biology and biotechnology",
+   "strand": "Life in the Fundamental Unit",
+   "university": true,
+   "summary": "Molecular biology covers DNA structure, replication, transcription, translation and gene regulation; biotechnology uses these tools (restriction enzymes, PCR, cloning, gel electrophoresis, sequencing, CRISPR) to study and change organisms. NSMQ and first-year university questions test base-pairing calculations, the genetic code and how lab techniques work.",
+   "keyIdeas": [
+    "DNA is a double helix of two antiparallel polynucleotide strands (5'→3' and 3'→5') held by hydrogen bonds between complementary bases: A with T (2 H-bonds), G with C (3 H-bonds).",
+    "A and G are purines (two rings); C, T and U are pyrimidines (one ring). RNA uses ribose and uracil instead of deoxyribose and thymine.",
+    "Replication is semi-conservative (Meselson–Stahl): helicase unwinds, DNA polymerase adds nucleotides only in the 5'→3' direction, the lagging strand is made as Okazaki fragments joined by ligase.",
+    "Central dogma: DNA → (transcription by RNA polymerase) → mRNA → (translation on ribosomes) → protein; retroviruses use reverse transcriptase to make DNA from RNA.",
+    "The genetic code is a triplet, non-overlapping, degenerate and nearly universal code; AUG (methionine) starts translation; UAA, UAG, UGA stop it.",
+    "Eukaryotic pre-mRNA is processed: 5' cap, poly-A tail and splicing out of introns; exons are kept.",
+    "Restriction enzymes cut DNA at specific palindromic sequences, often leaving sticky ends; DNA ligase joins fragments to make recombinant DNA, carried into cells by vectors (plasmids, viruses).",
+    "In gel electrophoresis DNA (negative because of phosphate) moves toward the anode (+), and shorter fragments travel farther."
+   ],
+   "formulas": [
+    {
+     "name": "Chargaff's rules (double-stranded DNA)",
+     "formula": "%A = %T, %G = %C; so %A + %G = %T + %C = 50%",
+     "note": "Purines equal pyrimidines. Does not apply to single-stranded RNA or DNA."
+    },
+    {
+     "name": "Finding the other bases",
+     "formula": "%G = %C = (100 − 2 × %A) / 2",
+     "note": "Given any one base percentage in dsDNA."
+    },
+    {
+     "name": "Hydrogen bonds in a duplex",
+     "formula": "Total H-bonds = 2 × (A–T pairs) + 3 × (G–C pairs)",
+     "note": "More G–C content means higher melting temperature."
+    },
+    {
+     "name": "Number of codons",
+     "formula": "4³ = 64 codons: 61 code for amino acids, 3 are stop codons",
+     "note": "A doublet code would give only 4² = 16, too few for 20 amino acids."
+    },
+    {
+     "name": "Coding length of a gene",
+     "formula": "Coding nucleotides = 3 × (number of amino acids) + 3 (stop codon)",
+     "note": "Excludes introns and untranslated regions."
+    },
+    {
+     "name": "B-DNA dimensions",
+     "formula": "0.34 nm per base pair; ≈ 10 bp per turn; ≈ 3.4 nm per turn; diameter ≈ 2 nm",
+     "note": "So 1 kb of DNA is about 340 nm long."
+    },
+    {
+     "name": "PCR amplification",
+     "formula": "Copies after n cycles = N₀ × 2ⁿ (ideal)",
+     "note": "Each cycle: denature ≈ 94–95 °C, anneal primers ≈ 50–65 °C, extend ≈ 72 °C with heat-stable Taq polymerase."
+    },
+    {
+     "name": "Primer melting temperature (Wallace rule)",
+     "formula": "Tm ≈ 2 × (A + T) + 4 × (G + C) °C",
+     "note": "Rough estimate for short oligonucleotides (about 14–20 nucleotides)."
+    },
+    {
+     "name": "Expected restriction site spacing",
+     "formula": "A site of n specific bases occurs on average once every 4ⁿ bp",
+     "note": "Assumes random sequence with equal base frequencies."
+    },
+    {
+     "name": "Codon–anticodon pairing",
+     "formula": "DNA template 3'-TAC-5' → mRNA 5'-AUG-3' → tRNA anticodon 3'-UAC-5'",
+     "note": "The mRNA matches the coding (sense) strand with U in place of T."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Chargaff in one line",
+     "rule": "Double the given base, subtract from 100, halve what is left for each of the other pair.",
+     "example": "A = 30%: T = 30%, then (100 − 60)/2 = 20%, so G = C = 20%."
+    },
+    {
+     "name": "H-bond count from base composition",
+     "rule": "In N bp of dsDNA, %A + %T of the bases equals the percentage of A–T pairs.",
+     "example": "100 bp with A = 30%: A + T = 60% → 60 A–T pairs and 40 G–C pairs. H-bonds = 2×60 + 3×40 = 120 + 120 = 240."
+    },
+    {
+     "name": "PCR with 2¹⁰ ≈ 10³",
+     "rule": "Break the number of cycles into tens: every 10 cycles multiplies by about 1000.",
+     "example": "One template, 30 cycles: 2³⁰ = (2¹⁰)³ ≈ (10³)³ = 10⁹ copies (exactly 1 073 741 824)."
+    },
+    {
+     "name": "Wallace rule mentally",
+     "rule": "Count A+T and G+C in the primer, multiply by 2 and 4, add.",
+     "example": "20-mer with 10 G/C and 10 A/T: 2×10 + 4×10 = 20 + 40 = 60 °C."
+    },
+    {
+     "name": "Cutter frequency powers of 4",
+     "rule": "4⁴ = 256, 4⁶ = 4096, 4⁸ = 65 536: four-, six- and eight-base cutters.",
+     "example": "EcoRI recognises 6 bp (GAATTC): expect a cut about every 4096 bp, so a 40 960 bp random DNA gives about 10 cuts."
+    },
+    {
+     "name": "Write complements reversed",
+     "rule": "To write the complementary strand 5'→3', complement each base and read the result backwards.",
+     "example": "5'-ATGCCG-3' → complement 3'-TACGGC-5' → written 5'→3' as 5'-GCCGTA-3'."
+    }
+   ],
+   "traps": [
+    "Applying Chargaff's rules to single-stranded RNA.",
+    "Writing T in mRNA or forgetting that the strands are antiparallel when writing complements.",
+    "Saying DNA moves to the cathode in electrophoresis; it moves to the anode (+).",
+    "Thinking the gene length equals 3 × amino acids exactly; add the stop codon, and remember introns in eukaryotic genes.",
+    "Confusing transcription (nucleus, makes RNA) with translation (ribosome, makes protein)."
+   ],
+   "nsmqTips": [
+    "Base percentage questions take under 10 s with the 'double, subtract, halve' rule — say all four values.",
+    "Know the 'who': Watson and Crick (structure, 1953, using Franklin and Wilkins' X-ray data), Meselson and Stahl (semi-conservative replication), Kary Mullis (PCR), Doudna and Charpentier (CRISPR–Cas9).",
+    "If asked why Taq polymerase is used, answer: it is heat-stable, from Thermus aquaticus, so it survives the 95 °C denaturation step.",
+    "Applications to mention: insulin from recombinant bacteria, Bt crops, DNA fingerprinting in forensics and paternity, gene therapy, PCR-based diagnosis (e.g. COVID-19 tests)."
+   ]
+  },
+  {
+   "topic": "Nutrition in plants (photosynthesis)",
+   "strand": "Systems of Life",
+   "university": false,
+   "summary": "Green plants are autotrophs that use light energy, captured by chlorophyll, to make glucose from carbon dioxide and water, releasing oxygen. NSMQ asks for the equation, the two stages and where they happen, limiting factors, leaf adaptations and classic experiments.",
+   "keyIdeas": [
+    "Photosynthesis happens in chloroplasts: light-dependent reactions on the thylakoid membranes (grana), light-independent reactions (Calvin cycle) in the stroma.",
+    "Light-dependent stage: light excites chlorophyll, water is split (photolysis) releasing O₂, and ATP and NADPH (reduced NADP) are made.",
+    "Light-independent stage: CO₂ combines with ribulose bisphosphate (RuBP, 5C) using the enzyme rubisco to give two molecules of glycerate-3-phosphate (GP, 3C), which are reduced to triose phosphate using ATP and NADPH.",
+    "All the oxygen released comes from water, not carbon dioxide (shown with ¹⁸O isotope labelling).",
+    "Chlorophyll absorbs mainly blue and red light and reflects green light.",
+    "Limiting factors are light intensity, CO₂ concentration and temperature; the rate is set by whichever is in shortest supply.",
+    "Leaf adaptations: large flat surface, thin, palisade cells packed with chloroplasts near the top, air spaces in spongy mesophyll, stomata for gas exchange, veins for transport.",
+    "C₄ plants (maize, sugarcane) fix CO₂ first with PEP carboxylase into a 4C compound; CAM plants (pineapple, cacti) open stomata at night to save water."
+   ],
+   "formulas": [
+    {
+     "name": "Overall equation",
+     "formula": "6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂ (light energy, chlorophyll)",
+     "note": "Fuller version showing the true O₂ source: 6CO₂ + 12H₂O → C₆H₁₂O₆ + 6O₂ + 6H₂O."
+    },
+    {
+     "name": "Photolysis of water",
+     "formula": "2H₂O → 4H⁺ + 4e⁻ + O₂",
+     "note": "Occurs at photosystem II; the electrons replace those lost by chlorophyll."
+    },
+    {
+     "name": "Carbon fixation",
+     "formula": "CO₂ + RuBP (5C) → 2 GP (3C), catalysed by rubisco",
+     "note": "GP is also called PGA (3-phosphoglycerate)."
+    },
+    {
+     "name": "Energy cost per CO₂ fixed",
+     "formula": "3 ATP + 2 NADPH per CO₂",
+     "note": "So one glucose (6 CO₂, six turns of the cycle) costs 18 ATP and 12 NADPH."
+    },
+    {
+     "name": "Photosystems",
+     "formula": "PSII reaction centre P680; PSI reaction centre P700",
+     "note": "Non-cyclic photophosphorylation uses both and makes ATP, NADPH and O₂; cyclic uses only PSI and makes ATP only."
+    },
+    {
+     "name": "Rf value (chromatography)",
+     "formula": "Rf = distance moved by pigment / distance moved by solvent front",
+     "note": "Always less than 1. Carotene runs highest; chlorophyll b runs lowest of the main pigments."
+    },
+    {
+     "name": "Light intensity and distance",
+     "formula": "Light intensity ∝ 1/d²",
+     "note": "Used in pondweed bubble experiments with a lamp at different distances."
+    },
+    {
+     "name": "Absorption peaks",
+     "formula": "Chlorophyll absorbs blue (≈ 430–450 nm) and red (≈ 640–680 nm); reflects green (≈ 500–560 nm)",
+     "note": "An action spectrum shows the rate at each wavelength and closely matches the absorption spectrum."
+    },
+    {
+     "name": "Starch test on a leaf",
+     "formula": "Boil in water → boil in ethanol (water bath) → rinse in warm water → iodine: blue-black where starch is present",
+     "note": "Destarch the plant first by keeping it in the dark for 24–48 h."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Calvin cycle tally by sixes",
+     "rule": "Per CO₂: 3 ATP, 2 NADPH. Multiply by the number of CO₂ fixed.",
+     "example": "One glucose = 6 CO₂: 6 × 3 = 18 ATP and 6 × 2 = 12 NADPH. One exported triose phosphate = 3 CO₂: 9 ATP, 6 NADPH."
+    },
+    {
+     "name": "Inverse square for lamp distance",
+     "rule": "Double the distance → intensity ÷ 4; triple → ÷ 9; halve → × 4.",
+     "example": "Lamp moved from 10 cm to 20 cm: intensity becomes ¼. Moved from 30 cm to 10 cm: intensity × 9."
+    },
+    {
+     "name": "Follow the labelled atom",
+     "rule": "O in O₂ comes from water; O in glucose and the new water comes from CO₂; C in glucose comes from CO₂.",
+     "example": "Plant given H₂¹⁸O → labelled O₂ released. Plant given C¹⁸O₂ → label appears in glucose (and water), not in O₂."
+    },
+    {
+     "name": "Rf as a fraction",
+     "rule": "Simplify the two distances as a fraction before converting to a decimal.",
+     "example": "Pigment 3.6 cm, solvent front 6.0 cm: 36/60 = 3/5 = 0.6."
+    },
+    {
+     "name": "Which factor is limiting",
+     "rule": "On a rate graph, if increasing a factor raises the rate, that factor is limiting; once the line levels off, something else is limiting.",
+     "example": "Rate stops rising with light at 0.04% CO₂ but rises again at 0.1% CO₂ → on the plateau, CO₂ was the limiting factor."
+    },
+    {
+     "name": "Mnemonic for the two stages",
+     "rule": "'Thylakoid = Light, Stroma = Sugar': light-dependent in thylakoids, sugar-making Calvin cycle in stroma.",
+     "example": "'Where is rubisco found?' Sugar-making → stroma."
+    }
+   ],
+   "traps": [
+    "Saying the oxygen comes from carbon dioxide; it comes from water.",
+    "Calling the light-independent stage a 'dark reaction' that happens only at night; it runs in light, using ATP and NADPH from the light stage.",
+    "Writing NAD instead of NADP for photosynthesis.",
+    "Saying plants photosynthesise instead of respiring; plants respire all the time, day and night.",
+    "Saying chlorophyll absorbs green light; it reflects green."
+   ],
+   "nsmqTips": [
+    "When asked for the equation, give the balanced 6CO₂ + 6H₂O form and say 'in the presence of light and chlorophyll'.",
+    "Classic experiments: Van Helmont (willow tree: its gain in mass did not come from the soil), Priestley (plant restores air), Ingenhousz (light needed), Engelmann (bacteria and spectrum), Calvin (¹⁴C and the cycle).",
+    "Compensation point: light intensity at which photosynthesis rate equals respiration rate, so net gas exchange is zero.",
+    "Mineral roles: Mg²⁺ is part of chlorophyll (deficiency → chlorosis), nitrate for amino acids, phosphate for ATP and nucleic acids."
+   ]
+  },
+  {
+   "topic": "Nutrition in animals and digestion",
+   "strand": "Systems of Life",
+   "university": false,
+   "summary": "Animals are heterotrophs that ingest, digest, absorb, assimilate and egest food, using enzymes along the alimentary canal to break large insoluble molecules into small soluble ones. NSMQ asks for enzyme–substrate–product sets, sites and pH of digestion, dental formulae, deficiency diseases and food energy calculations.",
+   "keyIdeas": [
+    "Five stages: ingestion, digestion (mechanical and chemical), absorption, assimilation, egestion.",
+    "Starch digestion starts in the mouth (salivary amylase), protein digestion starts in the stomach (pepsin), fat digestion happens mainly in the duodenum and ileum (lipase after bile emulsification).",
+    "The stomach secretes HCl (pH ≈ 1.5–2), which kills microbes and activates pepsinogen to pepsin; rennin clots milk protein in young mammals.",
+    "Bile is made by the liver, stored in the gall bladder, contains no enzymes, emulsifies fats and neutralises acid chyme.",
+    "The pancreas secretes amylase, trypsin(ogen) and lipase in an alkaline juice with hydrogencarbonate.",
+    "The ileum absorbs digested food through villi and microvilli; glucose and amino acids go into blood capillaries to the hepatic portal vein, fatty acids and glycerol into lacteals (lymph).",
+    "The colon absorbs water and minerals; undigested material is egested as faeces.",
+    "A balanced diet has carbohydrates, proteins, fats, vitamins, minerals, water and fibre (roughage) in the right proportions."
+   ],
+   "formulas": [
+    {
+     "name": "Enzymes in the mouth and stomach",
+     "formula": "Salivary amylase: starch → maltose (mouth, pH ≈ 7). Pepsin: proteins → polypeptides (stomach, pH ≈ 2). Rennin: caseinogen → casein (clots milk)",
+     "note": "Pepsin is secreted as inactive pepsinogen, activated by HCl."
+    },
+    {
+     "name": "Enzymes in the small intestine",
+     "formula": "Pancreatic amylase: starch → maltose. Trypsin: proteins → polypeptides. Lipase: fats → fatty acids + glycerol. Maltase: maltose → glucose. Sucrase: sucrose → glucose + fructose. Lactase: lactose → glucose + galactose. Peptidases: peptides → amino acids",
+     "note": "Trypsinogen is activated by enterokinase (enteropeptidase) from the duodenal wall."
+    },
+    {
+     "name": "Energy value of a food (calorimetry)",
+     "formula": "Energy per gram = (mass of water × 4.2 × ΔT) / mass of food burned",
+     "note": "Specific heat capacity of water = 4.2 J g⁻¹ °C⁻¹. Result in J g⁻¹; usually underestimates because of heat loss."
+    },
+    {
+     "name": "Body mass index",
+     "formula": "BMI = mass (kg) / height² (m²)",
+     "note": "18.5–24.9 is the normal range for adults."
+    },
+    {
+     "name": "Human dental formula",
+     "formula": "Adult: I 2/2, C 1/1, PM 2/2, M 3/3 = 32 teeth. Milk teeth: I 2/2, C 1/1, M 2/2 = 20",
+     "note": "Numbers are for one side; upper over lower jaw."
+    },
+    {
+     "name": "Fat-soluble vitamin deficiencies",
+     "formula": "A: night blindness, xerophthalmia. D: rickets (children), osteomalacia (adults). E: reproductive problems, anaemia. K: poor blood clotting",
+     "note": "Vitamin D is made in skin exposed to sunlight."
+    },
+    {
+     "name": "Water-soluble vitamin deficiencies",
+     "formula": "B₁ (thiamine): beriberi. B₃ (niacin): pellagra. B₁₂ / folic acid: anaemia. C (ascorbic acid): scurvy",
+     "note": "Water-soluble vitamins are not stored and are lost in cooking water."
+    },
+    {
+     "name": "Mineral and protein deficiencies",
+     "formula": "Iron: anaemia. Iodine: goitre. Calcium: rickets, weak teeth. Protein: kwashiorkor. Protein and energy: marasmus",
+     "note": "Kwashiorkor shows oedema (swollen belly), discoloured hair; marasmus shows extreme wasting."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Dental formula total in one step",
+     "rule": "Total teeth = 2 × (sum of all numbers in the formula).",
+     "example": "Dog: I 3/3, C 1/1, PM 4/4, M 2/3 → upper 10 + lower 11 = 21, × 2 = 42. Cow: I 0/3, C 0/1, PM 3/3, M 3/3 → 6 + 10 = 16, × 2 = 32."
+    },
+    {
+     "name": "Calorimetry with round numbers",
+     "rule": "Multiply water mass × ΔT first, then × 4.2.",
+     "example": "1 g of groundnut heats 20 g of water by 25 °C: 20 × 25 = 500, × 4.2 = 2100 J, so 2.1 kJ g⁻¹."
+    },
+    {
+     "name": "Enzyme name tells the substrate",
+     "rule": "Drop -ase to get the substrate: maltase → maltose, lactase → lactose, lipase → lipid, protease → protein. '-ogen' = inactive form.",
+     "example": "'What does sucrase act on and produce?' sucrose → glucose + fructose."
+    },
+    {
+     "name": "pH journey mnemonic",
+     "rule": "'Neutral, Acid, Alkaline': mouth ≈ 7, stomach ≈ 2, duodenum/ileum ≈ 8.",
+     "example": "'Why does salivary amylase stop working in the stomach?' The pH drops to about 2, so it is denatured."
+    },
+    {
+     "name": "Vitamin mnemonic ADEK",
+     "rule": "Fat-soluble vitamins are A, D, E, K ('A DEcK of fats'); all others in the syllabus (B group, C) are water-soluble.",
+     "example": "'Which vitamin is fat-soluble: B₁, C or K?' → K."
+    },
+    {
+     "name": "BMI with squares you know",
+     "rule": "Memorise 1.6² = 2.56, 1.7² = 2.89, 1.8² = 3.24.",
+     "example": "72 kg, 1.8 m: 72 / 3.24 ≈ 22.2 → normal."
+    }
+   ],
+   "traps": [
+    "Saying bile contains enzymes or digests fat; it only emulsifies.",
+    "Saying trypsin is made in the stomach; it is made by the pancreas and works in the duodenum.",
+    "Placing the start of protein digestion in the mouth.",
+    "Saying the large intestine absorbs digested food; it mainly absorbs water.",
+    "Confusing kwashiorkor (protein deficiency) with marasmus (protein and energy deficiency)."
+   ],
+   "nsmqTips": [
+    "Enzyme questions usually need three parts: enzyme, substrate, product. Say all three quickly.",
+    "Remember that fatty acids and glycerol go into the lacteals, not directly into blood capillaries.",
+    "Teeth types and jobs: incisors cut, canines tear, premolars and molars grind; herbivores have a diastema (gap).",
+    "Know special nutrition modes: saprophytic (fungi), parasitic (tapeworm, dodder), holozoic (humans), symbiotic (Rhizobium in legume nodules)."
+   ]
+  },
+  {
+   "topic": "Respiration",
+   "strand": "Systems of Life",
+   "university": false,
+   "summary": "Respiration is the release of energy from food (mainly glucose) in all living cells, producing ATP. NSMQ asks for aerobic and anaerobic equations, the stages and their locations, ATP yields, respiratory quotients and respirometer calculations.",
+   "keyIdeas": [
+    "Respiration is a chemical process in cells; breathing (ventilation) is the mechanical movement of air in and out of the lungs.",
+    "Aerobic respiration needs oxygen and releases much more energy than anaerobic respiration.",
+    "Glycolysis occurs in the cytoplasm: glucose (6C) → 2 pyruvate (3C), net 2 ATP and 2 NADH; it needs no oxygen.",
+    "The link reaction (pyruvate → acetyl CoA + CO₂) and the Krebs cycle occur in the mitochondrial matrix; oxidative phosphorylation occurs on the inner membrane (cristae) via the electron transport chain.",
+    "Oxygen is the final electron acceptor, combining with electrons and H⁺ to form water.",
+    "Anaerobic respiration in muscles produces lactic acid; in yeast and plants it produces ethanol and CO₂ (alcoholic fermentation).",
+    "After vigorous exercise, the oxygen debt is the extra oxygen needed to oxidise accumulated lactic acid.",
+    "Uses of energy: muscle contraction, active transport, protein synthesis, cell division, nerve impulses, maintaining body temperature."
+   ],
+   "formulas": [
+    {
+     "name": "Aerobic respiration",
+     "formula": "C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O + energy (≈ 2880 kJ per mole of glucose)",
+     "note": "Part of the energy is trapped as ATP; the rest is lost as heat."
+    },
+    {
+     "name": "Anaerobic respiration in animals",
+     "formula": "C₆H₁₂O₆ → 2C₃H₆O₃ (lactic acid) + energy (2 ATP)",
+     "note": "No CO₂ is produced."
+    },
+    {
+     "name": "Alcoholic fermentation (yeast, plants)",
+     "formula": "C₆H₁₂O₆ → 2C₂H₅OH + 2CO₂ + energy (2 ATP)",
+     "note": "Basis of brewing (ethanol) and baking (CO₂ makes dough rise)."
+    },
+    {
+     "name": "Respiratory quotient",
+     "formula": "RQ = volume of CO₂ produced / volume of O₂ consumed",
+     "note": "Carbohydrate = 1.0, protein ≈ 0.9, lipid ≈ 0.7. RQ > 1 suggests some anaerobic respiration."
+    },
+    {
+     "name": "Glycolysis summary",
+     "formula": "Glucose + 2 NAD + 2 ADP + 2 Pi → 2 pyruvate + 2 NADH + 2 ATP (net)",
+     "note": "4 ATP made, 2 used in the investment phase."
+    },
+    {
+     "name": "Link reaction and Krebs per glucose",
+     "formula": "Link: 2 CO₂, 2 NADH. Krebs (2 turns): 4 CO₂, 6 NADH, 2 FADH₂, 2 ATP",
+     "note": "Total CO₂ per glucose = 6."
+    },
+    {
+     "name": "ATP per reduced coenzyme",
+     "formula": "Modern: NADH ≈ 2.5 ATP, FADH₂ ≈ 1.5 ATP. Older textbooks: NADH = 3, FADH₂ = 2",
+     "note": "Gives ≈ 30–32 ATP per glucose (modern) or 36–38 (older figure)."
+    },
+    {
+     "name": "Respirometer gas volume",
+     "formula": "Volume = πr² × distance moved by the liquid",
+     "note": "r = internal radius of the capillary. KOH or soda lime absorbs CO₂, so the movement measures O₂ uptake."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "RQ by recognition",
+     "rule": "Do not calculate if the number is standard: ≈ 1.0 carbohydrate, ≈ 0.9 protein, ≈ 0.7 fat, above 1 = anaerobic contribution, 0 = no CO₂ (e.g. lactic acid fermentation).",
+     "example": "Seeds give RQ = 0.71 → they are respiring lipid (oily seeds such as groundnut)."
+    },
+    {
+     "name": "Glucose RQ from the equation",
+     "rule": "For any balanced equation, RQ = coefficient of CO₂ / coefficient of O₂.",
+     "example": "Glucose: 6 CO₂ / 6 O₂ = 1. Tripalmitin: 2C₅₁H₉₈O₆ + 145O₂ → 102CO₂ + 98H₂O, RQ = 102/145 ≈ 0.70."
+    },
+    {
+     "name": "ATP tally",
+     "rule": "Count 10 NADH and 2 FADH₂ per glucose plus 4 ATP made directly (2 glycolysis + 2 Krebs).",
+     "example": "Older: 4 + 10×3 + 2×2 = 4 + 30 + 4 = 38. Modern: 4 + 10×2.5 + 2×1.5 = 4 + 25 + 3 = 32."
+    },
+    {
+     "name": "Respirometer with r² first",
+     "rule": "Square the radius (not the diameter), then multiply by distance and π ≈ 3.14.",
+     "example": "Capillary diameter 1 mm (r = 0.5 mm), liquid moves 25 mm: 0.25 × 25 = 6.25, × π ≈ 19.6 mm³ of O₂."
+    },
+    {
+     "name": "Where does each stage happen",
+     "rule": "'Glyco in the Cyto; Link and Krebs in the Matrix; Chain on the Cristae'.",
+     "example": "'Where is the electron transport chain?' → inner mitochondrial membrane (cristae)."
+    }
+   ],
+   "traps": [
+    "Using 'respiration' and 'breathing' as the same thing.",
+    "Saying anaerobic respiration in human muscle produces CO₂.",
+    "Placing glycolysis in the mitochondria; it occurs in the cytoplasm.",
+    "Saying plants respire only at night; they respire all the time.",
+    "Forgetting that the respirometer must be kept at constant temperature and needs a control with dead (boiled) material or glass beads."
+   ],
+   "nsmqTips": [
+    "When asked for the products of anaerobic respiration, say which organism: lactic acid for animals, ethanol and CO₂ for yeast and plants.",
+    "Have the energy figure ready: about 2880 kJ per mole of glucose aerobically, against only 2 ATP net anaerobically.",
+    "If asked what limewater shows: it turns milky with CO₂; hydrogencarbonate indicator turns from red to yellow when CO₂ rises.",
+    "Name the final electron acceptor (oxygen) and the poison that blocks the chain (cyanide) — common quick-fire questions."
+   ]
+  },
+  {
+   "topic": "Gaseous exchange and breathing",
+   "strand": "Systems of Life",
+   "university": false,
+   "summary": "Gaseous exchange is the diffusion of oxygen into and carbon dioxide out of an organism across a respiratory surface, while breathing is the movement of air or water over that surface. NSMQ asks about breathing mechanics, lung volumes, composition of inhaled and exhaled air and gas exchange surfaces in different organisms.",
+   "keyIdeas": [
+    "Good respiratory surfaces are large, thin (short diffusion distance), moist, well supplied with blood and well ventilated, keeping a steep gradient.",
+    "In humans air passes nostrils → pharynx → larynx → trachea → bronchi → bronchioles → alveoli; cartilage rings keep the trachea open.",
+    "Inspiration: external intercostal muscles contract (ribs move up and out) and the diaphragm contracts and flattens; thoracic volume rises, pressure falls, air rushes in.",
+    "Quiet expiration is mostly passive: muscles relax, elastic lungs recoil, volume falls, pressure rises, air is pushed out; forced expiration uses internal intercostals and abdominal muscles.",
+    "Breathing rate is controlled by the medulla oblongata, which responds mainly to a rise in blood CO₂ (fall in pH).",
+    "Fish use gills with a countercurrent flow of blood and water; insects use spiracles and tracheae carrying air straight to tissues; frogs use skin, mouth lining and lungs; plants use stomata and lenticels.",
+    "Smoking: tar damages cilia and causes cancer, carbon monoxide binds haemoglobin, nicotine is addictive and raises blood pressure; emphysema reduces alveolar surface area."
+   ],
+   "formulas": [
+    {
+     "name": "Pulmonary ventilation rate",
+     "formula": "Ventilation rate = tidal volume × breathing rate",
+     "note": "At rest ≈ 0.5 dm³ × 12 min⁻¹ = 6 dm³ min⁻¹."
+    },
+    {
+     "name": "Alveolar ventilation",
+     "formula": "Alveolar ventilation = (tidal volume − dead space volume) × breathing rate",
+     "note": "Anatomical dead space ≈ 150 cm³ (air in trachea and bronchi that does not reach alveoli)."
+    },
+    {
+     "name": "Lung volumes",
+     "formula": "Vital capacity = tidal volume + inspiratory reserve volume + expiratory reserve volume; Total lung capacity = vital capacity + residual volume",
+     "note": "Typical adult: tidal ≈ 0.5 dm³, vital capacity ≈ 4–5 dm³, residual ≈ 1–1.5 dm³."
+    },
+    {
+     "name": "Boyle's law (basis of breathing)",
+     "formula": "P₁V₁ = P₂V₂ (constant temperature)",
+     "note": "Increasing chest volume lowers pressure below atmospheric, so air flows in."
+    },
+    {
+     "name": "Composition of inhaled and exhaled air",
+     "formula": "Inhaled: O₂ ≈ 21%, CO₂ ≈ 0.04%, N₂ ≈ 78%. Exhaled: O₂ ≈ 16%, CO₂ ≈ 4%, N₂ ≈ 78%, saturated with water vapour",
+     "note": "Exhaled air is also warmer."
+    },
+    {
+     "name": "Fick's law at the alveolus",
+     "formula": "Rate ∝ surface area × (partial pressure difference) / wall thickness",
+     "note": "Alveolar wall plus capillary wall is about 0.5 µm thick; total alveolar area ≈ 70 m²."
+    },
+    {
+     "name": "Respiratory surfaces by organism",
+     "formula": "Mammals, birds, reptiles: lungs. Fish: gills. Insects: tracheae via spiracles. Earthworm: moist skin. Amoeba: cell membrane. Frog: skin, buccal cavity, lungs. Plants: stomata, lenticels",
+     "note": "Birds have air sacs and one-way airflow through parabronchi."
+    },
+    {
+     "name": "Breathing rate from a spirometer trace",
+     "formula": "Breaths per minute = number of peaks / time in seconds × 60",
+     "note": "Tidal volume = height of one peak-to-trough; the trace slopes downward as CO₂ is absorbed and O₂ used."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Ventilation in cm³ then convert",
+     "rule": "Multiply tidal volume in cm³ by rate, then divide by 1000 for dm³.",
+     "example": "Tidal volume 500 cm³, rate 15 min⁻¹: 7500 cm³ min⁻¹ = 7.5 dm³ min⁻¹."
+    },
+    {
+     "name": "Subtract dead space first",
+     "rule": "Alveolar ventilation: take 150 cm³ off the tidal volume, then multiply.",
+     "example": "Tidal 500 cm³, dead space 150 cm³, rate 12: 350 × 12 = 4200 cm³ min⁻¹ = 4.2 dm³ min⁻¹."
+    },
+    {
+     "name": "Scale the trace to one minute",
+     "rule": "Find what multiplies the time shown to 60 s and apply it to the peak count.",
+     "example": "6 breaths in 20 s: 60/20 = 3, so 6 × 3 = 18 breaths min⁻¹."
+    },
+    {
+     "name": "'In = Contract' rule",
+     "rule": "On inspiration both the diaphragm and external intercostals contract; on quiet expiration both relax. Contract → volume up → pressure down → air in.",
+     "example": "'What happens to the diaphragm during inhalation?' Contracts and flattens (moves down)."
+    },
+    {
+     "name": "Countercurrent wins",
+     "rule": "Countercurrent flow keeps a gradient along the whole gill, so blood can approach the O₂ level of incoming water; parallel flow reaches equilibrium at about half-way at best.",
+     "example": "If water enters at 100% saturation, parallel flow gives blood at most about 50%; countercurrent can load to about 80–90%."
+    }
+   ],
+   "traps": [
+    "Saying the diaphragm moves up during inspiration; it contracts, flattens and moves down.",
+    "Saying exhaled air contains no oxygen; it still has about 16%.",
+    "Saying the respiratory centre responds mainly to low O₂; it responds mainly to rising CO₂.",
+    "Confusing gaseous exchange (diffusion at a surface) with respiration (energy release in cells).",
+    "Forgetting dead space when working out alveolar ventilation."
+   ],
+   "nsmqTips": [
+    "Give the full chain of events for breathing in one sentence: muscles contract → volume increases → pressure decreases → air enters.",
+    "Quick-fire favourites: epiglottis prevents food entering the trachea; surfactant prevents alveoli collapsing; lenticels are pores in woody stems.",
+    "When asked for the respiratory organ of an animal, think of its habitat and body size: small moist animals use skin, insects use tracheae.",
+    "Limewater experiment: exhaled air turns it milky faster than inhaled air, showing more CO₂."
+   ]
+  },
+  {
+   "topic": "Transport in animals (blood, heart)",
+   "strand": "Systems of Life",
+   "university": false,
+   "summary": "Mammals have a closed double circulation pumped by a four-chambered heart, with blood carrying oxygen, nutrients, wastes, hormones and defence cells. NSMQ asks for the route of blood, heart structure, blood components, blood groups and cardiac output calculations.",
+   "keyIdeas": [
+    "Double circulation: the pulmonary circuit (heart → lungs → heart) and the systemic circuit (heart → body → heart); blood passes through the heart twice per complete circuit.",
+    "The left ventricle has the thickest wall because it pumps blood to the whole body at high pressure.",
+    "Arteries carry blood away from the heart (thick muscular elastic walls, narrow lumen, high pressure); veins return blood (thin walls, wide lumen, valves); capillaries are one cell thick for exchange.",
+    "Blood = plasma (≈ 55%) + red cells, white cells and platelets (≈ 45%).",
+    "Red blood cells are biconcave, have no nucleus and carry O₂ as oxyhaemoglobin; white cells defend (phagocytes engulf, lymphocytes make antibodies); platelets help clotting.",
+    "The heartbeat is myogenic: started by the sinoatrial node (pacemaker), passed to the atrioventricular node, then along the bundle of His and Purkinje fibres.",
+    "ABO blood groups depend on antigens on red cells and antibodies in plasma; O is the universal donor, AB the universal recipient.",
+    "Lymph returns tissue fluid to the blood through the lymphatic system; lymph nodes filter it and contain lymphocytes."
+   ],
+   "formulas": [
+    {
+     "name": "Cardiac output",
+     "formula": "Cardiac output = stroke volume × heart rate",
+     "note": "At rest ≈ 70 cm³ × 72 min⁻¹ ≈ 5 dm³ min⁻¹."
+    },
+    {
+     "name": "Heart rate from cycle time",
+     "formula": "Heart rate (beats min⁻¹) = 60 / duration of one cardiac cycle (s)",
+     "note": "One cycle at rest ≈ 0.8 s → 75 beats min⁻¹."
+    },
+    {
+     "name": "Route of blood through the heart",
+     "formula": "Vena cava → right atrium → tricuspid valve → right ventricle → pulmonary valve → pulmonary artery → lungs → pulmonary vein → left atrium → bicuspid (mitral) valve → left ventricle → aortic valve → aorta",
+     "note": "Semilunar valves sit at the bases of the pulmonary artery and aorta."
+    },
+    {
+     "name": "ABO system",
+     "formula": "A: antigen A, anti-B. B: antigen B, anti-A. AB: antigens A and B, no antibodies. O: no antigens, anti-A and anti-B",
+     "note": "Agglutination happens when donor antigens meet recipient antibodies."
+    },
+    {
+     "name": "Blood clotting cascade",
+     "formula": "Damaged tissue/platelets release thromboplastin → prothrombin → thrombin (needs Ca²⁺, vitamin K) → fibrinogen → fibrin threads trap cells",
+     "note": "Haemophilia is a sex-linked failure of a clotting factor."
+    },
+    {
+     "name": "Typical blood counts",
+     "formula": "Red cells ≈ 4.5–5.5 × 10¹² L⁻¹ (≈ 5 million mm⁻³); white cells ≈ 4–11 × 10⁹ L⁻¹; platelets ≈ 150–400 × 10⁹ L⁻¹",
+     "note": "Red cells live about 120 days and are destroyed in the liver and spleen."
+    },
+    {
+     "name": "Haemoglobin oxygen binding",
+     "formula": "Hb + 4O₂ ⇌ HbO₈ (oxyhaemoglobin); ≈ 1.34 cm³ O₂ per g of Hb when fully saturated",
+     "note": "Each Hb has four haem groups, each with one Fe²⁺."
+    },
+    {
+     "name": "Blood pressure",
+     "formula": "Normal adult ≈ 120/80 mmHg (systolic/diastolic)",
+     "note": "Systolic = ventricles contracting; diastolic = heart relaxing."
+    },
+    {
+     "name": "Heart sounds",
+     "formula": "'Lub' = atrioventricular (tricuspid and bicuspid) valves closing; 'dub' = semilunar valves closing",
+     "note": "Lub marks the start of ventricular systole."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Heart rate by division into 60",
+     "rule": "Divide 60 by the R–R interval or cycle time in seconds; know 0.75 → 80, 0.8 → 75, 0.6 → 100, 1.0 → 60.",
+     "example": "ECG peaks 0.75 s apart: 60 / 0.75 = 80 beats min⁻¹."
+    },
+    {
+     "name": "Cardiac output rounding",
+     "rule": "Multiply stroke volume by heart rate and convert cm³ to dm³.",
+     "example": "70 cm³ × 72 = 5040 cm³ ≈ 5.0 dm³ min⁻¹. During exercise, 120 cm³ × 150 = 18 000 cm³ = 18 dm³ min⁻¹."
+    },
+    {
+     "name": "'Arteries Away' with the two exceptions",
+     "rule": "Arteries carry blood away from the heart and usually oxygenated blood; the pulmonary artery carries deoxygenated and the pulmonary vein oxygenated blood.",
+     "example": "'Which artery carries deoxygenated blood?' → pulmonary artery."
+    },
+    {
+     "name": "LAB RAT valves",
+     "rule": "Left Atrium → Bicuspid; Right Atrium → Tricuspid.",
+     "example": "'Valve between left atrium and left ventricle?' → bicuspid (mitral)."
+    },
+    {
+     "name": "Transfusion check: donor antigen vs recipient antibody",
+     "rule": "A transfusion is safe if the recipient's plasma has no antibody against the donor's red-cell antigen. Recipient X can receive X and O.",
+     "example": "Recipient group B has anti-A: can receive B or O; not A or AB."
+    },
+    {
+     "name": "Bohr shift mnemonic 'CADET, face Right'",
+     "rule": "More CO₂, Acid, 2,3-DPG, Exercise or Temperature shifts the oxygen dissociation curve to the right, so Hb releases O₂ more easily.",
+     "example": "'In active muscle, which way does the curve shift?' → right, more O₂ unloaded."
+    }
+   ],
+   "traps": [
+    "Saying all arteries carry oxygenated blood.",
+    "Mixing up where antigens (on red cell surface) and antibodies (in plasma) are found.",
+    "Saying the right ventricle has the thickest wall.",
+    "Saying the hepatic portal vein goes from the liver to the heart; it carries blood from the gut to the liver.",
+    "Confusing serum (plasma without clotting factors) with plasma."
+   ],
+   "nsmqTips": [
+    "For 'trace the path' questions, name chambers and valves in order without skipping the valves.",
+    "Who: William Harvey described blood circulation; Karl Landsteiner discovered ABO blood groups.",
+    "Rhesus: a Rh⁻ mother with a Rh⁺ fetus risks haemolytic disease of the newborn in later pregnancies.",
+    "Fish have a single circulation and a two-chambered heart; amphibians three chambers; mammals and birds four."
+   ]
+  },
+  {
+   "topic": "Transport in plants",
+   "strand": "Systems of Life",
+   "university": false,
+   "summary": "Plants move water and minerals upward in the xylem and sugars both ways in the phloem, with transpiration driving most water movement. NSMQ asks for the structure and function of xylem and phloem, the cohesion–tension mechanism, factors affecting transpiration, stomatal opening and potometer and ringing experiments.",
+   "keyIdeas": [
+    "Xylem carries water and mineral ions from roots to leaves, in one direction only; its vessels and tracheids are dead, hollow and strengthened with lignin.",
+    "Phloem carries organic solutes (mainly sucrose, also amino acids) from sources to sinks, up or down (translocation); sieve tubes are living, with sieve plates and companion cells.",
+    "Water enters root hairs by osmosis, crosses the cortex by the apoplast (cell walls), symplast (cytoplasm via plasmodesmata) and vacuolar pathways, and the Casparian strip (suberin) in the endodermis forces it into the symplast.",
+    "Cohesion–tension theory: evaporation from leaves creates tension; cohesion between water molecules and adhesion to xylem walls pull a continuous column up the plant.",
+    "Root pressure (from active pumping of ions into the xylem) and capillarity help but cannot lift water to the top of tall trees.",
+    "Transpiration is the loss of water vapour from leaves, mostly through stomata; it cools the plant and moves minerals.",
+    "Stomata open when K⁺ ions enter guard cells, lowering their water potential; water enters, the guard cells become turgid and bow apart because of their unevenly thickened walls.",
+    "Mass flow hypothesis (Münch): sugar loaded at the source lowers water potential, water enters, pressure builds and pushes sap toward the sink."
+   ],
+   "formulas": [
+    {
+     "name": "Xylem vs phloem",
+     "formula": "Xylem: water + minerals, upward, dead lignified cells, no end walls (vessels). Phloem: sucrose + amino acids, both directions, living sieve tubes with sieve plates and companion cells",
+     "note": "Both are found together in vascular bundles."
+    },
+    {
+     "name": "Potometer rate of water uptake",
+     "formula": "Rate = (πr² × distance moved by bubble) / time",
+     "note": "r = capillary radius. A potometer measures water uptake, which is close to but not equal to transpiration."
+    },
+    {
+     "name": "Factors affecting transpiration",
+     "formula": "Rate increases with: light intensity, temperature, wind speed; rate decreases with: humidity",
+     "note": "Light acts mainly by opening stomata; wind removes the humid layer next to the leaf."
+    },
+    {
+     "name": "Water potential gradient across the plant",
+     "formula": "ψ soil > ψ root > ψ stem xylem > ψ leaf > ψ air",
+     "note": "Water always moves to the more negative water potential."
+    },
+    {
+     "name": "Capillary rise",
+     "formula": "h = 2γ cos θ / (ρ g r)",
+     "note": "γ = surface tension (≈ 0.072 N m⁻¹ for water), θ = contact angle, ρ = 1000 kg m⁻³, r = tube radius. Narrow tubes give higher rise."
+    },
+    {
+     "name": "Stomatal opening sequence",
+     "formula": "Light → K⁺ pumped into guard cells (ATP) → ψ of guard cells falls → water enters by osmosis → guard cells turgid → pore opens",
+     "note": "Closing reverses it; abscisic acid (ABA) triggers closure under water stress."
+    },
+    {
+     "name": "Root pathways",
+     "formula": "Apoplast = through cell walls; Symplast = through cytoplasm and plasmodesmata; Vacuolar = through vacuoles",
+     "note": "The Casparian strip blocks the apoplast at the endodermis, letting the plant control mineral entry."
+    },
+    {
+     "name": "Xerophyte adaptations",
+     "formula": "Thick waxy cuticle, sunken stomata, rolled leaves, hairs, few stomata, leaves reduced to spines, succulent water storage",
+     "note": "Examples: cactus, marram grass, pineapple (CAM)."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Potometer with r² first",
+     "rule": "Square the radius, multiply by distance, then by π ≈ 3.14, then divide by time.",
+     "example": "Radius 0.5 mm, bubble moves 30 mm in 5 min: 0.25 × 30 = 7.5, × π ≈ 23.6 mm³, ÷ 5 ≈ 4.7 mm³ min⁻¹."
+    },
+    {
+     "name": "Ringing experiment reading",
+     "rule": "Removing a ring of bark removes phloem but leaves xylem: above the ring sugars pile up (swelling), below the ring tissues starve; the leaves do not wilt because water still flows.",
+     "example": "'After ringing, the stem swells above the cut. Why?' Sucrose moving down in the phloem cannot pass the ring and accumulates."
+    },
+    {
+     "name": "Only humidity slows it",
+     "rule": "'Hot, Bright, Windy, Dry → faster'; humidity is the one factor where an increase slows transpiration.",
+     "example": "'Which condition gives the lowest transpiration: hot, windy, humid or still?' → humid (and still)."
+    },
+    {
+     "name": "Capillarity limit check",
+     "rule": "Plug values in powers of ten to show capillarity alone is too small for tall trees.",
+     "example": "r = 20 µm, θ = 0: h = 2 × 0.072 / (1000 × 9.8 × 2 × 10⁻⁵) = 0.144 / 0.196 ≈ 0.73 m, far below a 30 m tree."
+    },
+    {
+     "name": "Bundle layout rule",
+     "rule": "In a dicot stem the xylem is on the inside and phloem on the outside of each bundle, arranged in a ring; in a root xylem forms a central star with phloem between its arms.",
+     "example": "'In a dicot stem section, which tissue is nearer the epidermis in a vascular bundle?' → phloem."
+    }
+   ],
+   "traps": [
+    "Saying phloem cells are dead or xylem vessels are living; it is the reverse.",
+    "Saying a potometer measures transpiration exactly; it measures water uptake, some of which is used in photosynthesis and cell turgor.",
+    "Saying transpiration is useless water loss; it pulls up water and minerals and cools the leaf.",
+    "Forgetting that guard cells contain chloroplasts while other epidermal cells do not.",
+    "Saying phloem moves sugars only downward; translocation goes from source to sink in either direction."
+   ],
+   "nsmqTips": [
+    "When asked to explain the ascent of sap, name all three: transpiration pull (cohesion–tension), root pressure, capillarity — and say transpiration pull is the main one.",
+    "Aphid stylets are used to collect pure phloem sap; this is a common 'how do scientists know' question.",
+    "Guttation (loss of liquid water through hydathodes) is caused by root pressure, usually at night or in humid conditions.",
+    "Know the dyes: eosin or red ink in water moves up the xylem, showing its position in a cut stem."
+   ]
+  },
+  {
+   "topic": "Excretion and osmoregulation",
+   "strand": "Systems of Life",
+   "university": false,
+   "summary": "Excretion removes metabolic wastes such as CO₂, urea and excess salts; osmoregulation keeps the water and solute balance of body fluids steady. NSMQ asks about nephron structure, ADH, urea formation and which waste suits which habitat.",
+   "keyIdeas": [
+    "Excretion removes waste made by metabolism; egestion removes undigested food, so faeces are mostly egested, not excreted (bile pigments are the exception).",
+    "Urea is made in the liver by deamination of excess amino acids and the ornithine cycle; the kidney only filters it out.",
+    "The nephron works by ultrafiltration at the glomerulus, selective reabsorption (mainly in the PCT) and water reabsorption controlled by ADH in the DCT and collecting duct.",
+    "All glucose and amino acids in the filtrate are normally reabsorbed in the proximal convoluted tubule.",
+    "The loop of Henle builds a salt gradient in the medulla; a longer loop allows more concentrated urine.",
+    "ADH is made in the hypothalamus, released from the posterior pituitary, and makes the collecting duct more permeable to water.",
+    "Freshwater protozoa such as Amoeba and Paramecium use contractile vacuoles to pump out excess water.",
+    "Plants excrete through stomata and lenticels, and by leaf fall, bark shedding and storing wastes such as latex, tannins and crystals."
+   ],
+   "formulas": [
+    {
+     "name": "Urea formation (net)",
+     "formula": "2NH₃ + CO₂ → CO(NH₂)₂ + H₂O",
+     "note": "Ornithine cycle in liver cells; uses ATP. NH₃ comes from deamination."
+    },
+    {
+     "name": "Deamination",
+     "formula": "amino acid → keto acid + NH₃",
+     "note": "Liver; the keto acid can be respired or turned into glucose or fat."
+    },
+    {
+     "name": "Nephron pathway",
+     "formula": "glomerulus/Bowman's capsule → PCT → loop of Henle → DCT → collecting duct → ureter",
+     "note": "Filtrate order; used in 'trace the path' questions."
+    },
+    {
+     "name": "Typical kidney figures",
+     "formula": "GFR ≈ 125 mL/min ≈ 180 L/day; urine ≈ 1.5 L/day",
+     "note": "About 99% of filtered water is reabsorbed."
+    },
+    {
+     "name": "Renal clearance",
+     "formula": "C = (U × V) / P",
+     "note": "U = urine concentration, V = urine flow rate, P = plasma concentration. Clearance of inulin ≈ GFR."
+    },
+    {
+     "name": "Excretory organs and products",
+     "formula": "Kidney: urea, salts, water; Lungs: CO₂, water vapour; Skin: sweat (water, salts, a little urea); Liver: bile pigments",
+     "note": "Classic matching question."
+    },
+    {
+     "name": "Nitrogenous waste vs habitat",
+     "formula": "Ammonia: most aquatic animals, bony fish, tadpoles; Urea: mammals, adult amphibians, sharks; Uric acid: birds, reptiles, insects",
+     "note": "Toxicity and water needed: ammonia > urea > uric acid."
+    },
+    {
+     "name": "Hormones of water and salt balance",
+     "formula": "ADH → more water reabsorbed; Aldosterone (adrenal cortex) → more Na⁺ reabsorbed in DCT and collecting duct",
+     "note": "Both act on the distal nephron."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Percent reabsorbed",
+     "rule": "Reabsorbed % = (filtered − urine)/filtered × 100; with 180 L filtered, each 1.8 L of urine is 1%.",
+     "example": "180 L filtered, 1.8 L urine: 1.8/180 = 1% excreted, so 99% reabsorbed."
+    },
+    {
+     "name": "Clearance equals GFR test",
+     "rule": "If C = U × V / P comes out ≈ 125 mL/min, the substance is filtered but neither reabsorbed nor secreted (like inulin). Lower → reabsorbed; higher → secreted.",
+     "example": "U = 10 mg/mL, V = 1.25 mL/min, P = 0.1 mg/mL: C = 12.5/0.1 = 125 mL/min, so it behaves like inulin."
+    },
+    {
+     "name": "Water supply decides the waste",
+     "rule": "Lots of water → ammonia; water must be saved → urea; very little water or a shelled egg → uric acid.",
+     "example": "Bird embryo inside a shelled egg: cannot flush ammonia, so it makes insoluble uric acid."
+    },
+    {
+     "name": "Fish mnemonic: fresh pees, salt drinks",
+     "rule": "Freshwater bony fish gain water: drink little, make lots of dilute urine, take in salt at the gills. Marine bony fish lose water: drink sea water, make little urine, pump salt out at the gills.",
+     "example": "Tilapia in Lake Volta: large volume of dilute urine. A marine tuna: little concentrated urine."
+    },
+    {
+     "name": "ADH direction check",
+     "rule": "Blood too concentrated → ADH up → small volume of concentrated urine. Blood too dilute, or alcohol/caffeine → ADH down → large dilute urine.",
+     "example": "After a salty kenkey-and-fish meal without water, ADH rises and urine becomes dark and scanty."
+    },
+    {
+     "name": "Long loop, desert animal",
+     "rule": "The longer the loop of Henle (thicker medulla), the more concentrated the urine.",
+     "example": "Desert kangaroo rat has very long loops, so it can survive with almost no drinking water."
+    }
+   ],
+   "traps": [
+    "Saying urea is made in the kidney; it is made in the liver.",
+    "Calling faeces an excretory product; they are egested (only bile pigments in them are excretory).",
+    "Saying ADH is made in the pituitary; it is made in the hypothalamus and released from the posterior pituitary.",
+    "Saying glucose is normally present in urine; its presence signals diabetes mellitus.",
+    "Giving marine protozoa contractile vacuoles as the main example; it is freshwater protozoa that need them."
+   ],
+   "nsmqTips": [
+    "For 'which part of the nephron' questions, link the process: ultrafiltration → glomerulus, glucose reabsorption → PCT, salt gradient → loop of Henle, ADH action → collecting duct.",
+    "Riddles often describe the organ: 'I am made of about a million nephrons' → kidney.",
+    "When asked for the excretory product of an animal, think of its habitat and whether it lays shelled eggs."
+   ]
+  },
+  {
+   "topic": "Nervous coordination and sense organs",
+   "strand": "Systems of Life",
+   "university": false,
+   "summary": "The nervous system carries fast electrical impulses from receptors to effectors, with the brain and spinal cord as the control centre. NSMQ often tests the reflex arc, the action potential, brain regions and the structure and defects of the eye and ear.",
+   "keyIdeas": [
+    "The central nervous system is the brain and spinal cord; nerves outside them form the peripheral nervous system.",
+    "A neurone at rest has a potential of about −70 mV, inside negative, kept by the Na⁺/K⁺ pump and leaky K⁺ channels.",
+    "An action potential is all-or-none: Na⁺ rushes in (depolarisation), then K⁺ leaves (repolarisation).",
+    "Myelin sheath and nodes of Ranvier allow saltatory conduction, which is much faster.",
+    "Synapses pass the impulse one way only, because neurotransmitter (e.g. acetylcholine) is released only from the presynaptic knob.",
+    "Rods work in dim light and give black-and-white vision; cones need bright light and give colour; the fovea has only cones; the blind spot has no receptors.",
+    "For near vision the ciliary muscles contract, suspensory ligaments slacken and the lens becomes fatter.",
+    "The cochlea detects sound; the semicircular canals detect head rotation; the utricle and saccule detect head position."
+   ],
+   "formulas": [
+    {
+     "name": "Key membrane potentials",
+     "formula": "Resting ≈ −70 mV; threshold ≈ −55 mV; peak ≈ +30 to +40 mV",
+     "note": "Values vary a little between textbooks; −70 mV is the standard answer."
+    },
+    {
+     "name": "Sodium–potassium pump",
+     "formula": "3 Na⁺ out, 2 K⁺ in per ATP",
+     "note": "Makes the inside negative relative to outside."
+    },
+    {
+     "name": "Reflex arc",
+     "formula": "receptor → sensory neurone → relay neurone (CNS) → motor neurone → effector",
+     "note": "Spinal reflexes such as the knee jerk; the knee jerk itself has no relay neurone."
+    },
+    {
+     "name": "Conduction speed",
+     "formula": "v = distance / time",
+     "note": "Myelinated fibres up to about 100 m/s; non-myelinated about 0.5–2 m/s."
+    },
+    {
+     "name": "Lens power",
+     "formula": "P = 1/f (f in metres), unit dioptre D",
+     "note": "Converging (convex) lens has positive P; diverging (concave) has negative P."
+    },
+    {
+     "name": "Brain regions",
+     "formula": "Cerebrum: thinking, memory, voluntary action; Cerebellum: balance and muscle coordination; Medulla oblongata: breathing, heart rate; Hypothalamus: temperature, water balance, hunger",
+     "note": "Most asked matching set."
+    },
+    {
+     "name": "Path of sound",
+     "formula": "pinna → ear canal → eardrum → malleus → incus → stapes → oval window → cochlea → auditory nerve",
+     "note": "The ossicles amplify the vibration."
+    },
+    {
+     "name": "Path of light",
+     "formula": "cornea → aqueous humour → pupil → lens → vitreous humour → retina → optic nerve",
+     "note": "Most refraction happens at the cornea; the image is real and inverted."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Reaction time from speed",
+     "rule": "Time = distance/speed; 1 m at 50 m/s is 0.02 s (20 ms). Halve the speed, double the time.",
+     "example": "Toe to spinal cord 1 m at 50 m/s = 0.02 s; on a 1 m/s unmyelinated fibre it would take 1 s."
+    },
+    {
+     "name": "Myopia = Minus lens",
+     "rule": "Short sight (myopia): eyeball too long, image in front of retina → concave lens (negative power). Long sight (hypermetropia): image behind retina → convex lens (positive power).",
+     "example": "Concave lens of focal length 0.5 m: P = 1/(−0.5) = −2 D, prescribed for short sight."
+    },
+    {
+     "name": "Circular closes, radial opens",
+     "rule": "Bright light: circular iris muscles contract → pupil constricts. Dim light: radial muscles contract → pupil dilates.",
+     "example": "Walking from a dark cinema into sunlight: circular muscles contract, pupils become small."
+    },
+    {
+     "name": "Near = muscles work",
+     "rule": "Near object needs a fat lens: ciliary muscles CONTRACT, ligaments SLACKEN. Far object: ciliary muscles relax, ligaments taut, lens thin.",
+     "example": "Reading a phone at 25 cm: ciliary muscles contracted; looking at a far-off goalpost: relaxed."
+    },
+    {
+     "name": "Ossicles MIS order",
+     "rule": "From eardrum inwards: Malleus (hammer), Incus (anvil), Stapes (stirrup). Stapes is the smallest bone in the body.",
+     "example": "Which ossicle touches the oval window? The last in MIS: stapes."
+    },
+    {
+     "name": "Sympathetic = sprint",
+     "rule": "Sympathetic (fight or flight) speeds the heart, dilates pupils and bronchioles, slows digestion; parasympathetic (rest and digest) does the opposite.",
+     "example": "A student about to face a quiz: sympathetic → fast heartbeat, dry mouth, wide pupils."
+    }
+   ],
+   "traps": [
+    "Saying ciliary muscles relax for near vision; they contract.",
+    "Confusing cerebellum (balance) with cerebrum (thinking).",
+    "Saying the blind spot has only rods; it has no receptors at all.",
+    "Saying impulses can cross synapses in both directions.",
+    "Saying a stronger stimulus gives a bigger action potential; it gives more frequent impulses of the same size."
+   ],
+   "nsmqTips": [
+    "Riddles about a 'part of the brain damaged by alcohol causing staggering' point to the cerebellum.",
+    "For eye defects, state both the cause (eyeball shape or lens) and the correcting lens type.",
+    "Learn the eye and ear pathways as fixed strings; 'trace the path' questions reward speed."
+   ]
+  },
+  {
+   "topic": "Hormones and homeostasis",
+   "strand": "Systems of Life",
+   "university": false,
+   "summary": "Hormones are chemical messengers made by ductless (endocrine) glands and carried in the blood to target organs; homeostasis is the keeping of a steady internal environment, mostly by negative feedback. NSMQ tests glands and their hormones, deficiency disorders, blood-sugar and temperature control, and plant hormones.",
+   "keyIdeas": [
+    "Endocrine glands are ductless and release hormones into the blood; the effect is slower and longer-lasting than nerves.",
+    "The pituitary is the 'master gland' and is itself controlled by the hypothalamus.",
+    "Insulin (β cells of the islets of Langerhans) lowers blood glucose; glucagon (α cells) raises it.",
+    "Negative feedback reverses a change; positive feedback amplifies it (e.g. oxytocin during labour).",
+    "The hypothalamus is the body's thermostat and keeps core temperature near 37 °C.",
+    "Adrenaline from the adrenal medulla prepares the body for fight or flight; the adrenal cortex makes aldosterone and cortisol.",
+    "Thyroxine needs iodine and controls metabolic rate.",
+    "Plants use hormones too: auxin, gibberellin, cytokinin, abscisic acid and ethylene."
+   ],
+   "formulas": [
+    {
+     "name": "Glucose regulation",
+     "formula": "High glucose → insulin → glucose → glycogen (liver, muscle); Low glucose → glucagon → glycogen → glucose",
+     "note": "Both from the pancreas."
+    },
+    {
+     "name": "Negative feedback loop",
+     "formula": "change → receptor → control centre → effector → response opposes change",
+     "note": "Applies to temperature, glucose, water."
+    },
+    {
+     "name": "Normal set points",
+     "formula": "Core temperature ≈ 37 °C; fasting blood glucose ≈ 4–6 mmol/L (about 70–100 mg per 100 mL); blood pH ≈ 7.4",
+     "note": "Common one-word answers."
+    },
+    {
+     "name": "Pituitary hormones",
+     "formula": "Anterior: GH, TSH, ACTH, FSH, LH, prolactin; Posterior: ADH, oxytocin",
+     "note": "Posterior hormones are made in the hypothalamus."
+    },
+    {
+     "name": "Other glands",
+     "formula": "Thyroid: thyroxine; Parathyroid: parathormone (raises blood Ca²⁺); Adrenal medulla: adrenaline; Adrenal cortex: aldosterone, cortisol; Testis: testosterone; Ovary: oestrogen, progesterone",
+     "note": "Matching set."
+    },
+    {
+     "name": "Plant hormones",
+     "formula": "Auxin: cell elongation, tropisms, apical dominance; Gibberellin: stem elongation, germination; Cytokinin: cell division; Abscisic acid: stomatal closure, dormancy; Ethylene: fruit ripening, abscission",
+     "note": "Ethylene is a gas."
+    },
+    {
+     "name": "Temperature control",
+     "formula": "Too hot: vasodilation, sweating, hairs flat; Too cold: vasoconstriction, shivering, hairs erect",
+     "note": "Effectors are skin arterioles, sweat glands, erector muscles, skeletal muscles."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Child vs adult disorder pairs",
+     "rule": "GH excess: child → gigantism, adult → acromegaly; GH lack in child → dwarfism. Thyroxine lack: child → cretinism, adult → myxoedema; iodine lack → goitre.",
+     "example": "Adult whose hands, feet and jaw keep enlarging: excess GH after growth plates close → acromegaly."
+    },
+    {
+     "name": "Insulin puts glucose IN",
+     "rule": "Insulin moves glucose INto cells and storage (lowers it); glucaGON is called when glucose is GONe (raises it).",
+     "example": "Student skips breakfast, glucose falls → glucagon from α cells → liver breaks glycogen to glucose."
+    },
+    {
+     "name": "Two diabetes decider",
+     "rule": "Sweet urine (glucose present) → diabetes mellitus (insulin problem). Large volume of dilute urine with no glucose → diabetes insipidus (ADH problem).",
+     "example": "Patient passes 10 L of watery urine a day, no glucose: diabetes insipidus."
+    },
+    {
+     "name": "Hot vs cold mirror",
+     "rule": "Every hot response has an opposite cold response: dilate/constrict, sweat/no sweat, hairs flat/erect, plus shivering only in cold.",
+     "example": "On a cold Harmattan morning: vasoconstriction, hairs erect (goose bumps), shivering."
+    },
+    {
+     "name": "Auxin bends toward light",
+     "rule": "Auxin moves to the shaded side; in shoots it speeds elongation there, so the shoot curves toward light. In roots high auxin slows growth, so the lower side grows less and the root bends down.",
+     "example": "Seedling on a windowsill: auxin collects on the side away from the window, so it bends toward the window."
+    },
+    {
+     "name": "Plant hormone mnemonic ACE-GA",
+     "rule": "Auxin, Cytokinin, Ethylene, Gibberellin, Abscisic acid. Ripening = Ethylene; dormancy and closing stomata = Abscisic acid; tall dwarf peas = Gibberellin.",
+     "example": "Unripe bananas ripen faster in a bag with a ripe one: ethylene released by the ripe fruit."
+    }
+   ],
+   "traps": [
+    "Confusing glucagon (hormone) with glycogen (storage polysaccharide).",
+    "Saying adrenaline comes from the adrenal cortex; it is the medulla.",
+    "Saying hormones travel in ducts; endocrine glands are ductless.",
+    "Thinking all feedback is negative; oxytocin in childbirth is positive feedback.",
+    "Saying sweating cools by removing heat with the water itself; cooling is by evaporation (latent heat)."
+   ],
+   "nsmqTips": [
+    "Expect 'name the gland and the hormone' riddles: 'I am the master gland at the base of the brain' → pituitary.",
+    "For deficiency questions, always check age: the same hormone gives different named disorders in children and adults.",
+    "Plant hormone questions are usually one-word: give the hormone, not a description."
+   ]
+  },
+  {
+   "topic": "Support and locomotion",
+   "strand": "Systems of Life",
+   "university": false,
+   "summary": "Skeletons support the body, protect organs and act with muscles to produce movement; plants are supported by turgor and thickened tissues. NSMQ tests bones and vertebrae, joints, levers, antagonistic muscles and the sliding filament model.",
+   "keyIdeas": [
+    "Three skeleton types: hydrostatic (earthworm), exoskeleton (arthropods, chitin) and endoskeleton (vertebrates).",
+    "The adult human skeleton has 206 bones and is divided into axial (skull, vertebrae, ribs, sternum) and appendicular (limbs and girdles).",
+    "Muscles can only pull; they work in antagonistic pairs, e.g. biceps flexes and triceps extends the elbow.",
+    "Tendons join muscle to bone and are inelastic; ligaments join bone to bone and are slightly elastic.",
+    "Synovial joints contain cartilage and synovial fluid to reduce friction.",
+    "In the sliding filament model, myosin heads pull actin filaments using ATP after Ca²⁺ is released, so the sarcomere shortens.",
+    "Plants are supported by turgid parenchyma, collenchyma (living, cellulose-thickened) and sclerenchyma and xylem (dead, lignified)."
+   ],
+   "formulas": [
+    {
+     "name": "Bone count",
+     "formula": "Adult human: 206 bones; newborn about 270–300",
+     "note": "Bones fuse during growth."
+    },
+    {
+     "name": "Vertebral formula",
+     "formula": "Cervical 7 + Thoracic 12 + Lumbar 5 + Sacral 5 (fused) + Coccygeal 4 (fused) = 33",
+     "note": "Atlas C1 allows nodding; axis C2 (odontoid process) allows rotation."
+    },
+    {
+     "name": "Principle of moments",
+     "formula": "effort × effort distance = load × load distance (about the fulcrum)",
+     "note": "Limb levers; forearm lifting is a class 3 lever."
+    },
+    {
+     "name": "Joint types",
+     "formula": "Ball-and-socket: shoulder, hip; Hinge: elbow, knee, fingers; Pivot: atlas–axis; Gliding: wrist, ankle bones; Fixed: skull sutures",
+     "note": "Classic matching."
+    },
+    {
+     "name": "Sarcomere changes on contraction",
+     "formula": "I band and H zone shorten; A band stays the same; Z lines move closer",
+     "note": "Filaments do not shorten; they slide."
+    },
+    {
+     "name": "Muscle types",
+     "formula": "Skeletal: striated, voluntary, multinucleate; Smooth: unstriated, involuntary (gut, blood vessels); Cardiac: striated, involuntary, branched, never tires",
+     "note": "Cardiac muscle is myogenic."
+    },
+    {
+     "name": "Limb bones",
+     "formula": "Arm: humerus, then radius (thumb side) and ulna; Leg: femur, then tibia (shin) and fibula; Patella = kneecap",
+     "note": "Femur is the longest bone; stapes the smallest."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Lever effort in one line",
+     "rule": "Effort = load × (load distance / effort distance).",
+     "example": "Biceps attaches 4 cm from elbow, 10 N ball held 32 cm from elbow: effort = 10 × 32/4 = 80 N."
+    },
+    {
+     "name": "Lever class: F-L-E in the middle",
+     "rule": "Class 1: Fulcrum in middle; Class 2: Load in middle; Class 3: Effort in middle (1-2-3 = F-L-E).",
+     "example": "Nodding head: fulcrum (atlas joint) between face weight and neck muscles → class 1. Standing on tiptoe: load in middle → class 2."
+    },
+    {
+     "name": "Vertebrae meal times",
+     "rule": "Breakfast at 7, lunch at 12, dinner at 5: cervical 7, thoracic 12, lumbar 5; then 5 sacral and 4 coccygeal.",
+     "example": "How many vertebrae carry ribs? Thoracic = 12."
+    },
+    {
+     "name": "Spot the vertebra",
+     "rule": "Holes in transverse processes (vertebrarterial canals) → cervical; rib facets and long downward spine → thoracic; big heavy centrum with wide processes → lumbar; fused with wings → sacrum.",
+     "example": "Specimen with facets for ribs on the centrum: thoracic vertebra."
+    },
+    {
+     "name": "HI shrink, A stays",
+     "rule": "On contraction the H zone and I band shrink; the A band (length of myosin) is constant.",
+     "example": "Sarcomere shortens from 2.5 µm to 2.0 µm: A band unchanged, I band and H zone both narrower."
+    },
+    {
+     "name": "Ligament Links, Tendon Tethers",
+     "rule": "Ligament links bone to bone; Tendon tethers muscle to bone.",
+     "example": "Achilles tendon joins calf muscle to heel bone; a sprained ankle is torn ligament."
+    }
+   ],
+   "traps": [
+    "Saying muscles push; they only pull.",
+    "Mixing up tendon and ligament.",
+    "Saying actin and myosin shorten during contraction; they slide past each other.",
+    "Saying collenchyma is lignified; it is living with extra cellulose. Sclerenchyma is lignified and dead.",
+    "Counting the sacrum and coccyx as one bone each without noting they are fused vertebrae (5 and 4)."
+   ],
+   "nsmqTips": [
+    "Riddles: 'I am the only bone in the body not jointed to another bone' → hyoid.",
+    "For lever problems, find the fulcrum first (usually the joint), then apply the moments rule mentally.",
+    "Vertebra identification questions describe a single feature; memorise one unique feature per region."
+   ]
+  },
+  {
+   "topic": "Reproduction and development",
+   "strand": "Systems of Life",
+   "university": false,
+   "summary": "Reproduction produces new individuals, asexually by mitosis or sexually by fusion of gametes made by meiosis. NSMQ asks about the menstrual cycle hormones, gametogenesis, flower structure, pollination, double fertilisation and embryo development.",
+   "keyIdeas": [
+    "Asexual reproduction gives genetically identical offspring; sexual reproduction gives variation through meiosis and random fertilisation.",
+    "In humans, sperm are made in the seminiferous tubules, stored in the epididymis; fertilisation normally happens in the oviduct.",
+    "FSH stimulates follicle growth; a surge of LH triggers ovulation; the corpus luteum secretes progesterone to maintain the uterine lining.",
+    "The placenta exchanges food, oxygen and wastes and secretes hormones, but maternal and fetal blood do not mix.",
+    "In flowering plants, the ovule becomes the seed and the ovary becomes the fruit.",
+    "Double fertilisation is unique to flowering plants: one male nucleus fuses with the egg, the other with two polar nuclei to form triploid endosperm.",
+    "Self-pollination reduces variation; cross-pollination increases it."
+   ],
+   "formulas": [
+    {
+     "name": "Chromosome numbers in humans",
+     "formula": "Gametes n = 23; zygote and body cells 2n = 46",
+     "note": "Meiosis halves the number; fertilisation restores it."
+    },
+    {
+     "name": "Menstrual cycle timing",
+     "formula": "Cycle ≈ 28 days; menstruation days 1–5; ovulation ≈ day 14",
+     "note": "Luteal phase is about 14 days in most cycles."
+    },
+    {
+     "name": "Gametogenesis output",
+     "formula": "1 primary spermatocyte → 4 sperm; 1 primary oocyte → 1 ovum + polar bodies (up to 3)",
+     "note": "Oogenesis keeps most cytoplasm in one cell."
+    },
+    {
+     "name": "Double fertilisation",
+     "formula": "male nucleus + egg → zygote (2n); male nucleus + 2 polar nuclei → endosperm (3n)",
+     "note": "Flowering plants only."
+    },
+    {
+     "name": "Flower to fruit",
+     "formula": "Ovule → seed; ovary → fruit; integuments → testa; ovary wall → pericarp; zygote → embryo",
+     "note": "Standard 'what becomes what' set."
+    },
+    {
+     "name": "Germ layers",
+     "formula": "Ectoderm: skin, nervous system; Mesoderm: muscle, bone, blood, kidneys; Endoderm: gut lining, lungs, liver, pancreas",
+     "note": "Triploblastic animals."
+    },
+    {
+     "name": "Gestation",
+     "formula": "Human ≈ 40 weeks (280 days) counted from the last menstrual period, ≈ 38 weeks from fertilisation",
+     "note": "Implantation about 6–7 days after fertilisation."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Ovulation day from cycle length",
+     "rule": "Ovulation ≈ cycle length − 14 (the luteal phase is fairly fixed).",
+     "example": "A 32-day cycle: ovulation ≈ day 32 − 14 = day 18."
+    },
+    {
+     "name": "Count gametes from cells",
+     "rule": "Males: ×4. Females: ×1 functional ovum.",
+     "example": "50 primary spermatocytes → 200 sperm; 50 primary oocytes → 50 ova."
+    },
+    {
+     "name": "Plant ploidy table",
+     "rule": "If n is given: pollen, egg, embryo sac nuclei = n; zygote, embryo, testa, pericarp = 2n; endosperm = 3n.",
+     "example": "Maize n = 10: endosperm has 30 chromosomes, embryo 20, pollen 10."
+    },
+    {
+     "name": "Germ layers: Ecto Exterior, Endo iNside",
+     "rule": "Ectoderm makes the outside and nerves; Endoderm lines the inside tubes; Mesoderm makes the middle (muscle, bone, blood).",
+     "example": "The lining of the stomach comes from endoderm; the brain from ectoderm."
+    },
+    {
+     "name": "Wind vs insect flower",
+     "rule": "Wind: small, dull, no scent or nectar, long feathery stigmas and dangling anthers, light pollen in large amounts. Insect: the opposite.",
+     "example": "Maize tassels and grass: wind-pollinated. Hibiscus with bright petals and nectar: insect-pollinated."
+    },
+    {
+     "name": "LH = Launch the egg",
+     "rule": "FSH Feeds the Follicle; LH Launches the egg (ovulation); Progesterone Protects the Pregnancy (keeps lining).",
+     "example": "Which hormone surge occurs just before day 14? LH."
+    }
+   ],
+   "traps": [
+    "Confusing pollination (transfer of pollen) with fertilisation (fusion of nuclei).",
+    "Saying FSH causes ovulation; it is the LH surge.",
+    "Saying endosperm is diploid; it is triploid.",
+    "Saying maternal and fetal blood mix in the placenta.",
+    "Saying sperm are made in the epididymis; they mature and are stored there."
+   ],
+   "nsmqTips": [
+    "Riddles about 'I become the fruit' → ovary; 'I become the seed coat' → integument (testa).",
+    "Hormone graph questions: oestrogen peaks just before ovulation, progesterone peaks in the luteal phase.",
+    "When asked for ploidy, say the number, e.g. 'triploid, 3n'."
+   ]
+  },
+  {
+   "topic": "Classification and taxonomy",
+   "strand": "Diversity of Living Things",
+   "university": false,
+   "summary": "Classification sorts organisms into groups by shared features, and taxonomy names them using binomial nomenclature. NSMQ asks about the hierarchy of taxa, naming rules, kingdom features and the use of dichotomous keys.",
+   "keyIdeas": [
+    "The hierarchy is Domain, Kingdom, Phylum (Division in plants), Class, Order, Family, Genus, Species.",
+    "Carolus Linnaeus introduced binomial nomenclature: Genus (capital) + species (small letter), italicised in print or underlined separately when handwritten.",
+    "A species is a group that can interbreed to produce fertile offspring.",
+    "The five-kingdom system (Whittaker): Monera, Protoctista, Fungi, Plantae, Animalia.",
+    "The three-domain system (Woese): Bacteria, Archaea, Eukarya.",
+    "The more taxa two organisms share, the more closely related they are.",
+    "Viruses are not placed in any of the five kingdoms because they are not cells."
+   ],
+   "formulas": [
+    {
+     "name": "Taxonomic hierarchy",
+     "formula": "Domain → Kingdom → Phylum → Class → Order → Family → Genus → Species",
+     "note": "Number of organisms in a group decreases down the list."
+    },
+    {
+     "name": "Binomial name",
+     "formula": "Genus species, e.g. Homo sapiens, Zea mays, Plasmodium falciparum",
+     "note": "After first use the genus may be shortened: H. sapiens."
+    },
+    {
+     "name": "Classification of humans",
+     "formula": "Eukarya, Animalia, Chordata, Mammalia, Primates, Hominidae, Homo, sapiens",
+     "note": "Frequently asked in full."
+    },
+    {
+     "name": "Five kingdoms: key features",
+     "formula": "Monera: prokaryotic; Protoctista: eukaryotic, mostly unicellular; Fungi: chitin walls, heterotrophic, spores; Plantae: cellulose walls, chlorophyll; Animalia: no walls, multicellular heterotrophs",
+     "note": "Decide from cell wall and nutrition."
+    },
+    {
+     "name": "Dichotomous key",
+     "formula": "Each step is a pair of contrasting statements, each leading to a name or to the next pair",
+     "note": "Use visible, unchanging features."
+    },
+    {
+     "name": "Species test",
+     "formula": "Same species ⇔ interbreed naturally to give fertile offspring",
+     "note": "Horse × donkey → sterile mule, so different species."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Mnemonic for the ranks",
+     "rule": "Dear King Philip Came Over For Good Soup: Domain, Kingdom, Phylum, Class, Order, Family, Genus, Species.",
+     "example": "Which rank lies between Class and Family? Order (Came Over For)."
+    },
+    {
+     "name": "Shared rank implies all higher ranks",
+     "rule": "If two organisms share a rank, they share every rank above it.",
+     "example": "Lion Panthera leo and tiger Panthera tigris share the genus Panthera, so they must share family Felidae, order Carnivora and class Mammalia."
+    },
+    {
+     "name": "Couplets in a key",
+     "rule": "A strictly dichotomous key that separates n organisms needs n − 1 couplets.",
+     "example": "8 insects to identify → 7 pairs of statements."
+    },
+    {
+     "name": "Kingdom by elimination",
+     "rule": "No nucleus → Monera. Nucleus + chitin wall → Fungi. Nucleus + cellulose wall + chlorophyll and multicellular → Plantae. No wall, multicellular → Animalia. Otherwise mainly unicellular eukaryote → Protoctista.",
+     "example": "Amoeba: nucleus, no wall, single cell → Protoctista."
+    },
+    {
+     "name": "Spot a wrongly written name",
+     "rule": "Check three things: genus capitalised, species lower case, both italic or each underlined separately.",
+     "example": "'homo Sapiens' is wrong twice; correct is Homo sapiens."
+    }
+   ],
+   "traps": [
+    "Capitalising the species name (sapiens, not Sapiens).",
+    "Using 'phylum' for plants in strict answers; plants traditionally use 'division'.",
+    "Putting fungi in the plant kingdom; they lack chlorophyll and have chitin.",
+    "Calling the genus name alone the scientific name of a species.",
+    "Placing viruses in Monera."
+   ],
+   "nsmqTips": [
+    "Riddles: 'I am the father of taxonomy' → Carolus Linnaeus.",
+    "If asked to arrange taxa, start with the broadest (Kingdom or Domain) unless asked otherwise.",
+    "When asked why two organisms are different species, use the fertile-offspring test."
+   ]
+  },
+  {
+   "topic": "Invertebrates and vertebrates",
+   "strand": "Diversity of Living Things",
+   "university": false,
+   "summary": "Animals are grouped into invertebrate phyla and the vertebrate classes of the phylum Chordata by body plan, symmetry, skeleton and other features. NSMQ loves identification riddles, arthropod classes, life cycles and the features of each vertebrate class.",
+   "keyIdeas": [
+    "Cnidaria (Hydra, jellyfish) are radially symmetrical and diploblastic; most other phyla are triploblastic and bilaterally symmetrical.",
+    "Platyhelminthes (flatworms, tapeworm, liver fluke) are flat and unsegmented; Nematoda (roundworms, Ascaris) are round and unsegmented; Annelida (earthworm, leech) are segmented.",
+    "Mollusca (snail, octopus) have a soft body, a muscular foot and often a shell; Echinodermata (starfish) are marine with tube feet.",
+    "Arthropods have jointed legs, a chitin exoskeleton and must moult to grow.",
+    "Chordates have, at some stage, a notochord, dorsal hollow nerve cord, pharyngeal slits and a post-anal tail.",
+    "Birds and mammals are endothermic (warm-blooded); fish, amphibians and reptiles are ectothermic.",
+    "Amphibians lay eggs in water; reptiles and birds lay shelled (amniotic) eggs on land."
+   ],
+   "formulas": [
+    {
+     "name": "Arthropod classes",
+     "formula": "Insects: 3 body parts, 6 legs, 1 pair antennae; Arachnids: 2 parts, 8 legs, no antennae; Crustaceans: 2 pairs antennae, many with 10 legs; Myriapods: many segments with legs",
+     "note": "Centipede 1 pair of legs per segment; millipede 2 pairs."
+    },
+    {
+     "name": "Heart chambers",
+     "formula": "Fish 2; Amphibians 3; Reptiles 3 (crocodiles 4); Birds 4; Mammals 4",
+     "note": "Fish have single circulation; others double."
+    },
+    {
+     "name": "Insect metamorphosis",
+     "formula": "Complete: egg → larva → pupa → adult (butterfly, housefly, mosquito, beetle); Incomplete: egg → nymph → adult (cockroach, grasshopper, termite)",
+     "note": "Moulting is controlled by ecdysone."
+    },
+    {
+     "name": "Vertebrate class features",
+     "formula": "Fish: scales, gills, fins; Amphibians: moist skin, larva in water; Reptiles: dry scales, shelled eggs; Birds: feathers, beak, hollow bones; Mammals: hair, mammary glands, diaphragm, pinna",
+     "note": "One unique feature is enough to identify."
+    },
+    {
+     "name": "Respiratory surfaces",
+     "formula": "Insects: tracheae; Spiders: book lungs; Fish: gills; Earthworm: skin; Frog: skin, buccal cavity, lungs; Birds: lungs with air sacs",
+     "note": "Common matching."
+    },
+    {
+     "name": "Symmetry and layers",
+     "formula": "Radial + diploblastic: Cnidaria; Bilateral + triploblastic: flatworms onward; Echinoderm adults radial (pentaradial) but larvae bilateral",
+     "note": "Sponges (Porifera) have no true tissues."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Count the legs",
+     "rule": "6 legs → insect; 8 → arachnid; 10 → decapod crustacean; dozens → myriapod.",
+     "example": "Tick with 8 legs → arachnid, not insect; crab with 10 legs → crustacean."
+    },
+    {
+     "name": "Heart chambers 2-3-3-4-4",
+     "rule": "Going fish → amphibian → reptile → bird → mammal the chambers go 2, 3, 3, 4, 4; crocodile is the exception reptile with 4.",
+     "example": "How many chambers in a lizard's heart? Reptile → 3."
+    },
+    {
+     "name": "Pupa means complete",
+     "rule": "If a pupa stage is mentioned it is complete metamorphosis; Nymph means No pupa (incomplete).",
+     "example": "Grasshopper young look like small adults without wings → nymphs → incomplete metamorphosis."
+    },
+    {
+     "name": "Hair or milk means mammal",
+     "rule": "Any animal with hair or mammary glands is a mammal, whatever its habitat or flying ability.",
+     "example": "Bat flies, whale swims, but both suckle young → mammals."
+    },
+    {
+     "name": "Larva names",
+     "rule": "Frog → tadpole; butterfly → caterpillar; housefly → maggot; mosquito → wriggler; beetle → grub.",
+     "example": "'A legless larva that feeds on rotting meat' → maggot of the housefly."
+    }
+   ],
+   "traps": [
+    "Calling spiders, ticks and scorpions insects; they are arachnids.",
+    "Calling starfish and jellyfish fish.",
+    "Saying all reptiles have a 3-chambered heart without noting crocodiles.",
+    "Calling the snail an annelid; it is a mollusc.",
+    "Saying the earthworm self-fertilises; it is hermaphrodite but cross-fertilises."
+   ],
+   "nsmqTips": [
+    "Identification riddles usually give 3–4 clues; jump in at the first unique one (e.g. 'book lungs' → spider).",
+    "Know local examples: tilapia (fish), agama lizard (reptile), giant African snail (mollusc), tsetse fly (insect).",
+    "When comparing classes, quote a feature that is truly unique, such as feathers for birds."
+   ]
+  },
+  {
+   "topic": "Plants, fungi and microorganisms",
+   "strand": "Diversity of Living Things",
+   "university": false,
+   "summary": "This topic covers the main plant groups, fungi, bacteria, viruses and protoctists, their structure, nutrition and reproduction. NSMQ asks about plant life cycles, monocot vs dicot features, fungal and bacterial features, bacterial growth and fermentation.",
+   "keyIdeas": [
+    "Plant groups: bryophytes (mosses, no true vascular tissue), pteridophytes (ferns, vascular, spores), gymnosperms (naked seeds, cones) and angiosperms (flowers, seeds in fruits).",
+    "In mosses the gametophyte is dominant; in ferns and seed plants the sporophyte is dominant.",
+    "Fungi have chitin cell walls, are heterotrophic (saprophytic or parasitic), store glycogen and reproduce by spores; the body is a mycelium of hyphae.",
+    "Bacteria are prokaryotes with a peptidoglycan wall, no nucleus, 70S ribosomes, and often plasmids.",
+    "Viruses are non-cellular: a nucleic acid (DNA or RNA) inside a protein coat; they reproduce only inside host cells.",
+    "Antibiotics act on bacteria, not viruses.",
+    "Microorganisms are used in bread (yeast, CO₂), alcohol (yeast, ethanol), yoghurt (Lactobacillus) and nitrogen fixation (Rhizobium)."
+   ],
+   "formulas": [
+    {
+     "name": "Photosynthesis",
+     "formula": "6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂ (light, chlorophyll)",
+     "note": "The O₂ comes from water."
+    },
+    {
+     "name": "Alcoholic fermentation (yeast)",
+     "formula": "C₆H₁₂O₆ → 2C₂H₅OH + 2CO₂",
+     "note": "Gives 2 ATP per glucose; used in brewing and baking."
+    },
+    {
+     "name": "Lactic acid fermentation",
+     "formula": "C₆H₁₂O₆ → 2CH₃CH(OH)COOH",
+     "note": "Lactobacillus in yoghurt; also in human muscle."
+    },
+    {
+     "name": "Bacterial growth",
+     "formula": "N = N₀ × 2ⁿ, n = t / g",
+     "note": "N₀ initial number, g generation (doubling) time, t elapsed time; valid in the log phase."
+    },
+    {
+     "name": "Bacterial shapes",
+     "formula": "Coccus: sphere; Bacillus: rod; Spirillum: spiral; Vibrio: comma",
+     "note": "Staphylo- clusters, Strepto- chains, Diplo- pairs."
+    },
+    {
+     "name": "Gram stain",
+     "formula": "Gram-positive: thick peptidoglycan, stains purple; Gram-negative: thin wall + outer membrane, stains pink/red",
+     "note": "Gram-negatives are generally more resistant to penicillin."
+    },
+    {
+     "name": "Monocot vs dicot",
+     "formula": "Monocot: 1 cotyledon, parallel veins, fibrous roots, scattered vascular bundles, flower parts in 3s; Dicot: 2 cotyledons, net veins, taproot, bundles in a ring, parts in 4s or 5s",
+     "note": "Maize, rice, oil palm = monocots; beans, cocoa, mango = dicots."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Doubling with powers of 2",
+     "rule": "Count generations n = t/g, then use 2ⁿ; remember 2¹⁰ = 1024 ≈ 1000.",
+     "example": "One cell, doubling every 20 min, after 2 h: n = 6, so 2⁶ = 64 cells. After 200 min: 2¹⁰ ≈ 1000 cells."
+    },
+    {
+     "name": "Gram Positive = Purple",
+     "rule": "Remember PP: Positive → Purple. Pink → negative.",
+     "example": "A pink rod after Gram staining: Gram-negative bacillus (e.g. E. coli)."
+    },
+    {
+     "name": "Prefix + shape = name",
+     "rule": "Prefix gives arrangement, ending gives shape: Strepto + coccus = chains of spheres; Staphylo + coccus = grape-like clusters.",
+     "example": "Staphylococcus aureus seen as clusters of round cells."
+    },
+    {
+     "name": "Moss Mostly gametophyte",
+     "rule": "Moss = Mostly gametophyte (green leafy plant is n); Fern Frond = sporophyte (2n).",
+     "example": "Ploidy of the green leafy moss plant? Haploid (n)."
+    },
+    {
+     "name": "Fungus decider",
+     "rule": "No chlorophyll + chitin wall + spores + glycogen store → fungus, even if it looks like a plant.",
+     "example": "Mushroom growing on a rotting log → fungus (saprophyte), not a plant."
+    },
+    {
+     "name": "Three-count monocot check",
+     "rule": "Floral parts in multiples of 3 with parallel veins → monocot at once.",
+     "example": "Lily with 6 petals and parallel veins → monocot."
+    }
+   ],
+   "traps": [
+    "Saying antibiotics cure viral infections.",
+    "Calling yeast a bacterium; it is a unicellular fungus.",
+    "Calling blue-green algae true algae; they are cyanobacteria (prokaryotes).",
+    "Saying fungi store starch; they store glycogen.",
+    "Saying gymnosperms have fruits; their seeds are naked."
+   ],
+   "nsmqTips": [
+    "Expect riddles on alternation of generations: state which generation is dominant.",
+    "Bacterial growth questions are designed for powers of 2; convert minutes to generations first.",
+    "For 'which organism is used to make…' questions, answer with the genus (Saccharomyces, Lactobacillus, Penicillium)."
+   ]
+  },
+  {
+   "topic": "Ecology and environment",
+   "strand": "Diversity of Living Things",
+   "university": false,
+   "summary": "Ecology studies how organisms interact with each other and with their surroundings, including energy flow, nutrient cycles and population size. NSMQ often sets quick calculations on energy transfer, mark–release–recapture and quadrats, plus questions on the nitrogen cycle and species interactions.",
+   "keyIdeas": [
+    "Energy flows one way through an ecosystem and is lost as heat; nutrients are recycled.",
+    "Only about 10% of energy passes from one trophic level to the next, which limits food chains to about 4–5 levels.",
+    "Arrows in a food chain point from the organism eaten to the one eating it.",
+    "Decomposers (bacteria, fungi) release nutrients from dead matter.",
+    "Pyramids of numbers and biomass can be inverted; a pyramid of energy never is.",
+    "Population size changes by births and immigration minus deaths and emigration.",
+    "Major environmental issues include deforestation, galamsey water pollution, eutrophication, global warming and loss of biodiversity."
+   ],
+   "formulas": [
+    {
+     "name": "Ten percent rule",
+     "formula": "Energy at next level ≈ 0.1 × energy at current level",
+     "note": "Approximate; real values range about 5–20%."
+    },
+    {
+     "name": "Ecological efficiency",
+     "formula": "Efficiency (%) = energy at higher level / energy at lower level × 100",
+     "note": "Used with data from food chains."
+    },
+    {
+     "name": "Lincoln index (mark–release–recapture)",
+     "formula": "N = (M × C) / R",
+     "note": "M marked first, C caught second time, R recaptured marked. Assumes no births, deaths or migration and marks not lost."
+    },
+    {
+     "name": "Quadrat estimate",
+     "formula": "Population ≈ mean per quadrat × (total area / quadrat area)",
+     "note": "For plants and slow-moving animals."
+    },
+    {
+     "name": "Population change",
+     "formula": "ΔN = (births + immigration) − (deaths + emigration)",
+     "note": "Growth rate when divided by time."
+    },
+    {
+     "name": "Nitrogen cycle steps",
+     "formula": "Fixation: N₂ → NH₃ (Rhizobium, Azotobacter, lightning); Nitrification: NH₄⁺ → NO₂⁻ (Nitrosomonas) → NO₃⁻ (Nitrobacter); Denitrification: NO₃⁻ → N₂ (Pseudomonas)",
+     "note": "Plants absorb mainly nitrate."
+    },
+    {
+     "name": "Interactions",
+     "formula": "Mutualism (+,+); Commensalism (+,0); Parasitism (+,−); Predation (+,−); Competition (−,−)",
+     "note": "Sign pairs for the two species."
+    },
+    {
+     "name": "Carbon cycle",
+     "formula": "CO₂ removed by photosynthesis; returned by respiration, decomposition and combustion",
+     "note": "Burning fossil fuels raises atmospheric CO₂."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Shift the decimal for each level",
+     "rule": "Each step up a food chain divides the energy by 10, so move the decimal point one place left per level.",
+     "example": "Producers 10 000 kJ → primary 1000 → secondary 100 → tertiary 10 kJ."
+    },
+    {
+     "name": "Lincoln in your head",
+     "rule": "Multiply the two catches, divide by the recaptured marked.",
+     "example": "40 snails marked; later 50 caught, 10 marked: N = 40 × 50 / 10 = 200 snails."
+    },
+    {
+     "name": "Quadrat scale-up",
+     "rule": "Find the number of quadrats that fit the field, then multiply by the mean.",
+     "example": "Mean 4 plants per 1 m² quadrat; field 50 m × 20 m = 1000 m², so ≈ 4000 plants."
+    },
+    {
+     "name": "Nitroso sooner, Nitrobacter better",
+     "rule": "Nitrosomonas does the first step (to nitrite); Nitrobacter finishes the job (to nitrate). Pseudomonas puts N₂ back in the air.",
+     "example": "Which bacterium converts nitrite to nitrate? Nitrobacter."
+    },
+    {
+     "name": "Sign test for relationships",
+     "rule": "Ask: does each partner gain (+), lose (−) or neither (0)?",
+     "example": "Rhizobium and legumes: both gain → mutualism. Tapeworm in human: + and − → parasitism. Cattle egret and cattle: egret gains, cattle unaffected → commensalism."
+    },
+    {
+     "name": "Spot an inverted pyramid",
+     "rule": "One big producer feeding many small consumers inverts the number pyramid; fast-reproducing tiny producers (phytoplankton) can invert the biomass pyramid. Energy never inverts.",
+     "example": "One mango tree supporting 500 caterpillars → inverted pyramid of numbers."
+    }
+   ],
+   "traps": [
+    "Drawing food chain arrows the wrong way (they show energy flow to the eater).",
+    "Saying energy is recycled; only matter is.",
+    "Calling decomposers a trophic level in a simple food chain answer when the question wants producer/consumer levels.",
+    "Mixing up nitrification and nitrogen fixation.",
+    "Forgetting the Lincoln index assumptions when asked why the estimate may be wrong."
+   ],
+   "nsmqTips": [
+    "Energy and Lincoln index questions are built for mental arithmetic; set up the product before you divide.",
+    "For nitrogen cycle riddles, name the genus of bacteria, not just 'bacteria'.",
+    "Give Ghanaian examples for environmental issues: galamsey, bush burning, deforestation, plastic waste."
+   ]
+  },
+  {
+   "topic": "Genetics and inheritance",
+   "strand": "Diversity of Living Things",
+   "university": false,
+   "summary": "Genetics explains how characteristics pass from parents to offspring through genes on chromosomes, following Mendel's laws and their extensions. NSMQ questions are quick probability problems, cross ratios, blood groups, sex-linkage, DNA base pairing and Hardy–Weinberg.",
+   "keyIdeas": [
+    "A gene is a length of DNA coding for a polypeptide; alleles are different forms of the same gene.",
+    "Mendel's first law (segregation): the two alleles separate into different gametes. Second law (independent assortment): genes on different chromosomes assort independently.",
+    "Codominance shows both alleles (AB blood group); incomplete dominance gives a blend (red × white → pink four o'clock flowers).",
+    "X-linked recessive conditions (haemophilia, red–green colour blindness) are more common in males, who have only one X.",
+    "A test cross with the homozygous recessive reveals an unknown genotype.",
+    "DNA pairs A with T (two hydrogen bonds) and G with C (three); RNA has U instead of T.",
+    "A codon of three bases codes for one amino acid; there are 4³ = 64 codons."
+   ],
+   "formulas": [
+    {
+     "name": "Monohybrid F₂",
+     "formula": "Phenotype 3 : 1; Genotype 1 AA : 2 Aa : 1 aa",
+     "note": "From Aa × Aa with complete dominance."
+    },
+    {
+     "name": "Dihybrid F₂",
+     "formula": "9 : 3 : 3 : 1",
+     "note": "From AaBb × AaBb, genes unlinked."
+    },
+    {
+     "name": "Test cross results",
+     "formula": "Aa × aa → 1 : 1; AA × aa → all dominant",
+     "note": "Reveals whether a dominant-looking parent is a carrier."
+    },
+    {
+     "name": "Hardy–Weinberg",
+     "formula": "p + q = 1; p² + 2pq + q² = 1",
+     "note": "p, q allele frequencies; q² = frequency of recessive phenotype; 2pq = carriers."
+    },
+    {
+     "name": "Gamete types",
+     "formula": "Number of gamete types = 2ⁿ",
+     "note": "n = number of heterozygous gene pairs (unlinked)."
+    },
+    {
+     "name": "ABO blood group",
+     "formula": "Iᴬ and Iᴮ codominant, i recessive; A: IᴬIᴬ or Iᴬi; B: IᴮIᴮ or Iᴮi; AB: IᴬIᴮ; O: ii",
+     "note": "4 phenotypes, 6 genotypes."
+    },
+    {
+     "name": "Chargaff's rule",
+     "formula": "A = T and G = C, so A + G = T + C = 50%",
+     "note": "Double-stranded DNA only."
+    },
+    {
+     "name": "Recombination frequency",
+     "formula": "RF = recombinants / total offspring × 100%; 1% = 1 map unit (centimorgan)",
+     "note": "Measures distance between linked genes; RF ≤ 50%."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Hardy–Weinberg from the rare phenotype",
+     "rule": "Start from q² (the recessive phenotype), take √ for q, then p = 1 − q and carriers = 2pq.",
+     "example": "1 in 100 people has a recessive condition: q² = 0.01, q = 0.1, p = 0.9, carriers 2pq = 2 × 0.9 × 0.1 = 0.18 (18%)."
+    },
+    {
+     "name": "Chargaff in one step",
+     "rule": "Given one base %, its partner is equal, and the other two share what is left equally.",
+     "example": "A = 30% → T = 30%, so G + C = 40%, G = C = 20%."
+    },
+    {
+     "name": "Multiply gene by gene",
+     "rule": "For unlinked genes, find the probability for each gene separately and multiply.",
+     "example": "AaBbCc × AaBbCc: P(aabbcc) = ¼ × ¼ × ¼ = 1/64. P(A_B_) from AaBb × AaBb = ¾ × ¾ = 9/16."
+    },
+    {
+     "name": "Carrier mother rule",
+     "rule": "XᴴXʰ × XᴴY: half the sons affected, no daughters affected, half the daughters carriers.",
+     "example": "Colour-blind carrier mother and normal father: chance a son is colour-blind = ½; chance any child is colour-blind = ¼."
+    },
+    {
+     "name": "Blood group exclusion",
+     "rule": "O × O gives only O; an AB parent cannot have an O child; a child's Iᴬ or Iᴮ must come from a parent who has it.",
+     "example": "Mother O, child B: the father must carry Iᴮ, so he is B or AB, never A or O."
+    },
+    {
+     "name": "Genotype count for multiple alleles",
+     "rule": "With k alleles of one gene, number of genotypes = k(k + 1)/2.",
+     "example": "ABO has 3 alleles: 3 × 4/2 = 6 genotypes."
+    }
+   ],
+   "traps": [
+    "Expecting exact 3 : 1 in small samples; ratios are probabilities.",
+    "Saying males can be carriers of an X-linked recessive allele; they either have it or not.",
+    "Confusing codominance (both seen, e.g. AB) with incomplete dominance (blend, e.g. pink).",
+    "Using q² for carriers instead of 2pq.",
+    "Forgetting that each child's probability is independent of previous children."
+   ],
+   "nsmqTips": [
+    "Most genetics questions resolve with fractions ½, ¼ and ¾; say the answer as a fraction.",
+    "For Hardy–Weinberg, always identify whether the given number is a phenotype frequency (q²) or allele frequency (q).",
+    "Riddles: 'father of genetics' → Gregor Mendel; 'organism he used' → garden pea, Pisum sativum."
+   ]
+  },
+  {
+   "topic": "Evolution",
+   "strand": "Diversity of Living Things",
+   "university": false,
+   "summary": "Evolution is the change in heritable features of populations over many generations, explained mainly by natural selection. NSMQ asks about Darwin vs Lamarck, evidence for evolution, homologous and analogous structures, speciation and examples such as sickle-cell and antibiotic resistance.",
+   "keyIdeas": [
+    "Darwin and Wallace proposed natural selection: variation exists, more young are produced than survive, the best-adapted survive and reproduce, and their features are inherited.",
+    "Lamarck proposed use and disuse and the inheritance of acquired characteristics, which is not supported by evidence.",
+    "Evidence for evolution includes fossils, comparative anatomy, embryology, molecular biology (DNA and protein sequences) and biogeography.",
+    "Homologous structures (pentadactyl limb) show divergent evolution; analogous structures (bird and insect wings) show convergent evolution.",
+    "New species form when populations are reproductively isolated, often by geography (allopatric speciation).",
+    "Populations evolve; individuals do not.",
+    "The sickle-cell allele persists in West Africa because heterozygotes are resistant to malaria (heterozygote advantage)."
+   ],
+   "formulas": [
+    {
+     "name": "Radioactive decay for dating",
+     "formula": "N = N₀ × (½)^(t / T½)",
+     "note": "Carbon-14 half-life ≈ 5730 years; useful for remains up to about 50 000 years."
+    },
+    {
+     "name": "Hardy–Weinberg equilibrium conditions",
+     "formula": "Large population, random mating, no mutation, no migration, no selection",
+     "note": "If any fails, allele frequencies change, i.e. evolution occurs."
+    },
+    {
+     "name": "Natural selection outline",
+     "formula": "Variation → overproduction → struggle for existence → survival of the fittest → inheritance → change over generations",
+     "note": "Use this order in explanations."
+    },
+    {
+     "name": "Homologous vs analogous",
+     "formula": "Homologous: same basic structure, different function; Analogous: different structure, same function",
+     "note": "Arm, flipper, wing of bat = homologous; wings of bird and butterfly = analogous."
+    },
+    {
+     "name": "Types of selection",
+     "formula": "Stabilising: favours the average; Directional: favours one extreme; Disruptive: favours both extremes",
+     "note": "Birth weight in humans is stabilising."
+    },
+    {
+     "name": "Classic examples",
+     "formula": "Peppered moth (industrial melanism); Darwin's finches (adaptive radiation); antibiotic-resistant bacteria; sickle-cell and malaria",
+     "note": "Know one per idea."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "Half-life counting",
+     "rule": "Fraction left ½, ¼, ⅛, 1/16 → 1, 2, 3, 4 half-lives; multiply by 5730 years.",
+     "example": "Bone with 25% of its original C-14 → 2 half-lives → 2 × 5730 = 11 460 years. 12.5% → 3 × 5730 = 17 190 years."
+    },
+    {
+     "name": "Lamarck or Darwin?",
+     "rule": "If the explanation says the animal tried, used or stretched and passed that change on → Lamarck. If variation was already present and survivors bred → Darwin.",
+     "example": "'Giraffes stretched their necks and their young were born with longer necks' → Lamarck."
+    },
+    {
+     "name": "Same bones = homologous",
+     "rule": "Same bone plan (humerus, radius, ulna, digits) → homologous, divergent. Same job, different build → analogous, convergent.",
+     "example": "Human arm and whale flipper: same bones → homologous. Bat wing and butterfly wing: analogous."
+    },
+    {
+     "name": "Vestigial organ list",
+     "rule": "Appendix, coccyx (tail bone), wisdom teeth, ear-moving muscles, plica semilunaris (remnant third eyelid).",
+     "example": "'Name a vestigial structure in humans' → appendix or coccyx."
+    },
+    {
+     "name": "Resistance is selected, not created",
+     "rule": "The antibiotic does not cause resistance; resistant mutants already present survive and multiply.",
+     "example": "Patient stops antibiotics early: surviving bacteria are the most resistant, so the next infection is harder to treat."
+    }
+   ],
+   "traps": [
+    "Saying individuals evolve; populations evolve.",
+    "Saying 'fittest' means strongest; it means best at surviving and reproducing in that environment.",
+    "Saying mutations happen because the organism needs them; they are random.",
+    "Saying humans evolved from modern chimpanzees; they share a common ancestor.",
+    "Confusing homologous with analogous."
+   ],
+   "nsmqTips": [
+    "Riddles: 'book published in 1859' → On the Origin of Species by Charles Darwin.",
+    "Explain natural selection in the fixed order: variation, competition, survival, reproduction, inheritance.",
+    "Use local examples: sickle-cell trait and malaria in Ghana, and insecticide resistance in mosquitoes."
+   ]
+  },
+  {
+   "topic": "Diseases, immunity and health",
+   "strand": "Diversity of Living Things",
+   "university": false,
+   "summary": "This topic covers infectious diseases and their causes and vectors, the immune response, vaccination and nutrition-related disorders. NSMQ frequently asks for causative organisms, vectors, types of immunity and deficiency diseases, often with Ghanaian examples.",
+   "keyIdeas": [
+    "Pathogens include viruses, bacteria, protozoa, fungi and parasitic worms.",
+    "Malaria is caused by the protozoan Plasmodium (P. falciparum is most deadly) and spread by the female Anopheles mosquito.",
+    "The first line of defence is skin, mucus, cilia, stomach acid and lysozyme; phagocytes and inflammation follow.",
+    "Specific immunity uses lymphocytes: B cells make antibodies (as plasma cells); T cells kill infected cells and help B cells.",
+    "B cells mature in the bone marrow, T cells in the thymus; HIV attacks helper T (CD4) cells.",
+    "Vaccines give active artificial immunity by stimulating memory cells; ready-made antibodies give passive immunity.",
+    "Antibiotics kill or stop bacteria; they do not work on viruses."
+   ],
+   "formulas": [
+    {
+     "name": "Disease → cause → vector/spread",
+     "formula": "Malaria: Plasmodium, female Anopheles; Sleeping sickness: Trypanosoma, tsetse fly; River blindness: Onchocerca volvulus, blackfly (Simulium); Bilharzia: Schistosoma, freshwater snail; Yellow fever: virus, Aedes mosquito",
+     "note": "Core matching set."
+    },
+    {
+     "name": "Bacterial diseases",
+     "formula": "Cholera: Vibrio cholerae; Tuberculosis: Mycobacterium tuberculosis; Typhoid: Salmonella typhi; Tetanus: Clostridium tetani; Gonorrhoea: Neisseria gonorrhoeae",
+     "note": "Treatable with antibiotics."
+    },
+    {
+     "name": "Viral diseases",
+     "formula": "HIV/AIDS, measles, polio, hepatitis B, yellow fever, COVID-19, Ebola, chickenpox, rabies",
+     "note": "Prevented mainly by vaccines and hygiene."
+    },
+    {
+     "name": "Types of immunity",
+     "formula": "Active natural: after infection; Active artificial: vaccine; Passive natural: antibodies across placenta or in breast milk; Passive artificial: injected antiserum (e.g. antivenom)",
+     "note": "Active = long-lasting with memory; passive = immediate but short."
+    },
+    {
+     "name": "Antibody structure",
+     "formula": "Y-shaped protein: 2 heavy + 2 light chains joined by disulfide bonds; 2 antigen-binding sites",
+     "note": "Made by plasma cells."
+    },
+    {
+     "name": "Deficiency diseases",
+     "formula": "Vitamin A: night blindness; B₁: beriberi; C: scurvy; D: rickets; Iron: anaemia; Iodine: goitre; Protein: kwashiorkor; Protein + energy: marasmus",
+     "note": "Frequently asked."
+    },
+    {
+     "name": "Body mass index",
+     "formula": "BMI = mass (kg) / height² (m²)",
+     "note": "18.5–24.9 normal; 25–29.9 overweight; ≥ 30 obese."
+    },
+    {
+     "name": "Herd immunity threshold",
+     "formula": "Fraction to immunise = 1 − 1/R₀",
+     "note": "R₀ = average number infected by one case in a fully susceptible population."
+    }
+   ],
+   "shortcuts": [
+    {
+     "name": "BMI with a squared height",
+     "rule": "Square the height first (1.6² = 2.56, 1.7² = 2.89, 1.8² = 3.24), then divide.",
+     "example": "72 kg, 1.8 m: 72 / 3.24 ≈ 22.2 → normal."
+    },
+    {
+     "name": "Herd immunity in one step",
+     "rule": "Coverage needed = 1 − 1/R₀.",
+     "example": "R₀ = 4 → 1 − ¼ = 75%. Measles R₀ ≈ 15 → 1 − 1/15 ≈ 93%."
+    },
+    {
+     "name": "Active makes, passive takes",
+     "rule": "If the body MAKES its own antibodies → active (memory). If antibodies are TAKEN ready-made → passive (no memory).",
+     "example": "Antivenom after a snake bite → passive artificial. Baby breastfeeding → passive natural. Polio drops → active artificial."
+    },
+    {
+     "name": "Vector letter pairs",
+     "rule": "Tsetse → Trypanosoma (T-T); Snail → Schistosoma (S-S); Blackfly → Blindness (B-B); Anopheles → Ague (old word for malaria).",
+     "example": "Which vector spreads river blindness? Blackfly."
+    },
+    {
+     "name": "Vitamin cues",
+     "rule": "A for eyes; B₁ for beriberi; C for citrus and scurvy (bleeding gums); D for daylight and bones (rickets).",
+     "example": "Child with bowed legs and little sunlight exposure → vitamin D deficiency, rickets."
+    },
+    {
+     "name": "Kwashiorkor vs marasmus",
+     "rule": "Swollen belly and oedema with some energy intake → kwashiorkor (protein lack). Wasted, 'skin and bones' → marasmus (energy and protein lack).",
+     "example": "Weaned toddler on mainly cassava, with swollen legs and reddish hair → kwashiorkor."
+    }
+   ],
+   "traps": [
+    "Saying the mosquito causes malaria; it is the vector, the cause is Plasmodium.",
+    "Saying male Anopheles transmit malaria; only females take blood meals.",
+    "Saying vaccines give passive immunity; they give active artificial immunity.",
+    "Saying antibiotics treat colds or flu; these are viral.",
+    "Treating HIV and AIDS as the same; HIV is the virus, AIDS the syndrome it causes."
+   ],
+   "nsmqTips": [
+    "Questions often give a disease and ask for the causative organism and vector; answer both with genus names.",
+    "Riddles: 'I developed the first vaccine' → Edward Jenner (smallpox); 'I discovered penicillin' → Alexander Fleming.",
+    "Know the Ghana context: malaria, cholera outbreaks, Buruli ulcer (Mycobacterium ulcerans), guinea worm eradication (Dracunculus medinensis)."
+   ]
+  }
+ ]
+}

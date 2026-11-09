@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { MathText, ShortcutView } from "@/components/math-text";
 import { ChevronLeft, ChevronRight, RotateCcw, Search } from "lucide-react";
 import { DifficultyFilter, RoundSelector, SubjectFilter, TopicFilter } from "@/components/filters";
 import { PageHeading } from "@/components/page-heading";
@@ -221,7 +222,7 @@ export default function QuestionBankPage() {
                 )}
                 <p className="mt-2 text-sm text-ink/45">{question.topic} · {question.subtopic} · Pattern: {question.repeatedPattern}</p>
               </button>
-              {openId === question.id && <div className="grid gap-3 border-t border-ink/10 bg-ink/[0.02] p-5 md:grid-cols-3"><div><p className="eyebrow">Answer</p><p className="mt-2 font-bold">{question.answer}</p></div><div><p className="eyebrow">Shortcut</p><p className="mt-2 text-sm leading-6">{question.shortcutSolution}</p></div><div><p className="eyebrow">Full solution</p><p className="mt-2 text-sm leading-6">{question.fullSolution}</p></div></div>}
+              {openId === question.id && <div className="grid gap-3 border-t border-ink/10 bg-ink/[0.02] p-5 md:grid-cols-3"><div><p className="eyebrow">Answer</p><p className="mt-2 font-bold">{question.answer}</p></div><div><p className="eyebrow">Shortcut</p><div className="mt-2 text-sm leading-6"><ShortcutView text={question.shortcutSolution} dark={false} /></div></div><div><p className="eyebrow">Full solution</p><p className="mt-2 text-sm leading-6"><MathText>{question.fullSolution}</MathText></p></div></div>}
             </article>
           );
         })}
