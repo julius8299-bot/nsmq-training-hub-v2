@@ -113,3 +113,12 @@ Coaches can write feedback in a shared document or WhatsApp group. A comment for
 | `/setup`: "An administrator already exists" | Sign in at `/login` instead, or ask the existing admin for an invitation. |
 | Sign-in: "Too many incorrect attempts" | Wait 15 minutes, or have a coach send a reset link. |
 | Build: `db push` warns about data loss | A future change tried to remove data. The build stops on purpose and nothing is lost. Ask the developer to review it. |
+
+## The NSMQ question bank
+
+The past-question bank is stored encrypted in `prisma/bank/bank.enc`, because this repository is public. Each deploy loads it when the Vercel environment variable `BANK_KEY` is set. Without the key, the file can't be read and the step is skipped.
+
+- Questions whose answers have been re-checked and that have a full shortcut go live as **AI_CHECKED**. Students can practise them now, and coaches can still review, edit, approve or reject them.
+- Questions still waiting for a shortcut, or flagged as unclear in the source paper, stay private in the review queue.
+- A deploy never overwrites a question a coach has approved, rejected, edited or archived. It only adds or updates.
+- Students can press **Report a problem** under any answer. In Coach Tools → Question bank, search for `reported` to see the reports.

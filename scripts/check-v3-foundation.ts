@@ -386,6 +386,19 @@ async function main() {
     assert.equal(plan.steps.find((step) => step.id === "speed")!.done, 1);
     assert.ok(plan.streak >= 1);
   });
+  await test("bank sync: live AI-checked rows, idempotent, never overwrites a coach decision", async () => {
+    const { syncBank } = await import("../lib/questions/bank-sync");
+    const row = { ...input, roundType: "SPEED_RACE", questionText: "Bank sync: 9 x 9?", answer: "81", riddleClues: [], importKey: "bank/sync-1", visibility: "AI_CHECKED" as const };
+    const quiet = () => undefined;
+    assert.equal((await syncBank(db, [row, { ...row, importKey: "bank/sync-2", questionText: "Bank sync: 8 x 8?", answer: "64", visibility: "PENDING_REVIEW" as const }], quiet)).created, 2);
+    const live = await db.question.findUniqueOrThrow({ where: { seedKey: "import:bank/sync-1" } });
+    assert.ok(live.reviewStatus === "AI_CHECKED" && !live.isPrivateOnly);
+    assert.equal((await db.question.findUniqueOrThrow({ where: { seedKey: "import:bank/sync-2" } })).isPrivateOnly, true);
+    assert.equal((await syncBank(db, [row], quiet)).unchanged, 1);
+    await db.question.update({ where: { id: live.id }, data: { reviewStatus: "APPROVED" } });
+    assert.equal((await syncBank(db, [{ ...row, answer: "eighty-one" }], quiet)).keptCoachVersion, 1);
+    assert.equal((await db.question.findUniqueOrThrow({ where: { id: live.id } })).answer, "81");
+  });
   console.log(passed + " foundation scenarios passed against a disposable database.");
   const { prisma } = await import("../lib/prisma");
   await prisma.$disconnect();

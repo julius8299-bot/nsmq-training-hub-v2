@@ -223,7 +223,7 @@ function Runner({ questions, mode, timeLimitSeconds, timed = true, onScore, onNe
             <Eye size={17} /> I&apos;m stuck — show the solution
           </button>
         )}
-        {result && <FeedbackPanel result={result} />}
+        {result && <FeedbackPanel result={result} questionId={question.id} />}
         {result && (
           <button type="button" className="button-primary mt-5 w-full sm:w-auto" onClick={next}>
             {index === questions.length - 1 ? "Finish set" : "Next question"} <ArrowRight size={17} />

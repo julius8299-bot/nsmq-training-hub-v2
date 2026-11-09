@@ -13,7 +13,7 @@ const STATUS_LABELS: Record<string, string> = {
   live: "Live", queue: "Waiting for review", pending: "New (pending)", edits: "Proposed edits", rejected: "Rejected", archived: "Archived", all: "Everything",
 };
 const BADGE: Record<string, string> = {
-  APPROVED: "bg-emerald-100 text-emerald-900", LEGACY_UNREVIEWED: "bg-ink/5 text-ink/70", AUTO_VERIFIED: "bg-blue-100 text-blue-900",
+  APPROVED: "bg-emerald-100 text-emerald-900", LEGACY_UNREVIEWED: "bg-ink/5 text-ink/70", AUTO_VERIFIED: "bg-blue-100 text-blue-900", AI_CHECKED: "bg-purple-100 text-purple-900",
   PENDING_REVIEW: "bg-amber-100 text-amber-900", REJECTED: "bg-red-100 text-red-800",
 };
 

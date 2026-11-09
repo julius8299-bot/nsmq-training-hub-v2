@@ -21,6 +21,7 @@ const steps = [
   ["Preparing roles", "tsx", ["scripts/ensure-database.ts"]],
   ["Loading the training bank", "tsx", ["scripts/import-catalog.ts"]],
   ["Loading element drills", "tsx", ["scripts/import-elements.ts"]],
+  ["Loading the NSMQ question bank", "tsx", ["scripts/import-bank.ts"]],
   ["Building the website", "next", ["build"]],
 ];
 for (const [label, command, args] of steps) {

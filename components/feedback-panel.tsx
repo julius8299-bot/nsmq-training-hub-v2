@@ -1,6 +1,7 @@
 import { AlertTriangle, CheckCircle2, Clock3, Eye, Lightbulb, Sparkles } from "lucide-react";
 import type { AttemptResult } from "@/lib/types";
 import { MathText, ShortcutView } from "@/components/math-text";
+import { ReportQuestion } from "@/components/report-question";
 import { parseShortcut } from "@/lib/text/shortcut";
 
 function SolutionBox({
@@ -46,7 +47,7 @@ function headline(result: AttemptResult) {
   return { icon: AlertTriangle, tone: "bg-amber-100 text-amber-950", title: "Not this time — learn the pattern.", detail: `Correct answer: ${result.feedback.answer}${result.pointsAwarded < 0 ? ` (${result.pointsAwarded} point)` : ""}` };
 }
 
-export function FeedbackPanel({ result }: { result: AttemptResult }) {
+export function FeedbackPanel({ result, questionId }: { result: AttemptResult; questionId?: string }) {
   const { feedback } = result;
   const top = headline(result);
   const Icon = top.icon;
@@ -78,6 +79,7 @@ export function FeedbackPanel({ result }: { result: AttemptResult }) {
       <EncouragementBox>
         <span className="flex gap-2"><Sparkles className="mt-0.5 shrink-0 text-gold" size={18} />{feedback.encouragement}</span>
       </EncouragementBox>
+      {questionId && <ReportQuestion questionId={questionId} />}
     </div>
   );
 }

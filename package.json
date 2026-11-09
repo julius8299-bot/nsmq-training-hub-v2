@@ -10,7 +10,7 @@
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "db:seed": "tsx prisma/seed.ts",
-    "db:ensure": "tsx scripts/prepare-sqlite.ts && prisma db push --skip-generate && tsx scripts/ensure-database.ts && tsx scripts/import-catalog.ts && tsx scripts/import-elements.ts",
+    "db:ensure": "tsx scripts/prepare-sqlite.ts && prisma db push --skip-generate && tsx scripts/ensure-database.ts && tsx scripts/import-catalog.ts && tsx scripts/import-elements.ts && tsx scripts/import-bank.ts",
     "auth:bootstrap": "tsx scripts/bootstrap-admin.ts",
     "test:foundation": "tsx scripts/check-v3-foundation.ts",
     "test:v3-routes": "tsx scripts/check-v3-routes.ts",
@@ -27,7 +27,8 @@
     "db:copy-local": "tsx scripts/copy-local-records.ts",
     "test:elements": "tsx scripts/check-elements.ts",
     "test:hosted-import": "tsx scripts/check-hosted-import.ts",
-    "test:text": "tsx scripts/check-text-format.ts && tsx scripts/check-speech.ts"
+    "test:text": "tsx scripts/check-text-format.ts && tsx scripts/check-speech.ts",
+    "db:import-bank": "tsx scripts/import-bank.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
